@@ -21,7 +21,11 @@ function LoginForm() {
     })
 
     if (res.ok) {
-      const redirect = searchParams.get('redirect') || '/'
+      let redirect = searchParams.get('redirect') || '/'
+      // Strip .html extension if present (legacy URLs)
+      if (redirect.endsWith('.html')) {
+        redirect = redirect.slice(0, -5)
+      }
       router.push(redirect)
       router.refresh()
     } else {
