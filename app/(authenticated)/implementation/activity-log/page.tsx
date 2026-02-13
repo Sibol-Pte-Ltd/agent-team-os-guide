@@ -15,6 +15,83 @@ const content = `<div class="breadcrumbs">
         <h1>Activity Log</h1>
         <p class="page-subtitle">Chronological record of work performed on Agent Team OS implementation.</p>
 
+        <h2>February 13, 2026 — Next.js Migration, Security Audit &amp; Life OS Audit</h2>
+
+        <div class="activity-entry">
+          <div class="activity-time">~23:15 UTC</div>
+          <div class="activity-content">
+            <strong>Directory cleanup completed — static site fully removed</strong>
+            <p>Completed removal of legacy agent-team-os-guide infrastructure identified in the directory audit:</p>
+            <ul>
+              <li><strong>nginx config removed:</strong> <code>/etc/nginx/sites-available/agent-team-os</code> and symlink deleted, nginx reloaded</li>
+              <li><strong>Static site deleted:</strong> <code>~/workspace/repos/agent-team-os-guide/</code> (46 files, old HTML site) — removed</li>
+              <li><strong>Bare repo deleted:</strong> <code>~/workspace/repos/agent-team-os-guide.git/</code> (orphaned, unused bare git repo) — removed</li>
+            </ul>
+            <p>Only the Next.js project remains at <code>~/workspace/repos/agent-team-os-guide-nextjs/</code> (now the sole source of truth). Port 8080 no longer serves the old static site.</p>
+          </div>
+        </div>
+
+        <div class="activity-entry">
+          <div class="activity-time">~22:00 UTC</div>
+          <div class="activity-content">
+            <strong>Implementation pages updated with audit findings</strong>
+            <p>All 4 implementation section pages (status, gap analysis, roadmap, activity log) updated to reflect findings from both the comprehensive directory audit and the Life OS graph gap audit. Roadmap reprioritized around audit-driven remediation.</p>
+          </div>
+        </div>
+
+        <div class="activity-entry">
+          <div class="activity-time">~18:00 UTC</div>
+          <div class="activity-content">
+            <strong>Next.js migration completed and deployed</strong>
+            <p>Website fully migrated from static HTML (nginx-served) to Next.js with server-side authentication via Supabase. Key improvements:</p>
+            <ul>
+              <li>Server-side auth replaces client-side password gate (eliminated hardcoded <code>$OS2026$</code> vulnerability)</li>
+              <li>All 34 pages preserved with identical content</li>
+              <li>Deployed to Vercel</li>
+              <li>Centralized layout with sidebar component</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="activity-entry">
+          <div class="activity-time">~16:25 UTC</div>
+          <div class="activity-content">
+            <strong>Comprehensive directory audit completed (Architect)</strong>
+            <p>Architect agent performed full system audit across <code>~/agent-guide/</code>, <code>~/agents/</code>, and the served website. Key findings:</p>
+            <ul>
+              <li><strong>🔴 CRITICAL:</strong> Exposed Supabase bearer token in <code>~/agent-guide/agents/ember/config/mcporter.json</code> — must be rotated</li>
+              <li><strong>🔴 CRITICAL:</strong> Client-side password <code>$OS2026$</code> hardcoded in login.html — provides zero protection (subsequently fixed by Next.js migration)</li>
+              <li><strong>Three overlapping copies</strong> of agent-team-os-guide identified: <code>~/agent-guide/</code> (3,660 files, 93.7% node_modules), <code>~/workspace/repos/agent-team-os-guide/</code> (46 files, old nginx site), and the Next.js repo</li>
+              <li><strong>Legacy data not migrated:</strong> 11 Ember memory files, 8 project files, 4 reflections in agent-guide not present in ~/agents</li>
+              <li>All 34 website pages return HTTP 200, no broken links</li>
+              <li>Orphaned directories identified: <code>~/guide/</code>, <code>~/guide-temp/</code>, <code>~/guide.tar.gz</code></li>
+            </ul>
+            <p>Full report saved to <code>~/agents/architect/comprehensive-directory-audit-2026-02-13.md</code></p>
+          </div>
+        </div>
+
+        <div class="activity-entry">
+          <div class="activity-time">~15:00 UTC</div>
+          <div class="activity-content">
+            <strong>Life OS graph gap audit completed (Architect)</strong>
+            <p>Architect agent audited the Life OS Logseq graph at <code>~/life-os/</code> against the documented system in the Agent Team OS Guide. Found 15 gaps:</p>
+            <ul>
+              <li><strong>3 Critical:</strong> Templates not Logseq-functional (0/10 have <code>template::</code> property), journal template not auto-applied, 2-day journal gap (Feb 12–13)</li>
+              <li><strong>7 Important:</strong> No project pages beyond "Agent Team OS", broken <code>[[Implementation Status]]</code> link, empty contents.md, skeleton-only area pages (0/5 have content), no .gitignore, logseq/ not in git, no inter-page linking (only 1 <code>[[link]]</code> total)</li>
+              <li><strong>5 Nice-to-have:</strong> No assets directory, empty research directory, no favorites configured, areas outside pages/ directory, no tags/properties used</li>
+            </ul>
+            <p>Overall: graph is architecturally sound but operationally dormant. Full report saved to <code>~/agents/architect/memory/lifeos-graph-gap-audit.md</code></p>
+          </div>
+        </div>
+
+        <div class="activity-entry">
+          <div class="activity-time">~09:00 UTC</div>
+          <div class="activity-content">
+            <strong>Logseq configuration work</strong>
+            <p>Reviewed Logseq configuration at <code>~/life-os/logseq/config.edn</code>. Identified issues with template auto-application and directory structure. Configuration analysis fed into the Life OS graph gap audit.</p>
+          </div>
+        </div>
+
         <h2>February 12, 2026 — Trust System Implementation, Testing &amp; Documentation</h2>
 
         <div class="activity-entry">
@@ -88,7 +165,7 @@ const content = `<div class="breadcrumbs">
           <div class="activity-time">~15:50 UTC</div>
           <div class="activity-content">
             <strong>Life OS fully built out</strong>
-            <p>Created 7 templates (daily-journal, morning-report, evening-checkin, weekly-review, monthly-review, goal, research-brief, decision-log) in Chewy format. Created 5 area pages (health, work, personal, learning, finance) and 1 project page (Agent Team OS). Initialized git repo with 2 commits. All synced via Syncthing.</p>
+            <p>Created 10 templates (daily-journal, morning-report, evening-checkin, weekly-review, monthly-review, goal, research-brief, decision-log, project-kickoff, research-request) in Chewy format. Created 5 area pages (health, work, personal, learning, finance) and 1 project page (Agent Team OS). Initialized git repo with 2 commits. All synced via Syncthing.</p>
           </div>
         </div>
 
@@ -198,7 +275,7 @@ const content = `<div class="breadcrumbs">
           </ul>
         </div>
 
-        <p style="margin-top: 2rem; font-size: 0.8rem; color: #888;">Last updated: February 12, 2026</p>`
+        <p style="margin-top: 2rem; font-size: 0.8rem; color: #888;">Last updated: February 13, 2026</p>`
 
 export default function Page() {
   return <div dangerouslySetInnerHTML={{ __html: content }} />
