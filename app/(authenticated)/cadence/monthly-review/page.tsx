@@ -1,0 +1,111 @@
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Monthly Review — Agent Team OS Guide',
+}
+
+const content = `<div class="breadcrumbs">
+          <a href="/">Home</a> / <a href="/cadence">Cadence</a> / Monthly Review
+        </div>
+
+        <h1>Monthly Review</h1>
+
+        <p>On the 1st of every month, Ember prepares a comprehensive review that goes far deeper than the weekly cadence. While weekly reviews keep you oriented from week to week, the monthly review is where you step back and look at the full landscape of your life and projects. This is your deep dive — a structured reflection that covers goals, habits, projects, and planning across every area you track.</p>
+
+        <p>Ember does the heavy lifting of compiling the data, but <strong>you drive the reflection</strong>. Plan to spend <strong>30-45 minutes</strong> with this one. It's an investment that pays off in clarity and direction for the entire month ahead.</p>
+
+        <h2>What the Monthly Review Covers</h2>
+
+        <h3>Monthly Goals Progress</h3>
+        <p>At the start of each month, you set goals — either during the previous month's review or as they emerge organically. The monthly review tracks progress against those goals. For each goal, Ember reports its status: completed, in progress (with percentage estimate), stalled, or not started. This is your honest scoreboard. Don't flinch from it — understanding where you actually are is the first step to getting where you want to be.</p>
+
+        <h3>Habit Tracking Review</h3>
+        <p>If you track habits in Life OS (exercise, reading, journaling, or anything else), the monthly review rolls up your consistency data. You'll see how many days you hit each habit, your longest streaks, and any patterns — like habits that slip on weekends or pick up mid-week. This isn't about perfection; it's about awareness. Trends matter more than individual days.</p>
+
+        <h3>Project Status Across All Areas</h3>
+        <p>Every active project gets a status update, organized by life area (work, personal, health, learning, etc.). For each project, Ember summarizes: what was accomplished this month, what's next, and whether the project is on track, behind, or ahead of where you expected it to be. This cross-area view is one of the most valuable parts of the monthly review — it reveals where your energy is actually going versus where you think it's going.</p>
+
+        <h3>Financial Check-in</h3>
+        <p>If you track financial data in Life OS, the monthly review includes a snapshot: budget adherence, notable expenses, subscriptions due for renewal, and any financial tasks that came up during the month. This is a light touch, not a full accounting — just enough to keep finances from becoming a blind spot.</p>
+
+        <h3>Health Check-in</h3>
+        <p>A summary of health-related data you track: exercise frequency, sleep patterns, medical appointments attended or upcoming, and any health goals you set. Like the financial check-in, this is about maintaining awareness rather than deep analysis.</p>
+
+        <h3>Career Check-in</h3>
+        <p>Professional development, work milestones, networking activity, skill building, and career goal progress. This section helps you ensure that the daily grind of tasks doesn't obscure the larger arc of your professional life.</p>
+
+        <h3>Next Month Planning</h3>
+        <p>Based on everything above, the final section is forward-looking. Ember drafts suggested goals and focus areas for the coming month, based on carry-overs, upcoming deadlines, and patterns from the current month. You review these suggestions, adjust them, and commit to your actual goals for the new month. These then feed into your weekly and daily cadences going forward.</p>
+
+        <h2>How to Approach the Monthly Review</h2>
+
+        <p>The monthly review can feel like a lot if you try to absorb it all at once. Here's a recommended approach:</p>
+
+        <ol class="steps">
+          <li><strong>Skim first, then dig in.</strong> Read the full review quickly to get a sense of the month. Then go back through each section with more attention.</li>
+          <li><strong>Celebrate before critiquing.</strong> Start by acknowledging what went well. Completed goals, consistent habits, projects that moved forward — recognize these before turning to what didn't work.</li>
+          <li><strong>Be ruthless with stalled projects.</strong> If a project hasn't moved in a month and there's no clear reason why, it's time to decide: recommit with specific actions, put it on hold formally, or drop it.</li>
+          <li><strong>Set no more than 3-5 monthly goals.</strong> More than that dilutes your focus. Pick the goals that matter most and let the rest be background activity.</li>
+          <li><strong>Update Ember with your decisions.</strong> After reflecting, communicate your monthly goals and any priority changes to Ember so the system is aligned for the coming month.</li>
+        </ol>
+
+        <div class="callout warning">
+          <strong>Warning:</strong> Don't skip the monthly review, even when you're busy — especially when you're busy. Busy months are exactly when things drift off course without you noticing. The monthly review is your corrective lens. Skipping it saves 30 minutes now but can cost you weeks of misaligned effort. If the 1st doesn't work, do it on the 2nd or 3rd, but do it.
+        </div>
+
+        <h2>Monthly Review vs. Weekly Review</h2>
+
+        <p>It's worth understanding how these two rhythms differ:</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Aspect</th>
+              <th>Weekly Review</th>
+              <th>Monthly Review</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Time investment</strong></td>
+              <td>15-20 minutes</td>
+              <td>30-45 minutes</td>
+            </tr>
+            <tr>
+              <td><strong>Focus</strong></td>
+              <td>Tasks and immediate priorities</td>
+              <td>Goals, habits, and life areas</td>
+            </tr>
+            <tr>
+              <td><strong>Scope</strong></td>
+              <td>What happened this week</td>
+              <td>Trends and patterns over the month</td>
+            </tr>
+            <tr>
+              <td><strong>Output</strong></td>
+              <td>Weekly intentions (3-5)</td>
+              <td>Monthly goals (3-5) and area check-ins</td>
+            </tr>
+            <tr>
+              <td><strong>Tone</strong></td>
+              <td>Tactical — what to do next</td>
+              <td>Strategic — where am I heading</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>Both are essential. The weekly review keeps you on the path; the monthly review makes sure it's the right path.</p>
+
+        <div class="action-section">
+          <h2>What You Do Next</h2>
+          <ul>
+            <li>Revisit the <a href="/cadence">Cadence Overview</a> to see how all four rhythms work together.</li>
+            <li>Check out the <a href="/life-os/templates">Templates</a> page for the monthly review template in Life OS.</li>
+            <li>Learn about <a href="/agents/ember">Ember</a> and how it compiles your review data.</li>
+            <li>Explore your <a href="/life-os/daily-workflow">Daily Workflow</a> to see how monthly goals trickle down into daily priorities.</li>
+          </ul>
+        </div>`
+
+export default function Page() {
+  return <div dangerouslySetInnerHTML={{ __html: content }} />
+}

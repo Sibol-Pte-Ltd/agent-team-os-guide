@@ -1,0 +1,94 @@
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Ember — Chief of Staff — Agent Team OS Guide',
+}
+
+const content = `<div class="breadcrumbs">
+          <a href="/">Home</a>
+          <span class="separator">/</span>
+          <a href="/agents">Agents</a>
+          <span class="separator">/</span>
+          Ember
+        </div>
+
+        <h1>Ember — Chief of Staff</h1>
+
+        <p>Ember is the central coordinator of your agent team. She manages your daily flow, ensures the right things get prioritized, and acts as the communication bridge between you and the other agents. If Agent Team OS has a heartbeat, Ember is the one keeping it steady.</p>
+
+        <h2>Role</h2>
+
+        <p>Ember's primary role is to manage the daily rhythm of your life. She handles prioritization, making sure the most important tasks surface at the right time. She coordinates between Scout and Forge, routing research requests and flagging infrastructure issues. She maintains awareness of your calendar and commitments so that the system adapts to what your day actually looks like rather than operating in a vacuum.</p>
+
+        <p>Think of Ember as a chief of staff who reads the room, keeps the trains running on time, and only escalates to you when something genuinely needs your attention.</p>
+
+        <h2>Responsibilities</h2>
+
+        <ul>
+          <li><strong>Creates morning reports</strong> — Each morning, Ember compiles overnight activity, your calendar, top priorities, and anything flagged by the other agents into a single report delivered to you at 6:00 AM.</li>
+          <li><strong>Manages evening check-ins</strong> — In the late afternoon, Ember prepares a recap of the day's progress, prompts you for reflections, and queues up overnight work for the agent team.</li>
+          <li><strong>Tracks task priorities</strong> — Ember monitors your task list in Life OS and adjusts priorities based on deadlines, dependencies, and your stated preferences.</li>
+          <li><strong>Coordinates with Scout and Forge</strong> — When you assign research to Scout or when Forge flags a maintenance issue, Ember routes the information and ensures follow-through.</li>
+          <li><strong>Handles calendar awareness</strong> — Ember checks your calendar and factors upcoming meetings, deadlines, and events into daily planning so nothing catches you off guard.</li>
+        </ul>
+
+        <h2>Trust Level</h2>
+
+        <div class="callout success">
+          <div class="callout-title">Trust Level Active</div>
+          <p>Ember's L3 (Autonomous) trust level is <strong>active and enforcing</strong>. All actions are checked against the trust system, with restricted actions (external messages, financial ops, trust changes) still requiring escalation even at L3.</p>
+        </div>
+
+        <p>Ember operates at <strong>Trust Level 3 — Autonomous</strong>. This means she can act independently on routine tasks without asking for your approval first. Creating morning reports, adjusting task order, and coordinating with the other agents are all things Ember handles on her own.</p>
+
+        <p>However, Ember will escalate to you for non-routine changes. If a task needs to be cancelled, a significant priority shift is required, or something unusual comes up that falls outside normal operating parameters, Ember will ask before acting. This balance keeps the system efficient while ensuring you remain the final decision-maker on anything that matters.</p>
+
+        <h2>How to Interact</h2>
+
+        <p>You can message Ember at any time to make adjustments to your workflow. Common interactions include:</p>
+
+        <ul>
+          <li><strong>Adjust priorities</strong> — Tell Ember to bump a task up or down, defer something to next week, or focus on a specific project today.</li>
+          <li><strong>Ask for status updates</strong> — Request a summary of where things stand on a particular project or across the board.</li>
+          <li><strong>Request changes to routines</strong> — If you want your morning report delivered at a different time, or you want to add a new section to the evening check-in, tell Ember and she will make the adjustment.</li>
+          <li><strong>Route requests to other agents</strong> — If you need Scout to research something or want Forge to check on a system issue, you can tell Ember and she will pass it along.</li>
+        </ul>
+
+        <h3>Example Morning Report</h3>
+
+        <p>Here is an example of what a morning report from Ember looks like:</p>
+
+<pre><code>Morning Report — Monday, February 10, 2026
+
+Calendar:
+  - 10:00 AM  Team standup
+  - 2:00 PM   Dentist appointment
+  - 4:00 PM   Project review call
+
+Priorities:
+  1. Finish draft of Q1 planning document
+  2. Review Scout's research brief on cloud migration options
+  3. Reply to Alex's email about the March timeline
+
+Overnight Activity:
+  - Scout completed research on cloud migration (brief in Life OS)
+  - Forge ran scheduled backup at 3:00 AM (success)
+  - Syncthing sync completed across all devices
+
+Flags:
+  - The Q1 planning document deadline is tomorrow — marking as urgent
+  - Forge noticed elevated disk usage on EC2 (72%) — monitoring</code></pre>
+
+        <div class="action-section">
+          <h2>What You Do Next</h2>
+          <ul>
+            <li><a href="/cadence/morning-report">Learn more about the Morning Report</a> and its structure</li>
+            <li><a href="/cadence/evening-checkin">Learn about the Evening Check-in</a> that Ember manages</li>
+            <li><a href="/agents/scout">Meet Scout</a>, the Research Specialist</li>
+            <li><a href="/agents/trust-levels">Understand Trust Levels</a> and what Level 3 means in practice</li>
+          </ul>
+        </div>`
+
+export default function Page() {
+  return <div dangerouslySetInnerHTML={{ __html: content }} />
+}
