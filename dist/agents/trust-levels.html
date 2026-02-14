@@ -1,0 +1,420 @@
+<!DOCTYPE html><!--VA_lAVEn1LekIejhMlH5y--><html lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/_next/static/css/56998b7e09014914.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/_next/static/chunks/webpack-d282787ed3063711.js"/><script src="/_next/static/chunks/4bd1b696-f785427dddbba9fb.js" async=""></script><script src="/_next/static/chunks/1255-29325acccda77703.js" async=""></script><script src="/_next/static/chunks/main-app-035730848130ded3.js" async=""></script><script src="/_next/static/chunks/app/(authenticated)/layout-8a56e70ab4050a46.js" async=""></script><title>Trust Levels — Agent Team OS Guide</title><meta name="description" content="Your personal AI agent team, working together to keep your life organized."/><script src="/_next/static/chunks/polyfills-42372ed130431b0a.js" noModule=""></script></head><body><div hidden=""><!--$--><!--/$--></div><input type="checkbox" id="menu-toggle" class="menu-toggle"/><label for="menu-toggle" class="hamburger" aria-label="Toggle navigation">☰</label><label for="menu-toggle" class="overlay"></label><div class="site-wrapper"><aside class="sidebar"><div class="sidebar-header"><h1>Agent Team OS</h1><div class="subtitle">User Guide</div></div><nav><div class="nav-section"><a class="nav-link" href="/">Home</a></div><div class="nav-section"><div class="nav-section-title">Getting Started</div><a class="nav-link" href="/getting-started">Quick Start</a><a class="nav-link" href="/getting-started/first-day">Your First Day</a><a class="nav-link" href="/getting-started/setup-checklist">Setup Checklist</a></div><div class="nav-section"><div class="nav-section-title">Notes &amp; Sync</div><a class="nav-link" href="/life-os">What is Notes</a><a class="nav-link" href="/life-os/daily-workflow">Daily Workflow</a><a class="nav-link" href="/life-os/templates">Templates</a><a class="nav-link" href="/life-os/logseq-tips">LogSeq Tips</a></div><div class="nav-section"><div class="nav-section-title">Agents</div><a class="nav-link" href="/agents">Meet Your Agents</a><a class="nav-link" href="/agents/ember">Ember</a><a class="nav-link" href="/agents/scout">Scout</a><a class="nav-link" href="/agents/forge">Forge</a><a class="nav-link" href="/agents/architect">Architect</a><a class="nav-link active" href="/agents/trust-levels">Trust Levels</a></div><div class="nav-section"><div class="nav-section-title">Cadence</div><a class="nav-link" href="/cadence">Overview</a><a class="nav-link" href="/cadence/morning-report">Morning Report</a><a class="nav-link" href="/cadence/evening-checkin">Evening Check-in</a><a class="nav-link" href="/cadence/weekly-review">Weekly Review</a><a class="nav-link" href="/cadence/monthly-review">Monthly Review</a></div><div class="nav-section"><div class="nav-section-title">OpenClaw Architecture</div><a class="nav-link" href="/architecture">Overview</a><a class="nav-link" href="/architecture/channel-adapters">Channel Adapters</a><a class="nav-link" href="/architecture/gateway">Gateway</a><a class="nav-link" href="/architecture/lane-queue">Lane Queue</a><a class="nav-link" href="/architecture/agent-runner">Agent Runner</a><a class="nav-link" href="/architecture/execution-layer">Execution Layer</a></div><div class="nav-section"><div class="nav-section-title">Automation</div><a class="nav-link" href="/automation">Overview</a><a class="nav-link" href="/automation/cron-jobs">Cron Jobs</a><a class="nav-link" href="/automation/notifications">Notifications</a></div><div class="nav-section"><div class="nav-section-title">Troubleshooting</div><a class="nav-link" href="/troubleshooting">Common Issues</a><a class="nav-link" href="/troubleshooting/syncthing">Syncthing</a><a class="nav-link" href="/troubleshooting/faq">FAQ</a></div><div class="nav-section"><div class="nav-section-title">Reference</div><a class="nav-link" href="/reference/commands">Commands</a><a class="nav-link" href="/reference/file-locations">File Locations</a><a class="nav-link" href="/reference/glossary">Glossary</a><a class="nav-link" href="/reference/changelog">Changelog</a></div><div class="nav-section"><div class="nav-section-title">Implementation</div><a class="nav-link" href="/implementation">Status</a><a class="nav-link" href="/implementation/gap-analysis">Gap Analysis</a><a class="nav-link" href="/implementation/roadmap">Roadmap</a><a class="nav-link" href="/implementation/activity-log">Activity Log</a><a class="nav-link" href="/implementation/site-improvements">Site Improvements</a><a class="nav-link" href="/implementation/clawvault-analysis">ClawVault Analysis</a></div></nav><div class="sidebar-footer"><button class="nav-link logout-link">⎋ Logout</button></div></aside><main class="main-content"><div class="content-wrapper"><div><div class="breadcrumbs">
+          <a href="/">Home</a>
+          <span class="separator">/</span>
+          <a href="/agents">Agents</a>
+          <span class="separator">/</span>
+          Trust Levels
+        </div>
+
+        <h1>Trust Levels</h1>
+
+        <p>Every agent in Agent Team OS operates within a trust level that defines how much autonomy it has. Trust levels are the mechanism that keeps you in control while allowing agents to be genuinely useful. A higher trust level means more independence; a lower trust level means more oversight.</p>
+
+        <!-- ============================================================= -->
+        <!-- IMPLEMENTATION STATUS                                          -->
+        <!-- ============================================================= -->
+        <h2 id="implementation-status">Implementation Status</h2>
+
+        <div class="callout success">
+          <div class="callout-title">✅ Trust System is Live</div>
+          <p>The trust system is fully implemented and actively enforcing permissions as of February 12, 2026. All agent actions pass through trust checks before execution, and restricted actions trigger the approval workflow automatically.</p>
+        </div>
+
+        <div class="status-summary">
+          <div class="status-card success">
+            <div class="status-title">Configuration</div>
+            <div class="status-value">Active</div>
+            <div class="status-detail">trust-levels.json v1.0.0 — 4 levels, 4 agents configured</div>
+          </div>
+          <div class="status-card success">
+            <div class="status-title">Enforcement Engine</div>
+            <div class="status-value">Active</div>
+            <div class="status-detail">trust-system.sh — 10 subcommands, full approval workflow</div>
+          </div>
+          <div class="status-card success">
+            <div class="status-title">Agent Integration</div>
+            <div class="status-value">Active</div>
+            <div class="status-detail">trust-check.sh sourced via .bashrc.agent in all sessions</div>
+          </div>
+          <div class="status-card success">
+            <div class="status-title">Notifications</div>
+            <div class="status-value">Active</div>
+            <div class="status-detail">Discord + Pushover alerts on approval requests and trust changes</div>
+          </div>
+        </div>
+
+        <!-- ============================================================= -->
+        <!-- TRUST LEVEL TABLE                                              -->
+        <!-- ============================================================= -->
+        <h2>The Four Trust Levels</h2>
+
+        <p>The system uses four trust levels, numbered 0 through 3:</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Level</th>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>0</strong></td>
+              <td>Observer</td>
+              <td>Can only read and observe. No actions of any kind are permitted.</td>
+              <td>A new agent in evaluation mode that can view your data but cannot create, modify, or delete anything.</td>
+            </tr>
+            <tr>
+              <td><strong>1</strong></td>
+              <td>Suggest</td>
+              <td>Can propose actions and make recommendations, but every action requires explicit human approval before execution.</td>
+              <td>An agent that drafts a task list for you to review and approve, but cannot add tasks to your system on its own.</td>
+            </tr>
+            <tr>
+              <td><strong>2</strong></td>
+              <td>Act with Approval</td>
+              <td>Can research and prepare independently, but needs your approval before making changes or acting on findings.</td>
+              <td>Scout researching cloud providers and compiling a brief, then waiting for your go-ahead before taking any next steps.</td>
+            </tr>
+            <tr>
+              <td><strong>3</strong></td>
+              <td>Autonomous</td>
+              <td>Can act on routine tasks independently without asking. Escalates edge cases and non-routine situations to you for approval.</td>
+              <td>Ember creating your morning report and adjusting task priorities, or Forge running a scheduled backup and clearing temp files.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>Current Agent Trust Levels</h2>
+
+        <p>Here is where each agent currently sits in the trust system:</p>
+
+        <ul>
+          <li><strong><a href="/agents/ember">Ember</a></strong> — <span class="badge success">Level 3</span> Autonomous. Can manage daily operations, create reports, and adjust priorities independently.</li>
+          <li><strong><a href="/agents/scout">Scout</a></strong> — <span class="badge warning">Level 2</span> Act with Approval. Can research independently but needs approval before acting on findings.</li>
+          <li><strong><a href="/agents/forge">Forge</a></strong> — <span class="badge success">Level 3</span> Autonomous. Can perform routine maintenance and monitoring independently.</li>
+          <li><strong><a href="/agents/architect">Architect</a></strong> — <span class="badge warning">Level 2</span> Act with Approval. Can analyze and plan independently but needs approval before external actions.</li>
+        </ul>
+
+        <!-- ============================================================= -->
+        <!-- HOW IT WORKS                                                   -->
+        <!-- ============================================================= -->
+        <h2 id="how-it-works">How It Works</h2>
+
+        <p>The trust system enforces permissions through a three-layer architecture:</p>
+
+        <h3>1. Configuration Layer</h3>
+        <p>The file <code>~/agents/ember/config/trust-levels.json</code> is the single source of truth. It defines:</p>
+        <ul>
+          <li>The four trust levels with their permissions, allowed/denied tools, and escalation triggers</li>
+          <li>Each agent's current trust level assignment</li>
+          <li>Approval settings: 24-hour timeout (default deny), queue directory path, max 10 pending requests per agent</li>
+          <li>Notification channels for approval requests, trust changes, and escalations</li>
+        </ul>
+
+        <h3>2. Enforcement Layer</h3>
+        <p>The script <code>trust-system.sh</code> is the enforcement engine. When an agent attempts an action:</p>
+        <ol>
+          <li>The action is <strong>classified</strong> into a category: read-only, workspace write, command execution, internal notification, external communication, destructive, system modification, financial, trust change, or unknown.</li>
+          <li>The agent's trust level is <strong>looked up</strong> from the config file.</li>
+          <li>The permission matrix is <strong>evaluated</strong>: the combination of trust level + action category produces one of three results: ALLOWED (exit code 0), DENIED (exit code 1), or NEEDS_APPROVAL (exit code 2).</li>
+          <li>If approval is needed, a request is <strong>queued</strong> as a JSON file and notifications are sent via Discord and Pushover.</li>
+          <li>Every decision is <strong>logged</strong> to the trust decision audit log.</li>
+        </ol>
+
+        <h3>3. Integration Layer</h3>
+        <p>The script <code>trust-check.sh</code> is sourced by every agent session via <code>.bashrc.agent</code>. It provides:</p>
+        <ul>
+          <li><code>trust_check</code> — the main function agents call before restricted actions</li>
+          <li><code>trust_check_tool</code> — classifies raw OpenClaw tool calls and runs the check</li>
+          <li>A <strong>restricted action map</strong> that translates tool names (like <code>message</code>, <code>exec</code>, <code>write</code>) into trust action categories</li>
+          <li>Automatic agent name detection from the OpenClaw session</li>
+          <li>Environment variables for dry-run mode and silent operation</li>
+        </ul>
+
+        <div class="callout note">
+          <div class="callout-title">Restricted Actions — Always Checked</div>
+          <p>Certain actions always trigger a trust check, regardless of trust level. These include: sending external messages, writing/editing/deleting files outside the workspace, elevated/sudo execution, adding cron jobs, browser actions, all financial operations, and trust level changes. Even Level 3 agents pass through enforcement for these.</p>
+        </div>
+
+        <!-- ============================================================= -->
+        <!-- TRUST vs TOOL POLICY BRIDGE                                    -->
+        <!-- ============================================================= -->
+        <h2 id="trust-vs-tool-policy">How Trust Relates to OpenClaw Tool Policy</h2>
+
+        <p>If you have read the <a href="/architecture/execution-layer">Execution Layer</a> documentation, you know that OpenClaw has its own permission system: tool allowlists, security modes, sandbox settings, and subagent policies. The trust system described on this page is a <em>separate</em> layer that works alongside OpenClaw's built-in tool policy. Understanding how they interact is important, because they solve different problems.</p>
+
+        <h3>Two Layers, Two Jobs</h3>
+
+        <div class="callout note">
+          <div class="callout-title">The Key Distinction</div>
+          <p><strong>OpenClaw tool policy</strong> controls which tools an agent can <em>see</em>. <strong>The trust system</strong> controls when an agent should <em>seek human approval</em> before using a tool it can see.</p>
+        </div>
+
+        <p>Here is how the two layers break down:</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th></th>
+              <th>Layer 1: OpenClaw Tool Policy</th>
+              <th>Layer 2: Trust System</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>What it controls</strong></td>
+              <td>Tool <em>availability</em> — which tools appear in the agent's toolbox</td>
+              <td>Action <em>approval</em> — whether the agent needs human sign-off before acting</td>
+            </tr>
+            <tr>
+              <td><strong>Where it lives</strong></td>
+              <td>OpenClaw configuration: agent profiles, tool allowlists, security modes in <code>config.yaml</code></td>
+              <td>Agent Team OS configuration: <code>trust-levels.json</code>, <code>trust-system.sh</code>, <code>trust-check.sh</code></td>
+            </tr>
+            <tr>
+              <td><strong>Enforcement mechanism</strong></td>
+              <td>OpenClaw filters tools from the LLM's schema before each turn — the agent literally cannot call a tool it cannot see</td>
+              <td>Bash hooks and agent instructions intercept actions at runtime and check the permission matrix</td>
+            </tr>
+            <tr>
+              <td><strong>Scope</strong></td>
+              <td>Per-agent, per-channel, per-subagent. Can also apply sandbox isolation and network restrictions.</td>
+              <td>Per-agent, per-action-category. Adds behavioral guidelines like escalation triggers and approval queues.</td>
+            </tr>
+            <tr>
+              <td><strong>What changing it does</strong></td>
+              <td>Adding or removing a tool from the allowlist changes what the agent <em>can attempt</em></td>
+              <td>Changing a trust level changes what the agent <em>can do without asking</em></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>How They Work Together</h3>
+
+        <p>The two layers are complementary, not redundant. Think of it as two gates an action must pass through:</p>
+
+        <ol>
+          <li><strong>Gate 1 — Tool Policy (OpenClaw):</strong> When the LLM is about to reason, OpenClaw builds the list of available tools based on allowlists, security modes, and channel context. If a tool is not in the list, the agent does not even know it exists — it cannot attempt to use it. This is a hard, platform-level restriction.</li>
+          <li><strong>Gate 2 — Trust Check (Agent Team OS):</strong> For tools that <em>are</em> available, the trust system evaluates whether the specific action requires approval given the agent's trust level. A Level 2 agent might have access to the <code>message</code> tool (it passes Gate 1) but still need your approval before sending an external message (Gate 2 returns NEEDS_APPROVAL).</li>
+        </ol>
+
+        <p>This means an action is only executed when it passes <em>both</em> gates. Removing a tool via OpenClaw's allowlist is a stronger restriction than the trust system — if the tool is not available, there is nothing for the trust system to check. Conversely, the trust system adds nuance that tool policy alone cannot provide: the difference between "Scout can use the message tool to post internally" and "Scout needs approval to post externally" is a trust-level distinction, not a tool-policy one.</p>
+
+        <h3>Practical Examples</h3>
+
+        <ul>
+          <li><strong>Restricting a tool entirely:</strong> If you never want Scout to use the browser, remove <code>browser</code> from Scout's tool allowlist in OpenClaw config. Scout will not see the tool at all — no trust check needed.</li>
+          <li><strong>Allowing a tool with oversight:</strong> If Scout should be able to send messages but only with your approval, keep <code>message</code> in Scout's allowlist (Gate 1 passes) and leave Scout at Trust Level 2 (Gate 2 requires approval for external communication).</li>
+          <li><strong>Granting full autonomy:</strong> For Ember at Trust Level 3, most routine actions pass both gates automatically — Ember has the tools available (Gate 1) and has autonomous permission for routine actions (Gate 2). Only edge cases like financial operations or trust changes still require approval.</li>
+          <li><strong>Sandbox isolation:</strong> OpenClaw can sandbox an agent's execution in a Docker container with limited network access. This is a Layer 1 restriction — it constrains <em>how</em> tools execute, not whether the agent gets approval. A sandboxed agent at Trust Level 3 still acts autonomously, but within the sandbox boundary.</li>
+        </ul>
+
+        <h3>When to Change Which</h3>
+
+        <p>If you want to change what an agent can do, the right lever depends on what you are trying to achieve:</p>
+
+        <ul>
+          <li><strong>Change OpenClaw tool policy when</strong> you want to add or remove entire capabilities — "this agent should/should not have access to shell execution" or "this subagent should only have read and web_search."</li>
+          <li><strong>Change trust level when</strong> you want to adjust the approval workflow — "this agent has proven reliable enough to send messages without asking" or "I want more oversight on this agent's file writes."</li>
+          <li><strong>Change both when</strong> onboarding a new agent — set the tool allowlist to only what the agent needs (principle of least privilege), then assign a trust level that reflects your confidence in the agent's judgment.</li>
+        </ul>
+
+        <p>For details on OpenClaw's tool policy configuration — allowlists, security modes, sandbox settings, and subagent policies — see the <a href="/architecture/execution-layer#tool-policy">Execution Layer: Tool Policy &amp; Filtering</a> documentation.</p>
+
+        <!-- ============================================================= -->
+        <!-- PHILOSOPHY                                                     -->
+        <!-- ============================================================= -->
+        <h2>Philosophy</h2>
+
+        <p>The trust level system is built on a few core principles:</p>
+
+        <h3>Trust is earned over time</h3>
+        <p>Agents do not start at high trust levels. They begin at lower levels and are promoted as they demonstrate reliability. This approach ensures that you have confidence in an agent's behavior before granting it more autonomy. If a new agent were added to the team, it would likely start at Level 0 or 1 until its behavior was validated.</p>
+
+        <h3>Trust can be adjusted per agent</h3>
+        <p>Each agent has its own trust level, independent of the others. This reflects the reality that different agents have different roles and different risk profiles. Forge, which handles well-defined infrastructure tasks, can safely operate at Level 3. A hypothetical new agent handling financial transactions might need to stay at Level 1 for much longer before being promoted.</p>
+
+        <h3>Defaults favor safety</h3>
+        <p>When in doubt, the system defaults to lower trust levels. It is better for an agent to ask permission unnecessarily than to take an action you did not want. This is especially important for actions that are difficult or impossible to undo. The cost of a brief interruption to approve an action is far lower than the cost of undoing something that should not have happened.</p>
+
+        <h3>Escalation is expected, not exceptional</h3>
+        <p>Even Level 3 agents are expected to escalate when they encounter situations outside their normal operating parameters. Escalation is not a failure — it is the system working correctly. An agent that never escalates is more concerning than one that occasionally asks for guidance, because it suggests the agent may be making assumptions about situations it should be flagging.</p>
+
+        <div class="callout warning">
+          <div class="callout-title">Active Enforcement</div>
+          <p>The trust system is actively enforcing permissions. Changing an agent's trust level via <code>trust-system.sh escalate</code> or <code>trust-system.sh demote</code> takes effect immediately — the agent's permissions change right away. Be thoughtful when raising an agent from Level 2 to Level 3, as it grants the ability to act without your approval on routine tasks. Make sure you have observed enough of the agent's behavior at the current level to feel confident it will handle the additional autonomy well.</p>
+        </div>
+
+        <!-- ============================================================= -->
+        <!-- CHANGING TRUST LEVELS                                          -->
+        <!-- ============================================================= -->
+        <h2>Changing Trust Levels</h2>
+
+        <p>Trust levels are changed using the <code>trust-system.sh</code> CLI. Changes take effect immediately and are logged to the audit trail.</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Action</th>
+              <th>Command</th>
+              <th>When to Use</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Promote</strong></td>
+              <td><code>trust-system.sh escalate &lt;agent&gt; &lt;new-level&gt; &lt;reason&gt;</code></td>
+              <td>An agent has been operating reliably at its current level and you are comfortable granting more autonomy.</td>
+            </tr>
+            <tr>
+              <td><strong>Demote</strong></td>
+              <td><code>trust-system.sh demote &lt;agent&gt; &lt;new-level&gt; &lt;reason&gt;</code></td>
+              <td>An agent made a decision you disagreed with, and you want to add more oversight until confidence is restored.</td>
+            </tr>
+            <tr>
+              <td><strong>Check current</strong></td>
+              <td><code>trust-system.sh get-level &lt;agent&gt;</code></td>
+              <td>Quick check to see where an agent currently sits.</td>
+            </tr>
+            <tr>
+              <td><strong>Full status</strong></td>
+              <td><code>trust-system.sh status</code></td>
+              <td>Overview of all agent levels, pending approvals, and recent decisions.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>For the complete CLI reference with all 10 commands and examples, see the <a href="/reference/commands#trust-system">Trust System Commands</a> page.</p>
+
+        <!-- ============================================================= -->
+        <!-- FOR DEVELOPERS                                                 -->
+        <!-- ============================================================= -->
+        <h2 id="for-developers">For Developers</h2>
+
+        <p>If you are building new agents or integrating with the trust system, here is what you need to know.</p>
+
+        <h3>Adding Trust Checks to a New Agent</h3>
+        <ol>
+          <li><strong>Add the agent to the config.</strong> Edit <code>~/agents/ember/config/trust-levels.json</code> and add an entry to the <code>agents</code> object with the agent name, role, trust level, and workspace path.</li>
+          <li><strong>Source the integration script.</strong> In the agent's session initialization (or spawn context), add:
+            <pre><code>export TRUST_AGENT_NAME="your-agent-name"
+source ~/agents/ember/scripts/trust-check.sh</code></pre>
+            Or simply source <code>.bashrc.agent</code> which handles this automatically.
+          </li>
+          <li><strong>Call trust_check before restricted actions.</strong> Before any action that could be restricted, call:
+            <pre><code>trust_check "$TRUST_AGENT_NAME" "action_name" "reason for the action"</code></pre>
+            Check the return code: 0 means proceed, 1 means blocked, 2 means approval was queued (do not proceed yet).
+          </li>
+        </ol>
+
+        <h3>Spawning Subagents with Trust Enforcement</h3>
+        <p>When spawning a subagent, always include trust context in the spawn block to ensure the subagent's trust level is enforced — not the parent's:</p>
+        <pre><code>export TRUST_AGENT_NAME="scout"  # Use the subagent's name
+source ~/agents/ember/.bashrc.agent</code></pre>
+
+        <h3>Action Classification</h3>
+        <p>The trust system classifies actions into these categories, which map to the permission matrix:</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Category</th>
+              <th>L0</th>
+              <th>L1</th>
+              <th>L2</th>
+              <th>L3</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>read_only</td>
+              <td><span class="badge success">Allow</span></td>
+              <td><span class="badge success">Allow</span></td>
+              <td><span class="badge success">Allow</span></td>
+              <td><span class="badge success">Allow</span></td>
+            </tr>
+            <tr>
+              <td>workspace_write</td>
+              <td><span class="badge error">Deny</span></td>
+              <td><span class="badge error">Deny</span></td>
+              <td><span class="badge success">Allow</span></td>
+              <td><span class="badge success">Allow</span></td>
+            </tr>
+            <tr>
+              <td>command_execution</td>
+              <td><span class="badge error">Deny</span></td>
+              <td><span class="badge error">Deny</span></td>
+              <td><span class="badge success">Allow</span></td>
+              <td><span class="badge success">Allow</span></td>
+            </tr>
+            <tr>
+              <td>internal_notification</td>
+              <td><span class="badge error">Deny</span></td>
+              <td><span class="badge error">Deny</span></td>
+              <td><span class="badge warning">Approval</span></td>
+              <td><span class="badge success">Allow</span></td>
+            </tr>
+            <tr>
+              <td>external_communication</td>
+              <td><span class="badge error">Deny</span></td>
+              <td><span class="badge error">Deny</span></td>
+              <td><span class="badge warning">Approval</span></td>
+              <td><span class="badge warning">Approval</span></td>
+            </tr>
+            <tr>
+              <td>destructive</td>
+              <td><span class="badge error">Deny</span></td>
+              <td><span class="badge error">Deny</span></td>
+              <td><span class="badge warning">Approval</span></td>
+              <td><span class="badge success">Allow</span></td>
+            </tr>
+            <tr>
+              <td>system_modification</td>
+              <td><span class="badge error">Deny</span></td>
+              <td><span class="badge error">Deny</span></td>
+              <td><span class="badge warning">Approval</span></td>
+              <td><span class="badge success">Allow</span></td>
+            </tr>
+            <tr>
+              <td>financial</td>
+              <td><span class="badge error">Deny</span></td>
+              <td><span class="badge error">Deny</span></td>
+              <td><span class="badge warning">Approval</span></td>
+              <td><span class="badge warning">Approval</span></td>
+            </tr>
+            <tr>
+              <td>trust_change</td>
+              <td><span class="badge error">Deny</span></td>
+              <td><span class="badge error">Deny</span></td>
+              <td><span class="badge warning">Approval</span></td>
+              <td><span class="badge warning">Approval</span></td>
+            </tr>
+            <tr>
+              <td>unknown</td>
+              <td><span class="badge error">Deny</span></td>
+              <td><span class="badge error">Deny</span></td>
+              <td><span class="badge warning">Approval</span></td>
+              <td><span class="badge warning">Approval</span></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Key Files</h3>
+        <p>See the <a href="/reference/file-locations#trust-system">Trust System file locations</a> for the full directory layout, and the <a href="/reference/commands#trust-system">Trust System Commands</a> for the complete CLI reference.</p>
+
+        <div class="action-section">
+          <h2>What You Do Next</h2>
+          <ul>
+            <li><a href="/architecture/execution-layer">Understand the Execution Layer</a> and how OpenClaw's tool policy works alongside trust levels</li>
+            <li><a href="/reference/commands#trust-system">View Trust System Commands</a> for the full CLI reference with examples</li>
+            <li><a href="/reference/file-locations#trust-system">View Trust System File Locations</a> for the directory layout</li>
+            <li><a href="/agents">Review the agent team</a> and their current trust levels</li>
+            <li><a href="/agents/ember">Learn about Ember</a> and what Level 3 autonomy looks like in practice</li>
+            <li><a href="/agents/scout">Learn about Scout</a> and what Level 2 approval workflows look like</li>
+            <li><a href="/getting-started/first-day">See Your First Day</a> to understand how trust levels play out in daily use</li>
+          </ul>
+        </div>
+
+        <p style="margin-top: 2rem; font-size: 0.8rem; color: #888;">Last updated: February 14, 2026</p></div><!--$--><!--/$--></div></main></div><script src="/_next/static/chunks/webpack-d282787ed3063711.js" id="_R_" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0])</script><script>self.__next_f.push([1,"1:\"$Sreact.fragment\"\n2:I[9766,[],\"\"]\n3:I[8924,[],\"\"]\n4:I[3370,[\"7340\",\"static/chunks/app/(authenticated)/layout-8a56e70ab4050a46.js\"],\"default\"]\n8:I[7150,[],\"\"]\n:HL[\"/_next/static/css/56998b7e09014914.css\",\"style\"]\n5:T6a51,"])</script><script>self.__next_f.push([1,"\u003cdiv class=\"breadcrumbs\"\u003e\n          \u003ca href=\"/\"\u003eHome\u003c/a\u003e\n          \u003cspan class=\"separator\"\u003e/\u003c/span\u003e\n          \u003ca href=\"/agents\"\u003eAgents\u003c/a\u003e\n          \u003cspan class=\"separator\"\u003e/\u003c/span\u003e\n          Trust Levels\n        \u003c/div\u003e\n\n        \u003ch1\u003eTrust Levels\u003c/h1\u003e\n\n        \u003cp\u003eEvery agent in Agent Team OS operates within a trust level that defines how much autonomy it has. Trust levels are the mechanism that keeps you in control while allowing agents to be genuinely useful. A higher trust level means more independence; a lower trust level means more oversight.\u003c/p\u003e\n\n        \u003c!-- ============================================================= --\u003e\n        \u003c!-- IMPLEMENTATION STATUS                                          --\u003e\n        \u003c!-- ============================================================= --\u003e\n        \u003ch2 id=\"implementation-status\"\u003eImplementation Status\u003c/h2\u003e\n\n        \u003cdiv class=\"callout success\"\u003e\n          \u003cdiv class=\"callout-title\"\u003e✅ Trust System is Live\u003c/div\u003e\n          \u003cp\u003eThe trust system is fully implemented and actively enforcing permissions as of February 12, 2026. All agent actions pass through trust checks before execution, and restricted actions trigger the approval workflow automatically.\u003c/p\u003e\n        \u003c/div\u003e\n\n        \u003cdiv class=\"status-summary\"\u003e\n          \u003cdiv class=\"status-card success\"\u003e\n            \u003cdiv class=\"status-title\"\u003eConfiguration\u003c/div\u003e\n            \u003cdiv class=\"status-value\"\u003eActive\u003c/div\u003e\n            \u003cdiv class=\"status-detail\"\u003etrust-levels.json v1.0.0 — 4 levels, 4 agents configured\u003c/div\u003e\n          \u003c/div\u003e\n          \u003cdiv class=\"status-card success\"\u003e\n            \u003cdiv class=\"status-title\"\u003eEnforcement Engine\u003c/div\u003e\n            \u003cdiv class=\"status-value\"\u003eActive\u003c/div\u003e\n            \u003cdiv class=\"status-detail\"\u003etrust-system.sh — 10 subcommands, full approval workflow\u003c/div\u003e\n          \u003c/div\u003e\n          \u003cdiv class=\"status-card success\"\u003e\n            \u003cdiv class=\"status-title\"\u003eAgent Integration\u003c/div\u003e\n            \u003cdiv class=\"status-value\"\u003eActive\u003c/div\u003e\n            \u003cdiv class=\"status-detail\"\u003etrust-check.sh sourced via .bashrc.agent in all sessions\u003c/div\u003e\n          \u003c/div\u003e\n          \u003cdiv class=\"status-card success\"\u003e\n            \u003cdiv class=\"status-title\"\u003eNotifications\u003c/div\u003e\n            \u003cdiv class=\"status-value\"\u003eActive\u003c/div\u003e\n            \u003cdiv class=\"status-detail\"\u003eDiscord + Pushover alerts on approval requests and trust changes\u003c/div\u003e\n          \u003c/div\u003e\n        \u003c/div\u003e\n\n        \u003c!-- ============================================================= --\u003e\n        \u003c!-- TRUST LEVEL TABLE                                              --\u003e\n        \u003c!-- ============================================================= --\u003e\n        \u003ch2\u003eThe Four Trust Levels\u003c/h2\u003e\n\n        \u003cp\u003eThe system uses four trust levels, numbered 0 through 3:\u003c/p\u003e\n\n        \u003ctable\u003e\n          \u003cthead\u003e\n            \u003ctr\u003e\n              \u003cth\u003eLevel\u003c/th\u003e\n              \u003cth\u003eName\u003c/th\u003e\n              \u003cth\u003eDescription\u003c/th\u003e\n              \u003cth\u003eExample\u003c/th\u003e\n            \u003c/tr\u003e\n          \u003c/thead\u003e\n          \u003ctbody\u003e\n            \u003ctr\u003e\n              \u003ctd\u003e\u003cstrong\u003e0\u003c/strong\u003e\u003c/td\u003e\n              \u003ctd\u003eObserver\u003c/td\u003e\n              \u003ctd\u003eCan only read and observe. No actions of any kind are permitted.\u003c/td\u003e\n              \u003ctd\u003eA new agent in evaluation mode that can view your data but cannot create, modify, or delete anything.\u003c/td\u003e\n            \u003c/tr\u003e\n            \u003ctr\u003e\n              \u003ctd\u003e\u003cstrong\u003e1\u003c/strong\u003e\u003c/td\u003e\n              \u003ctd\u003eSuggest\u003c/td\u003e\n              \u003ctd\u003eCan propose actions and make recommendations, but every action requires explicit human approval before execution.\u003c/td\u003e\n              \u003ctd\u003eAn agent that drafts a task list for you to review and approve, but cannot add tasks to your system on its own.\u003c/td\u003e\n            \u003c/tr\u003e\n            \u003ctr\u003e\n              \u003ctd\u003e\u003cstrong\u003e2\u003c/strong\u003e\u003c/td\u003e\n              \u003ctd\u003eAct with Approval\u003c/td\u003e\n              \u003ctd\u003eCan research and prepare independently, but needs your approval before making changes or acting on findings.\u003c/td\u003e\n              \u003ctd\u003eScout researching cloud providers and compiling a brief, then waiting for your go-ahead before taking any next steps.\u003c/td\u003e\n            \u003c/tr\u003e\n            \u003ctr\u003e\n              \u003ctd\u003e\u003cstrong\u003e3\u003c/strong\u003e\u003c/td\u003e\n              \u003ctd\u003eAutonomous\u003c/td\u003e\n              \u003ctd\u003eCan act on routine tasks independently without asking. Escalates edge cases and non-routine situations to you for approval.\u003c/td\u003e\n              \u003ctd\u003eEmber creating your morning report and adjusting task priorities, or Forge running a scheduled backup and clearing temp files.\u003c/td\u003e\n            \u003c/tr\u003e\n          \u003c/tbody\u003e\n        \u003c/table\u003e\n\n        \u003ch2\u003eCurrent Agent Trust Levels\u003c/h2\u003e\n\n        \u003cp\u003eHere is where each agent currently sits in the trust system:\u003c/p\u003e\n\n        \u003cul\u003e\n          \u003cli\u003e\u003cstrong\u003e\u003ca href=\"/agents/ember\"\u003eEmber\u003c/a\u003e\u003c/strong\u003e — \u003cspan class=\"badge success\"\u003eLevel 3\u003c/span\u003e Autonomous. Can manage daily operations, create reports, and adjust priorities independently.\u003c/li\u003e\n          \u003cli\u003e\u003cstrong\u003e\u003ca href=\"/agents/scout\"\u003eScout\u003c/a\u003e\u003c/strong\u003e — \u003cspan class=\"badge warning\"\u003eLevel 2\u003c/span\u003e Act with Approval. Can research independently but needs approval before acting on findings.\u003c/li\u003e\n          \u003cli\u003e\u003cstrong\u003e\u003ca href=\"/agents/forge\"\u003eForge\u003c/a\u003e\u003c/strong\u003e — \u003cspan class=\"badge success\"\u003eLevel 3\u003c/span\u003e Autonomous. Can perform routine maintenance and monitoring independently.\u003c/li\u003e\n          \u003cli\u003e\u003cstrong\u003e\u003ca href=\"/agents/architect\"\u003eArchitect\u003c/a\u003e\u003c/strong\u003e — \u003cspan class=\"badge warning\"\u003eLevel 2\u003c/span\u003e Act with Approval. Can analyze and plan independently but needs approval before external actions.\u003c/li\u003e\n        \u003c/ul\u003e\n\n        \u003c!-- ============================================================= --\u003e\n        \u003c!-- HOW IT WORKS                                                   --\u003e\n        \u003c!-- ============================================================= --\u003e\n        \u003ch2 id=\"how-it-works\"\u003eHow It Works\u003c/h2\u003e\n\n        \u003cp\u003eThe trust system enforces permissions through a three-layer architecture:\u003c/p\u003e\n\n        \u003ch3\u003e1. Configuration Layer\u003c/h3\u003e\n        \u003cp\u003eThe file \u003ccode\u003e~/agents/ember/config/trust-levels.json\u003c/code\u003e is the single source of truth. It defines:\u003c/p\u003e\n        \u003cul\u003e\n          \u003cli\u003eThe four trust levels with their permissions, allowed/denied tools, and escalation triggers\u003c/li\u003e\n          \u003cli\u003eEach agent's current trust level assignment\u003c/li\u003e\n          \u003cli\u003eApproval settings: 24-hour timeout (default deny), queue directory path, max 10 pending requests per agent\u003c/li\u003e\n          \u003cli\u003eNotification channels for approval requests, trust changes, and escalations\u003c/li\u003e\n        \u003c/ul\u003e\n\n        \u003ch3\u003e2. Enforcement Layer\u003c/h3\u003e\n        \u003cp\u003eThe script \u003ccode\u003etrust-system.sh\u003c/code\u003e is the enforcement engine. When an agent attempts an action:\u003c/p\u003e\n        \u003col\u003e\n          \u003cli\u003eThe action is \u003cstrong\u003eclassified\u003c/strong\u003e into a category: read-only, workspace write, command execution, internal notification, external communication, destructive, system modification, financial, trust change, or unknown.\u003c/li\u003e\n          \u003cli\u003eThe agent's trust level is \u003cstrong\u003elooked up\u003c/strong\u003e from the config file.\u003c/li\u003e\n          \u003cli\u003eThe permission matrix is \u003cstrong\u003eevaluated\u003c/strong\u003e: the combination of trust level + action category produces one of three results: ALLOWED (exit code 0), DENIED (exit code 1), or NEEDS_APPROVAL (exit code 2).\u003c/li\u003e\n          \u003cli\u003eIf approval is needed, a request is \u003cstrong\u003equeued\u003c/strong\u003e as a JSON file and notifications are sent via Discord and Pushover.\u003c/li\u003e\n          \u003cli\u003eEvery decision is \u003cstrong\u003elogged\u003c/strong\u003e to the trust decision audit log.\u003c/li\u003e\n        \u003c/ol\u003e\n\n        \u003ch3\u003e3. Integration Layer\u003c/h3\u003e\n        \u003cp\u003eThe script \u003ccode\u003etrust-check.sh\u003c/code\u003e is sourced by every agent session via \u003ccode\u003e.bashrc.agent\u003c/code\u003e. It provides:\u003c/p\u003e\n        \u003cul\u003e\n          \u003cli\u003e\u003ccode\u003etrust_check\u003c/code\u003e — the main function agents call before restricted actions\u003c/li\u003e\n          \u003cli\u003e\u003ccode\u003etrust_check_tool\u003c/code\u003e — classifies raw OpenClaw tool calls and runs the check\u003c/li\u003e\n          \u003cli\u003eA \u003cstrong\u003erestricted action map\u003c/strong\u003e that translates tool names (like \u003ccode\u003emessage\u003c/code\u003e, \u003ccode\u003eexec\u003c/code\u003e, \u003ccode\u003ewrite\u003c/code\u003e) into trust action categories\u003c/li\u003e\n          \u003cli\u003eAutomatic agent name detection from the OpenClaw session\u003c/li\u003e\n          \u003cli\u003eEnvironment variables for dry-run mode and silent operation\u003c/li\u003e\n        \u003c/ul\u003e\n\n        \u003cdiv class=\"callout note\"\u003e\n          \u003cdiv class=\"callout-title\"\u003eRestricted Actions — Always Checked\u003c/div\u003e\n          \u003cp\u003eCertain actions always trigger a trust check, regardless of trust level. These include: sending external messages, writing/editing/deleting files outside the workspace, elevated/sudo execution, adding cron jobs, browser actions, all financial operations, and trust level changes. Even Level 3 agents pass through enforcement for these.\u003c/p\u003e\n        \u003c/div\u003e\n\n        \u003c!-- ============================================================= --\u003e\n        \u003c!-- TRUST vs TOOL POLICY BRIDGE                                    --\u003e\n        \u003c!-- ============================================================= --\u003e\n        \u003ch2 id=\"trust-vs-tool-policy\"\u003eHow Trust Relates to OpenClaw Tool Policy\u003c/h2\u003e\n\n        \u003cp\u003eIf you have read the \u003ca href=\"/architecture/execution-layer\"\u003eExecution Layer\u003c/a\u003e documentation, you know that OpenClaw has its own permission system: tool allowlists, security modes, sandbox settings, and subagent policies. The trust system described on this page is a \u003cem\u003eseparate\u003c/em\u003e layer that works alongside OpenClaw's built-in tool policy. Understanding how they interact is important, because they solve different problems.\u003c/p\u003e\n\n        \u003ch3\u003eTwo Layers, Two Jobs\u003c/h3\u003e\n\n        \u003cdiv class=\"callout note\"\u003e\n          \u003cdiv class=\"callout-title\"\u003eThe Key Distinction\u003c/div\u003e\n          \u003cp\u003e\u003cstrong\u003eOpenClaw tool policy\u003c/strong\u003e controls which tools an agent can \u003cem\u003esee\u003c/em\u003e. \u003cstrong\u003eThe trust system\u003c/strong\u003e controls when an agent should \u003cem\u003eseek human approval\u003c/em\u003e before using a tool it can see.\u003c/p\u003e\n        \u003c/div\u003e\n\n        \u003cp\u003eHere is how the two layers break down:\u003c/p\u003e\n\n        \u003ctable\u003e\n          \u003cthead\u003e\n            \u003ctr\u003e\n              \u003cth\u003e\u003c/th\u003e\n              \u003cth\u003eLayer 1: OpenClaw Tool Policy\u003c/th\u003e\n              \u003cth\u003eLayer 2: Trust System\u003c/th\u003e\n            \u003c/tr\u003e\n          \u003c/thead\u003e\n          \u003ctbody\u003e\n            \u003ctr\u003e\n              \u003ctd\u003e\u003cstrong\u003eWhat it controls\u003c/strong\u003e\u003c/td\u003e\n              \u003ctd\u003eTool \u003cem\u003eavailability\u003c/em\u003e — which tools appear in the agent's toolbox\u003c/td\u003e\n              \u003ctd\u003eAction \u003cem\u003eapproval\u003c/em\u003e — whether the agent needs human sign-off before acting\u003c/td\u003e\n            \u003c/tr\u003e\n            \u003ctr\u003e\n              \u003ctd\u003e\u003cstrong\u003eWhere it lives\u003c/strong\u003e\u003c/td\u003e\n              \u003ctd\u003eOpenClaw configuration: agent profiles, tool allowlists, security modes in \u003ccode\u003econfig.yaml\u003c/code\u003e\u003c/td\u003e\n              \u003ctd\u003eAgent Team OS configuration: \u003ccode\u003etrust-levels.json\u003c/code\u003e, \u003ccode\u003etrust-system.sh\u003c/code\u003e, \u003ccode\u003etrust-check.sh\u003c/code\u003e\u003c/td\u003e\n            \u003c/tr\u003e\n            \u003ctr\u003e\n              \u003ctd\u003e\u003cstrong\u003eEnforcement mechanism\u003c/strong\u003e\u003c/td\u003e\n              \u003ctd\u003eOpenClaw filters tools from the LLM's schema before each turn — the agent literally cannot call a tool it cannot see\u003c/td\u003e\n              \u003ctd\u003eBash hooks and agent instructions intercept actions at runtime and check the permission matrix\u003c/td\u003e\n            \u003c/tr\u003e\n            \u003ctr\u003e\n              \u003ctd\u003e\u003cstrong\u003eScope\u003c/strong\u003e\u003c/td\u003e\n              \u003ctd\u003ePer-agent, per-channel, per-subagent. Can also apply sandbox isolation and network restrictions.\u003c/td\u003e\n              \u003ctd\u003ePer-agent, per-action-category. Adds behavioral guidelines like escalation triggers and approval queues.\u003c/td\u003e\n            \u003c/tr\u003e\n            \u003ctr\u003e\n              \u003ctd\u003e\u003cstrong\u003eWhat changing it does\u003c/strong\u003e\u003c/td\u003e\n              \u003ctd\u003eAdding or removing a tool from the allowlist changes what the agent \u003cem\u003ecan attempt\u003c/em\u003e\u003c/td\u003e\n              \u003ctd\u003eChanging a trust level changes what the agent \u003cem\u003ecan do without asking\u003c/em\u003e\u003c/td\u003e\n            \u003c/tr\u003e\n          \u003c/tbody\u003e\n        \u003c/table\u003e\n\n        \u003ch3\u003eHow They Work Together\u003c/h3\u003e\n\n        \u003cp\u003eThe two layers are complementary, not redundant. Think of it as two gates an action must pass through:\u003c/p\u003e\n\n        \u003col\u003e\n          \u003cli\u003e\u003cstrong\u003eGate 1 — Tool Policy (OpenClaw):\u003c/strong\u003e When the LLM is about to reason, OpenClaw builds the list of available tools based on allowlists, security modes, and channel context. If a tool is not in the list, the agent does not even know it exists — it cannot attempt to use it. This is a hard, platform-level restriction.\u003c/li\u003e\n          \u003cli\u003e\u003cstrong\u003eGate 2 — Trust Check (Agent Team OS):\u003c/strong\u003e For tools that \u003cem\u003eare\u003c/em\u003e available, the trust system evaluates whether the specific action requires approval given the agent's trust level. A Level 2 agent might have access to the \u003ccode\u003emessage\u003c/code\u003e tool (it passes Gate 1) but still need your approval before sending an external message (Gate 2 returns NEEDS_APPROVAL).\u003c/li\u003e\n        \u003c/ol\u003e\n\n        \u003cp\u003eThis means an action is only executed when it passes \u003cem\u003eboth\u003c/em\u003e gates. Removing a tool via OpenClaw's allowlist is a stronger restriction than the trust system — if the tool is not available, there is nothing for the trust system to check. Conversely, the trust system adds nuance that tool policy alone cannot provide: the difference between \"Scout can use the message tool to post internally\" and \"Scout needs approval to post externally\" is a trust-level distinction, not a tool-policy one.\u003c/p\u003e\n\n        \u003ch3\u003ePractical Examples\u003c/h3\u003e\n\n        \u003cul\u003e\n          \u003cli\u003e\u003cstrong\u003eRestricting a tool entirely:\u003c/strong\u003e If you never want Scout to use the browser, remove \u003ccode\u003ebrowser\u003c/code\u003e from Scout's tool allowlist in OpenClaw config. Scout will not see the tool at all — no trust check needed.\u003c/li\u003e\n          \u003cli\u003e\u003cstrong\u003eAllowing a tool with oversight:\u003c/strong\u003e If Scout should be able to send messages but only with your approval, keep \u003ccode\u003emessage\u003c/code\u003e in Scout's allowlist (Gate 1 passes) and leave Scout at Trust Level 2 (Gate 2 requires approval for external communication).\u003c/li\u003e\n          \u003cli\u003e\u003cstrong\u003eGranting full autonomy:\u003c/strong\u003e For Ember at Trust Level 3, most routine actions pass both gates automatically — Ember has the tools available (Gate 1) and has autonomous permission for routine actions (Gate 2). Only edge cases like financial operations or trust changes still require approval.\u003c/li\u003e\n          \u003cli\u003e\u003cstrong\u003eSandbox isolation:\u003c/strong\u003e OpenClaw can sandbox an agent's execution in a Docker container with limited network access. This is a Layer 1 restriction — it constrains \u003cem\u003ehow\u003c/em\u003e tools execute, not whether the agent gets approval. A sandboxed agent at Trust Level 3 still acts autonomously, but within the sandbox boundary.\u003c/li\u003e\n        \u003c/ul\u003e\n\n        \u003ch3\u003eWhen to Change Which\u003c/h3\u003e\n\n        \u003cp\u003eIf you want to change what an agent can do, the right lever depends on what you are trying to achieve:\u003c/p\u003e\n\n        \u003cul\u003e\n          \u003cli\u003e\u003cstrong\u003eChange OpenClaw tool policy when\u003c/strong\u003e you want to add or remove entire capabilities — \"this agent should/should not have access to shell execution\" or \"this subagent should only have read and web_search.\"\u003c/li\u003e\n          \u003cli\u003e\u003cstrong\u003eChange trust level when\u003c/strong\u003e you want to adjust the approval workflow — \"this agent has proven reliable enough to send messages without asking\" or \"I want more oversight on this agent's file writes.\"\u003c/li\u003e\n          \u003cli\u003e\u003cstrong\u003eChange both when\u003c/strong\u003e onboarding a new agent — set the tool allowlist to only what the agent needs (principle of least privilege), then assign a trust level that reflects your confidence in the agent's judgment.\u003c/li\u003e\n        \u003c/ul\u003e\n\n        \u003cp\u003eFor details on OpenClaw's tool policy configuration — allowlists, security modes, sandbox settings, and subagent policies — see the \u003ca href=\"/architecture/execution-layer#tool-policy\"\u003eExecution Layer: Tool Policy \u0026amp; Filtering\u003c/a\u003e documentation.\u003c/p\u003e\n\n        \u003c!-- ============================================================= --\u003e\n        \u003c!-- PHILOSOPHY                                                     --\u003e\n        \u003c!-- ============================================================= --\u003e\n        \u003ch2\u003ePhilosophy\u003c/h2\u003e\n\n        \u003cp\u003eThe trust level system is built on a few core principles:\u003c/p\u003e\n\n        \u003ch3\u003eTrust is earned over time\u003c/h3\u003e\n        \u003cp\u003eAgents do not start at high trust levels. They begin at lower levels and are promoted as they demonstrate reliability. This approach ensures that you have confidence in an agent's behavior before granting it more autonomy. If a new agent were added to the team, it would likely start at Level 0 or 1 until its behavior was validated.\u003c/p\u003e\n\n        \u003ch3\u003eTrust can be adjusted per agent\u003c/h3\u003e\n        \u003cp\u003eEach agent has its own trust level, independent of the others. This reflects the reality that different agents have different roles and different risk profiles. Forge, which handles well-defined infrastructure tasks, can safely operate at Level 3. A hypothetical new agent handling financial transactions might need to stay at Level 1 for much longer before being promoted.\u003c/p\u003e\n\n        \u003ch3\u003eDefaults favor safety\u003c/h3\u003e\n        \u003cp\u003eWhen in doubt, the system defaults to lower trust levels. It is better for an agent to ask permission unnecessarily than to take an action you did not want. This is especially important for actions that are difficult or impossible to undo. The cost of a brief interruption to approve an action is far lower than the cost of undoing something that should not have happened.\u003c/p\u003e\n\n        \u003ch3\u003eEscalation is expected, not exceptional\u003c/h3\u003e\n        \u003cp\u003eEven Level 3 agents are expected to escalate when they encounter situations outside their normal operating parameters. Escalation is not a failure — it is the system working correctly. An agent that never escalates is more concerning than one that occasionally asks for guidance, because it suggests the agent may be making assumptions about situations it should be flagging.\u003c/p\u003e\n\n        \u003cdiv class=\"callout warning\"\u003e\n          \u003cdiv class=\"callout-title\"\u003eActive Enforcement\u003c/div\u003e\n          \u003cp\u003eThe trust system is actively enforcing permissions. Changing an agent's trust level via \u003ccode\u003etrust-system.sh escalate\u003c/code\u003e or \u003ccode\u003etrust-system.sh demote\u003c/code\u003e takes effect immediately — the agent's permissions change right away. Be thoughtful when raising an agent from Level 2 to Level 3, as it grants the ability to act without your approval on routine tasks. Make sure you have observed enough of the agent's behavior at the current level to feel confident it will handle the additional autonomy well.\u003c/p\u003e\n        \u003c/div\u003e\n\n        \u003c!-- ============================================================= --\u003e\n        \u003c!-- CHANGING TRUST LEVELS                                          --\u003e\n        \u003c!-- ============================================================= --\u003e\n        \u003ch2\u003eChanging Trust Levels\u003c/h2\u003e\n\n        \u003cp\u003eTrust levels are changed using the \u003ccode\u003etrust-system.sh\u003c/code\u003e CLI. Changes take effect immediately and are logged to the audit trail.\u003c/p\u003e\n\n        \u003ctable\u003e\n          \u003cthead\u003e\n            \u003ctr\u003e\n              \u003cth\u003eAction\u003c/th\u003e\n              \u003cth\u003eCommand\u003c/th\u003e\n              \u003cth\u003eWhen to Use\u003c/th\u003e\n            \u003c/tr\u003e\n          \u003c/thead\u003e\n          \u003ctbody\u003e\n            \u003ctr\u003e\n              \u003ctd\u003e\u003cstrong\u003ePromote\u003c/strong\u003e\u003c/td\u003e\n              \u003ctd\u003e\u003ccode\u003etrust-system.sh escalate \u0026lt;agent\u0026gt; \u0026lt;new-level\u0026gt; \u0026lt;reason\u0026gt;\u003c/code\u003e\u003c/td\u003e\n              \u003ctd\u003eAn agent has been operating reliably at its current level and you are comfortable granting more autonomy.\u003c/td\u003e\n            \u003c/tr\u003e\n            \u003ctr\u003e\n              \u003ctd\u003e\u003cstrong\u003eDemote\u003c/strong\u003e\u003c/td\u003e\n              \u003ctd\u003e\u003ccode\u003etrust-system.sh demote \u0026lt;agent\u0026gt; \u0026lt;new-level\u0026gt; \u0026lt;reason\u0026gt;\u003c/code\u003e\u003c/td\u003e\n              \u003ctd\u003eAn agent made a decision you disagreed with, and you want to add more oversight until confidence is restored.\u003c/td\u003e\n            \u003c/tr\u003e\n            \u003ctr\u003e\n              \u003ctd\u003e\u003cstrong\u003eCheck current\u003c/strong\u003e\u003c/td\u003e\n              \u003ctd\u003e\u003ccode\u003etrust-system.sh get-level \u0026lt;agent\u0026gt;\u003c/code\u003e\u003c/td\u003e\n              \u003ctd\u003eQuick check to see where an agent currently sits.\u003c/td\u003e\n            \u003c/tr\u003e\n            \u003ctr\u003e\n              \u003ctd\u003e\u003cstrong\u003eFull status\u003c/strong\u003e\u003c/td\u003e\n              \u003ctd\u003e\u003ccode\u003etrust-system.sh status\u003c/code\u003e\u003c/td\u003e\n              \u003ctd\u003eOverview of all agent levels, pending approvals, and recent decisions.\u003c/td\u003e\n            \u003c/tr\u003e\n          \u003c/tbody\u003e\n        \u003c/table\u003e\n\n        \u003cp\u003eFor the complete CLI reference with all 10 commands and examples, see the \u003ca href=\"/reference/commands#trust-system\"\u003eTrust System Commands\u003c/a\u003e page.\u003c/p\u003e\n\n        \u003c!-- ============================================================= --\u003e\n        \u003c!-- FOR DEVELOPERS                                                 --\u003e\n        \u003c!-- ============================================================= --\u003e\n        \u003ch2 id=\"for-developers\"\u003eFor Developers\u003c/h2\u003e\n\n        \u003cp\u003eIf you are building new agents or integrating with the trust system, here is what you need to know.\u003c/p\u003e\n\n        \u003ch3\u003eAdding Trust Checks to a New Agent\u003c/h3\u003e\n        \u003col\u003e\n          \u003cli\u003e\u003cstrong\u003eAdd the agent to the config.\u003c/strong\u003e Edit \u003ccode\u003e~/agents/ember/config/trust-levels.json\u003c/code\u003e and add an entry to the \u003ccode\u003eagents\u003c/code\u003e object with the agent name, role, trust level, and workspace path.\u003c/li\u003e\n          \u003cli\u003e\u003cstrong\u003eSource the integration script.\u003c/strong\u003e In the agent's session initialization (or spawn context), add:\n            \u003cpre\u003e\u003ccode\u003eexport TRUST_AGENT_NAME=\"your-agent-name\"\nsource ~/agents/ember/scripts/trust-check.sh\u003c/code\u003e\u003c/pre\u003e\n            Or simply source \u003ccode\u003e.bashrc.agent\u003c/code\u003e which handles this automatically.\n          \u003c/li\u003e\n          \u003cli\u003e\u003cstrong\u003eCall trust_check before restricted actions.\u003c/strong\u003e Before any action that could be restricted, call:\n            \u003cpre\u003e\u003ccode\u003etrust_check \"$TRUST_AGENT_NAME\" \"action_name\" \"reason for the action\"\u003c/code\u003e\u003c/pre\u003e\n            Check the return code: 0 means proceed, 1 means blocked, 2 means approval was queued (do not proceed yet).\n          \u003c/li\u003e\n        \u003c/ol\u003e\n\n        \u003ch3\u003eSpawning Subagents with Trust Enforcement\u003c/h3\u003e\n        \u003cp\u003eWhen spawning a subagent, always include trust context in the spawn block to ensure the subagent's trust level is enforced — not the parent's:\u003c/p\u003e\n        \u003cpre\u003e\u003ccode\u003eexport TRUST_AGENT_NAME=\"scout\"  # Use the subagent's name\nsource ~/agents/ember/.bashrc.agent\u003c/code\u003e\u003c/pre\u003e\n\n        \u003ch3\u003eAction Classification\u003c/h3\u003e\n        \u003cp\u003eThe trust system classifies actions into these categories, which map to the permission matrix:\u003c/p\u003e\n        \u003ctable\u003e\n          \u003cthead\u003e\n            \u003ctr\u003e\n              \u003cth\u003eCategory\u003c/th\u003e\n              \u003cth\u003eL0\u003c/th\u003e\n              \u003cth\u003eL1\u003c/th\u003e\n              \u003cth\u003eL2\u003c/th\u003e\n              \u003cth\u003eL3\u003c/th\u003e\n            \u003c/tr\u003e\n          \u003c/thead\u003e\n          \u003ctbody\u003e\n            \u003ctr\u003e\n              \u003ctd\u003eread_only\u003c/td\u003e\n              \u003ctd\u003e\u003cspan class=\"badge success\"\u003eAllow\u003c/span\u003e\u003c/td\u003e\n              \u003ctd\u003e\u003cspan class=\"badge success\"\u003eAllow\u003c/span\u003e\u003c/td\u003e\n              \u003ctd\u003e\u003cspan class=\"badge success\"\u003eAllow\u003c/span\u003e\u003c/td\u003e\n              \u003ctd\u003e\u003cspan class=\"badge success\"\u003eAllow\u003c/span\u003e\u003c/td\u003e\n            \u003c/tr\u003e\n            \u003ctr\u003e\n              \u003ctd\u003eworkspace_write\u003c/td\u003e\n              \u003ctd\u003e\u003cspan class=\"badge error\"\u003eDeny\u003c/span\u003e\u003c/td\u003e\n              \u003ctd\u003e\u003cspan class=\"badge error\"\u003eDeny\u003c/span\u003e\u003c/td\u003e\n              \u003ctd\u003e\u003cspan class=\"badge success\"\u003eAllow\u003c/span\u003e\u003c/td\u003e\n              \u003ctd\u003e\u003cspan class=\"badge success\"\u003eAllow\u003c/span\u003e\u003c/td\u003e\n            \u003c/tr\u003e\n            \u003ctr\u003e\n              \u003ctd\u003ecommand_execution\u003c/td\u003e\n              \u003ctd\u003e\u003cspan class=\"badge error\"\u003eDeny\u003c/span\u003e\u003c/td\u003e\n              \u003ctd\u003e\u003cspan class=\"badge error\"\u003eDeny\u003c/span\u003e\u003c/td\u003e\n              \u003ctd\u003e\u003cspan class=\"badge success\"\u003eAllow\u003c/span\u003e\u003c/td\u003e\n              \u003ctd\u003e\u003cspan class=\"badge success\"\u003eAllow\u003c/span\u003e\u003c/td\u003e\n            \u003c/tr\u003e\n            \u003ctr\u003e\n              \u003ctd\u003einternal_notification\u003c/td\u003e\n              \u003ctd\u003e\u003cspan class=\"badge error\"\u003eDeny\u003c/span\u003e\u003c/td\u003e\n              \u003ctd\u003e\u003cspan class=\"badge error\"\u003eDeny\u003c/span\u003e\u003c/td\u003e\n              \u003ctd\u003e\u003cspan class=\"badge warning\"\u003eApproval\u003c/span\u003e\u003c/td\u003e\n              \u003ctd\u003e\u003cspan class=\"badge success\"\u003eAllow\u003c/span\u003e\u003c/td\u003e\n            \u003c/tr\u003e\n            \u003ctr\u003e\n              \u003ctd\u003eexternal_communication\u003c/td\u003e\n              \u003ctd\u003e\u003cspan class=\"badge error\"\u003eDeny\u003c/span\u003e\u003c/td\u003e\n              \u003ctd\u003e\u003cspan class=\"badge error\"\u003eDeny\u003c/span\u003e\u003c/td\u003e\n              \u003ctd\u003e\u003cspan class=\"badge warning\"\u003eApproval\u003c/span\u003e\u003c/td\u003e\n              \u003ctd\u003e\u003cspan class=\"badge warning\"\u003eApproval\u003c/span\u003e\u003c/td\u003e\n            \u003c/tr\u003e\n            \u003ctr\u003e\n              \u003ctd\u003edestructive\u003c/td\u003e\n              \u003ctd\u003e\u003cspan class=\"badge error\"\u003eDeny\u003c/span\u003e\u003c/td\u003e\n              \u003ctd\u003e\u003cspan class=\"badge error\"\u003eDeny\u003c/span\u003e\u003c/td\u003e\n              \u003ctd\u003e\u003cspan class=\"badge warning\"\u003eApproval\u003c/span\u003e\u003c/td\u003e\n              \u003ctd\u003e\u003cspan class=\"badge success\"\u003eAllow\u003c/span\u003e\u003c/td\u003e\n            \u003c/tr\u003e\n            \u003ctr\u003e\n              \u003ctd\u003esystem_modification\u003c/td\u003e\n              \u003ctd\u003e\u003cspan class=\"badge error\"\u003eDeny\u003c/span\u003e\u003c/td\u003e\n              \u003ctd\u003e\u003cspan class=\"badge error\"\u003eDeny\u003c/span\u003e\u003c/td\u003e\n              \u003ctd\u003e\u003cspan class=\"badge warning\"\u003eApproval\u003c/span\u003e\u003c/td\u003e\n              \u003ctd\u003e\u003cspan class=\"badge success\"\u003eAllow\u003c/span\u003e\u003c/td\u003e\n            \u003c/tr\u003e\n            \u003ctr\u003e\n              \u003ctd\u003efinancial\u003c/td\u003e\n              \u003ctd\u003e\u003cspan class=\"badge error\"\u003eDeny\u003c/span\u003e\u003c/td\u003e\n              \u003ctd\u003e\u003cspan class=\"badge error\"\u003eDeny\u003c/span\u003e\u003c/td\u003e\n              \u003ctd\u003e\u003cspan class=\"badge warning\"\u003eApproval\u003c/span\u003e\u003c/td\u003e\n              \u003ctd\u003e\u003cspan class=\"badge warning\"\u003eApproval\u003c/span\u003e\u003c/td\u003e\n            \u003c/tr\u003e\n            \u003ctr\u003e\n              \u003ctd\u003etrust_change\u003c/td\u003e\n              \u003ctd\u003e\u003cspan class=\"badge error\"\u003eDeny\u003c/span\u003e\u003c/td\u003e\n              \u003ctd\u003e\u003cspan class=\"badge error\"\u003eDeny\u003c/span\u003e\u003c/td\u003e\n              \u003ctd\u003e\u003cspan class=\"badge warning\"\u003eApproval\u003c/span\u003e\u003c/td\u003e\n              \u003ctd\u003e\u003cspan class=\"badge warning\"\u003eApproval\u003c/span\u003e\u003c/td\u003e\n            \u003c/tr\u003e\n            \u003ctr\u003e\n              \u003ctd\u003eunknown\u003c/td\u003e\n              \u003ctd\u003e\u003cspan class=\"badge error\"\u003eDeny\u003c/span\u003e\u003c/td\u003e\n              \u003ctd\u003e\u003cspan class=\"badge error\"\u003eDeny\u003c/span\u003e\u003c/td\u003e\n              \u003ctd\u003e\u003cspan class=\"badge warning\"\u003eApproval\u003c/span\u003e\u003c/td\u003e\n              \u003ctd\u003e\u003cspan class=\"badge warning\"\u003eApproval\u003c/span\u003e\u003c/td\u003e\n            \u003c/tr\u003e\n          \u003c/tbody\u003e\n        \u003c/table\u003e\n\n        \u003ch3\u003eKey Files\u003c/h3\u003e\n        \u003cp\u003eSee the \u003ca href=\"/reference/file-locations#trust-system\"\u003eTrust System file locations\u003c/a\u003e for the full directory layout, and the \u003ca href=\"/reference/commands#trust-system\"\u003eTrust System Commands\u003c/a\u003e for the complete CLI reference.\u003c/p\u003e\n\n        \u003cdiv class=\"action-section\"\u003e\n          \u003ch2\u003eWhat You Do Next\u003c/h2\u003e\n          \u003cul\u003e\n            \u003cli\u003e\u003ca href=\"/architecture/execution-layer\"\u003eUnderstand the Execution Layer\u003c/a\u003e and how OpenClaw's tool policy works alongside trust levels\u003c/li\u003e\n            \u003cli\u003e\u003ca href=\"/reference/commands#trust-system\"\u003eView Trust System Commands\u003c/a\u003e for the full CLI reference with examples\u003c/li\u003e\n            \u003cli\u003e\u003ca href=\"/reference/file-locations#trust-system\"\u003eView Trust System File Locations\u003c/a\u003e for the directory layout\u003c/li\u003e\n            \u003cli\u003e\u003ca href=\"/agents\"\u003eReview the agent team\u003c/a\u003e and their current trust levels\u003c/li\u003e\n            \u003cli\u003e\u003ca href=\"/agents/ember\"\u003eLearn about Ember\u003c/a\u003e and what Level 3 autonomy looks like in practice\u003c/li\u003e\n            \u003cli\u003e\u003ca href=\"/agents/scout\"\u003eLearn about Scout\u003c/a\u003e and what Level 2 approval workflows look like\u003c/li\u003e\n            \u003cli\u003e\u003ca href=\"/getting-started/first-day\"\u003eSee Your First Day\u003c/a\u003e to understand how trust levels play out in daily use\u003c/li\u003e\n          \u003c/ul\u003e\n        \u003c/div\u003e\n\n        \u003cp style=\"margin-top: 2rem; font-size: 0.8rem; color: #888;\"\u003eLast updated: February 14, 2026\u003c/p\u003e"])</script><script>self.__next_f.push([1,"0:{\"P\":null,\"b\":\"VA-lAVEn1LekIejhMlH5y\",\"p\":\"\",\"c\":[\"\",\"agents\",\"trust-levels\"],\"i\":false,\"f\":[[[\"\",{\"children\":[\"(authenticated)\",{\"children\":[\"agents\",{\"children\":[\"trust-levels\",{\"children\":[\"__PAGE__\",{}]}]}]}]},\"$undefined\",\"$undefined\",true],[\"\",[\"$\",\"$1\",\"c\",{\"children\":[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/css/56998b7e09014914.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}]],[\"$\",\"html\",null,{\"lang\":\"en\",\"children\":[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":404}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],[]],\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]}]]}],{\"children\":[\"(authenticated)\",[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"body\",null,{\"children\":[[\"$\",\"input\",null,{\"type\":\"checkbox\",\"id\":\"menu-toggle\",\"className\":\"menu-toggle\"}],[\"$\",\"label\",null,{\"htmlFor\":\"menu-toggle\",\"className\":\"hamburger\",\"aria-label\":\"Toggle navigation\",\"children\":\"☰\"}],[\"$\",\"label\",null,{\"htmlFor\":\"menu-toggle\",\"className\":\"overlay\"}],[\"$\",\"div\",null,{\"className\":\"site-wrapper\",\"children\":[[\"$\",\"$L4\",null,{}],[\"$\",\"main\",null,{\"className\":\"main-content\",\"children\":[\"$\",\"div\",null,{\"className\":\"content-wrapper\",\"children\":[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":\"$0:f:0:1:1:props:children:1:props:children:props:notFound:0:1:props:style\",\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":\"$0:f:0:1:1:props:children:1:props:children:props:notFound:0:1:props:children:props:children:1:props:style\",\"children\":404}],[\"$\",\"div\",null,{\"style\":\"$0:f:0:1:1:props:children:1:props:children:props:notFound:0:1:props:children:props:children:2:props:style\",\"children\":[\"$\",\"h2\",null,{\"style\":\"$0:f:0:1:1:props:children:1:props:children:props:notFound:0:1:props:children:props:children:2:props:children:props:style\",\"children\":\"This page could not be found.\"}]}]]}]}]],[]],\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]}]}]]}]]}]]}],{\"children\":[\"agents\",[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[\"trust-levels\",[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[\"__PAGE__\",[\"$\",\"$1\",\"c\",{\"children\":[[\"$\",\"div\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"$5\"}}],null,\"$L6\"]}],{},null,false]},null,false]},null,false]},null,false]},null,false],\"$L7\",false]],\"m\":\"$undefined\",\"G\":[\"$8\",[]],\"s\":false,\"S\":true}\n"])</script><script>self.__next_f.push([1,"9:I[4431,[],\"OutletBoundary\"]\nb:I[5278,[],\"AsyncMetadataOutlet\"]\nd:I[4431,[],\"ViewportBoundary\"]\nf:I[4431,[],\"MetadataBoundary\"]\n10:\"$Sreact.suspense\"\n6:[\"$\",\"$L9\",null,{\"children\":[\"$La\",[\"$\",\"$Lb\",null,{\"promise\":\"$@c\"}]]}]\n7:[\"$\",\"$1\",\"h\",{\"children\":[null,[[\"$\",\"$Ld\",null,{\"children\":\"$Le\"}],null],[\"$\",\"$Lf\",null,{\"children\":[\"$\",\"div\",null,{\"hidden\":true,\"children\":[\"$\",\"$10\",null,{\"fallback\":null,\"children\":\"$L11\"}]}]}]]}]\n"])</script><script>self.__next_f.push([1,"e:[[\"$\",\"meta\",\"0\",{\"charSet\":\"utf-8\"}],[\"$\",\"meta\",\"1\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}]]\na:null\n"])</script><script>self.__next_f.push([1,"c:{\"metadata\":[[\"$\",\"title\",\"0\",{\"children\":\"Trust Levels — Agent Team OS Guide\"}],[\"$\",\"meta\",\"1\",{\"name\":\"description\",\"content\":\"Your personal AI agent team, working together to keep your life organized.\"}]],\"error\":null,\"digest\":\"$undefined\"}\n"])</script><script>self.__next_f.push([1,"11:\"$c:metadata\"\n"])</script></body></html>

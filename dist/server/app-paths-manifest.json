@@ -1,8 +1,0 @@
-{
-  "/(authenticated)/architecture/channel-adapters/page": "app/(authenticated)/architecture/channel-adapters/page.js",
-  "/(authenticated)/troubleshooting/page": "app/(authenticated)/troubleshooting/page.js",
-  "/(authenticated)/troubleshooting/syncthing/page": "app/(authenticated)/troubleshooting/syncthing/page.js",
-  "/(authenticated)/implementation/page": "app/(authenticated)/implementation/page.js",
-  "/(authenticated)/implementation/gap-analysis/page": "app/(authenticated)/implementation/gap-analysis/page.js",
-  "/(authenticated)/implementation/roadmap/page": "app/(authenticated)/implementation/roadmap/page.js"
-}

@@ -1,0 +1,148 @@
+1:"$Sreact.fragment"
+2:I[9766,[],""]
+3:I[8924,[],""]
+4:I[3370,["7340","static/chunks/app/(authenticated)/layout-8a56e70ab4050a46.js"],"default"]
+8:I[7150,[],""]
+:HL["/_next/static/css/56998b7e09014914.css","style"]
+5:T2681,<div class="breadcrumbs">
+          <a href="/">Home</a>
+          <span class="separator">/</span>
+          <a href="/agents">Agents</a>
+          <span class="separator">/</span>
+          Ember
+        </div>
+
+        <h1>Ember — Chief of Staff</h1>
+
+        <p>Ember is the central coordinator of your agent team. She manages your daily flow, ensures the right things get prioritized, and acts as the communication bridge between you and the other agents. If Agent Team OS has a heartbeat, Ember is the one keeping it steady.</p>
+
+        <h2>Role</h2>
+
+        <p>Ember's primary role is to manage the daily rhythm of your life. She handles prioritization, making sure the most important tasks surface at the right time. She coordinates between Scout and Forge, routing research requests and flagging infrastructure issues. She maintains awareness of your calendar and commitments so that the system adapts to what your day actually looks like rather than operating in a vacuum.</p>
+
+        <p>Think of Ember as a chief of staff who reads the room, keeps the trains running on time, and only escalates to you when something genuinely needs your attention.</p>
+
+        <div class="callout note">
+          <div class="callout-title">Status</div>
+          <p><strong>Trust Level:</strong> L3 — Autonomous<br>
+          <strong>Model:</strong> MiniMax M2.5<br>
+          <strong>Workspace:</strong> /home/ubuntu/agents/ember</p>
+        </div>
+
+        <h2>Responsibilities</h2>
+
+        <ul>
+          <li><strong>Creates morning reports</strong> — Each morning, Ember compiles overnight activity, your calendar, top priorities, and anything flagged by the other agents into a single report delivered to you at 6:00 AM.</li>
+          <li><strong>Manages evening check-ins</strong> — In the late afternoon, Ember prepares a recap of the day's progress, prompts you for reflections, and queues up overnight work for the agent team.</li>
+          <li><strong>Tracks task priorities</strong> — Ember monitors your task list in Notes and adjusts priorities based on deadlines, dependencies, and your stated preferences.</li>
+          <li><strong>Coordinates with Scout and Forge</strong> — When you assign research to Scout or when Forge flags a maintenance issue, Ember routes the information and ensures follow-through.</li>
+          <li><strong>Handles calendar awareness</strong> — Ember checks your calendar and factors upcoming meetings, deadlines, and events into daily planning so nothing catches you off guard.</li>
+        </ul>
+
+        <h2>How Ember Runs</h2>
+
+        <p>Understanding how Ember operates at a technical level helps you make sense of what is happening behind the scenes when you chat with her.</p>
+
+        <h3>Sessions</h3>
+
+        <p>Every conversation with Ember creates an <strong>isolated session</strong>. When you message Ember on Discord, the <a href="/architecture/gateway">Gateway</a> assigns a session key based on the channel, chat type, and conversation ID — for example, <code>agent:ember:discord:dm:987654321</code>. This session key keeps your conversation's history, context, and state completely separate from any other conversation happening at the same time.</p>
+
+        <p>Within a session, messages are processed <strong>serially</strong> — if you send two messages quickly, the second waits for the first to finish. But different sessions run in <strong>parallel</strong> — your Discord DM and a cron-triggered heartbeat do not block each other. This is managed by the <a href="/architecture/lane-queue">Lane Queue</a>.</p>
+
+        <h3>Model</h3>
+
+        <p>Ember uses <strong>MiniMax M2.5</strong> (<code>openrouter/minimax/minimax-m2.5</code>) as her language model, configured in the OpenClaw configuration file. This is the standard model across all agents for consistency. The <a href="/architecture/agent-runner">Agent Runner</a> sends Ember's assembled context to this model on every turn of the agent loop.</p>
+
+        <p>You can temporarily change Ember's model using the <code>/model</code> command if needed for a specific task.</p>
+
+        <h3>Spawning Subagents</h3>
+
+        <p>One of Ember's most powerful capabilities is spawning <strong>subagents</strong> — independent agent sessions that run in parallel to handle delegated work. When a task requires a different agent's expertise (Scout's research skills, Architect's deep reasoning), Ember can spawn them as subagents rather than switching context herself.</p>
+
+        <p>Here is how it works:</p>
+
+        <ol>
+          <li><strong>Ember identifies a task</strong> that needs a specialist — for example, a complex analysis that warrants Opus-level reasoning.</li>
+          <li><strong>Ember spawns a subagent session.</strong> The subagent runs in the <a href="/architecture/lane-queue">subagent lane</a>, which has its own concurrency budget separate from Ember's main conversation lane.</li>
+          <li><strong>The subagent works independently.</strong> It has its own session, its own model (e.g., Architect uses Claude Opus), and its own workspace context. It does not share Ember's conversation history.</li>
+          <li><strong>The subagent reports back.</strong> When finished, the subagent's output is delivered back to Ember's session, who can then relay the results to you or take further action.</li>
+        </ol>
+
+        <p>This design means Ember can delegate expensive or specialized work without blocking her own conversation. You can keep chatting with Ember while Architect works on a strategic analysis in the background.</p>
+
+        <div class="callout tip">
+          <div class="callout-title">Subagent Cost Awareness</div>
+          <p>Subagents use the model configured for their agent type, not Ember's model. Spawning an Architect subagent means that task runs on Claude Opus — which costs significantly more per token than Ember's Kimi K2.5. Ember is aware of this and spawns Architect only when the task genuinely benefits from deeper reasoning.</p>
+        </div>
+
+        <h2>Trust Level</h2>
+
+        <div class="callout success">
+          <div class="callout-title">Trust Level Active</div>
+          <p>Ember's L3 (Autonomous) trust level is <strong>active and enforcing</strong>. All actions are checked against the trust system, with restricted actions (external messages, financial ops, trust changes) still requiring escalation even at L3.</p>
+        </div>
+
+        <p>Ember operates at <strong>Trust Level 3 — Autonomous</strong>. This means she can act independently on routine tasks without asking for your approval first. Creating morning reports, adjusting task order, and coordinating with the other agents are all things Ember handles on her own.</p>
+
+        <p>However, Ember will escalate to you for non-routine changes. If a task needs to be cancelled, a significant priority shift is required, or something unusual comes up that falls outside normal operating parameters, Ember will ask before acting. This balance keeps the system efficient while ensuring you remain the final decision-maker on anything that matters.</p>
+
+        <h2>How to Interact</h2>
+
+        <p>You can message Ember at any time to make adjustments to your workflow. Common interactions include:</p>
+
+        <ul>
+          <li><strong>Adjust priorities</strong> — Tell Ember to bump a task up or down, defer something to next week, or focus on a specific project today.</li>
+          <li><strong>Ask for status updates</strong> — Request a summary of where things stand on a particular project or across the board.</li>
+          <li><strong>Request changes to routines</strong> — If you want your morning report delivered at a different time, or you want to add a new section to the evening check-in, tell Ember and she will make the adjustment.</li>
+          <li><strong>Route requests to other agents</strong> — If you need Scout to research something or want Forge to check on a system issue, you can tell Ember and she will pass it along.</li>
+        </ul>
+
+        <h3>Example Morning Report</h3>
+
+        <p>Here is an example of what a morning report from Ember looks like:</p>
+
+<pre><code>Morning Report — Monday, February 10, 2026
+
+Calendar:
+  - 10:00 AM  Team standup
+  - 2:00 PM   Dentist appointment
+  - 4:00 PM   Project review call
+
+Priorities:
+  1. Finish draft of Q1 planning document
+  2. Review Scout's research brief on cloud migration options
+  3. Reply to Alex's email about the March timeline
+
+Overnight Activity:
+  - Scout completed research on cloud migration (brief in Notes)
+  - Forge ran scheduled backup at 3:00 AM (success)
+  - Syncthing sync completed across all devices
+
+Flags:
+  - The Q1 planning document deadline is tomorrow — marking as urgent
+  - Forge noticed elevated disk usage on EC2 (72%) — monitoring</code></pre>
+
+        <div class="action-section">
+          <h2>What You Do Next</h2>
+          <ul>
+            <li><a href="/cadence/morning-report">Learn more about the Morning Report</a> and its structure</li>
+            <li><a href="/cadence/evening-checkin">Learn about the Evening Check-in</a> that Ember manages</li>
+            <li><a href="/agents/scout">Meet Scout</a>, the Research Specialist</li>
+            <li><a href="/agents/architect">Meet Architect</a>, often spawned as a subagent by Ember</li>
+            <li><a href="/agents/trust-levels">Understand Trust Levels</a> and what Level 3 means in practice</li>
+            <li><a href="/architecture/gateway">Gateway</a> — how sessions are routed and managed</li>
+            <li><a href="/architecture/lane-queue">Lane Queue</a> — how main and subagent lanes work</li>
+            <li><a href="/architecture/agent-runner">Agent Runner</a> — the reasoning loop that powers each turn</li>
+          </ul>
+        </div>0:{"P":null,"b":"VA-lAVEn1LekIejhMlH5y","p":"","c":["","agents","ember"],"i":false,"f":[[["",{"children":["(authenticated)",{"children":["agents",{"children":["ember",{"children":["__PAGE__",{}]}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/56998b7e09014914.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]]}],{"children":["(authenticated)",["$","$1","c",{"children":[null,["$","body",null,{"children":[["$","input",null,{"type":"checkbox","id":"menu-toggle","className":"menu-toggle"}],["$","label",null,{"htmlFor":"menu-toggle","className":"hamburger","aria-label":"Toggle navigation","children":"☰"}],["$","label",null,{"htmlFor":"menu-toggle","className":"overlay"}],["$","div",null,{"className":"site-wrapper","children":[["$","$L4",null,{}],["$","main",null,{"className":"main-content","children":["$","div",null,{"className":"content-wrapper","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":"$0:f:0:1:1:props:children:1:props:children:props:notFound:0:1:props:style","children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":"$0:f:0:1:1:props:children:1:props:children:props:notFound:0:1:props:children:props:children:1:props:style","children":404}],["$","div",null,{"style":"$0:f:0:1:1:props:children:1:props:children:props:notFound:0:1:props:children:props:children:2:props:style","children":["$","h2",null,{"style":"$0:f:0:1:1:props:children:1:props:children:props:notFound:0:1:props:children:props:children:2:props:children:props:style","children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}]]}]]}],{"children":["agents",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["ember",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":[["$","div",null,{"dangerouslySetInnerHTML":{"__html":"$5"}}],null,"$L6"]}],{},null,false]},null,false]},null,false]},null,false]},null,false],"$L7",false]],"m":"$undefined","G":["$8",[]],"s":false,"S":true}
+9:I[4431,[],"OutletBoundary"]
+b:I[5278,[],"AsyncMetadataOutlet"]
+d:I[4431,[],"ViewportBoundary"]
+f:I[4431,[],"MetadataBoundary"]
+10:"$Sreact.suspense"
+6:["$","$L9",null,{"children":["$La",["$","$Lb",null,{"promise":"$@c"}]]}]
+7:["$","$1","h",{"children":[null,[["$","$Ld",null,{"children":"$Le"}],null],["$","$Lf",null,{"children":["$","div",null,{"hidden":true,"children":["$","$10",null,{"fallback":null,"children":"$L11"}]}]}]]}]
+e:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+a:null
+c:{"metadata":[["$","title","0",{"children":"Ember — Chief of Staff — Agent Team OS Guide"}],["$","meta","1",{"name":"description","content":"Your personal AI agent team, working together to keep your life organized."}]],"error":null,"digest":"$undefined"}
+11:"$c:metadata"

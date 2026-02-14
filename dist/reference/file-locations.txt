@@ -1,10 +1,10 @@
-import type { Metadata } from 'next'
-
-export const metadata: Metadata = {
-  title: 'File Locations — Agent Team OS Guide',
-}
-
-const content = `<div class="breadcrumbs">
+1:"$Sreact.fragment"
+2:I[9766,[],""]
+3:I[8924,[],""]
+4:I[3370,["7340","static/chunks/app/(authenticated)/layout-8a56e70ab4050a46.js"],"default"]
+8:I[7150,[],""]
+:HL["/_next/static/css/56998b7e09014914.css","style"]
+5:T30d8,<div class="breadcrumbs">
           <a href="/">Home</a> / Reference / File Locations
         </div>
 
@@ -60,10 +60,6 @@ const content = `<div class="breadcrumbs">
             <tr>
               <td><code>~/agents/ember/memory/</code></td>
               <td>Agent memory files. Daily notes (<code>YYYY-MM-DD.md</code>) and long-term memory (<code>MEMORY.md</code>).</td>
-            </tr>
-            <tr>
-              <td><code>~/agents/ember/knowledge/</code></td>
-              <td>Structured knowledge base. Contains <code>decisions/</code>, <code>lessons/</code>, <code>commitments/</code>, <code>companies/</code>, <code>people/</code>, <code>projects/</code>. Used for semantic search.</td>
             </tr>
             <tr>
               <td><code>~/agents/ember/scripts/</code></td>
@@ -178,10 +174,6 @@ const content = `<div class="breadcrumbs">
               <td><code>~/agents/ember/logs/trust-decisions.log</code></td>
               <td>Trust decision audit log. Every trust check — allowed, denied, or queued — is logged here with a timestamp, agent name, action, and result. Use <code>trust-system.sh log</code> to view recent entries.</td>
             </tr>
-            <tr>
-              <td><code>~/agents/ember/scripts/handoff.sh</code></td>
-              <td>Session continuity functions. Provides <code>handoff_wake</code>, <code>handoff_sleep</code>, <code>handoff_recap</code>, and <code>handoff_heartbeat</code> for session context recovery. Source it: <code>source handoff.sh && handoff_wake</code>.</td>
-            </tr>
           </tbody>
         </table>
 
@@ -244,8 +236,15 @@ const content = `<div class="breadcrumbs">
           </ul>
         </div>
 
-        <p style="margin-top: 2rem; font-size: 0.8rem; color: #888;">Last updated: February 14, 2026</p>`
-
-export default function Page() {
-  return <div dangerouslySetInnerHTML={{ __html: content }} />
-}
+        <p style="margin-top: 2rem; font-size: 0.8rem; color: #888;">Last updated: February 14, 2026</p>0:{"P":null,"b":"VA-lAVEn1LekIejhMlH5y","p":"","c":["","reference","file-locations"],"i":false,"f":[[["",{"children":["(authenticated)",{"children":["reference",{"children":["file-locations",{"children":["__PAGE__",{}]}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/56998b7e09014914.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]]}],{"children":["(authenticated)",["$","$1","c",{"children":[null,["$","body",null,{"children":[["$","input",null,{"type":"checkbox","id":"menu-toggle","className":"menu-toggle"}],["$","label",null,{"htmlFor":"menu-toggle","className":"hamburger","aria-label":"Toggle navigation","children":"☰"}],["$","label",null,{"htmlFor":"menu-toggle","className":"overlay"}],["$","div",null,{"className":"site-wrapper","children":[["$","$L4",null,{}],["$","main",null,{"className":"main-content","children":["$","div",null,{"className":"content-wrapper","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":"$0:f:0:1:1:props:children:1:props:children:props:notFound:0:1:props:style","children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":"$0:f:0:1:1:props:children:1:props:children:props:notFound:0:1:props:children:props:children:1:props:style","children":404}],["$","div",null,{"style":"$0:f:0:1:1:props:children:1:props:children:props:notFound:0:1:props:children:props:children:2:props:style","children":["$","h2",null,{"style":"$0:f:0:1:1:props:children:1:props:children:props:notFound:0:1:props:children:props:children:2:props:children:props:style","children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}]]}]]}],{"children":["reference",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["file-locations",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":[["$","div",null,{"dangerouslySetInnerHTML":{"__html":"$5"}}],null,"$L6"]}],{},null,false]},null,false]},null,false]},null,false]},null,false],"$L7",false]],"m":"$undefined","G":["$8",[]],"s":false,"S":true}
+9:I[4431,[],"OutletBoundary"]
+b:I[5278,[],"AsyncMetadataOutlet"]
+d:I[4431,[],"ViewportBoundary"]
+f:I[4431,[],"MetadataBoundary"]
+10:"$Sreact.suspense"
+6:["$","$L9",null,{"children":["$La",["$","$Lb",null,{"promise":"$@c"}]]}]
+7:["$","$1","h",{"children":[null,[["$","$Ld",null,{"children":"$Le"}],null],["$","$Lf",null,{"children":["$","div",null,{"hidden":true,"children":["$","$10",null,{"fallback":null,"children":"$L11"}]}]}]]}]
+e:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+a:null
+c:{"metadata":[["$","title","0",{"children":"File Locations — Agent Team OS Guide"}],["$","meta","1",{"name":"description","content":"Your personal AI agent team, working together to keep your life organized."}]],"error":null,"digest":"$undefined"}
+11:"$c:metadata"

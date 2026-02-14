@@ -1,0 +1,53 @@
+1:"$Sreact.fragment"
+2:I[9766,[],""]
+3:I[8924,[],""]
+4:I[3370,["7340","static/chunks/app/(authenticated)/layout-8a56e70ab4050a46.js"],"default"]
+8:I[7150,[],""]
+:HL["/_next/static/css/56998b7e09014914.css","style"]
+5:Teed,<div class="breadcrumbs">
+          <a href="/">Home</a>
+          <span class="separator">/</span>
+          <a href="/getting-started">Getting Started</a>
+          <span class="separator">/</span>
+          Your First Day
+        </div>
+
+        <h1>Your First Day</h1>
+
+        <p>Your first day with Agent Team OS is designed to be low-pressure. The system is already running, the agents are already working, and the daily cadence is already in motion. Your job on day one is simply to observe the rhythm, familiarize yourself with the key touchpoints, and start building the habit of checking in at the natural moments the system creates for you.</p>
+
+        <p>Here is what a typical first day looks like, from morning to evening:</p>
+
+        <ol class="steps">
+          <li><strong>Check your morning report.</strong> It arrives at 6:00 AM via your configured notification channel (Pushover or email). The report summarizes overnight activity, your calendar for the day, top priorities, and anything the agents have flagged. Read through it over coffee — no action required yet.</li>
+          <li><strong>Review what the agents have prepared overnight.</strong> While you slept, the agents may have researched topics you queued, organized notes, or completed maintenance tasks. Check the agent activity log in LogSeq to see what was done on your behalf.</li>
+          <li><strong>Open LogSeq and check today's journal page.</strong> Your daily journal page is the central workspace for the day. It will already be populated with a template that includes sections for priorities, notes, and reflections. Spend a few minutes reading what is there and adding any thoughts.</li>
+          <li><strong>Review your task priorities in Notes.</strong> The Notes structure organizes your work into projects and areas. Look at what has been surfaced as today's priorities and decide what you want to focus on. You can reorder or defer tasks as needed.</li>
+          <li><strong>Send a message to Ember if you need anything adjusted.</strong> Ember is your coordination agent. If the priorities do not look right, if you want to add a research request for Scout, or if something feels off, tell Ember. Ember will route your request to the right place. Behind the scenes, your message flows through OpenClaw's pipeline: <strong>Discord Channel Adapter → Gateway → Agent Runner</strong>. The Channel Adapter picks up your message from Discord, the Gateway routes it to the correct agent session, and the Agent Runner executes Ember's response. This all happens in seconds. See <a href="/architecture">Architecture</a> for the full picture of how the runtime engine processes messages.</li>
+          <li><strong>At 9:30 PM, review the evening check-in.</strong> The evening check-in arrives in the evening. It recaps what was accomplished, asks you to reflect on the day, and queues up any work for the agents to handle overnight. Take a few minutes to respond and then let the system take it from there.</li>
+        </ol>
+
+        <div class="callout tip">
+          <div class="callout-title">Tip</div>
+          <p>You do not need to learn everything at once. The system is designed to be explored gradually. Focus on the morning report and evening check-in for the first few days, and let the rest of the workflow reveal itself naturally as you settle in.</p>
+        </div>
+
+        <div class="action-section">
+          <h2>What You Do Next</h2>
+          <ul>
+            <li><a href="/getting-started/setup-checklist">Verify your setup</a> with the Setup Checklist</li>
+            <li><a href="/cadence/morning-report">Learn more about the Morning Report</a> and what it contains</li>
+            <li><a href="/agents">Meet Your Agents</a> to understand who does what</li>
+          </ul>
+        </div>0:{"P":null,"b":"VA-lAVEn1LekIejhMlH5y","p":"","c":["","getting-started","first-day"],"i":false,"f":[[["",{"children":["(authenticated)",{"children":["getting-started",{"children":["first-day",{"children":["__PAGE__",{}]}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/56998b7e09014914.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]]}],{"children":["(authenticated)",["$","$1","c",{"children":[null,["$","body",null,{"children":[["$","input",null,{"type":"checkbox","id":"menu-toggle","className":"menu-toggle"}],["$","label",null,{"htmlFor":"menu-toggle","className":"hamburger","aria-label":"Toggle navigation","children":"☰"}],["$","label",null,{"htmlFor":"menu-toggle","className":"overlay"}],["$","div",null,{"className":"site-wrapper","children":[["$","$L4",null,{}],["$","main",null,{"className":"main-content","children":["$","div",null,{"className":"content-wrapper","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":"$0:f:0:1:1:props:children:1:props:children:props:notFound:0:1:props:style","children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":"$0:f:0:1:1:props:children:1:props:children:props:notFound:0:1:props:children:props:children:1:props:style","children":404}],["$","div",null,{"style":"$0:f:0:1:1:props:children:1:props:children:props:notFound:0:1:props:children:props:children:2:props:style","children":["$","h2",null,{"style":"$0:f:0:1:1:props:children:1:props:children:props:notFound:0:1:props:children:props:children:2:props:children:props:style","children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}]]}]]}],{"children":["getting-started",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["first-day",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":[["$","div",null,{"dangerouslySetInnerHTML":{"__html":"$5"}}],null,"$L6"]}],{},null,false]},null,false]},null,false]},null,false]},null,false],"$L7",false]],"m":"$undefined","G":["$8",[]],"s":false,"S":true}
+9:I[4431,[],"OutletBoundary"]
+b:I[5278,[],"AsyncMetadataOutlet"]
+d:I[4431,[],"ViewportBoundary"]
+f:I[4431,[],"MetadataBoundary"]
+10:"$Sreact.suspense"
+6:["$","$L9",null,{"children":["$La",["$","$Lb",null,{"promise":"$@c"}]]}]
+7:["$","$1","h",{"children":[null,[["$","$Ld",null,{"children":"$Le"}],null],["$","$Lf",null,{"children":["$","div",null,{"hidden":true,"children":["$","$10",null,{"fallback":null,"children":"$L11"}]}]}]]}]
+e:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+a:null
+c:{"metadata":[["$","title","0",{"children":"Your First Day — Agent Team OS Guide"}],["$","meta","1",{"name":"description","content":"Your personal AI agent team, working together to keep your life organized."}]],"error":null,"digest":"$undefined"}
+11:"$c:metadata"

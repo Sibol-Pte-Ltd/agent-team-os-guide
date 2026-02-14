@@ -1,0 +1,130 @@
+1:"$Sreact.fragment"
+2:I[9766,[],""]
+3:I[8924,[],""]
+4:I[3370,["7340","static/chunks/app/(authenticated)/layout-8a56e70ab4050a46.js"],"default"]
+8:I[7150,[],""]
+:HL["/_next/static/css/56998b7e09014914.css","style"]
+5:T1d5b,<div class="breadcrumbs">
+          <a href="/">Home</a>
+          <span class="separator">/</span>
+          <a href="/architecture">Architecture</a>
+          <span class="separator">/</span>
+          Gateway
+        </div>
+
+        <h1>Gateway</h1>
+
+        <p>The Gateway is the central server of OpenClaw — the long-running daemon process that coordinates everything. It is the nerve center through which all messages flow, all sessions are managed, and all subsystems are orchestrated. When you run <code>openclaw gateway start</code>, this is what starts.</p>
+
+        <p>Every other component connects to or through the Gateway. Channel Adapters deliver normalized messages to it. The Lane Queue is managed by it. Agent Runners are dispatched from it. The Execution Layer operates within its process context. The Gateway is not just a router — it is the runtime that holds the entire system together.</p>
+
+        <h2>Core Responsibilities</h2>
+
+        <h3>Session Routing</h3>
+
+        <p>When a normalized message arrives from a Channel Adapter, the Gateway must determine <em>which session</em> it belongs to. OpenClaw uses a hierarchical session key format:</p>
+
+        <pre><code>agent:&lt;agentId&gt;:&lt;channel&gt;:&lt;chatType&gt;:&lt;conversationId&gt;</code></pre>
+
+        <p>For example, a Discord DM with Ember might produce the session key <code>agent:ember:discord:dm:987654321</code>, while a Telegram group conversation with the same agent would be <code>agent:ember:telegram:group:123456789</code>.</p>
+
+        <p>The session key determines:</p>
+        <ul>
+          <li>Which agent handles the conversation (multi-agent setups run separate agents for different purposes)</li>
+          <li>Which conversation history is loaded (each session has its own transcript)</li>
+          <li>Which lane the message is queued in (sessions are isolated from each other)</li>
+          <li>Which workspace and configuration the agent operates with</li>
+        </ul>
+
+        <h3>Authentication &amp; Authorization</h3>
+
+        <p>The Gateway manages access control at multiple levels:</p>
+
+        <ul>
+          <li><strong>Channel-level auth</strong> — API tokens for each connected platform</li>
+          <li><strong>Sender allowlists</strong> — controlling which users can trigger agent responses</li>
+          <li><strong>Command gating</strong> — restricting administrative commands to authorized senders</li>
+          <li><strong>Rate limiting</strong> — preventing abuse via per-sender rate limits</li>
+          <li><strong>WebSocket auth</strong> — token-based authentication for the control UI and API clients</li>
+        </ul>
+
+        <h3>Channel Management</h3>
+
+        <p>The Gateway's channel manager coordinates the lifecycle of all Channel Adapters:</p>
+
+        <ul>
+          <li>Starting and stopping channel monitors based on configuration</li>
+          <li>Handling reconnection when a platform connection drops</li>
+          <li>Hot-reloading channel configuration when the config file changes</li>
+          <li>Managing multiple accounts per channel (e.g., separate Discord bots for different agents)</li>
+        </ul>
+
+        <h3>Configuration &amp; Hot Reload</h3>
+
+        <p>The Gateway watches its configuration file and applies changes without requiring a restart. When you edit the config:</p>
+
+        <ul>
+          <li>Channel monitors are started, stopped, or reconfigured as needed</li>
+          <li>Agent settings (model, system prompt overrides, tool policies) take effect on the next run</li>
+          <li>Lane concurrency limits are updated in real time</li>
+          <li>Cron jobs are rescheduled according to the new configuration</li>
+        </ul>
+
+        <h3>Cron &amp; Scheduled Tasks</h3>
+
+        <p>The Gateway includes a cron scheduler that triggers agent runs on configurable schedules. Cron jobs run in their own lane (<code>cron</code>) with configurable concurrency, separate from the main message-processing lanes. This ensures that scheduled tasks like heartbeat checks, morning reports, and maintenance jobs don't block user conversations.</p>
+
+        <h3>WebSocket &amp; HTTP API</h3>
+
+        <p>The Gateway exposes a WebSocket server and HTTP API that power:</p>
+
+        <ul>
+          <li><strong>Control UI (Web Chat)</strong> — a browser-based interface for chatting with agents and monitoring sessions</li>
+          <li><strong>Mobile nodes</strong> — paired iOS devices that extend the agent's capabilities (camera, notifications, location)</li>
+          <li><strong>Inter-session communication</strong> — agents can send messages to other sessions, enabling coordination between agents and subagents</li>
+          <li><strong>Health monitoring</strong> — status endpoints for uptime checks and diagnostics</li>
+          <li><strong>OpenAI-compatible API</strong> — an endpoint that lets external tools interact with OpenClaw using the OpenAI chat completions format</li>
+        </ul>
+
+        <h2>How It Works in Code</h2>
+
+        <p>The Gateway implementation lives in <code>src/gateway/</code> and is substantial — it is the largest subsystem in OpenClaw. Key files include:</p>
+
+        <ul>
+          <li><code>server.impl.ts</code> — the main server implementation that wires everything together at startup</li>
+          <li><code>server-channels.ts</code> — channel monitor lifecycle management</li>
+          <li><code>server-chat.ts</code> — agent event handling and run coordination</li>
+          <li><code>server-lanes.ts</code> — lane concurrency configuration (bridges to the Lane Queue)</li>
+          <li><code>server-cron.ts</code> — cron job scheduling and execution</li>
+          <li><code>server-ws-runtime.ts</code> — WebSocket connection handling</li>
+          <li><code>server-methods.ts</code> — RPC method handlers for the WebSocket/HTTP API</li>
+          <li><code>server-session-key.ts</code> — session key resolution from inbound messages</li>
+          <li><code>config-reload.ts</code> — hot-reload logic for configuration changes</li>
+        </ul>
+
+        <p>At startup, the Gateway initializes in a specific order: load config → start HTTP/WS server → initialize channel managers → start channel monitors → start cron scheduler → begin health heartbeats. Shutdown reverses this sequence gracefully.</p>
+
+        <div class="callout tip">
+          <div class="callout-title">The Gateway Is the Process</div>
+          <p>Unlike microservice architectures where routing is a separate service, the OpenClaw Gateway is the entire runtime. Agent Runners, the Lane Queue, tool execution — they all run within the Gateway process. This single-process design keeps latency low, avoids network hops between components, and makes deployment simple: one process, one config file, one log stream. The tradeoff is that everything shares the same Node.js event loop, which is why the Lane Queue's concurrency management is so important.</p>
+        </div>
+
+        <div class="action-section">
+          <h2>Next</h2>
+          <ul>
+            <li><a href="/architecture/lane-queue">Lane Queue</a> — how the Gateway serializes work within sessions</li>
+            <li><a href="/architecture/channel-adapters">Channel Adapters</a> — what feeds messages into the Gateway</li>
+            <li><a href="/architecture">Architecture Overview</a> — see how all five components connect</li>
+          </ul>
+        </div>0:{"P":null,"b":"VA-lAVEn1LekIejhMlH5y","p":"","c":["","architecture","gateway"],"i":false,"f":[[["",{"children":["(authenticated)",{"children":["architecture",{"children":["gateway",{"children":["__PAGE__",{}]}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/56998b7e09014914.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]]}],{"children":["(authenticated)",["$","$1","c",{"children":[null,["$","body",null,{"children":[["$","input",null,{"type":"checkbox","id":"menu-toggle","className":"menu-toggle"}],["$","label",null,{"htmlFor":"menu-toggle","className":"hamburger","aria-label":"Toggle navigation","children":"☰"}],["$","label",null,{"htmlFor":"menu-toggle","className":"overlay"}],["$","div",null,{"className":"site-wrapper","children":[["$","$L4",null,{}],["$","main",null,{"className":"main-content","children":["$","div",null,{"className":"content-wrapper","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":"$0:f:0:1:1:props:children:1:props:children:props:notFound:0:1:props:style","children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":"$0:f:0:1:1:props:children:1:props:children:props:notFound:0:1:props:children:props:children:1:props:style","children":404}],["$","div",null,{"style":"$0:f:0:1:1:props:children:1:props:children:props:notFound:0:1:props:children:props:children:2:props:style","children":["$","h2",null,{"style":"$0:f:0:1:1:props:children:1:props:children:props:notFound:0:1:props:children:props:children:2:props:children:props:style","children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}]]}]]}],{"children":["architecture",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["gateway",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":[["$","div",null,{"dangerouslySetInnerHTML":{"__html":"$5"}}],null,"$L6"]}],{},null,false]},null,false]},null,false]},null,false]},null,false],"$L7",false]],"m":"$undefined","G":["$8",[]],"s":false,"S":true}
+9:I[4431,[],"OutletBoundary"]
+b:I[5278,[],"AsyncMetadataOutlet"]
+d:I[4431,[],"ViewportBoundary"]
+f:I[4431,[],"MetadataBoundary"]
+10:"$Sreact.suspense"
+6:["$","$L9",null,{"children":["$La",["$","$Lb",null,{"promise":"$@c"}]]}]
+7:["$","$1","h",{"children":[null,[["$","$Ld",null,{"children":"$Le"}],null],["$","$Lf",null,{"children":["$","div",null,{"hidden":true,"children":["$","$10",null,{"fallback":null,"children":"$L11"}]}]}]]}]
+e:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+a:null
+c:{"metadata":[["$","title","0",{"children":"Gateway — OpenClaw Architecture"}],["$","meta","1",{"name":"description","content":"Your personal AI agent team, working together to keep your life organized."}]],"error":null,"digest":"$undefined"}
+11:"$c:metadata"

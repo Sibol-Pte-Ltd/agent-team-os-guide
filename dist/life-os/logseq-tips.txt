@@ -1,0 +1,83 @@
+1:"$Sreact.fragment"
+2:I[9766,[],""]
+3:I[8924,[],""]
+4:I[3370,["7340","static/chunks/app/(authenticated)/layout-8a56e70ab4050a46.js"],"default"]
+8:I[7150,[],""]
+:HL["/_next/static/css/56998b7e09014914.css","style"]
+5:T17c8,<div class="breadcrumbs">
+          <a href="/">Home</a>
+          <span class="separator">/</span>
+          <a href="/life-os">Notes &amp; Sync</a>
+          <span class="separator">/</span>
+          LogSeq Tips
+        </div>
+
+        <h1>LogSeq Tips</h1>
+
+        <p>LogSeq is the note-taking application that powers Notes. If you are new to LogSeq, this page covers the essential concepts and shortcuts you need to use Notes effectively. This is not a comprehensive LogSeq tutorial — it focuses on the features that matter most for your daily interaction with Agent Team OS.</p>
+
+        <h3>Block-Based Editing</h3>
+
+        <p>Everything in LogSeq is a block. A block is a single bullet point, and each block can contain text, links, tags, and other content. Blocks can be nested underneath other blocks using the Tab key, creating an outline structure. Press Enter to create a new block, Tab to indent it beneath the previous block, and Shift+Tab to outdent it. This block-based approach means you never need to worry about formatting paragraphs or managing document structure — just write in blocks and nest them as needed.</p>
+
+        <h3>Page Links and Tags</h3>
+
+        <p>One of LogSeq's most powerful features is the ability to link between pages. To create a link to another page, wrap the page name in double square brackets: <code>[[Project Name]]</code>. If the page does not exist yet, LogSeq will create it when you click the link. This makes it effortless to build a web of connected notes over time. You can also use tags by prefixing a word with the hash symbol: <code>#health</code> or <code>#urgent</code>. Tags function similarly to page links — clicking a tag takes you to a page for that tag where you can see every block that references it.</p>
+
+        <p>In Notes, page links are how you connect daily journal entries to project pages, area pages, and other reference material. When you mention <code>[[My Side Project]]</code> in your journal, that entry automatically appears in the "Linked References" section at the bottom of the My Side Project page. The agents also use page links extensively when writing content into Notes.</p>
+
+        <h3>The Slash Command Menu</h3>
+
+        <p>Typing <code>/</code> in any block opens the command menu, which gives you quick access to a wide range of actions. The most commonly used commands for Notes include:</p>
+
+        <ul>
+          <li><code>/template</code> — Insert a <a href="/life-os/templates">template</a> at the current block</li>
+          <li><code>/today</code> — Insert a link to today's journal page</li>
+          <li><code>/tomorrow</code> — Insert a link to tomorrow's journal page</li>
+          <li><code>/TODO</code> — Create a task block with a checkbox</li>
+          <li><code>/deadline</code> — Add a deadline date to a task</li>
+          <li><code>/scheduled</code> — Add a scheduled date to a task</li>
+        </ul>
+
+        <p>You do not need to memorize the full list. Just type <code>/</code> and start typing what you are looking for — the menu filters as you type.</p>
+
+        <h3>Daily Journal Pages</h3>
+
+        <p>LogSeq automatically creates a new journal page for each day. When you open LogSeq, it lands on today's journal page by default. You can navigate to past journal pages by clicking dates in the left sidebar or by using the date picker. Journal pages are named by date (for example, "Feb 10, 2026") and serve as the daily entry point for all of your notes and tasks. In Notes, the <a href="/life-os/templates">Daily Journal template</a> is automatically applied to new journal pages to give them a consistent structure.</p>
+
+        <h3>Favorites and the Sidebar</h3>
+
+        <p>The left sidebar in LogSeq shows your favorites — pages you have pinned for quick access. To add a page to your favorites, navigate to the page and click the star icon in the top-right corner. For Notes, it is helpful to pin your most active project pages, key area pages, and any other pages you visit frequently. The sidebar also shows your recent pages, making it easy to jump back to something you were working on earlier.</p>
+
+        <h3>Search with Cmd+K</h3>
+
+        <p>Press <code>Cmd+K</code> (or <code>Ctrl+K</code> on Linux) to open the search bar. You can search for page names, block content, or tags. Search is the fastest way to find anything in your Notes vault. If you cannot remember where you wrote something, search for a keyword and LogSeq will show you every block and page that matches. The agents also rely on this search capability when they need to find information across your vault.</p>
+
+        <h3>Block References</h3>
+
+        <p>Any block in LogSeq can be referenced from another page. Right-click a block and select "Copy block ref" to get a reference to that block. When you paste it elsewhere, it appears as a live link to the original block — and if the original block is updated, the reference updates too. Block references are useful when you want to surface a specific task or note on multiple pages without duplicating it. For example, you might reference a key task from a project page in your daily journal to keep it visible.</p>
+
+        <div class="callout note">
+          <div class="callout-title">Note</div>
+          <p>This page covers only the LogSeq basics needed for Notes. LogSeq has many more features including queries, properties, namespaces, and plugins. For a deeper dive, visit the <a href="https://docs.logseq.com" target="_blank" rel="noopener">official LogSeq documentation</a>, which covers the full feature set in detail.</p>
+        </div>
+
+        <div class="action-section">
+          <h2>What You Do Next</h2>
+          <ul>
+            <li><a href="/life-os">Review what Notes is</a> and how it uses LogSeq as its foundation</li>
+            <li><a href="/life-os/daily-workflow">Walk through the Daily Workflow</a> to see LogSeq in action</li>
+            <li><a href="/life-os/templates">Explore the Templates</a> available in your vault</li>
+          </ul>
+        </div>0:{"P":null,"b":"VA-lAVEn1LekIejhMlH5y","p":"","c":["","life-os","logseq-tips"],"i":false,"f":[[["",{"children":["(authenticated)",{"children":["life-os",{"children":["logseq-tips",{"children":["__PAGE__",{}]}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/56998b7e09014914.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]]}],{"children":["(authenticated)",["$","$1","c",{"children":[null,["$","body",null,{"children":[["$","input",null,{"type":"checkbox","id":"menu-toggle","className":"menu-toggle"}],["$","label",null,{"htmlFor":"menu-toggle","className":"hamburger","aria-label":"Toggle navigation","children":"☰"}],["$","label",null,{"htmlFor":"menu-toggle","className":"overlay"}],["$","div",null,{"className":"site-wrapper","children":[["$","$L4",null,{}],["$","main",null,{"className":"main-content","children":["$","div",null,{"className":"content-wrapper","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":"$0:f:0:1:1:props:children:1:props:children:props:notFound:0:1:props:style","children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":"$0:f:0:1:1:props:children:1:props:children:props:notFound:0:1:props:children:props:children:1:props:style","children":404}],["$","div",null,{"style":"$0:f:0:1:1:props:children:1:props:children:props:notFound:0:1:props:children:props:children:2:props:style","children":["$","h2",null,{"style":"$0:f:0:1:1:props:children:1:props:children:props:notFound:0:1:props:children:props:children:2:props:children:props:style","children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}]]}]]}],{"children":["life-os",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["logseq-tips",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":[["$","div",null,{"dangerouslySetInnerHTML":{"__html":"$5"}}],null,"$L6"]}],{},null,false]},null,false]},null,false]},null,false]},null,false],"$L7",false]],"m":"$undefined","G":["$8",[]],"s":false,"S":true}
+9:I[4431,[],"OutletBoundary"]
+b:I[5278,[],"AsyncMetadataOutlet"]
+d:I[4431,[],"ViewportBoundary"]
+f:I[4431,[],"MetadataBoundary"]
+10:"$Sreact.suspense"
+6:["$","$L9",null,{"children":["$La",["$","$Lb",null,{"promise":"$@c"}]]}]
+7:["$","$1","h",{"children":[null,[["$","$Ld",null,{"children":"$Le"}],null],["$","$Lf",null,{"children":["$","div",null,{"hidden":true,"children":["$","$10",null,{"fallback":null,"children":"$L11"}]}]}]]}]
+e:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+a:null
+c:{"metadata":[["$","title","0",{"children":"LogSeq Tips — Agent Team OS Guide"}],["$","meta","1",{"name":"description","content":"Your personal AI agent team, working together to keep your life organized."}]],"error":null,"digest":"$undefined"}
+11:"$c:metadata"

@@ -1,0 +1,415 @@
+<!DOCTYPE html><!--VA_lAVEn1LekIejhMlH5y--><html lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/_next/static/css/56998b7e09014914.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/_next/static/chunks/webpack-d282787ed3063711.js"/><script src="/_next/static/chunks/4bd1b696-f785427dddbba9fb.js" async=""></script><script src="/_next/static/chunks/1255-29325acccda77703.js" async=""></script><script src="/_next/static/chunks/main-app-035730848130ded3.js" async=""></script><script src="/_next/static/chunks/app/(authenticated)/layout-8a56e70ab4050a46.js" async=""></script><title>Quick Commands — Agent Team OS Guide</title><meta name="description" content="Your personal AI agent team, working together to keep your life organized."/><script src="/_next/static/chunks/polyfills-42372ed130431b0a.js" noModule=""></script></head><body><div hidden=""><!--$--><!--/$--></div><input type="checkbox" id="menu-toggle" class="menu-toggle"/><label for="menu-toggle" class="hamburger" aria-label="Toggle navigation">☰</label><label for="menu-toggle" class="overlay"></label><div class="site-wrapper"><aside class="sidebar"><div class="sidebar-header"><h1>Agent Team OS</h1><div class="subtitle">User Guide</div></div><nav><div class="nav-section"><a class="nav-link" href="/">Home</a></div><div class="nav-section"><div class="nav-section-title">Getting Started</div><a class="nav-link" href="/getting-started">Quick Start</a><a class="nav-link" href="/getting-started/first-day">Your First Day</a><a class="nav-link" href="/getting-started/setup-checklist">Setup Checklist</a></div><div class="nav-section"><div class="nav-section-title">Notes &amp; Sync</div><a class="nav-link" href="/life-os">What is Notes</a><a class="nav-link" href="/life-os/daily-workflow">Daily Workflow</a><a class="nav-link" href="/life-os/templates">Templates</a><a class="nav-link" href="/life-os/logseq-tips">LogSeq Tips</a></div><div class="nav-section"><div class="nav-section-title">Agents</div><a class="nav-link" href="/agents">Meet Your Agents</a><a class="nav-link" href="/agents/ember">Ember</a><a class="nav-link" href="/agents/scout">Scout</a><a class="nav-link" href="/agents/forge">Forge</a><a class="nav-link" href="/agents/architect">Architect</a><a class="nav-link" href="/agents/trust-levels">Trust Levels</a></div><div class="nav-section"><div class="nav-section-title">Cadence</div><a class="nav-link" href="/cadence">Overview</a><a class="nav-link" href="/cadence/morning-report">Morning Report</a><a class="nav-link" href="/cadence/evening-checkin">Evening Check-in</a><a class="nav-link" href="/cadence/weekly-review">Weekly Review</a><a class="nav-link" href="/cadence/monthly-review">Monthly Review</a></div><div class="nav-section"><div class="nav-section-title">OpenClaw Architecture</div><a class="nav-link" href="/architecture">Overview</a><a class="nav-link" href="/architecture/channel-adapters">Channel Adapters</a><a class="nav-link" href="/architecture/gateway">Gateway</a><a class="nav-link" href="/architecture/lane-queue">Lane Queue</a><a class="nav-link" href="/architecture/agent-runner">Agent Runner</a><a class="nav-link" href="/architecture/execution-layer">Execution Layer</a></div><div class="nav-section"><div class="nav-section-title">Automation</div><a class="nav-link" href="/automation">Overview</a><a class="nav-link" href="/automation/cron-jobs">Cron Jobs</a><a class="nav-link" href="/automation/notifications">Notifications</a></div><div class="nav-section"><div class="nav-section-title">Troubleshooting</div><a class="nav-link" href="/troubleshooting">Common Issues</a><a class="nav-link" href="/troubleshooting/syncthing">Syncthing</a><a class="nav-link" href="/troubleshooting/faq">FAQ</a></div><div class="nav-section"><div class="nav-section-title">Reference</div><a class="nav-link active" href="/reference/commands">Commands</a><a class="nav-link" href="/reference/file-locations">File Locations</a><a class="nav-link" href="/reference/glossary">Glossary</a><a class="nav-link" href="/reference/changelog">Changelog</a></div><div class="nav-section"><div class="nav-section-title">Implementation</div><a class="nav-link" href="/implementation">Status</a><a class="nav-link" href="/implementation/gap-analysis">Gap Analysis</a><a class="nav-link" href="/implementation/roadmap">Roadmap</a><a class="nav-link" href="/implementation/activity-log">Activity Log</a><a class="nav-link" href="/implementation/site-improvements">Site Improvements</a><a class="nav-link" href="/implementation/clawvault-analysis">ClawVault Analysis</a></div></nav><div class="sidebar-footer"><button class="nav-link logout-link">⎋ Logout</button></div></aside><main class="main-content"><div class="content-wrapper"><div><div class="breadcrumbs">
+          <a href="/">Home</a> / Reference / Commands
+        </div>
+
+        <h1>Quick Commands</h1>
+        <p>A handy reference of commands you will use most often when working with Agent Team OS. All commands are run on the EC2 instance unless otherwise noted.</p>
+
+        <h3>Connection</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Command</th>
+              <th>What It Does</th>
+              <th>When to Use</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>tailscale status</code></td>
+              <td>Check Tailscale connection</td>
+              <td>When you cannot reach the EC2 instance or other devices on your Tailscale network. Run this to verify the VPN is connected and see which peers are online.</td>
+            </tr>
+            <tr>
+              <td><code>ssh ec2</code></td>
+              <td>Connect to EC2 instance</td>
+              <td>Whenever you need to access the server directly. This uses the SSH alias configured in your <code>~/.ssh/config</code> to connect over Tailscale.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Syncthing</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Command</th>
+              <th>What It Does</th>
+              <th>When to Use</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>systemctl status syncthing</code></td>
+              <td>Check Syncthing status</td>
+              <td>When files are not syncing as expected. This shows whether the Syncthing service is running and any recent activity or errors.</td>
+            </tr>
+            <tr>
+              <td><code>systemctl restart syncthing</code></td>
+              <td>Restart Syncthing</td>
+              <td>When Syncthing is stuck or not responding. A restart clears temporary issues and forces re-connection to peers.</td>
+            </tr>
+            <tr>
+              <td><code>journalctl -u syncthing --since today</code></td>
+              <td>View today's Syncthing logs</td>
+              <td>When you need to diagnose sync problems in detail. Shows all Syncthing log entries from today, including connection events, sync conflicts, and errors.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>System</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Command</th>
+              <th>What It Does</th>
+              <th>When to Use</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>crontab -l</code></td>
+              <td>View scheduled cron jobs</td>
+              <td>When you want to see what automated tasks are scheduled and when they run. Useful for verifying that morning reports, backups, and other jobs are configured correctly.</td>
+            </tr>
+            <tr>
+              <td><code>df -h</code></td>
+              <td>Check disk space</td>
+              <td>When the system feels slow or agents report write errors. Shows disk usage in a human-readable format so you can spot partitions that are running low.</td>
+            </tr>
+            <tr>
+              <td><code>htop</code></td>
+              <td>Monitor system resources</td>
+              <td>When you want a real-time view of CPU, memory, and process activity. Helpful for checking whether an agent process is consuming unexpected resources.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- ============================================================= -->
+        <!-- OPENCLAW CLI                                                   -->
+        <!-- ============================================================= -->
+        <h2 id="openclaw-cli">OpenClaw CLI</h2>
+
+        <p>The <code>openclaw</code> command is the primary interface for managing the OpenClaw platform — the <a href="/architecture/gateway">Gateway</a> daemon, sessions, cron jobs, and more. Run <code>openclaw help</code> for a full list of subcommands.</p>
+
+        <h3>Gateway Management</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Command</th>
+              <th>What It Does</th>
+              <th>When to Use</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>openclaw gateway status</code></td>
+              <td>Check whether the Gateway daemon is running, and show uptime, connected channels, and active session count.</td>
+              <td>First thing to check when agents are unresponsive or messages are not being delivered. Also useful after a server reboot to confirm everything came back up.</td>
+            </tr>
+            <tr>
+              <td><code>openclaw gateway start</code></td>
+              <td>Start the Gateway daemon. Loads <code>~/.openclaw/config.yaml</code>, connects channel adapters, and begins processing messages.</td>
+              <td>After installation, after a manual stop, or when <code>gateway status</code> shows the daemon is not running.</td>
+            </tr>
+            <tr>
+              <td><code>openclaw gateway stop</code></td>
+              <td>Gracefully stop the Gateway daemon. Active sessions are allowed to complete their current turn before shutdown.</td>
+              <td>Before making major configuration changes, during maintenance, or when you need to cleanly shut down the system.</td>
+            </tr>
+            <tr>
+              <td><code>openclaw gateway restart</code></td>
+              <td>Stop and restart the Gateway daemon. Equivalent to <code>stop</code> followed by <code>start</code>, reloading configuration.</td>
+              <td>After editing <code>~/.openclaw/config.yaml</code> to pick up changes — new channel adapters, updated tool policies, model changes, etc.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Sessions &amp; Cron</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Command</th>
+              <th>What It Does</th>
+              <th>When to Use</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>openclaw sessions list</code></td>
+              <td>List all active and recent sessions with their session keys, agent names, channels, and status (active/idle/completed).</td>
+              <td>When you want to see what agents are currently running, check session activity, or find a specific session ID for debugging.</td>
+            </tr>
+            <tr>
+              <td><code>openclaw cron list</code></td>
+              <td>List all scheduled cron jobs configured in OpenClaw, with their schedules, target agents, and next run times.</td>
+              <td>To review what automated tasks OpenClaw is running — morning reports, heartbeats, health checks, and any custom scheduled jobs.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Service Logs</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Command</th>
+              <th>What It Does</th>
+              <th>When to Use</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>journalctl -u openclaw --since today</code></td>
+              <td>View today's OpenClaw service logs from the systemd journal. Includes gateway startup, channel connections, session lifecycle events, and errors.</td>
+              <td>When diagnosing gateway or agent service issues. Pair with <code>openclaw gateway status</code> for a complete picture.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Agent Logs</h3>
+        <p>Agent logs live in <code>~/agents/ember/logs/</code>. Session transcripts (full conversation history) are stored as JSONL files in <code>~/.openclaw/agents/ember/sessions/</code>.</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Command</th>
+              <th>What It Does</th>
+              <th>When to Use</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>tail -f ~/agents/ember/logs/trust-decisions.log</code></td>
+              <td>Follow trust system decisions</td>
+              <td>When you want to watch trust system activity in real time. Shows every check, approval, and denial as they happen. Press <code>Ctrl+C</code> to stop.</td>
+            </tr>
+            <tr>
+              <td><code>tail -f ~/agents/ember/logs/forge-health.log</code></td>
+              <td>Follow Forge's health checks</td>
+              <td>When you want to watch Forge's infrastructure monitoring in real time. Useful during maintenance windows or when diagnosing system issues.</td>
+            </tr>
+            <tr>
+              <td><code>tail -f ~/agents/ember/logs/forge-cron.log</code></td>
+              <td>Follow Forge's cron activity</td>
+              <td>When you want to see what Forge's scheduled tasks are doing. Shows cron job execution, timing, and any errors.</td>
+            </tr>
+            <tr>
+              <td><code>ls -lt ~/.openclaw/agents/ember/sessions/*.jsonl | head</code></td>
+              <td>List recent session transcripts</td>
+              <td>When you want to review past agent conversations. Each JSONL file is a full session transcript. Sorted by most recent first.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- ============================================================= -->
+        <!-- TRUST SYSTEM CLI REFERENCE                                     -->
+        <!-- ============================================================= -->
+        <h2 id="trust-system">Trust System Commands</h2>
+
+        <p>The trust system is enforced through two scripts: <code>trust-system.sh</code> (the main engine with 10 subcommands) and <code>trust-check.sh</code> (a source-able wrapper that agents use in their sessions). Both live in <code>~/agents/ember/scripts/</code>. See <a href="/agents/trust-levels">Trust Levels</a> for the full conceptual overview.</p>
+
+        <h3><code>trust-system.sh</code> — CLI Reference</h3>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Command</th>
+              <th>What It Does</th>
+              <th>When to Use</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>trust-system.sh check &lt;agent&gt; &lt;action&gt; [reason]</code></td>
+              <td>Check whether an agent is allowed to perform an action. Returns exit code 0 (allowed), 1 (denied), or 2 (needs approval).</td>
+              <td>Before any restricted action. This is the core enforcement gate — every permission decision flows through this command.</td>
+            </tr>
+            <tr>
+              <td><code>trust-system.sh request-approval &lt;agent&gt; &lt;action&gt; &lt;reason&gt;</code></td>
+              <td>Queue an approval request when <code>check</code> returns exit code 2. Creates a JSON file in the approval queue and sends notifications via Discord and Pushover.</td>
+              <td>Automatically called by <code>trust-check.sh</code> when a check returns NEEDS_APPROVAL. Can also be called manually.</td>
+            </tr>
+            <tr>
+              <td><code>trust-system.sh approve &lt;request-id&gt;</code></td>
+              <td>Approve a pending request. Updates the request status to "approved" and logs the decision.</td>
+              <td>When you receive an approval notification and want to allow the action. The request ID is included in the notification.</td>
+            </tr>
+            <tr>
+              <td><code>trust-system.sh deny &lt;request-id&gt; [reason]</code></td>
+              <td>Deny a pending request with an optional reason. Updates the request status to "denied" and notifies the agent.</td>
+              <td>When you receive an approval notification and want to block the action.</td>
+            </tr>
+            <tr>
+              <td><code>trust-system.sh list-pending [agent]</code></td>
+              <td>List all pending approval requests, optionally filtered by agent name.</td>
+              <td>To review the current approval queue. Useful when you come back to check what agents have been asking for.</td>
+            </tr>
+            <tr>
+              <td><code>trust-system.sh escalate &lt;agent&gt; &lt;new-level&gt; &lt;reason&gt;</code></td>
+              <td>Raise an agent's trust level. Validates that the new level is higher than the current level. Updates the config and logs the change.</td>
+              <td>When an agent has earned more autonomy and you want to promote it. For example, moving Scout from Level 2 to Level 3.</td>
+            </tr>
+            <tr>
+              <td><code>trust-system.sh demote &lt;agent&gt; &lt;new-level&gt; &lt;reason&gt;</code></td>
+              <td>Lower an agent's trust level. Validates that the new level is lower than the current level. Updates the config and logs the change.</td>
+              <td>When an agent has made a mistake or you want to add more oversight. Takes effect immediately.</td>
+            </tr>
+            <tr>
+              <td><code>trust-system.sh get-level &lt;agent&gt;</code></td>
+              <td>Display an agent's current trust level number and name.</td>
+              <td>Quick check to see where an agent currently sits in the trust hierarchy.</td>
+            </tr>
+            <tr>
+              <td><code>trust-system.sh status</code></td>
+              <td>Show a full status dashboard: all agent levels, pending approval count, and the 5 most recent trust decisions from the log.</td>
+              <td>For a quick overview of the entire trust system state.</td>
+            </tr>
+            <tr>
+              <td><code>trust-system.sh log [lines]</code></td>
+              <td>Show recent entries from the trust decision log. Defaults to the last 20 lines.</td>
+              <td>To audit recent trust decisions, see what was allowed, denied, or escalated.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3><code>trust-check.sh</code> — Agent Integration Functions</h3>
+
+        <p>This script is designed to be <strong>sourced</strong> (not executed) by agent sessions. It provides convenience functions that wrap <code>trust-system.sh</code> and handle the approval flow automatically. Agents source it via <code>.bashrc.agent</code>.</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Function</th>
+              <th>What It Does</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>trust_check &lt;agent&gt; &lt;action&gt; [reason]</code></td>
+              <td>Main entry point. Calls <code>trust-system.sh check</code> and, if the result is NEEDS_APPROVAL, automatically calls <code>request-approval</code>. Returns 0 (allowed), 1 (blocked), or 2 (approval pending).</td>
+            </tr>
+            <tr>
+              <td><code>trust_check_tool &lt;tool_name&gt; [detail]</code></td>
+              <td>Convenience wrapper that classifies a raw OpenClaw tool call (e.g. <code>message</code>, <code>exec</code>, <code>write</code>) into the appropriate trust action and runs the check. Automatically skips checks for safe workspace operations.</td>
+            </tr>
+            <tr>
+              <td><code>trust_classify_tool &lt;tool_name&gt; [detail]</code></td>
+              <td>Classifies a tool call into a trust action string (e.g. <code>message:send</code>, <code>exec:sudo</code>, <code>write:external</code>). Used internally by <code>trust_check_tool</code>.</td>
+            </tr>
+            <tr>
+              <td><code>trust_status</code></td>
+              <td>Shortcut for <code>trust-system.sh status</code>. Shows all agent levels, pending approvals, and recent decisions.</td>
+            </tr>
+            <tr>
+              <td><code>trust_pending [agent]</code></td>
+              <td>Shortcut for <code>trust-system.sh list-pending</code>. Lists pending approval requests.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h4>Environment Variables</h4>
+        <table>
+          <thead>
+            <tr>
+              <th>Variable</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>TRUST_AGENT_NAME</code></td>
+              <td>Override the agent name for trust checks. If unset, auto-detected from the OpenClaw session or defaults to <code>ember</code>.</td>
+            </tr>
+            <tr>
+              <td><code>TRUST_DRY_RUN=1</code></td>
+              <td>Log trust decisions but always return "allowed". Useful for testing integration without enforcing.</td>
+            </tr>
+            <tr>
+              <td><code>TRUST_SILENT=1</code></td>
+              <td>Suppress stdout output from trust checks. The return code still reflects the decision.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Trust System Examples</h3>
+
+        <div class="callout tip">
+          <div class="callout-title">Common Operations</div>
+          <p>Here are the most frequently used trust system commands and what to expect.</p>
+        </div>
+
+        <h4>Check if an agent can perform an action</h4>
+        <pre><code># Check if Scout can send an external message
+$ trust-system.sh check scout send_external_message "sending research summary"
+⏳ NEEDS_APPROVAL — scout (Level 2: Act with Approval) requires approval for 'send_external_message' (class: external_communication)
+
+# Check if Ember can write to workspace
+$ trust-system.sh check ember write_workspace "updating daily notes"
+✅ ALLOWED — ember (Level 3: Autonomous) can perform 'write_workspace' (class: workspace_write)</code></pre>
+
+        <h4>Approve or deny a request</h4>
+        <pre><code># List what's waiting for you
+$ trust-system.sh list-pending
+📋 req-1739328431-12345
+   Agent: scout | Action: send_external_message
+   Reason: sending research summary to Discord
+   Created: 2026-02-12T03:00:31Z
+
+# Approve it
+$ trust-system.sh approve req-1739328431-12345
+✅ APPROVED — Request req-1739328431-12345 (scout → send_external_message)
+
+# Or deny it
+$ trust-system.sh deny req-1739328431-12345 "not the right time"
+🚫 DENIED — Request req-1739328431-12345 (scout → send_external_message). Reason: not the right time</code></pre>
+
+        <h4>Change an agent's trust level</h4>
+        <pre><code># Promote Scout to Level 3
+$ trust-system.sh escalate scout 3 "consistently reliable research output"
+⬆️ ESCALATED — scout: Level 2 (Act with Approval) → Level 3 (Autonomous)
+
+# Temporarily demote an agent for more oversight
+$ trust-system.sh demote forge 2 "reviewing after unexpected system change"
+⬇️ DEMOTED — forge: Level 3 (Autonomous) → Level 2 (Act with Approval)</code></pre>
+
+        <h4>View system status and audit log</h4>
+        <pre><code># Full status dashboard
+$ trust-system.sh status
+🔐 Trust System Status
+======================
+
+Agent Levels:
+  ember (Chief of Staff): Level 3 — Autonomous
+  forge (Infrastructure): Level 3 — Autonomous
+  scout (Research): Level 2 — Act with Approval
+
+Pending Approvals: 0
+
+Recent Decisions (last 5):
+  [2026-02-12T02:47:11Z] agent=ember action=write_workspace decision=ALLOWED ...
+
+# View more log history
+$ trust-system.sh log 50</code></pre>
+
+        <h4>Using trust-check.sh in an agent session</h4>
+        <pre><code># Source the integration functions
+$ source ~/agents/ember/scripts/trust-check.sh
+
+# Check a raw tool call
+$ trust_check_tool message "sending summary"
+⏳ NEEDS_APPROVAL — ember (Level 3: Autonomous) requires approval for 'message:send'
+
+# Override agent name for subagent sessions
+$ export TRUST_AGENT_NAME="scout"
+$ trust_check scout send_discord "posting research results"</code></pre>
+
+        <div class="action-section">
+          <h2>What You Do Next</h2>
+          <ul>
+            <li>Bookmark this page for quick access when you are working on the server.</li>
+            <li>Review the <a href="/reference/file-locations">File Locations</a> page to know where OpenClaw configs, trust system files, logs, and data live on disk.</li>
+            <li>Read the <a href="/architecture">Architecture Overview</a> to understand how the Gateway, Lane Queue, and Agent Runner work together.</li>
+            <li>Read the <a href="/agents/trust-levels">Trust Levels</a> page for the conceptual overview of how the trust system works.</li>
+            <li>Check the <a href="/troubleshooting">Troubleshooting</a> section if a command returns unexpected output.</li>
+          </ul>
+        </div>
+
+        <p style="margin-top: 2rem; font-size: 0.8rem; color: #888;">Last updated: February 14, 2026</p></div><!--$--><!--/$--></div></main></div><script src="/_next/static/chunks/webpack-d282787ed3063711.js" id="_R_" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0])</script><script>self.__next_f.push([1,"1:\"$Sreact.fragment\"\n2:I[9766,[],\"\"]\n3:I[8924,[],\"\"]\n4:I[3370,[\"7340\",\"static/chunks/app/(authenticated)/layout-8a56e70ab4050a46.js\"],\"default\"]\n8:I[7150,[],\"\"]\n:HL[\"/_next/static/css/56998b7e09014914.css\",\"style\"]\n5:T5169,"])</script><script>self.__next_f.push([1,"\u003cdiv class=\"breadcrumbs\"\u003e\n          \u003ca href=\"/\"\u003eHome\u003c/a\u003e / Reference / Commands\n        \u003c/div\u003e\n\n        \u003ch1\u003eQuick Commands\u003c/h1\u003e\n        \u003cp\u003eA handy reference of commands you will use most often when working with Agent Team OS. All commands are run on the EC2 instance unless otherwise noted.\u003c/p\u003e\n\n        \u003ch3\u003eConnection\u003c/h3\u003e\n        \u003ctable\u003e\n          \u003cthead\u003e\n            \u003ctr\u003e\n              \u003cth\u003eCommand\u003c/th\u003e\n              \u003cth\u003eWhat It Does\u003c/th\u003e\n              \u003cth\u003eWhen to Use\u003c/th\u003e\n            \u003c/tr\u003e\n          \u003c/thead\u003e\n          \u003ctbody\u003e\n            \u003ctr\u003e\n              \u003ctd\u003e\u003ccode\u003etailscale status\u003c/code\u003e\u003c/td\u003e\n              \u003ctd\u003eCheck Tailscale connection\u003c/td\u003e\n              \u003ctd\u003eWhen you cannot reach the EC2 instance or other devices on your Tailscale network. Run this to verify the VPN is connected and see which peers are online.\u003c/td\u003e\n            \u003c/tr\u003e\n            \u003ctr\u003e\n              \u003ctd\u003e\u003ccode\u003essh ec2\u003c/code\u003e\u003c/td\u003e\n              \u003ctd\u003eConnect to EC2 instance\u003c/td\u003e\n              \u003ctd\u003eWhenever you need to access the server directly. This uses the SSH alias configured in your \u003ccode\u003e~/.ssh/config\u003c/code\u003e to connect over Tailscale.\u003c/td\u003e\n            \u003c/tr\u003e\n          \u003c/tbody\u003e\n        \u003c/table\u003e\n\n        \u003ch3\u003eSyncthing\u003c/h3\u003e\n        \u003ctable\u003e\n          \u003cthead\u003e\n            \u003ctr\u003e\n              \u003cth\u003eCommand\u003c/th\u003e\n              \u003cth\u003eWhat It Does\u003c/th\u003e\n              \u003cth\u003eWhen to Use\u003c/th\u003e\n            \u003c/tr\u003e\n          \u003c/thead\u003e\n          \u003ctbody\u003e\n            \u003ctr\u003e\n              \u003ctd\u003e\u003ccode\u003esystemctl status syncthing\u003c/code\u003e\u003c/td\u003e\n              \u003ctd\u003eCheck Syncthing status\u003c/td\u003e\n              \u003ctd\u003eWhen files are not syncing as expected. This shows whether the Syncthing service is running and any recent activity or errors.\u003c/td\u003e\n            \u003c/tr\u003e\n            \u003ctr\u003e\n              \u003ctd\u003e\u003ccode\u003esystemctl restart syncthing\u003c/code\u003e\u003c/td\u003e\n              \u003ctd\u003eRestart Syncthing\u003c/td\u003e\n              \u003ctd\u003eWhen Syncthing is stuck or not responding. A restart clears temporary issues and forces re-connection to peers.\u003c/td\u003e\n            \u003c/tr\u003e\n            \u003ctr\u003e\n              \u003ctd\u003e\u003ccode\u003ejournalctl -u syncthing --since today\u003c/code\u003e\u003c/td\u003e\n              \u003ctd\u003eView today's Syncthing logs\u003c/td\u003e\n              \u003ctd\u003eWhen you need to diagnose sync problems in detail. Shows all Syncthing log entries from today, including connection events, sync conflicts, and errors.\u003c/td\u003e\n            \u003c/tr\u003e\n          \u003c/tbody\u003e\n        \u003c/table\u003e\n\n        \u003ch3\u003eSystem\u003c/h3\u003e\n        \u003ctable\u003e\n          \u003cthead\u003e\n            \u003ctr\u003e\n              \u003cth\u003eCommand\u003c/th\u003e\n              \u003cth\u003eWhat It Does\u003c/th\u003e\n              \u003cth\u003eWhen to Use\u003c/th\u003e\n            \u003c/tr\u003e\n          \u003c/thead\u003e\n          \u003ctbody\u003e\n            \u003ctr\u003e\n              \u003ctd\u003e\u003ccode\u003ecrontab -l\u003c/code\u003e\u003c/td\u003e\n              \u003ctd\u003eView scheduled cron jobs\u003c/td\u003e\n              \u003ctd\u003eWhen you want to see what automated tasks are scheduled and when they run. Useful for verifying that morning reports, backups, and other jobs are configured correctly.\u003c/td\u003e\n            \u003c/tr\u003e\n            \u003ctr\u003e\n              \u003ctd\u003e\u003ccode\u003edf -h\u003c/code\u003e\u003c/td\u003e\n              \u003ctd\u003eCheck disk space\u003c/td\u003e\n              \u003ctd\u003eWhen the system feels slow or agents report write errors. Shows disk usage in a human-readable format so you can spot partitions that are running low.\u003c/td\u003e\n            \u003c/tr\u003e\n            \u003ctr\u003e\n              \u003ctd\u003e\u003ccode\u003ehtop\u003c/code\u003e\u003c/td\u003e\n              \u003ctd\u003eMonitor system resources\u003c/td\u003e\n              \u003ctd\u003eWhen you want a real-time view of CPU, memory, and process activity. Helpful for checking whether an agent process is consuming unexpected resources.\u003c/td\u003e\n            \u003c/tr\u003e\n          \u003c/tbody\u003e\n        \u003c/table\u003e\n\n        \u003c!-- ============================================================= --\u003e\n        \u003c!-- OPENCLAW CLI                                                   --\u003e\n        \u003c!-- ============================================================= --\u003e\n        \u003ch2 id=\"openclaw-cli\"\u003eOpenClaw CLI\u003c/h2\u003e\n\n        \u003cp\u003eThe \u003ccode\u003eopenclaw\u003c/code\u003e command is the primary interface for managing the OpenClaw platform — the \u003ca href=\"/architecture/gateway\"\u003eGateway\u003c/a\u003e daemon, sessions, cron jobs, and more. Run \u003ccode\u003eopenclaw help\u003c/code\u003e for a full list of subcommands.\u003c/p\u003e\n\n        \u003ch3\u003eGateway Management\u003c/h3\u003e\n        \u003ctable\u003e\n          \u003cthead\u003e\n            \u003ctr\u003e\n              \u003cth\u003eCommand\u003c/th\u003e\n              \u003cth\u003eWhat It Does\u003c/th\u003e\n              \u003cth\u003eWhen to Use\u003c/th\u003e\n            \u003c/tr\u003e\n          \u003c/thead\u003e\n          \u003ctbody\u003e\n            \u003ctr\u003e\n              \u003ctd\u003e\u003ccode\u003eopenclaw gateway status\u003c/code\u003e\u003c/td\u003e\n              \u003ctd\u003eCheck whether the Gateway daemon is running, and show uptime, connected channels, and active session count.\u003c/td\u003e\n              \u003ctd\u003eFirst thing to check when agents are unresponsive or messages are not being delivered. Also useful after a server reboot to confirm everything came back up.\u003c/td\u003e\n            \u003c/tr\u003e\n            \u003ctr\u003e\n              \u003ctd\u003e\u003ccode\u003eopenclaw gateway start\u003c/code\u003e\u003c/td\u003e\n              \u003ctd\u003eStart the Gateway daemon. Loads \u003ccode\u003e~/.openclaw/config.yaml\u003c/code\u003e, connects channel adapters, and begins processing messages.\u003c/td\u003e\n              \u003ctd\u003eAfter installation, after a manual stop, or when \u003ccode\u003egateway status\u003c/code\u003e shows the daemon is not running.\u003c/td\u003e\n            \u003c/tr\u003e\n            \u003ctr\u003e\n              \u003ctd\u003e\u003ccode\u003eopenclaw gateway stop\u003c/code\u003e\u003c/td\u003e\n              \u003ctd\u003eGracefully stop the Gateway daemon. Active sessions are allowed to complete their current turn before shutdown.\u003c/td\u003e\n              \u003ctd\u003eBefore making major configuration changes, during maintenance, or when you need to cleanly shut down the system.\u003c/td\u003e\n            \u003c/tr\u003e\n            \u003ctr\u003e\n              \u003ctd\u003e\u003ccode\u003eopenclaw gateway restart\u003c/code\u003e\u003c/td\u003e\n              \u003ctd\u003eStop and restart the Gateway daemon. Equivalent to \u003ccode\u003estop\u003c/code\u003e followed by \u003ccode\u003estart\u003c/code\u003e, reloading configuration.\u003c/td\u003e\n              \u003ctd\u003eAfter editing \u003ccode\u003e~/.openclaw/config.yaml\u003c/code\u003e to pick up changes — new channel adapters, updated tool policies, model changes, etc.\u003c/td\u003e\n            \u003c/tr\u003e\n          \u003c/tbody\u003e\n        \u003c/table\u003e\n\n        \u003ch3\u003eSessions \u0026amp; Cron\u003c/h3\u003e\n        \u003ctable\u003e\n          \u003cthead\u003e\n            \u003ctr\u003e\n              \u003cth\u003eCommand\u003c/th\u003e\n              \u003cth\u003eWhat It Does\u003c/th\u003e\n              \u003cth\u003eWhen to Use\u003c/th\u003e\n            \u003c/tr\u003e\n          \u003c/thead\u003e\n          \u003ctbody\u003e\n            \u003ctr\u003e\n              \u003ctd\u003e\u003ccode\u003eopenclaw sessions list\u003c/code\u003e\u003c/td\u003e\n              \u003ctd\u003eList all active and recent sessions with their session keys, agent names, channels, and status (active/idle/completed).\u003c/td\u003e\n              \u003ctd\u003eWhen you want to see what agents are currently running, check session activity, or find a specific session ID for debugging.\u003c/td\u003e\n            \u003c/tr\u003e\n            \u003ctr\u003e\n              \u003ctd\u003e\u003ccode\u003eopenclaw cron list\u003c/code\u003e\u003c/td\u003e\n              \u003ctd\u003eList all scheduled cron jobs configured in OpenClaw, with their schedules, target agents, and next run times.\u003c/td\u003e\n              \u003ctd\u003eTo review what automated tasks OpenClaw is running — morning reports, heartbeats, health checks, and any custom scheduled jobs.\u003c/td\u003e\n            \u003c/tr\u003e\n          \u003c/tbody\u003e\n        \u003c/table\u003e\n\n        \u003ch3\u003eService Logs\u003c/h3\u003e\n        \u003ctable\u003e\n          \u003cthead\u003e\n            \u003ctr\u003e\n              \u003cth\u003eCommand\u003c/th\u003e\n              \u003cth\u003eWhat It Does\u003c/th\u003e\n              \u003cth\u003eWhen to Use\u003c/th\u003e\n            \u003c/tr\u003e\n          \u003c/thead\u003e\n          \u003ctbody\u003e\n            \u003ctr\u003e\n              \u003ctd\u003e\u003ccode\u003ejournalctl -u openclaw --since today\u003c/code\u003e\u003c/td\u003e\n              \u003ctd\u003eView today's OpenClaw service logs from the systemd journal. Includes gateway startup, channel connections, session lifecycle events, and errors.\u003c/td\u003e\n              \u003ctd\u003eWhen diagnosing gateway or agent service issues. Pair with \u003ccode\u003eopenclaw gateway status\u003c/code\u003e for a complete picture.\u003c/td\u003e\n            \u003c/tr\u003e\n          \u003c/tbody\u003e\n        \u003c/table\u003e\n\n        \u003ch3\u003eAgent Logs\u003c/h3\u003e\n        \u003cp\u003eAgent logs live in \u003ccode\u003e~/agents/ember/logs/\u003c/code\u003e. Session transcripts (full conversation history) are stored as JSONL files in \u003ccode\u003e~/.openclaw/agents/ember/sessions/\u003c/code\u003e.\u003c/p\u003e\n        \u003ctable\u003e\n          \u003cthead\u003e\n            \u003ctr\u003e\n              \u003cth\u003eCommand\u003c/th\u003e\n              \u003cth\u003eWhat It Does\u003c/th\u003e\n              \u003cth\u003eWhen to Use\u003c/th\u003e\n            \u003c/tr\u003e\n          \u003c/thead\u003e\n          \u003ctbody\u003e\n            \u003ctr\u003e\n              \u003ctd\u003e\u003ccode\u003etail -f ~/agents/ember/logs/trust-decisions.log\u003c/code\u003e\u003c/td\u003e\n              \u003ctd\u003eFollow trust system decisions\u003c/td\u003e\n              \u003ctd\u003eWhen you want to watch trust system activity in real time. Shows every check, approval, and denial as they happen. Press \u003ccode\u003eCtrl+C\u003c/code\u003e to stop.\u003c/td\u003e\n            \u003c/tr\u003e\n            \u003ctr\u003e\n              \u003ctd\u003e\u003ccode\u003etail -f ~/agents/ember/logs/forge-health.log\u003c/code\u003e\u003c/td\u003e\n              \u003ctd\u003eFollow Forge's health checks\u003c/td\u003e\n              \u003ctd\u003eWhen you want to watch Forge's infrastructure monitoring in real time. Useful during maintenance windows or when diagnosing system issues.\u003c/td\u003e\n            \u003c/tr\u003e\n            \u003ctr\u003e\n              \u003ctd\u003e\u003ccode\u003etail -f ~/agents/ember/logs/forge-cron.log\u003c/code\u003e\u003c/td\u003e\n              \u003ctd\u003eFollow Forge's cron activity\u003c/td\u003e\n              \u003ctd\u003eWhen you want to see what Forge's scheduled tasks are doing. Shows cron job execution, timing, and any errors.\u003c/td\u003e\n            \u003c/tr\u003e\n            \u003ctr\u003e\n              \u003ctd\u003e\u003ccode\u003els -lt ~/.openclaw/agents/ember/sessions/*.jsonl | head\u003c/code\u003e\u003c/td\u003e\n              \u003ctd\u003eList recent session transcripts\u003c/td\u003e\n              \u003ctd\u003eWhen you want to review past agent conversations. Each JSONL file is a full session transcript. Sorted by most recent first.\u003c/td\u003e\n            \u003c/tr\u003e\n          \u003c/tbody\u003e\n        \u003c/table\u003e\n\n        \u003c!-- ============================================================= --\u003e\n        \u003c!-- TRUST SYSTEM CLI REFERENCE                                     --\u003e\n        \u003c!-- ============================================================= --\u003e\n        \u003ch2 id=\"trust-system\"\u003eTrust System Commands\u003c/h2\u003e\n\n        \u003cp\u003eThe trust system is enforced through two scripts: \u003ccode\u003etrust-system.sh\u003c/code\u003e (the main engine with 10 subcommands) and \u003ccode\u003etrust-check.sh\u003c/code\u003e (a source-able wrapper that agents use in their sessions). Both live in \u003ccode\u003e~/agents/ember/scripts/\u003c/code\u003e. See \u003ca href=\"/agents/trust-levels\"\u003eTrust Levels\u003c/a\u003e for the full conceptual overview.\u003c/p\u003e\n\n        \u003ch3\u003e\u003ccode\u003etrust-system.sh\u003c/code\u003e — CLI Reference\u003c/h3\u003e\n\n        \u003ctable\u003e\n          \u003cthead\u003e\n            \u003ctr\u003e\n              \u003cth\u003eCommand\u003c/th\u003e\n              \u003cth\u003eWhat It Does\u003c/th\u003e\n              \u003cth\u003eWhen to Use\u003c/th\u003e\n            \u003c/tr\u003e\n          \u003c/thead\u003e\n          \u003ctbody\u003e\n            \u003ctr\u003e\n              \u003ctd\u003e\u003ccode\u003etrust-system.sh check \u0026lt;agent\u0026gt; \u0026lt;action\u0026gt; [reason]\u003c/code\u003e\u003c/td\u003e\n              \u003ctd\u003eCheck whether an agent is allowed to perform an action. Returns exit code 0 (allowed), 1 (denied), or 2 (needs approval).\u003c/td\u003e\n              \u003ctd\u003eBefore any restricted action. This is the core enforcement gate — every permission decision flows through this command.\u003c/td\u003e\n            \u003c/tr\u003e\n            \u003ctr\u003e\n              \u003ctd\u003e\u003ccode\u003etrust-system.sh request-approval \u0026lt;agent\u0026gt; \u0026lt;action\u0026gt; \u0026lt;reason\u0026gt;\u003c/code\u003e\u003c/td\u003e\n              \u003ctd\u003eQueue an approval request when \u003ccode\u003echeck\u003c/code\u003e returns exit code 2. Creates a JSON file in the approval queue and sends notifications via Discord and Pushover.\u003c/td\u003e\n              \u003ctd\u003eAutomatically called by \u003ccode\u003etrust-check.sh\u003c/code\u003e when a check returns NEEDS_APPROVAL. Can also be called manually.\u003c/td\u003e\n            \u003c/tr\u003e\n            \u003ctr\u003e\n              \u003ctd\u003e\u003ccode\u003etrust-system.sh approve \u0026lt;request-id\u0026gt;\u003c/code\u003e\u003c/td\u003e\n              \u003ctd\u003eApprove a pending request. Updates the request status to \"approved\" and logs the decision.\u003c/td\u003e\n              \u003ctd\u003eWhen you receive an approval notification and want to allow the action. The request ID is included in the notification.\u003c/td\u003e\n            \u003c/tr\u003e\n            \u003ctr\u003e\n              \u003ctd\u003e\u003ccode\u003etrust-system.sh deny \u0026lt;request-id\u0026gt; [reason]\u003c/code\u003e\u003c/td\u003e\n              \u003ctd\u003eDeny a pending request with an optional reason. Updates the request status to \"denied\" and notifies the agent.\u003c/td\u003e\n              \u003ctd\u003eWhen you receive an approval notification and want to block the action.\u003c/td\u003e\n            \u003c/tr\u003e\n            \u003ctr\u003e\n              \u003ctd\u003e\u003ccode\u003etrust-system.sh list-pending [agent]\u003c/code\u003e\u003c/td\u003e\n              \u003ctd\u003eList all pending approval requests, optionally filtered by agent name.\u003c/td\u003e\n              \u003ctd\u003eTo review the current approval queue. Useful when you come back to check what agents have been asking for.\u003c/td\u003e\n            \u003c/tr\u003e\n            \u003ctr\u003e\n              \u003ctd\u003e\u003ccode\u003etrust-system.sh escalate \u0026lt;agent\u0026gt; \u0026lt;new-level\u0026gt; \u0026lt;reason\u0026gt;\u003c/code\u003e\u003c/td\u003e\n              \u003ctd\u003eRaise an agent's trust level. Validates that the new level is higher than the current level. Updates the config and logs the change.\u003c/td\u003e\n              \u003ctd\u003eWhen an agent has earned more autonomy and you want to promote it. For example, moving Scout from Level 2 to Level 3.\u003c/td\u003e\n            \u003c/tr\u003e\n            \u003ctr\u003e\n              \u003ctd\u003e\u003ccode\u003etrust-system.sh demote \u0026lt;agent\u0026gt; \u0026lt;new-level\u0026gt; \u0026lt;reason\u0026gt;\u003c/code\u003e\u003c/td\u003e\n              \u003ctd\u003eLower an agent's trust level. Validates that the new level is lower than the current level. Updates the config and logs the change.\u003c/td\u003e\n              \u003ctd\u003eWhen an agent has made a mistake or you want to add more oversight. Takes effect immediately.\u003c/td\u003e\n            \u003c/tr\u003e\n            \u003ctr\u003e\n              \u003ctd\u003e\u003ccode\u003etrust-system.sh get-level \u0026lt;agent\u0026gt;\u003c/code\u003e\u003c/td\u003e\n              \u003ctd\u003eDisplay an agent's current trust level number and name.\u003c/td\u003e\n              \u003ctd\u003eQuick check to see where an agent currently sits in the trust hierarchy.\u003c/td\u003e\n            \u003c/tr\u003e\n            \u003ctr\u003e\n              \u003ctd\u003e\u003ccode\u003etrust-system.sh status\u003c/code\u003e\u003c/td\u003e\n              \u003ctd\u003eShow a full status dashboard: all agent levels, pending approval count, and the 5 most recent trust decisions from the log.\u003c/td\u003e\n              \u003ctd\u003eFor a quick overview of the entire trust system state.\u003c/td\u003e\n            \u003c/tr\u003e\n            \u003ctr\u003e\n              \u003ctd\u003e\u003ccode\u003etrust-system.sh log [lines]\u003c/code\u003e\u003c/td\u003e\n              \u003ctd\u003eShow recent entries from the trust decision log. Defaults to the last 20 lines.\u003c/td\u003e\n              \u003ctd\u003eTo audit recent trust decisions, see what was allowed, denied, or escalated.\u003c/td\u003e\n            \u003c/tr\u003e\n          \u003c/tbody\u003e\n        \u003c/table\u003e\n\n        \u003ch3\u003e\u003ccode\u003etrust-check.sh\u003c/code\u003e — Agent Integration Functions\u003c/h3\u003e\n\n        \u003cp\u003eThis script is designed to be \u003cstrong\u003esourced\u003c/strong\u003e (not executed) by agent sessions. It provides convenience functions that wrap \u003ccode\u003etrust-system.sh\u003c/code\u003e and handle the approval flow automatically. Agents source it via \u003ccode\u003e.bashrc.agent\u003c/code\u003e.\u003c/p\u003e\n\n        \u003ctable\u003e\n          \u003cthead\u003e\n            \u003ctr\u003e\n              \u003cth\u003eFunction\u003c/th\u003e\n              \u003cth\u003eWhat It Does\u003c/th\u003e\n            \u003c/tr\u003e\n          \u003c/thead\u003e\n          \u003ctbody\u003e\n            \u003ctr\u003e\n              \u003ctd\u003e\u003ccode\u003etrust_check \u0026lt;agent\u0026gt; \u0026lt;action\u0026gt; [reason]\u003c/code\u003e\u003c/td\u003e\n              \u003ctd\u003eMain entry point. Calls \u003ccode\u003etrust-system.sh check\u003c/code\u003e and, if the result is NEEDS_APPROVAL, automatically calls \u003ccode\u003erequest-approval\u003c/code\u003e. Returns 0 (allowed), 1 (blocked), or 2 (approval pending).\u003c/td\u003e\n            \u003c/tr\u003e\n            \u003ctr\u003e\n              \u003ctd\u003e\u003ccode\u003etrust_check_tool \u0026lt;tool_name\u0026gt; [detail]\u003c/code\u003e\u003c/td\u003e\n              \u003ctd\u003eConvenience wrapper that classifies a raw OpenClaw tool call (e.g. \u003ccode\u003emessage\u003c/code\u003e, \u003ccode\u003eexec\u003c/code\u003e, \u003ccode\u003ewrite\u003c/code\u003e) into the appropriate trust action and runs the check. Automatically skips checks for safe workspace operations.\u003c/td\u003e\n            \u003c/tr\u003e\n            \u003ctr\u003e\n              \u003ctd\u003e\u003ccode\u003etrust_classify_tool \u0026lt;tool_name\u0026gt; [detail]\u003c/code\u003e\u003c/td\u003e\n              \u003ctd\u003eClassifies a tool call into a trust action string (e.g. \u003ccode\u003emessage:send\u003c/code\u003e, \u003ccode\u003eexec:sudo\u003c/code\u003e, \u003ccode\u003ewrite:external\u003c/code\u003e). Used internally by \u003ccode\u003etrust_check_tool\u003c/code\u003e.\u003c/td\u003e\n            \u003c/tr\u003e\n            \u003ctr\u003e\n              \u003ctd\u003e\u003ccode\u003etrust_status\u003c/code\u003e\u003c/td\u003e\n              \u003ctd\u003eShortcut for \u003ccode\u003etrust-system.sh status\u003c/code\u003e. Shows all agent levels, pending approvals, and recent decisions.\u003c/td\u003e\n            \u003c/tr\u003e\n            \u003ctr\u003e\n              \u003ctd\u003e\u003ccode\u003etrust_pending [agent]\u003c/code\u003e\u003c/td\u003e\n              \u003ctd\u003eShortcut for \u003ccode\u003etrust-system.sh list-pending\u003c/code\u003e. Lists pending approval requests.\u003c/td\u003e\n            \u003c/tr\u003e\n          \u003c/tbody\u003e\n        \u003c/table\u003e\n\n        \u003ch4\u003eEnvironment Variables\u003c/h4\u003e\n        \u003ctable\u003e\n          \u003cthead\u003e\n            \u003ctr\u003e\n              \u003cth\u003eVariable\u003c/th\u003e\n              \u003cth\u003eDescription\u003c/th\u003e\n            \u003c/tr\u003e\n          \u003c/thead\u003e\n          \u003ctbody\u003e\n            \u003ctr\u003e\n              \u003ctd\u003e\u003ccode\u003eTRUST_AGENT_NAME\u003c/code\u003e\u003c/td\u003e\n              \u003ctd\u003eOverride the agent name for trust checks. If unset, auto-detected from the OpenClaw session or defaults to \u003ccode\u003eember\u003c/code\u003e.\u003c/td\u003e\n            \u003c/tr\u003e\n            \u003ctr\u003e\n              \u003ctd\u003e\u003ccode\u003eTRUST_DRY_RUN=1\u003c/code\u003e\u003c/td\u003e\n              \u003ctd\u003eLog trust decisions but always return \"allowed\". Useful for testing integration without enforcing.\u003c/td\u003e\n            \u003c/tr\u003e\n            \u003ctr\u003e\n              \u003ctd\u003e\u003ccode\u003eTRUST_SILENT=1\u003c/code\u003e\u003c/td\u003e\n              \u003ctd\u003eSuppress stdout output from trust checks. The return code still reflects the decision.\u003c/td\u003e\n            \u003c/tr\u003e\n          \u003c/tbody\u003e\n        \u003c/table\u003e\n\n        \u003ch3\u003eTrust System Examples\u003c/h3\u003e\n\n        \u003cdiv class=\"callout tip\"\u003e\n          \u003cdiv class=\"callout-title\"\u003eCommon Operations\u003c/div\u003e\n          \u003cp\u003eHere are the most frequently used trust system commands and what to expect.\u003c/p\u003e\n        \u003c/div\u003e\n\n        \u003ch4\u003eCheck if an agent can perform an action\u003c/h4\u003e\n        \u003cpre\u003e\u003ccode\u003e# Check if Scout can send an external message\n$ trust-system.sh check scout send_external_message \"sending research summary\"\n⏳ NEEDS_APPROVAL — scout (Level 2: Act with Approval) requires approval for 'send_external_message' (class: external_communication)\n\n# Check if Ember can write to workspace\n$ trust-system.sh check ember write_workspace \"updating daily notes\"\n✅ ALLOWED — ember (Level 3: Autonomous) can perform 'write_workspace' (class: workspace_write)\u003c/code\u003e\u003c/pre\u003e\n\n        \u003ch4\u003eApprove or deny a request\u003c/h4\u003e\n        \u003cpre\u003e\u003ccode\u003e# List what's waiting for you\n$ trust-system.sh list-pending\n📋 req-1739328431-12345\n   Agent: scout | Action: send_external_message\n   Reason: sending research summary to Discord\n   Created: 2026-02-12T03:00:31Z\n\n# Approve it\n$ trust-system.sh approve req-1739328431-12345\n✅ APPROVED — Request req-1739328431-12345 (scout → send_external_message)\n\n# Or deny it\n$ trust-system.sh deny req-1739328431-12345 \"not the right time\"\n🚫 DENIED — Request req-1739328431-12345 (scout → send_external_message). Reason: not the right time\u003c/code\u003e\u003c/pre\u003e\n\n        \u003ch4\u003eChange an agent's trust level\u003c/h4\u003e\n        \u003cpre\u003e\u003ccode\u003e# Promote Scout to Level 3\n$ trust-system.sh escalate scout 3 \"consistently reliable research output\"\n⬆️ ESCALATED — scout: Level 2 (Act with Approval) → Level 3 (Autonomous)\n\n# Temporarily demote an agent for more oversight\n$ trust-system.sh demote forge 2 \"reviewing after unexpected system change\"\n⬇️ DEMOTED — forge: Level 3 (Autonomous) → Level 2 (Act with Approval)\u003c/code\u003e\u003c/pre\u003e\n\n        \u003ch4\u003eView system status and audit log\u003c/h4\u003e\n        \u003cpre\u003e\u003ccode\u003e# Full status dashboard\n$ trust-system.sh status\n🔐 Trust System Status\n======================\n\nAgent Levels:\n  ember (Chief of Staff): Level 3 — Autonomous\n  forge (Infrastructure): Level 3 — Autonomous\n  scout (Research): Level 2 — Act with Approval\n\nPending Approvals: 0\n\nRecent Decisions (last 5):\n  [2026-02-12T02:47:11Z] agent=ember action=write_workspace decision=ALLOWED ...\n\n# View more log history\n$ trust-system.sh log 50\u003c/code\u003e\u003c/pre\u003e\n\n        \u003ch4\u003eUsing trust-check.sh in an agent session\u003c/h4\u003e\n        \u003cpre\u003e\u003ccode\u003e# Source the integration functions\n$ source ~/agents/ember/scripts/trust-check.sh\n\n# Check a raw tool call\n$ trust_check_tool message \"sending summary\"\n⏳ NEEDS_APPROVAL — ember (Level 3: Autonomous) requires approval for 'message:send'\n\n# Override agent name for subagent sessions\n$ export TRUST_AGENT_NAME=\"scout\"\n$ trust_check scout send_discord \"posting research results\"\u003c/code\u003e\u003c/pre\u003e\n\n        \u003cdiv class=\"action-section\"\u003e\n          \u003ch2\u003eWhat You Do Next\u003c/h2\u003e\n          \u003cul\u003e\n            \u003cli\u003eBookmark this page for quick access when you are working on the server.\u003c/li\u003e\n            \u003cli\u003eReview the \u003ca href=\"/reference/file-locations\"\u003eFile Locations\u003c/a\u003e page to know where OpenClaw configs, trust system files, logs, and data live on disk.\u003c/li\u003e\n            \u003cli\u003eRead the \u003ca href=\"/architecture\"\u003eArchitecture Overview\u003c/a\u003e to understand how the Gateway, Lane Queue, and Agent Runner work together.\u003c/li\u003e\n            \u003cli\u003eRead the \u003ca href=\"/agents/trust-levels\"\u003eTrust Levels\u003c/a\u003e page for the conceptual overview of how the trust system works.\u003c/li\u003e\n            \u003cli\u003eCheck the \u003ca href=\"/troubleshooting\"\u003eTroubleshooting\u003c/a\u003e section if a command returns unexpected output.\u003c/li\u003e\n          \u003c/ul\u003e\n        \u003c/div\u003e\n\n        \u003cp style=\"margin-top: 2rem; font-size: 0.8rem; color: #888;\"\u003eLast updated: February 14, 2026\u003c/p\u003e"])</script><script>self.__next_f.push([1,"0:{\"P\":null,\"b\":\"VA-lAVEn1LekIejhMlH5y\",\"p\":\"\",\"c\":[\"\",\"reference\",\"commands\"],\"i\":false,\"f\":[[[\"\",{\"children\":[\"(authenticated)\",{\"children\":[\"reference\",{\"children\":[\"commands\",{\"children\":[\"__PAGE__\",{}]}]}]}]},\"$undefined\",\"$undefined\",true],[\"\",[\"$\",\"$1\",\"c\",{\"children\":[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/css/56998b7e09014914.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}]],[\"$\",\"html\",null,{\"lang\":\"en\",\"children\":[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":404}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],[]],\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]}]]}],{\"children\":[\"(authenticated)\",[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"body\",null,{\"children\":[[\"$\",\"input\",null,{\"type\":\"checkbox\",\"id\":\"menu-toggle\",\"className\":\"menu-toggle\"}],[\"$\",\"label\",null,{\"htmlFor\":\"menu-toggle\",\"className\":\"hamburger\",\"aria-label\":\"Toggle navigation\",\"children\":\"☰\"}],[\"$\",\"label\",null,{\"htmlFor\":\"menu-toggle\",\"className\":\"overlay\"}],[\"$\",\"div\",null,{\"className\":\"site-wrapper\",\"children\":[[\"$\",\"$L4\",null,{}],[\"$\",\"main\",null,{\"className\":\"main-content\",\"children\":[\"$\",\"div\",null,{\"className\":\"content-wrapper\",\"children\":[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":\"$0:f:0:1:1:props:children:1:props:children:props:notFound:0:1:props:style\",\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":\"$0:f:0:1:1:props:children:1:props:children:props:notFound:0:1:props:children:props:children:1:props:style\",\"children\":404}],[\"$\",\"div\",null,{\"style\":\"$0:f:0:1:1:props:children:1:props:children:props:notFound:0:1:props:children:props:children:2:props:style\",\"children\":[\"$\",\"h2\",null,{\"style\":\"$0:f:0:1:1:props:children:1:props:children:props:notFound:0:1:props:children:props:children:2:props:children:props:style\",\"children\":\"This page could not be found.\"}]}]]}]}]],[]],\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]}]}]]}]]}]]}],{\"children\":[\"reference\",[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[\"commands\",[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[\"__PAGE__\",[\"$\",\"$1\",\"c\",{\"children\":[[\"$\",\"div\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"$5\"}}],null,\"$L6\"]}],{},null,false]},null,false]},null,false]},null,false]},null,false],\"$L7\",false]],\"m\":\"$undefined\",\"G\":[\"$8\",[]],\"s\":false,\"S\":true}\n"])</script><script>self.__next_f.push([1,"9:I[4431,[],\"OutletBoundary\"]\nb:I[5278,[],\"AsyncMetadataOutlet\"]\nd:I[4431,[],\"ViewportBoundary\"]\nf:I[4431,[],\"MetadataBoundary\"]\n10:\"$Sreact.suspense\"\n6:[\"$\",\"$L9\",null,{\"children\":[\"$La\",[\"$\",\"$Lb\",null,{\"promise\":\"$@c\"}]]}]\n7:[\"$\",\"$1\",\"h\",{\"children\":[null,[[\"$\",\"$Ld\",null,{\"children\":\"$Le\"}],null],[\"$\",\"$Lf\",null,{\"children\":[\"$\",\"div\",null,{\"hidden\":true,\"children\":[\"$\",\"$10\",null,{\"fallback\":null,\"children\":\"$L11\"}]}]}]]}]\n"])</script><script>self.__next_f.push([1,"e:[[\"$\",\"meta\",\"0\",{\"charSet\":\"utf-8\"}],[\"$\",\"meta\",\"1\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}]]\na:null\n"])</script><script>self.__next_f.push([1,"c:{\"metadata\":[[\"$\",\"title\",\"0\",{\"children\":\"Quick Commands — Agent Team OS Guide\"}],[\"$\",\"meta\",\"1\",{\"name\":\"description\",\"content\":\"Your personal AI agent team, working together to keep your life organized.\"}]],\"error\":null,\"digest\":\"$undefined\"}\n"])</script><script>self.__next_f.push([1,"11:\"$c:metadata\"\n"])</script></body></html>
