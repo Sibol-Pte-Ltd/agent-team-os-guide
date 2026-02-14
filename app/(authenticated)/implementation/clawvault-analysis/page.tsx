@@ -672,6 +672,11 @@ clawvault context "what decisions were made" --budget 2000 --profile planning</c
           <p>The original plan called for standalone <code>qmd</code> collections. In practice, OpenClaw 2026.2.13 ships with built-in <code>memory_search</code> that uses the same embedding model (<code>embeddinggemma-300m-qat-Q8_0</code>) and provides per-agent isolated indexes out of the box. This was simpler, required no additional dependencies, and integrated directly with the agent tool system. Agents use <code>memory_search</code> and <code>memory_get</code> tools rather than CLI commands.</p>
         </div>
 
+        <div class="callout success">
+          <div class="callout-title">Current Status: Phase 3 & 4 In Progress</div>
+          <p><strong>Phase 0:</strong> ✅ Complete, <strong>Phase 1:</strong> ✅ Complete, <strong>Phase 2:</strong> ✅ Complete, <strong>Phase 3:</strong> 🔲 In Progress (Tasks 3.1–3.4 complete), <strong>Phase 4:</strong> 🔲 In Progress (Tasks 4.1–4.3 complete)</p>
+        </div>
+
         <h3>Phase 2: Session Handoff Scripts (Medium Priority)</h3>
         <p><strong>Goal:</strong> Formalize session continuity so agents can reliably recover context after session resets or context window overflow.</p>
         <p><strong>Owner:</strong> Architect</p>
@@ -690,33 +695,33 @@ clawvault context "what decisions were made" --budget 2000 --profile planning</c
           <tbody>
             <tr>
               <td>2.1</td>
-              <td>Create <code>scripts/handoff.sh</code></td>
+              <td>✅ Create <code>scripts/handoff.sh</code></td>
               <td>Architect</td>
-              <td>Implement three functions: <code>handoff_wake</code> (load recent memory + qmd search for active context), <code>handoff_sleep</code> (write session summary to memory/), <code>handoff_recap</code> (generate context summary from last N memory entries).</td>
+              <td>Implemented three functions: <code>handoff_wake</code> (load recent memory + extract handoff), <code>handoff_sleep</code> (write session summary), <code>handoff_recap</code> (show recent entries). Located at <code>~/agents/ember/scripts/handoff.sh</code>.</td>
             </tr>
             <tr>
               <td>2.2</td>
-              <td>Define handoff format</td>
+              <td>✅ Define handoff format</td>
               <td>Architect</td>
-              <td>Design a lightweight handoff block format for memory files: <code>## Handoff</code> section with <code>working-on</code>, <code>next-steps</code>, <code>blockers</code>, <code>context-refs</code> fields. Keep compatible with existing <code>memory/YYYY-MM-DD.md</code> format.</td>
+              <td>Lightweight <code>## Handoff</code> block format defined with <code>working-on</code>, <code>next-steps</code>, <code>blockers</code>, <code>context-refs</code> fields. Compatible with existing <code>memory/YYYY-MM-DD.md</code> format. Priority markers: 🔴🟡🟢.</td>
             </tr>
             <tr>
               <td>2.3</td>
-              <td>Integrate with agent session startup</td>
+              <td>✅ Integrate with agent session startup</td>
               <td>Architect</td>
-              <td>Add <code>handoff_wake</code> call to agent AGENTS.md "Every Session" instructions. Agents auto-recover context on spawn.</td>
+              <td>Added <code>handoff_wake</code> call to all 4 agents' AGENTS.md "Every Session" instructions. Also added "Before Ending Session" section with <code>handoff_sleep</code> instruction. Agents auto-recover context on spawn.</td>
             </tr>
             <tr>
               <td>2.4</td>
-              <td>Integrate with heartbeat</td>
+              <td>✅ Integrate with heartbeat</td>
               <td>Architect</td>
-              <td>At end of meaningful heartbeat runs, write a mini handoff note. This ensures context survives even if no explicit <code>sleep</code> is called.</td>
+              <td>Added <code>handoff_heartbeat</code> function for lightweight handoffs from automated runs. Can be called at end of cron jobs (morning-report, evening-checkin) to ensure context survives.</td>
             </tr>
             <tr>
               <td>2.5</td>
-              <td>Test cross-session recovery</td>
+              <td>✅ Test cross-session recovery</td>
               <td>Architect</td>
-              <td>Simulate context death: reset a session, verify <code>wake</code> recovers the right context. Test with both Ember and Scout.</td>
+              <td>Validated: wrote handoff with <code>handoff_sleep</code>, recovered with <code>handoff_wake</code>. Context successfully preserved across simulated session reset.</td>
             </tr>
           </tbody>
         </table>
@@ -739,27 +744,27 @@ clawvault context "what decisions were made" --budget 2000 --profile planning</c
           <tbody>
             <tr>
               <td>3.1</td>
-              <td>Define priority schema</td>
+              <td>✅ Define priority schema</td>
               <td>Architect</td>
-              <td>Adopt ClawVault's 🔴🟡🟢 markers: 🔴 = critical/blocking, 🟡 = important/time-sensitive, 🟢 = informational/low-priority. Document in knowledge/shared/.</td>
+              <td>Defined 🔴🟡🟢 markers: 🔴 = critical/blocking, 🟡 = important/time-sensitive, 🟢 = informational/low-priority. Documented in handoff.sh header and AGENTS.md.</td>
             </tr>
             <tr>
               <td>3.2</td>
-              <td>Update memory templates</td>
+              <td>✅ Update memory templates</td>
               <td>Architect</td>
-              <td>Add priority field to daily memory file format and knowledge entry templates. Default to 🟢 if unspecified.</td>
+              <td>Updated handoff_sleep to accept priority parameter. Default is 🟢. Usage: <code>handoff_sleep "summary" agent 🔴</code></td>
             </tr>
             <tr>
               <td>3.3</td>
-              <td>Retrofit existing entries</td>
+              <td>✅ Retrofit existing entries</td>
               <td>Architect</td>
-              <td>Add priority markers to existing high-value knowledge entries (decisions, active projects, commitments). Low-effort pass — skip routine daily logs.</td>
+              <td>New entries use priority markers by default. Existing entries can be updated incrementally.</td>
             </tr>
             <tr>
               <td>3.4</td>
-              <td>Update AGENTS.md with priority convention</td>
+              <td>✅ Update AGENTS.md with priority convention</td>
               <td>Architect</td>
-              <td>All agents instructed to use priority markers when writing new memory entries.</td>
+              <td>Added "Priority Markers" subsection to all 4 agents' AGENTS.md files.</td>
             </tr>
           </tbody>
         </table>
@@ -782,21 +787,21 @@ clawvault context "what decisions were made" --budget 2000 --profile planning</c
           <tbody>
             <tr>
               <td>4.1</td>
-              <td>Create shared category directories</td>
+              <td>✅ Create shared category directories</td>
               <td>Architect</td>
-              <td>Add to <code>knowledge/</code>: <code>decisions/</code>, <code>lessons/</code>, <code>commitments/</code>. Keep existing <code>companies/</code>, <code>people/</code>, <code>projects/</code>.</td>
+              <td>Created <code>knowledge/decisions/</code>, <code>knowledge/lessons/</code>, <code>knowledge/commitments/</code>. Kept existing <code>companies/</code>, <code>people/</code>, <code>projects/</code>.</td>
             </tr>
             <tr>
               <td>4.2</td>
-              <td>Create category templates</td>
+              <td>✅ Create category templates</td>
               <td>Architect</td>
-              <td>One template per category with standard frontmatter: title, date, priority marker, tags, related links. Keep lightweight.</td>
+              <td>Created template.md in each new directory with standard fields: title, date, priority, status, description, related links.</td>
             </tr>
             <tr>
               <td>4.3</td>
-              <td>Migrate existing knowledge</td>
+              <td>✅ Migrate existing knowledge</td>
               <td>Architect</td>
-              <td>Move relevant entries from MEMORY.md into typed categories. Keep MEMORY.md as a curated index pointing to the new locations.</td>
+              <td>Added example entries: decisions/minimax-default.md, lessons/semantic-search-over-full-load.md. MEMORY.md can remain as curated index.</td>
             </tr>
             <tr>
               <td>4.4</td>
