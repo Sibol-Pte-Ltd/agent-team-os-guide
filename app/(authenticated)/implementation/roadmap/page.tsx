@@ -13,11 +13,11 @@ const content = `<div class="breadcrumbs">
         </div>
 
         <h1>Implementation Roadmap</h1>
-        <p class="page-subtitle">Phased approach to completing the Agent Team OS build-out. Updated Feb 13 with audit-driven priorities.</p>
+        <p class="page-subtitle">Phased approach to completing the Agent Team OS build-out. Updated Feb 14 with documentation overhaul completion.</p>
 
         <div class="callout success">
           <div class="callout-title">Current Focus: Phase 3 — Complete Cadence</div>
-          <p><strong>Phase 1: Critical Fixes</strong> ✅, <strong>Phase 2: Core Features</strong> ✅, and <strong>Phase 2.5: Audit Remediation</strong> ✅ are all complete. The Feb 13 audit findings have been fully addressed (security token rotation deferred by design). Now moving to <strong>Phase 3: Complete Cadence</strong> — enhancing morning reports, evening check-ins, and reviews with richer data from the now-operational Life OS.</p>
+          <p><strong>Phase 1: Critical Fixes</strong> ✅, <strong>Phase 2: Core Features</strong> ✅, <strong>Phase 2.5: Audit Remediation</strong> ✅, and <strong>Phase 2.75: Documentation Overhaul</strong> ✅ are all complete. The documentation is now comprehensive, architecture-aligned, and cross-linked. Now moving to <strong>Phase 3: Complete Cadence</strong> — enhancing morning reports, evening check-ins, and reviews with richer data from the now-operational Life OS.</p>
         </div>
 
         <h2>Phase 2.5: Audit Remediation ✅ Complete</h2>
@@ -84,6 +84,46 @@ const content = `<div class="breadcrumbs">
           <li><input type="checkbox" disabled> <strong>Adopt Logseq properties</strong> — define schema (<code>type::, area::, status::, priority::</code>) and apply</li>
           <li><input type="checkbox" disabled> <strong>Add favicon</strong> to website</li>
           <li><input type="checkbox" disabled> <strong>Add custom 404 page</strong></li>
+        </ul>
+
+        <h2>Phase 2.75: Documentation Overhaul ✅ Complete</h2>
+        <p>Comprehensive site-wide documentation improvement driven by the <a href="/implementation/site-improvements">Site Improvements review</a>. All 39 site pages were reviewed against the 6 new Architecture pages, and 25 improvements were identified and implemented.</p>
+
+        <h3>2.75.1 Critical Fixes ✅</h3>
+        <ul>
+          <li><input type="checkbox" checked disabled> <strong>Fix cron jobs page</strong> — now correctly describes OpenClaw Gateway scheduler instead of system crontab</li>
+          <li><input type="checkbox" checked disabled> <strong>Bridge trust system and tool policy</strong> — Trust Levels page now explains relationship to OpenClaw's tool policy</li>
+          <li><input type="checkbox" checked disabled> <strong>Fix Forge role description</strong> — reframed from "manages cron" to "monitors scheduled task health"</li>
+          <li><input type="checkbox" checked disabled> <strong>Fix morning report attribution</strong> — troubleshooting page now correctly says Ember (not Forge) generates reports</li>
+        </ul>
+
+        <h3>2.75.2 Architecture Alignment ✅</h3>
+        <ul>
+          <li><input type="checkbox" checked disabled> <strong>Getting Started updated</strong> — OpenClaw introduced as the runtime engine, <code>openclaw gateway status</code> check added</li>
+          <li><input type="checkbox" checked disabled> <strong>Agent pages enhanced</strong> — all 4 agent pages now explain sessions, models, and subagent spawning</li>
+          <li><input type="checkbox" checked disabled> <strong>Home page updated</strong> — Architecture card added to navigation grid</li>
+          <li><input type="checkbox" checked disabled> <strong>Cadence pages cross-referenced</strong> — "how this works under the hood" callouts added</li>
+          <li><input type="checkbox" checked disabled> <strong>Automation page updated</strong> — references OpenClaw as the scheduling engine</li>
+        </ul>
+
+        <h3>2.75.3 Reference &amp; Support Pages ✅</h3>
+        <ul>
+          <li><input type="checkbox" checked disabled> <strong>Glossary expanded</strong> — from 20 to 33 terms, all architecture concepts added</li>
+          <li><input type="checkbox" checked disabled> <strong>Commands reference updated</strong> — OpenClaw CLI section added</li>
+          <li><input type="checkbox" checked disabled> <strong>File locations updated</strong> — OpenClaw directory paths added</li>
+          <li><input type="checkbox" checked disabled> <strong>Troubleshooting expanded</strong> — OpenClaw-specific Gateway troubleshooting section</li>
+          <li><input type="checkbox" checked disabled> <strong>FAQ expanded</strong> — "OpenClaw &amp; Architecture" question section added</li>
+          <li><input type="checkbox" checked disabled> <strong>Notifications page updated</strong> — Channel Adapters concept explained</li>
+        </ul>
+
+        <h3>2.75.4 Cross-Linking &amp; Polish ✅</h3>
+        <ul>
+          <li><input type="checkbox" checked disabled> <strong>Architecture links added</strong> throughout the site (was only in Architecture section itself)</li>
+          <li><input type="checkbox" checked disabled> <strong>Life OS pages updated</strong> — agent file access mechanism explained via Execution Layer</li>
+          <li><input type="checkbox" checked disabled> <strong>Daily workflow clarified</strong> — cron = OpenClaw not system cron</li>
+          <li><input type="checkbox" checked disabled> <strong>Context window notes added</strong> — weekly/monthly review pages explain summarization</li>
+          <li><input type="checkbox" checked disabled> <strong>Syncthing page updated</strong> — workspace mounting relationship explained</li>
+          <li><input type="checkbox" checked disabled> <strong>Site Improvements page created</strong> — <a href="/implementation/site-improvements">comprehensive review document</a> with all 25 items</li>
         </ul>
 
         <h2>Phase 1: Critical Fixes ✅ Complete</h2>
@@ -233,11 +273,11 @@ const content = `<div class="breadcrumbs">
           <li><input type="checkbox" disabled> Enforce quiet hours (23:00-08:00)</li>
         </ul>
 
-        <h3>4.4 Documentation</h3>
+        <h3>4.4 Documentation ✅ (Addressed in Phase 2.75)</h3>
         <ul>
-          <li><input type="checkbox" disabled> Complete glossary</li>
-          <li><input type="checkbox" disabled> Update file locations reference</li>
-          <li><input type="checkbox" disabled> Expand command reference</li>
+          <li><input type="checkbox" checked disabled> Complete glossary — expanded from 20 to 33 terms in Phase 2.75</li>
+          <li><input type="checkbox" checked disabled> Update file locations reference — OpenClaw paths added in Phase 2.75</li>
+          <li><input type="checkbox" checked disabled> Expand command reference — OpenClaw CLI commands added in Phase 2.75</li>
         </ul>
 
         <h2>Phase 5: Nice to Have (Future)</h2>
@@ -255,7 +295,7 @@ const content = `<div class="breadcrumbs">
           <p>As tasks are completed, this page will be updated to reflect current status. Check the <a href="/implementation/activity-log">Activity Log</a> for detailed work history.</p>
         </div>
 
-        <p style="margin-top: 2rem; font-size: 0.8rem; color: #888;">Last updated: February 14, 2026 — Phase 2.5 audit remediation complete</p>`
+        <p style="margin-top: 2rem; font-size: 0.8rem; color: #888;">Last updated: February 14, 2026 — Phase 2.75 documentation overhaul complete</p>`
 
 export default function Page() {
   return <div dangerouslySetInnerHTML={{ __html: content }} />

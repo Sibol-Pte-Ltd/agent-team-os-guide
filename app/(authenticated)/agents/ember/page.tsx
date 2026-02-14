@@ -32,6 +32,40 @@ const content = `<div class="breadcrumbs">
           <li><strong>Handles calendar awareness</strong> — Ember checks your calendar and factors upcoming meetings, deadlines, and events into daily planning so nothing catches you off guard.</li>
         </ul>
 
+        <h2>How Ember Runs</h2>
+
+        <p>Understanding how Ember operates at a technical level helps you make sense of what is happening behind the scenes when you chat with her.</p>
+
+        <h3>Sessions</h3>
+
+        <p>Every conversation with Ember creates an <strong>isolated session</strong>. When you message Ember on Discord, the <a href="/architecture/gateway">Gateway</a> assigns a session key based on the channel, chat type, and conversation ID — for example, <code>agent:ember:discord:dm:987654321</code>. This session key keeps your conversation's history, context, and state completely separate from any other conversation happening at the same time.</p>
+
+        <p>Within a session, messages are processed <strong>serially</strong> — if you send two messages quickly, the second waits for the first to finish. But different sessions run in <strong>parallel</strong> — your Discord DM and a cron-triggered heartbeat do not block each other. This is managed by the <a href="/architecture/lane-queue">Lane Queue</a>.</p>
+
+        <h3>Model</h3>
+
+        <p>Ember uses <strong>Kimi K2.5</strong> as her language model, configured in the OpenClaw configuration file. This model was chosen for its strong balance of reasoning capability, tool use, and cost-efficiency — Ember handles a high volume of interactions daily (conversations, heartbeats, cron tasks), so the model needs to be capable without being expensive. The <a href="/architecture/agent-runner">Agent Runner</a> sends Ember's assembled context to this model on every turn of the agent loop.</p>
+
+        <h3>Spawning Subagents</h3>
+
+        <p>One of Ember's most powerful capabilities is spawning <strong>subagents</strong> — independent agent sessions that run in parallel to handle delegated work. When a task requires a different agent's expertise (Scout's research skills, Architect's deep reasoning), Ember can spawn them as subagents rather than switching context herself.</p>
+
+        <p>Here is how it works:</p>
+
+        <ol>
+          <li><strong>Ember identifies a task</strong> that needs a specialist — for example, a complex analysis that warrants Opus-level reasoning.</li>
+          <li><strong>Ember spawns a subagent session.</strong> The subagent runs in the <a href="/architecture/lane-queue">subagent lane</a>, which has its own concurrency budget separate from Ember's main conversation lane.</li>
+          <li><strong>The subagent works independently.</strong> It has its own session, its own model (e.g., Architect uses Claude Opus), and its own workspace context. It does not share Ember's conversation history.</li>
+          <li><strong>The subagent reports back.</strong> When finished, the subagent's output is delivered back to Ember's session, who can then relay the results to you or take further action.</li>
+        </ol>
+
+        <p>This design means Ember can delegate expensive or specialized work without blocking her own conversation. You can keep chatting with Ember while Architect works on a strategic analysis in the background.</p>
+
+        <div class="callout tip">
+          <div class="callout-title">Subagent Cost Awareness</div>
+          <p>Subagents use the model configured for their agent type, not Ember's model. Spawning an Architect subagent means that task runs on Claude Opus — which costs significantly more per token than Ember's Kimi K2.5. Ember is aware of this and spawns Architect only when the task genuinely benefits from deeper reasoning.</p>
+        </div>
+
         <h2>Trust Level</h2>
 
         <div class="callout success">
@@ -85,7 +119,11 @@ Flags:
             <li><a href="/cadence/morning-report">Learn more about the Morning Report</a> and its structure</li>
             <li><a href="/cadence/evening-checkin">Learn about the Evening Check-in</a> that Ember manages</li>
             <li><a href="/agents/scout">Meet Scout</a>, the Research Specialist</li>
+            <li><a href="/agents/architect">Meet Architect</a>, often spawned as a subagent by Ember</li>
             <li><a href="/agents/trust-levels">Understand Trust Levels</a> and what Level 3 means in practice</li>
+            <li><a href="/architecture/gateway">Gateway</a> — how sessions are routed and managed</li>
+            <li><a href="/architecture/lane-queue">Lane Queue</a> — how main and subagent lanes work</li>
+            <li><a href="/architecture/agent-runner">Agent Runner</a> — the reasoning loop that powers each turn</li>
           </ul>
         </div>`
 

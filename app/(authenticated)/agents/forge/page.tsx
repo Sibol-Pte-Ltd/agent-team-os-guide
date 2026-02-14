@@ -18,7 +18,12 @@ const content = `<div class="breadcrumbs">
 
         <h2>Role</h2>
 
-        <p>Forge is responsible for system infrastructure, reliability, and automation. While Ember manages your daily workflow and Scout handles research, Forge manages the technical foundations that make everything else possible. He ensures files sync correctly between devices, cron jobs run on schedule, backups complete successfully, and the EC2 instance that hosts the agent team stays healthy.</p>
+        <p>Forge is responsible for system infrastructure, reliability, and monitoring. While Ember manages your daily workflow and Scout handles research, Forge watches over the technical foundations that make everything else possible. He monitors that files sync correctly between devices, verifies that scheduled tasks complete successfully, ensures backups are intact, and keeps the EC2 instance that hosts the agent team healthy.</p>
+
+        <div class="callout note">
+          <div class="callout-title">Scheduling vs Monitoring</div>
+          <p>Cron job scheduling is handled by the <a href="/architecture/gateway">OpenClaw Gateway</a>, not by Forge directly. Forge's role is to <strong>monitor</strong> that scheduled tasks run on time, <strong>alert</strong> when they fail, and <strong>investigate</strong> root causes. To manage schedules, use <code>openclaw cron</code> commands or edit the OpenClaw configuration file — see <a href="/automation/cron-jobs">Cron Jobs</a> for details.</p>
+        </div>
 
         <p>Forge is the most invisible member of the team by design. His work happens in the background, and you only hear from him when something needs your attention — like a disk running low on space, a sync conflict that needs resolution, or an anomaly that does not fit normal patterns.</p>
 
@@ -26,11 +31,27 @@ const content = `<div class="breadcrumbs">
 
         <ul>
           <li><strong>Manages Syncthing synchronization</strong> — Forge monitors Syncthing to ensure files stay in sync across your devices. He detects conflicts, resolves them when possible, and flags you when manual intervention is needed.</li>
-          <li><strong>Maintains cron jobs</strong> — The scheduled tasks that power the daily cadence — morning reports, evening check-ins, backups, and health checks — are all managed by Forge. He ensures they run on time and investigates when they do not.</li>
+          <li><strong>Monitors scheduled tasks</strong> — The cron jobs that power the daily cadence — morning reports, evening check-ins, backups, and health checks — are scheduled by the <a href="/architecture/gateway">OpenClaw Gateway</a>. Forge monitors their execution, verifies they complete successfully, alerts you when they fail, and investigates root causes.</li>
           <li><strong>Handles backups</strong> — Forge runs scheduled backups of your Life OS data and system configuration. He verifies backup integrity and rotates old backups to manage storage.</li>
           <li><strong>Monitors system health</strong> — Forge tracks CPU usage, memory, disk space, and network connectivity on the EC2 instance. He identifies trends (like gradually increasing disk usage) before they become problems.</li>
           <li><strong>Manages the EC2 instance</strong> — The cloud server that runs Agent Team OS is Forge's domain. He handles updates, restarts when necessary, and ensures the instance is configured correctly.</li>
         </ul>
+
+        <h2>How Forge Runs</h2>
+
+        <p>Forge's execution model is distinct from the other agents because most of his work is <strong>scheduled</strong> rather than conversational.</p>
+
+        <h3>Sessions</h3>
+
+        <p>Like all agents, Forge can have direct conversation sessions — for example, if you message him on Discord, the <a href="/architecture/gateway">Gateway</a> creates a session keyed to that conversation. These sessions work identically to any other agent: serial processing within the session, parallel across sessions, managed by the <a href="/architecture/lane-queue">Lane Queue</a>.</p>
+
+        <h3>Cron-Triggered Sessions</h3>
+
+        <p>However, Forge's primary work comes through <strong>cron-triggered sessions</strong>. The <a href="/architecture/gateway">Gateway</a> schedules Forge's tasks (health checks, backup verification, sync monitoring) as cron jobs. When a cron job fires, it creates a session in the <a href="/architecture/lane-queue">cron lane</a> — a dedicated lane type with its own concurrency budget. This means Forge's scheduled work never blocks your conversations with Ember or any other agent.</p>
+
+        <h3>Model</h3>
+
+        <p>Forge uses <strong>OpenRouter's auto routing</strong> (<code>openrouter/auto</code>), which dynamically selects an appropriate model for each task. Since Forge's work is largely routine — checking system status, verifying backups, monitoring sync — auto routing keeps costs minimal while ensuring capable handling of diagnostic and troubleshooting tasks when anomalies arise. The model is configured in the OpenClaw configuration file and invoked by the <a href="/architecture/agent-runner">Agent Runner</a>.</p>
 
         <h2>Trust Level</h2>
 
@@ -61,10 +82,13 @@ const content = `<div class="breadcrumbs">
         <div class="action-section">
           <h2>What You Do Next</h2>
           <ul>
-            <li><a href="/automation/cron-jobs">Learn about Cron Jobs</a> that Forge manages</li>
+            <li><a href="/automation/cron-jobs">Learn about Cron Jobs</a> that Forge monitors</li>
             <li><a href="/troubleshooting/syncthing">Syncthing troubleshooting</a> for sync-related issues</li>
             <li><a href="/agents/ember">Learn about Ember</a> and how she coordinates with Forge</li>
             <li><a href="/agents/trust-levels">Understand Trust Levels</a> and what Level 3 means in practice</li>
+            <li><a href="/architecture/gateway">Gateway</a> — cron scheduling and session routing</li>
+            <li><a href="/architecture/lane-queue">Lane Queue</a> — cron lane concurrency</li>
+            <li><a href="/architecture/agent-runner">Agent Runner</a> — the reasoning loop and model selection</li>
           </ul>
         </div>`
 

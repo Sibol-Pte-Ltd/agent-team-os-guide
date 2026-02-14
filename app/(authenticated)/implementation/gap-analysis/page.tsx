@@ -21,8 +21,26 @@ const content = `<div class="breadcrumbs">
           <strong>Updated:</strong> February 12, 2026 (~03:08 UTC) — Trust system completion<br>
           <strong>Updated:</strong> February 13, 2026 (~16:25 UTC) — Comprehensive directory audit + Life OS graph gap audit<br>
           <strong>Updated:</strong> February 14, 2026 (~03:00 UTC) — Phase 2.5 remediation complete, gaps resolved<br>
+          <strong>Updated:</strong> February 14, 2026 (~05:30 UTC) — Documentation overhaul complete; documentation gaps addressed<br>
           <strong>Auditors:</strong> Ember + Architect + subagents<br>
-          <strong>Method:</strong> Website crawl + implementation inspection + directory audit + Logseq graph analysis</p>
+          <strong>Method:</strong> Website crawl + implementation inspection + directory audit + Logseq graph analysis + site improvement review</p>
+        </div>
+
+        <div class="callout success">
+          <div class="callout-title">✅ Documentation Gaps Addressed — Feb 14, 2026</div>
+          <p>A comprehensive <a href="/implementation/site-improvements">site improvement review</a> on Feb 14 identified a new category of gaps: <strong>documentation/architecture alignment</strong>. The review found that while the system was fully operational, the documentation described what agents do without explaining how they do it — the OpenClaw runtime was essentially invisible outside the Architecture section.</p>
+          <p><strong>25 improvements were implemented</strong> by 11 parallel subagents, closing the following documentation gaps:</p>
+          <ul>
+            <li><strong>OpenClaw visibility:</strong> Now introduced in Getting Started, referenced consistently across all sections</li>
+            <li><strong>Cron mechanism confusion:</strong> Cron Jobs page clarified — OpenClaw Gateway scheduler vs system crontab</li>
+            <li><strong>Permission system ambiguity:</strong> Trust system page now bridges with OpenClaw tool policy</li>
+            <li><strong>Agent session context:</strong> All agent pages explain sessions, models, and subagent spawning</li>
+            <li><strong>Architecture cross-links:</strong> Added throughout the site (were only in Architecture section)</li>
+            <li><strong>Glossary completeness:</strong> Expanded from 20 to 33 terms with all architecture concepts</li>
+            <li><strong>Reference pages:</strong> OpenClaw CLI commands and file paths added</li>
+            <li><strong>Troubleshooting:</strong> OpenClaw-specific guidance added to Common Issues and FAQ</li>
+          </ul>
+          <p>See the <a href="/implementation/site-improvements">full Site Improvements review</a> for the complete list of 25 items and their resolutions.</p>
         </div>
 
         <h2>🔴 Security Findings (Feb 13 Audit)</h2>
@@ -246,13 +264,14 @@ const content = `<div class="breadcrumbs">
         <div class="action-section">
           <h2>What You Do Next</h2>
           <ul>
+            <li><a href="/implementation/site-improvements">Site Improvements Review</a> — the Feb 14 documentation overhaul that addressed documentation-level gaps</li>
             <li><a href="/implementation/roadmap">View the Roadmap</a> — updated priorities from audit</li>
             <li><a href="/implementation/activity-log">Check Activity Log</a> — see recent work</li>
             <li><a href="/implementation">Return to Status Dashboard</a></li>
           </ul>
         </div>
 
-        <p style="margin-top: 2rem; font-size: 0.8rem; color: #888;">Last updated: February 14, 2026 — Phase 2.5 remediation complete</p>`
+        <p style="margin-top: 2rem; font-size: 0.8rem; color: #888;">Last updated: February 14, 2026 — Documentation overhaul complete</p>`
 
 export default function Page() {
   return <div dangerouslySetInnerHTML={{ __html: content }} />

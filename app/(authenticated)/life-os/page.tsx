@@ -18,6 +18,11 @@ const content = `<div class="breadcrumbs">
 
         <p>Because Life OS is built on LogSeq, all of your data is stored as plain Markdown files on your local machine. There is no cloud database, no proprietary format, and no vendor lock-in. Your notes are just files in a folder. This local-first approach also means your data syncs across devices using <a href="/troubleshooting/syncthing">Syncthing</a>, which keeps your local LogSeq vault in sync with the EC2 instance where the agents run. Changes you make on your laptop appear on the server within seconds, and vice versa.</p>
 
+        <div class="callout note">
+          <div class="callout-title">How Agents Access Life OS</div>
+          <p>Agents access Life OS files through the <a href="/architecture/execution-layer">Execution Layer's</a> file operation tools — <code>read</code>, <code>write</code>, and <code>edit</code>. These tools are sandboxed to the agent's workspace directory, which is where the Life OS vault is mounted. This means agents can read your notes, create new pages, and update existing content, but they cannot access files outside of the workspace. The sandboxing provides a clear security boundary: agents have full access to Life OS and nothing else on the host system.</p>
+        </div>
+
         <p>Life OS is organized around a few key structural concepts that give shape to the information inside it:</p>
 
         <ul>

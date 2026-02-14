@@ -29,6 +29,24 @@ const content = `<div class="breadcrumbs">
 
         <p>His operating method follows a clear sequence: understand the full context, break down complexity into patterns and dependencies, synthesize disparate inputs into coherent frameworks, and lead with clear, actionable conclusions supported by evidence. When certainty is limited, Architect distinguishes what he knows from what he is inferring — he flags uncertainty rather than hiding it.</p>
 
+        <h2>How Architect Runs</h2>
+
+        <p>Architect's execution model is unique among the agents — he is primarily <strong>spawned as a subagent by Ember</strong> rather than running as a standalone conversational agent.</p>
+
+        <h3>Spawned by Ember</h3>
+
+        <p>When Ember identifies a task that warrants Opus-level reasoning — complex analysis, strategic planning, comprehensive reviews — she spawns Architect as a <strong>subagent</strong>. This creates an independent session in the <a href="/architecture/lane-queue">subagent lane</a>, with its own concurrency budget separate from Ember's main conversation. Architect receives a focused task description, works through it independently, and reports results back to Ember when finished.</p>
+
+        <p>This means you typically interact with Architect <strong>indirectly through Ember</strong>. You tell Ember what you need analyzed, Ember spawns Architect, and the results flow back to your conversation. You can also message Architect directly if needed — the <a href="/architecture/gateway">Gateway</a> will create a standard session for the conversation.</p>
+
+        <h3>Model</h3>
+
+        <p>Architect uses <strong>Claude Opus</strong> (<code>openrouter/anthropic/claude-opus-4.6</code>), the most powerful reasoning model in the team. This is a deliberate choice: Architect is reserved for tasks where depth and quality justify higher cost. Every token Architect processes costs significantly more than Ember's Kimi K2.5 or Scout's auto-routed model, which is why Architect is deployed selectively rather than used for routine work. The model is configured in the OpenClaw configuration file and invoked by the <a href="/architecture/agent-runner">Agent Runner</a>.</p>
+
+        <h3>Sessions and Isolation</h3>
+
+        <p>Whether spawned as a subagent or messaged directly, Architect gets a fully isolated session. As a subagent, his session key follows the pattern <code>agent:subagent:subagent:&lt;uuid&gt;</code> and runs in the subagent lane. As a direct conversation, his session key follows the standard pattern (e.g., <code>agent:architect:discord:dm:987654321</code>) and runs in the main lane. In both cases, Architect does not share conversation history with other agents — he works with only the context provided to his session.</p>
+
         <h2>When to Call Architect</h2>
 
         <p>Architect is not for routine work. He is deployed specifically when the quality and depth of reasoning justify the cost. Call Architect when you need:</p>
@@ -89,13 +107,21 @@ const content = `<div class="breadcrumbs">
           <p>Architect's L2 trust level is <strong>active and enforcing</strong>. All external actions are checked against the trust system. Architect's <code>SOUL.md</code> includes trust-specific instructions, so even when spawned as a subagent, he knows to check trust before acting externally.</p>
         </div>
 
+        <div class="callout note">
+          <div class="callout-title">Trust System vs. Tool Policy</div>
+          <p>Architect's trust-level enforcement is separate from OpenClaw's <a href="/architecture/execution-layer#tool-policy">tool policy system</a>. OpenClaw's tool policy determines which tools Architect can <em>see</em> (e.g., which tools appear in his toolbox based on allowlists and security modes). The trust system adds a behavioral layer on top: even for tools Architect has access to, restricted actions require your approval at L2. These are complementary — one controls availability, the other controls approval workflows. See <a href="/agents/trust-levels#trust-vs-tool-policy">How Trust Relates to OpenClaw Tool Policy</a> for details.</p>
+        </div>
+
         <div class="action-section">
           <h2>What You Do Next</h2>
           <ul>
-            <li><a href="/agents/ember">Learn about Ember</a>, who coordinates Architect's deployment</li>
+            <li><a href="/agents/ember">Learn about Ember</a>, who coordinates Architect's deployment and spawns him as a subagent</li>
             <li><a href="/agents/scout">Meet Scout</a>, whose research often feeds into Architect's analysis</li>
             <li><a href="/agents/forge">Meet Forge</a>, the Infrastructure Specialist</li>
             <li><a href="/agents/trust-levels">Understand Trust Levels</a> and what Level 2 means in practice</li>
+            <li><a href="/architecture/lane-queue">Lane Queue</a> — subagent lane where Architect typically runs</li>
+            <li><a href="/architecture/agent-runner">Agent Runner</a> — the reasoning loop and model selection</li>
+            <li><a href="/architecture/gateway">Gateway</a> — session routing and management</li>
           </ul>
         </div>`
 

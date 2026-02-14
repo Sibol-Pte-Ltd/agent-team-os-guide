@@ -15,6 +15,12 @@ const content = `<div class="breadcrumbs">
         <p>Syncthing keeps your Life OS data in sync between your local machine and the EC2 instance. The two devices communicate over Tailscale, which provides a secure, private network connection regardless of where you are.</p>
         <p>The flow is straightforward: when you make changes in LogSeq on your local machine, Syncthing detects the file changes and pushes them to the EC2 instance. When agents on the EC2 instance write data (like appending to your daily journal), Syncthing pushes those changes back to your local machine. This happens continuously in the background, typically within seconds.</p>
 
+        <div class="callout note">
+          <div class="callout-title">Syncthing and the Agent Workspace</div>
+          <p>Syncthing syncs the Life OS vault, which is mounted as the agent's workspace via OpenClaw configuration. The <a href="/architecture/execution-layer">Execution Layer's</a> file tools (<code>read</code>, <code>write</code>, <code>edit</code>) operate on this workspace directory — it is the same set of files that Syncthing keeps in sync. This means Syncthing is the bridge between your local edits and what agents can see.</p>
+          <p>If Syncthing is broken or disconnected, agents will not see your latest changes — but they will continue to work with whatever state they last saw. Nothing crashes or errors out; the data just becomes stale until the sync connection is restored. This is why checking Syncthing status is always the first step when agents seem to be working with outdated information.</p>
+        </div>
+
         <h2>Common Sync Problems</h2>
 
         <h3>Files not appearing</h3>

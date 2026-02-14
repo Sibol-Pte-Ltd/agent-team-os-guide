@@ -31,6 +31,22 @@ const content = `<div class="breadcrumbs">
           <li><strong>Summarizes findings in Life OS</strong> — All research output is placed in your Life OS graph so it is searchable, linkable, and integrated with the rest of your notes and projects.</li>
         </ul>
 
+        <h2>How Scout Runs</h2>
+
+        <p>Scout can operate in two modes: as a <strong>standalone agent</strong> with its own direct session, or as a <strong>subagent</strong> spawned by Ember for delegated research tasks.</p>
+
+        <h3>Sessions</h3>
+
+        <p>When you message Scout directly, the <a href="/architecture/gateway">Gateway</a> creates a session keyed to your conversation — for example, <code>agent:scout:discord:dm:987654321</code>. Like all agent sessions, messages within a Scout session are processed serially while different sessions run in parallel, managed by the <a href="/architecture/lane-queue">Lane Queue</a>.</p>
+
+        <h3>Running as a Subagent</h3>
+
+        <p>More commonly, Scout is <strong>spawned by Ember</strong> when a conversation requires research. In this mode, Scout runs in the <a href="/architecture/lane-queue">subagent lane</a> with its own isolated session and concurrency budget. Scout does not share Ember's conversation history — he receives a focused task description, works independently, and reports results back to the spawning session when complete.</p>
+
+        <h3>Model</h3>
+
+        <p>Scout uses <strong>OpenRouter's auto routing</strong> (<code>openrouter/auto</code>), which dynamically selects the best model for each request based on the task characteristics. This keeps costs low for routine research while allowing OpenRouter to route complex queries to more capable models when needed. The model is configured in the OpenClaw configuration file and invoked by the <a href="/architecture/agent-runner">Agent Runner</a> on each turn.</p>
+
         <h2>Trust Level</h2>
 
         <p>Scout operates at <strong>Trust Level 2 — Act with Approval</strong>. This means Scout can research independently — gathering information, reading sources, and preparing summaries — without needing your permission for each step. However, Scout needs your approval before acting on findings, sending external messages, or making changes based on what was discovered.</p>
@@ -58,6 +74,11 @@ const content = `<div class="breadcrumbs">
 
         <p>Scout has its own <code>SOUL.md</code> file with trust-specific instructions baked in, so even when spawned as a subagent, Scout knows to check trust before external actions. Scout's trust level and permissions are defined in <code>~/agents/ember/config/trust-levels.json</code> and enforced by the trust system engine.</p>
 
+        <div class="callout note">
+          <div class="callout-title">Trust System vs. Tool Policy</div>
+          <p>Scout's approval workflow (described above) is separate from OpenClaw's built-in <a href="/architecture/execution-layer#tool-policy">tool policy</a>. OpenClaw's tool policy controls which tools Scout can <em>see</em> — for example, which tools appear in Scout's toolbox. The trust system then adds a second layer: even for tools Scout <em>can</em> access, restricted actions still require your approval at L2. Both layers work together — see <a href="/agents/trust-levels#trust-vs-tool-policy">How Trust Relates to OpenClaw Tool Policy</a> for the full explanation.</p>
+        </div>
+
         <h2>How to Request Research</h2>
 
         <p>Requesting research from Scout is straightforward. You can assign a topic directly or route it through Ember. Here is the typical workflow:</p>
@@ -81,6 +102,9 @@ const content = `<div class="breadcrumbs">
             <li><a href="/agents/forge">Meet Forge</a>, the Infrastructure Specialist</li>
             <li><a href="/agents/trust-levels">Understand Trust Levels</a> and what Level 2 means in practice</li>
             <li><a href="/life-os">Learn about Life OS</a> where Scout's research briefs are stored</li>
+            <li><a href="/architecture/gateway">Gateway</a> — session routing and management</li>
+            <li><a href="/architecture/lane-queue">Lane Queue</a> — how subagent lanes work</li>
+            <li><a href="/architecture/agent-runner">Agent Runner</a> — the reasoning loop and model selection</li>
           </ul>
         </div>`
 

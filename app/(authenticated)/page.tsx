@@ -54,6 +54,10 @@ const content = `<h1 class="page-title">Agent Team OS</h1>
             <h3>Implementation</h3>
             <p>Build status, gap analysis, roadmap, and activity log.</p>
           </a>
+          <a href="/architecture" class="card">
+            <h3>OpenClaw Architecture</h3>
+            <p>How the runtime engine processes messages, manages sessions, and executes tools.</p>
+          </a>
         </div>
 
         <div class="action-section">

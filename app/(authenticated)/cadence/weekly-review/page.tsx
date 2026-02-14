@@ -57,12 +57,17 @@ const content = `<div class="breadcrumbs">
           <li><strong>Use intentions, not mandates.</strong> Weekly intentions should feel like direction, not obligation. "Focus on the infrastructure project" is better than "Complete 14 infrastructure tasks."</li>
         </ul>
 
+        <div class="callout note">
+          <strong>Under the Hood:</strong> The Gateway's <a href="/architecture/gateway">cron scheduler</a> triggers the weekly review compilation in the cron lane every Sunday. The <a href="/architecture/agent-runner">Agent Runner</a> assembles context from your workspace — all seven daily pages, task lists, project notes, and agent activity logs. For reviews compiling large amounts of data, the Agent Runner may use summarization to fit within <a href="/architecture/agent-runner">context limits</a> — focusing on highlights rather than exhaustive detail. The <a href="/architecture/execution-layer">Execution Layer</a> handles any tool calls needed to pull calendar events or external data.
+        </div>
+
         <div class="action-section">
           <h2>What You Do Next</h2>
           <ul>
             <li>Explore the <a href="/cadence/monthly-review">Monthly Review</a> to see how weekly reviews feed into the bigger picture.</li>
             <li>Check out the <a href="/life-os/templates">Templates</a> page to find the weekly review template in Life OS.</li>
             <li>Revisit the <a href="/cadence">Cadence Overview</a> to see how weekly fits into the full rhythm.</li>
+            <li>Learn how the <a href="/architecture/agent-runner">Agent Runner</a> manages conversation history and context windows.</li>
           </ul>
         </div>`
 

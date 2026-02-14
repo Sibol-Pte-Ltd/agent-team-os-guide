@@ -76,12 +76,17 @@ ATTENTION TOMORROW
 
         <p>This loop ensures that every day has a clear start and a clear end, with nothing falling through the cracks in between.</p>
 
+        <div class="callout note">
+          <strong>Under the Hood:</strong> The Gateway's <a href="/architecture/gateway">cron scheduler</a> triggers the evening check-in in the cron lane at 9:30 PM. The <a href="/architecture/agent-runner">Agent Runner</a> assembles context from your workspace files — today's daily page, task completions, and agent activity logs — and the <a href="/architecture/execution-layer">Execution Layer</a> runs any necessary tool calls. The finished check-in is delivered through <a href="/architecture/channel-adapters">Channel Adapters</a> to Discord and Pushover.
+        </div>
+
         <div class="action-section">
           <h2>What You Do Next</h2>
           <ul>
             <li>Revisit the <a href="/cadence/morning-report">Morning Report</a> to see the other half of the daily loop.</li>
             <li>Learn how daily check-ins feed into the <a href="/cadence/weekly-review">Weekly Review</a>.</li>
             <li>See how the evening check-in integrates with your <a href="/life-os/daily-workflow">Daily Workflow</a> in Life OS.</li>
+            <li>Explore the <a href="/architecture">Architecture Overview</a> to see how all the components connect.</li>
           </ul>
         </div>`
 

@@ -145,6 +145,91 @@ const content = `<div class="breadcrumbs">
         </div>
 
         <!-- ============================================================= -->
+        <!-- TRUST vs TOOL POLICY BRIDGE                                    -->
+        <!-- ============================================================= -->
+        <h2 id="trust-vs-tool-policy">How Trust Relates to OpenClaw Tool Policy</h2>
+
+        <p>If you have read the <a href="/architecture/execution-layer">Execution Layer</a> documentation, you know that OpenClaw has its own permission system: tool allowlists, security modes, sandbox settings, and subagent policies. The trust system described on this page is a <em>separate</em> layer that works alongside OpenClaw's built-in tool policy. Understanding how they interact is important, because they solve different problems.</p>
+
+        <h3>Two Layers, Two Jobs</h3>
+
+        <div class="callout note">
+          <div class="callout-title">The Key Distinction</div>
+          <p><strong>OpenClaw tool policy</strong> controls which tools an agent can <em>see</em>. <strong>The trust system</strong> controls when an agent should <em>seek human approval</em> before using a tool it can see.</p>
+        </div>
+
+        <p>Here is how the two layers break down:</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th></th>
+              <th>Layer 1: OpenClaw Tool Policy</th>
+              <th>Layer 2: Trust System</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>What it controls</strong></td>
+              <td>Tool <em>availability</em> — which tools appear in the agent's toolbox</td>
+              <td>Action <em>approval</em> — whether the agent needs human sign-off before acting</td>
+            </tr>
+            <tr>
+              <td><strong>Where it lives</strong></td>
+              <td>OpenClaw configuration: agent profiles, tool allowlists, security modes in <code>config.yaml</code></td>
+              <td>Agent Team OS configuration: <code>trust-levels.json</code>, <code>trust-system.sh</code>, <code>trust-check.sh</code></td>
+            </tr>
+            <tr>
+              <td><strong>Enforcement mechanism</strong></td>
+              <td>OpenClaw filters tools from the LLM's schema before each turn — the agent literally cannot call a tool it cannot see</td>
+              <td>Bash hooks and agent instructions intercept actions at runtime and check the permission matrix</td>
+            </tr>
+            <tr>
+              <td><strong>Scope</strong></td>
+              <td>Per-agent, per-channel, per-subagent. Can also apply sandbox isolation and network restrictions.</td>
+              <td>Per-agent, per-action-category. Adds behavioral guidelines like escalation triggers and approval queues.</td>
+            </tr>
+            <tr>
+              <td><strong>What changing it does</strong></td>
+              <td>Adding or removing a tool from the allowlist changes what the agent <em>can attempt</em></td>
+              <td>Changing a trust level changes what the agent <em>can do without asking</em></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>How They Work Together</h3>
+
+        <p>The two layers are complementary, not redundant. Think of it as two gates an action must pass through:</p>
+
+        <ol>
+          <li><strong>Gate 1 — Tool Policy (OpenClaw):</strong> When the LLM is about to reason, OpenClaw builds the list of available tools based on allowlists, security modes, and channel context. If a tool is not in the list, the agent does not even know it exists — it cannot attempt to use it. This is a hard, platform-level restriction.</li>
+          <li><strong>Gate 2 — Trust Check (Agent Team OS):</strong> For tools that <em>are</em> available, the trust system evaluates whether the specific action requires approval given the agent's trust level. A Level 2 agent might have access to the <code>message</code> tool (it passes Gate 1) but still need your approval before sending an external message (Gate 2 returns NEEDS_APPROVAL).</li>
+        </ol>
+
+        <p>This means an action is only executed when it passes <em>both</em> gates. Removing a tool via OpenClaw's allowlist is a stronger restriction than the trust system — if the tool is not available, there is nothing for the trust system to check. Conversely, the trust system adds nuance that tool policy alone cannot provide: the difference between "Scout can use the message tool to post internally" and "Scout needs approval to post externally" is a trust-level distinction, not a tool-policy one.</p>
+
+        <h3>Practical Examples</h3>
+
+        <ul>
+          <li><strong>Restricting a tool entirely:</strong> If you never want Scout to use the browser, remove <code>browser</code> from Scout's tool allowlist in OpenClaw config. Scout will not see the tool at all — no trust check needed.</li>
+          <li><strong>Allowing a tool with oversight:</strong> If Scout should be able to send messages but only with your approval, keep <code>message</code> in Scout's allowlist (Gate 1 passes) and leave Scout at Trust Level 2 (Gate 2 requires approval for external communication).</li>
+          <li><strong>Granting full autonomy:</strong> For Ember at Trust Level 3, most routine actions pass both gates automatically — Ember has the tools available (Gate 1) and has autonomous permission for routine actions (Gate 2). Only edge cases like financial operations or trust changes still require approval.</li>
+          <li><strong>Sandbox isolation:</strong> OpenClaw can sandbox an agent's execution in a Docker container with limited network access. This is a Layer 1 restriction — it constrains <em>how</em> tools execute, not whether the agent gets approval. A sandboxed agent at Trust Level 3 still acts autonomously, but within the sandbox boundary.</li>
+        </ul>
+
+        <h3>When to Change Which</h3>
+
+        <p>If you want to change what an agent can do, the right lever depends on what you are trying to achieve:</p>
+
+        <ul>
+          <li><strong>Change OpenClaw tool policy when</strong> you want to add or remove entire capabilities — "this agent should/should not have access to shell execution" or "this subagent should only have read and web_search."</li>
+          <li><strong>Change trust level when</strong> you want to adjust the approval workflow — "this agent has proven reliable enough to send messages without asking" or "I want more oversight on this agent's file writes."</li>
+          <li><strong>Change both when</strong> onboarding a new agent — set the tool allowlist to only what the agent needs (principle of least privilege), then assign a trust level that reflects your confidence in the agent's judgment.</li>
+        </ul>
+
+        <p>For details on OpenClaw's tool policy configuration — allowlists, security modes, sandbox settings, and subagent policies — see the <a href="/architecture/execution-layer#tool-policy">Execution Layer: Tool Policy &amp; Filtering</a> documentation.</p>
+
+        <!-- ============================================================= -->
         <!-- PHILOSOPHY                                                     -->
         <!-- ============================================================= -->
         <h2>Philosophy</h2>
@@ -327,6 +412,7 @@ source ~/agents/ember/.bashrc.agent</code></pre>
         <div class="action-section">
           <h2>What You Do Next</h2>
           <ul>
+            <li><a href="/architecture/execution-layer">Understand the Execution Layer</a> and how OpenClaw's tool policy works alongside trust levels</li>
             <li><a href="/reference/commands#trust-system">View Trust System Commands</a> for the full CLI reference with examples</li>
             <li><a href="/reference/file-locations#trust-system">View Trust System File Locations</a> for the directory layout</li>
             <li><a href="/agents">Review the agent team</a> and their current trust levels</li>
@@ -336,7 +422,7 @@ source ~/agents/ember/.bashrc.agent</code></pre>
           </ul>
         </div>
 
-        <p style="margin-top: 2rem; font-size: 0.8rem; color: #888;">Last updated: February 12, 2026</p>`
+        <p style="margin-top: 2rem; font-size: 0.8rem; color: #888;">Last updated: February 14, 2026</p>`
 
 export default function Page() {
   return <div dangerouslySetInnerHTML={{ __html: content }} />

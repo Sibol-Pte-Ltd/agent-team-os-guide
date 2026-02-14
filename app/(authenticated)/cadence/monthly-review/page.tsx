@@ -96,6 +96,10 @@ const content = `<div class="breadcrumbs">
 
         <p>Both are essential. The weekly review keeps you on the path; the monthly review makes sure it's the right path.</p>
 
+        <div class="callout note">
+          <strong>Under the Hood:</strong> The monthly review is the most data-intensive cadence run. The Gateway's <a href="/architecture/gateway">cron scheduler</a> triggers it on the 1st of each month, and the <a href="/architecture/agent-runner">Agent Runner</a> pulls together an entire month of daily pages, weekly reviews, habit data, project notes, and more. For reviews compiling this much data, the Agent Runner uses summarization to fit within <a href="/architecture/agent-runner">context limits</a> — focusing on trends and highlights rather than reproducing every detail from every day. This is why the monthly review feels like a distilled overview rather than a raw data dump.
+        </div>
+
         <div class="action-section">
           <h2>What You Do Next</h2>
           <ul>
@@ -103,6 +107,7 @@ const content = `<div class="breadcrumbs">
             <li>Check out the <a href="/life-os/templates">Templates</a> page for the monthly review template in Life OS.</li>
             <li>Learn about <a href="/agents/ember">Ember</a> and how it compiles your review data.</li>
             <li>Explore your <a href="/life-os/daily-workflow">Daily Workflow</a> to see how monthly goals trickle down into daily priorities.</li>
+            <li>Understand how the <a href="/architecture/agent-runner">Agent Runner</a> manages conversation history and context windows for large compilations.</li>
           </ul>
         </div>`
 

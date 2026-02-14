@@ -145,7 +145,21 @@ const content = `<div class="breadcrumbs">
         </table>
 
         <h2>Current Phase</h2>
-        <p><strong>Phase 1: Critical Fixes</strong> is complete. <strong>Phase 2: Core Features</strong> is complete. <strong>Phase 2.5: Audit Remediation</strong> is complete (5/6 sections done, security deferred by design). Now preparing for <strong>Phase 3: Complete Cadence</strong> — enhancing morning reports, evening check-ins, and weekly/monthly reviews. See the <a href="/implementation/roadmap">Roadmap</a> for full details.</p>
+        <p><strong>Phase 1: Critical Fixes</strong> is complete. <strong>Phase 2: Core Features</strong> is complete. <strong>Phase 2.5: Audit Remediation</strong> is complete. <strong>Phase 2.75: Documentation Overhaul</strong> is complete — 25 improvements implemented across the entire site with architecture alignment. Now preparing for <strong>Phase 3: Complete Cadence</strong> — enhancing morning reports, evening check-ins, and weekly/monthly reviews. See the <a href="/implementation/roadmap">Roadmap</a> for full details.</p>
+
+        <div class="callout success">
+          <div class="callout-title">✅ Feb 14, 2026: Documentation Overhaul Complete — 25 Site Improvements</div>
+          <p>A comprehensive review of all 39 site pages against the new <a href="/architecture">OpenClaw Architecture</a> section identified 25 improvements. All were implemented by 11 parallel subagents in a single coordinated push:</p>
+          <ul>
+            <li><strong>4 critical fixes:</strong> Cron jobs page now correctly describes OpenClaw Gateway scheduler (not system crontab). Trust system documentation bridges with OpenClaw tool policy. Forge role reframed — monitoring, not managing cron. Morning report attribution fixed throughout.</li>
+            <li><strong>New Architecture section (6 pages)</strong> now cross-linked throughout the entire site</li>
+            <li><strong>All agent pages</strong> now explain sessions, models, and subagent spawning</li>
+            <li><strong>Glossary expanded</strong> from 20 to 33 terms (added Gateway, Lane Queue, Session, etc.)</li>
+            <li><strong>Reference pages updated:</strong> OpenClaw CLI commands, file paths, troubleshooting guidance</li>
+            <li><strong>Getting Started</strong> now introduces OpenClaw as the runtime engine</li>
+          </ul>
+          <p>See the <a href="/implementation/site-improvements">full Site Improvements review</a> for details on all 25 items.</p>
+        </div>
 
         <div class="callout success">
           <div class="callout-title">✅ Feb 13, 2026: Phase 2.5 Audit Remediation Complete</div>
@@ -177,12 +191,8 @@ const content = `<div class="breadcrumbs">
 
         <h3>Recently Completed</h3>
         <ul>
+          <li><s>Documentation Overhaul (25 improvements)</s> — <span class="badge success">Done Feb 14</span> Architecture alignment, cron/trust fixes, agent pages, glossary, reference pages — <a href="/implementation/site-improvements">full details</a></li>
           <li><s>Phase 2.5 Audit Remediation</s> — <span class="badge success">Done Feb 13</span> Templates, journals, git, content, cleanup — all complete</li>
-          <li><s>Logseq templates made functional</s> — <span class="badge success">Done Feb 13</span> All 10 templates with template:: properties</li>
-          <li><s>Journal gaps backfilled</s> — <span class="badge success">Done Feb 13</span> Feb 12–13 created, auto-journal cron active</li>
-          <li><s>Life OS content populated</s> — <span class="badge success">Done Feb 13</span> 81 internal links, area pages, contents.md, project pages</li>
-          <li><s>Git hygiene fixed</s> — <span class="badge success">Done Feb 13</span> .gitignore, config.edn, custom.css, contents.md tracked</li>
-          <li><s>Directory cleanup</s> — <span class="badge success">Done Feb 13</span> 26 legacy files archived, 3,429 node_modules deleted, orphans removed</li>
           <li><s>Next.js migration</s> — <span class="badge success">Done Feb 13</span> Server-side auth, Vercel deploy</li>
           <li><s>Comprehensive directory audit</s> — <span class="badge success">Done Feb 13</span> Security findings, structural analysis</li>
           <li><s>Life OS graph gap audit</s> — <span class="badge success">Done Feb 13</span> 15 gaps identified, prioritized</li>
@@ -201,6 +211,7 @@ const content = `<div class="breadcrumbs">
           <h2>Explore</h2>
           <ul>
             <li><a href="/architecture">Review system Architecture</a> — understand how the components fit together</li>
+            <li><a href="/implementation/site-improvements">Site Improvements Review</a> — 25 improvements identified and implemented across the guide</li>
             <li><a href="/implementation/gap-analysis">View detailed Gap Analysis</a> — comprehensive audit results including security findings</li>
             <li><a href="/implementation/roadmap">See the Roadmap</a> — updated priorities from audit</li>
             <li><a href="/implementation/activity-log">Check Activity Log</a> — recent work history</li>

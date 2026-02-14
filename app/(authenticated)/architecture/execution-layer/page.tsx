@@ -108,7 +108,7 @@ const content = `<div class="breadcrumbs">
 
         <p>Sandbox configuration is per-agent: one agent might run fully sandboxed while another runs directly on the host, depending on the trust level and use case.</p>
 
-        <h2>Tool Policy &amp; Filtering</h2>
+        <h2 id="tool-policy">Tool Policy &amp; Filtering</h2>
 
         <p>Not every tool is available to every agent in every context. The Execution Layer applies policy-based filtering:</p>
 

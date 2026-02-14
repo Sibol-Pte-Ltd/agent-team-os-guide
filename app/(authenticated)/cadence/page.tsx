@@ -71,6 +71,10 @@ const content = `<div class="breadcrumbs">
 
         <p>Each rhythm feeds into the next. The morning report sets up your day. The evening check-in closes it out. Those daily snapshots feed into the weekly review. The weekly reviews accumulate into the monthly deep dive. This layered structure means nothing falls through the cracks — every task, every priority, every flag gets surfaced at the right level of detail at the right time.</p>
 
+        <div class="callout note">
+          <strong>Under the Hood:</strong> Each cadence rhythm is powered by the same architectural pipeline. The <a href="/architecture/gateway">Gateway's</a> cron scheduler triggers each run in the cron lane at the configured time. The <a href="/architecture/agent-runner">Agent Runner</a> assembles context from your workspace files — daily pages, task lists, project notes — and the <a href="/architecture/execution-layer">Execution Layer</a> executes any tool calls needed (calendar lookups, file reads, external data pulls). The finished output is delivered through <a href="/architecture/channel-adapters">Channel Adapters</a> to Discord, Pushover, or whatever channels you've configured. This pipeline is the same whether it's a quick morning report or a comprehensive monthly review — only the scope and depth of context change.
+        </div>
+
         <div class="action-section">
           <h2>What You Do Next</h2>
           <ul>
@@ -78,6 +82,7 @@ const content = `<div class="breadcrumbs">
             <li>Learn how the <a href="/cadence/evening-checkin">Evening Check-in</a> closes out each day.</li>
             <li>Explore the <a href="/cadence/weekly-review">Weekly Review</a> and <a href="/cadence/monthly-review">Monthly Review</a> for your longer-term rhythms.</li>
             <li>See how cadence connects to your <a href="/life-os/daily-workflow">Daily Workflow</a> in Life OS.</li>
+            <li>Dive into the <a href="/architecture">Architecture Overview</a> to understand the components that power every cadence run.</li>
           </ul>
         </div>`
 

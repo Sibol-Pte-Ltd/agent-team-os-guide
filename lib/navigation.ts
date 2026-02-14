@@ -94,6 +94,7 @@ export const sections: NavSection[] = [
       { href: '/implementation/gap-analysis', label: 'Gap Analysis' },
       { href: '/implementation/roadmap', label: 'Roadmap' },
       { href: '/implementation/activity-log', label: 'Activity Log' },
+      { href: '/implementation/site-improvements', label: 'Site Improvements' },
     ],
   },
 ]
