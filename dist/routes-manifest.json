@@ -1,0 +1,305 @@
+{
+  "version": 3,
+  "pages404": true,
+  "caseSensitive": false,
+  "basePath": "",
+  "redirects": [
+    {
+      "source": "/:path+/",
+      "destination": "/:path+",
+      "internal": true,
+      "statusCode": 308,
+      "regex": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))/$"
+    }
+  ],
+  "headers": [],
+  "rewrites": {
+    "beforeFiles": [],
+    "afterFiles": [],
+    "fallback": []
+  },
+  "dynamicRoutes": [],
+  "staticRoutes": [
+    {
+      "page": "/",
+      "regex": "^/(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/(?:/)?$"
+    },
+    {
+      "page": "/_not-found",
+      "regex": "^/_not\\-found(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/_not\\-found(?:/)?$"
+    },
+    {
+      "page": "/agents",
+      "regex": "^/agents(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/agents(?:/)?$"
+    },
+    {
+      "page": "/agents/architect",
+      "regex": "^/agents/architect(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/agents/architect(?:/)?$"
+    },
+    {
+      "page": "/agents/ember",
+      "regex": "^/agents/ember(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/agents/ember(?:/)?$"
+    },
+    {
+      "page": "/agents/forge",
+      "regex": "^/agents/forge(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/agents/forge(?:/)?$"
+    },
+    {
+      "page": "/agents/scout",
+      "regex": "^/agents/scout(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/agents/scout(?:/)?$"
+    },
+    {
+      "page": "/agents/trust-levels",
+      "regex": "^/agents/trust\\-levels(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/agents/trust\\-levels(?:/)?$"
+    },
+    {
+      "page": "/architecture",
+      "regex": "^/architecture(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/architecture(?:/)?$"
+    },
+    {
+      "page": "/architecture/agent-runner",
+      "regex": "^/architecture/agent\\-runner(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/architecture/agent\\-runner(?:/)?$"
+    },
+    {
+      "page": "/architecture/channel-adapters",
+      "regex": "^/architecture/channel\\-adapters(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/architecture/channel\\-adapters(?:/)?$"
+    },
+    {
+      "page": "/architecture/execution-layer",
+      "regex": "^/architecture/execution\\-layer(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/architecture/execution\\-layer(?:/)?$"
+    },
+    {
+      "page": "/architecture/gateway",
+      "regex": "^/architecture/gateway(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/architecture/gateway(?:/)?$"
+    },
+    {
+      "page": "/architecture/lane-queue",
+      "regex": "^/architecture/lane\\-queue(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/architecture/lane\\-queue(?:/)?$"
+    },
+    {
+      "page": "/automation",
+      "regex": "^/automation(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/automation(?:/)?$"
+    },
+    {
+      "page": "/automation/cron-jobs",
+      "regex": "^/automation/cron\\-jobs(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/automation/cron\\-jobs(?:/)?$"
+    },
+    {
+      "page": "/automation/notifications",
+      "regex": "^/automation/notifications(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/automation/notifications(?:/)?$"
+    },
+    {
+      "page": "/cadence",
+      "regex": "^/cadence(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/cadence(?:/)?$"
+    },
+    {
+      "page": "/cadence/evening-checkin",
+      "regex": "^/cadence/evening\\-checkin(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/cadence/evening\\-checkin(?:/)?$"
+    },
+    {
+      "page": "/cadence/monthly-review",
+      "regex": "^/cadence/monthly\\-review(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/cadence/monthly\\-review(?:/)?$"
+    },
+    {
+      "page": "/cadence/morning-report",
+      "regex": "^/cadence/morning\\-report(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/cadence/morning\\-report(?:/)?$"
+    },
+    {
+      "page": "/cadence/weekly-review",
+      "regex": "^/cadence/weekly\\-review(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/cadence/weekly\\-review(?:/)?$"
+    },
+    {
+      "page": "/getting-started",
+      "regex": "^/getting\\-started(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/getting\\-started(?:/)?$"
+    },
+    {
+      "page": "/getting-started/first-day",
+      "regex": "^/getting\\-started/first\\-day(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/getting\\-started/first\\-day(?:/)?$"
+    },
+    {
+      "page": "/getting-started/setup-checklist",
+      "regex": "^/getting\\-started/setup\\-checklist(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/getting\\-started/setup\\-checklist(?:/)?$"
+    },
+    {
+      "page": "/implementation",
+      "regex": "^/implementation(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/implementation(?:/)?$"
+    },
+    {
+      "page": "/implementation/activity-log",
+      "regex": "^/implementation/activity\\-log(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/implementation/activity\\-log(?:/)?$"
+    },
+    {
+      "page": "/implementation/clawvault-analysis",
+      "regex": "^/implementation/clawvault\\-analysis(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/implementation/clawvault\\-analysis(?:/)?$"
+    },
+    {
+      "page": "/implementation/day-1-reset",
+      "regex": "^/implementation/day\\-1\\-reset(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/implementation/day\\-1\\-reset(?:/)?$"
+    },
+    {
+      "page": "/implementation/gap-analysis",
+      "regex": "^/implementation/gap\\-analysis(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/implementation/gap\\-analysis(?:/)?$"
+    },
+    {
+      "page": "/implementation/roadmap",
+      "regex": "^/implementation/roadmap(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/implementation/roadmap(?:/)?$"
+    },
+    {
+      "page": "/implementation/site-improvements",
+      "regex": "^/implementation/site\\-improvements(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/implementation/site\\-improvements(?:/)?$"
+    },
+    {
+      "page": "/life-os",
+      "regex": "^/life\\-os(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/life\\-os(?:/)?$"
+    },
+    {
+      "page": "/life-os/daily-workflow",
+      "regex": "^/life\\-os/daily\\-workflow(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/life\\-os/daily\\-workflow(?:/)?$"
+    },
+    {
+      "page": "/life-os/logseq-tips",
+      "regex": "^/life\\-os/logseq\\-tips(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/life\\-os/logseq\\-tips(?:/)?$"
+    },
+    {
+      "page": "/life-os/templates",
+      "regex": "^/life\\-os/templates(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/life\\-os/templates(?:/)?$"
+    },
+    {
+      "page": "/login",
+      "regex": "^/login(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/login(?:/)?$"
+    },
+    {
+      "page": "/reference/changelog",
+      "regex": "^/reference/changelog(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/reference/changelog(?:/)?$"
+    },
+    {
+      "page": "/reference/commands",
+      "regex": "^/reference/commands(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/reference/commands(?:/)?$"
+    },
+    {
+      "page": "/reference/file-locations",
+      "regex": "^/reference/file\\-locations(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/reference/file\\-locations(?:/)?$"
+    },
+    {
+      "page": "/reference/glossary",
+      "regex": "^/reference/glossary(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/reference/glossary(?:/)?$"
+    },
+    {
+      "page": "/troubleshooting",
+      "regex": "^/troubleshooting(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/troubleshooting(?:/)?$"
+    },
+    {
+      "page": "/troubleshooting/faq",
+      "regex": "^/troubleshooting/faq(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/troubleshooting/faq(?:/)?$"
+    },
+    {
+      "page": "/troubleshooting/syncthing",
+      "regex": "^/troubleshooting/syncthing(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/troubleshooting/syncthing(?:/)?$"
+    }
+  ],
+  "dataRoutes": [],
+  "rsc": {
+    "header": "rsc",
+    "varyHeader": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch",
+    "prefetchHeader": "next-router-prefetch",
+    "didPostponeHeader": "x-nextjs-postponed",
+    "contentTypeHeader": "text/x-component",
+    "suffix": ".rsc",
+    "prefetchSuffix": ".prefetch.rsc",
+    "prefetchSegmentHeader": "next-router-segment-prefetch",
+    "prefetchSegmentSuffix": ".segment.rsc",
+    "prefetchSegmentDirSuffix": ".segments"
+  },
+  "rewriteHeaders": {
+    "pathHeader": "x-nextjs-rewritten-path",
+    "queryHeader": "x-nextjs-rewritten-query"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/(authenticated)/layout,_N_T_/(authenticated)/life-os/layout,_N_T_/(authenticated)/life-os/daily-workflow/layout,_N_T_/(authenticated)/life-os/daily-workflow/page,_N_T_/life-os/daily-workflow"
+  }
+}

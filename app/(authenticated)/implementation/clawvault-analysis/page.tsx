@@ -836,15 +836,15 @@ clawvault context "what decisions were made" --budget 2000 --profile planning</c
           <tbody>
             <tr>
               <td>5.1</td>
-              <td>Rebuild ~/notes/ structure</td>
+              <td>✅ Rebuild ~/notes/ structure</td>
               <td>Architect</td>
-              <td>Create <code>journals/</code>, <code>pages/</code>, <code>templates/</code> subdirectories. Populate with templates from the existing template definitions (all 10 templates documented on this site).</td>
+              <td>Created <code>journals/</code>, <code>pages/</code>, <code>templates/</code> subdirectories. Added all 10 Logseq templates (daily-journal, morning-report, evening-checkin, weekly-review, monthly-review, goal, research-brief, research-request, decision-log, project-kickoff). Configured auto-journal template in config.edn.</td>
             </tr>
             <tr>
               <td>5.2</td>
-              <td>Set up Logseq config</td>
+              <td>✅ Set up Logseq config</td>
               <td>Architect</td>
-              <td>Create <code>~/notes/logseq/config.edn</code> with default-templates for journals. This is optional but recommended if Colin continues using Logseq.</td>
+              <td>Updated <code>config.edn</code> with <code>:default-templates {:journals "daily-journal"}</code> for auto-journal template.</td>
             </tr>
             <tr>
               <td>5.3</td>
