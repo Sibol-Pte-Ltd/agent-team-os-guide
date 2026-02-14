@@ -92,6 +92,47 @@ const content = `<div class="breadcrumbs">
         </table>
 
         <!-- ============================================================= -->
+        <!-- OPENCLAW                                                       -->
+        <!-- ============================================================= -->
+        <h3 id="openclaw">OpenClaw</h3>
+
+        <div class="callout note">
+          <div class="callout-title">Core Runtime</div>
+          <p>These paths are managed by the OpenClaw <a href="/architecture/gateway">Gateway</a> and <a href="/architecture/agent-runner">Agent Runner</a>. They contain runtime configuration, session data, and per-agent workspaces.</p>
+        </div>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Path</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>~/.openclaw/</code></td>
+              <td>OpenClaw root directory. Contains all runtime configuration, agent data, and session state for the OpenClaw platform.</td>
+            </tr>
+            <tr>
+              <td><code>~/.openclaw/config.yaml</code></td>
+              <td>Main OpenClaw configuration file. Defines gateway settings, channel adapters, agent definitions, model routing, tool policies, and cron schedules. This is the single source of truth for how OpenClaw operates.</td>
+            </tr>
+            <tr>
+              <td><code>~/.openclaw/agents/</code></td>
+              <td>Per-agent workspace and session data root. Each agent gets a subdirectory (e.g., <code>agents/ember/</code>) containing its workspace files and session transcripts.</td>
+            </tr>
+            <tr>
+              <td><code>~/.openclaw/agents/ember/sessions/</code></td>
+              <td>Session transcripts for Ember. Each session is stored as a JSONL file containing the full conversation history — messages, tool calls, and responses. Useful for auditing and debugging.</td>
+            </tr>
+            <tr>
+              <td><code>~/.openclaw/agents/ember/workspace/</code></td>
+              <td>Ember's persistent workspace directory. This is where the agent stores its <code>SOUL.md</code>, <code>MEMORY.md</code>, <code>memory/</code> daily notes, and any other files it creates. Mounted into each session's sandbox automatically.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- ============================================================= -->
         <!-- TRUST SYSTEM FILES                                             -->
         <!-- ============================================================= -->
         <h3 id="trust-system">Trust System</h3>
@@ -187,14 +228,15 @@ const content = `<div class="breadcrumbs">
         <div class="action-section">
           <h2>What You Do Next</h2>
           <ul>
-            <li>Familiarize yourself with the <a href="/reference/commands">Quick Commands</a> page — including the new <a href="/reference/commands#trust-system">Trust System Commands</a> section.</li>
+            <li>Familiarize yourself with the <a href="/reference/commands">Quick Commands</a> page — including the <a href="/reference/commands#openclaw-cli">OpenClaw CLI</a> and <a href="/reference/commands#trust-system">Trust System Commands</a> sections.</li>
+            <li>Review the <a href="/architecture">Architecture Overview</a> to understand how the OpenClaw components (Gateway, Lane Queue, Agent Runner) fit together.</li>
             <li>If you find <code>.sync-conflict-*</code> files, follow the resolution steps in the <a href="/troubleshooting/syncthing">Syncthing Troubleshooting</a> guide.</li>
             <li>Check the <a href="/reference/glossary">Glossary</a> if you encounter unfamiliar terms while browsing the file system.</li>
             <li>Read the <a href="/agents/trust-levels">Trust Levels</a> page for the conceptual overview of the trust system.</li>
           </ul>
         </div>
 
-        <p style="margin-top: 2rem; font-size: 0.8rem; color: #888;">Last updated: February 12, 2026</p>`
+        <p style="margin-top: 2rem; font-size: 0.8rem; color: #888;">Last updated: February 14, 2026</p>`
 
 export default function Page() {
   return <div dangerouslySetInnerHTML={{ __html: content }} />

@@ -90,8 +90,89 @@ const content = `<div class="breadcrumbs">
           </tbody>
         </table>
 
+        <!-- ============================================================= -->
+        <!-- OPENCLAW CLI                                                   -->
+        <!-- ============================================================= -->
+        <h2 id="openclaw-cli">OpenClaw CLI</h2>
+
+        <p>The <code>openclaw</code> command is the primary interface for managing the OpenClaw platform — the <a href="/architecture/gateway">Gateway</a> daemon, sessions, cron jobs, and more. Run <code>openclaw help</code> for a full list of subcommands.</p>
+
+        <h3>Gateway Management</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Command</th>
+              <th>What It Does</th>
+              <th>When to Use</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>openclaw gateway status</code></td>
+              <td>Check whether the Gateway daemon is running, and show uptime, connected channels, and active session count.</td>
+              <td>First thing to check when agents are unresponsive or messages are not being delivered. Also useful after a server reboot to confirm everything came back up.</td>
+            </tr>
+            <tr>
+              <td><code>openclaw gateway start</code></td>
+              <td>Start the Gateway daemon. Loads <code>~/.openclaw/config.yaml</code>, connects channel adapters, and begins processing messages.</td>
+              <td>After installation, after a manual stop, or when <code>gateway status</code> shows the daemon is not running.</td>
+            </tr>
+            <tr>
+              <td><code>openclaw gateway stop</code></td>
+              <td>Gracefully stop the Gateway daemon. Active sessions are allowed to complete their current turn before shutdown.</td>
+              <td>Before making major configuration changes, during maintenance, or when you need to cleanly shut down the system.</td>
+            </tr>
+            <tr>
+              <td><code>openclaw gateway restart</code></td>
+              <td>Stop and restart the Gateway daemon. Equivalent to <code>stop</code> followed by <code>start</code>, reloading configuration.</td>
+              <td>After editing <code>~/.openclaw/config.yaml</code> to pick up changes — new channel adapters, updated tool policies, model changes, etc.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Sessions &amp; Cron</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Command</th>
+              <th>What It Does</th>
+              <th>When to Use</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>openclaw sessions list</code></td>
+              <td>List all active and recent sessions with their session keys, agent names, channels, and status (active/idle/completed).</td>
+              <td>When you want to see what agents are currently running, check session activity, or find a specific session ID for debugging.</td>
+            </tr>
+            <tr>
+              <td><code>openclaw cron list</code></td>
+              <td>List all scheduled cron jobs configured in OpenClaw, with their schedules, target agents, and next run times.</td>
+              <td>To review what automated tasks OpenClaw is running — morning reports, heartbeats, health checks, and any custom scheduled jobs.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Service Logs</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Command</th>
+              <th>What It Does</th>
+              <th>When to Use</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>journalctl -u openclaw --since today</code></td>
+              <td>View today's OpenClaw service logs from the systemd journal. Includes gateway startup, channel connections, session lifecycle events, and errors.</td>
+              <td>When diagnosing gateway or agent service issues. Pair with <code>openclaw gateway status</code> for a complete picture.</td>
+            </tr>
+          </tbody>
+        </table>
+
         <h3>Agent Logs</h3>
-        <p>Agent logs live in <code>~/agents/ember/logs/</code>. Session transcripts (full conversation history) are stored as JSONL files in <code>~/.openclaw/agents/ember/sessions/</code>. OpenClaw service logs go to systemd journal.</p>
+        <p>Agent logs live in <code>~/agents/ember/logs/</code>. Session transcripts (full conversation history) are stored as JSONL files in <code>~/.openclaw/agents/ember/sessions/</code>.</p>
         <table>
           <thead>
             <tr>
@@ -120,11 +201,6 @@ const content = `<div class="breadcrumbs">
               <td><code>ls -lt ~/.openclaw/agents/ember/sessions/*.jsonl | head</code></td>
               <td>List recent session transcripts</td>
               <td>When you want to review past agent conversations. Each JSONL file is a full session transcript. Sorted by most recent first.</td>
-            </tr>
-            <tr>
-              <td><code>journalctl -u openclaw --since today</code></td>
-              <td>View today's OpenClaw service logs</td>
-              <td>When you need to diagnose OpenClaw gateway or agent service issues. Shows systemd journal entries for the OpenClaw service.</td>
             </tr>
           </tbody>
         </table>
@@ -335,13 +411,14 @@ $ trust_check scout send_discord "posting research results"</code></pre>
           <h2>What You Do Next</h2>
           <ul>
             <li>Bookmark this page for quick access when you are working on the server.</li>
-            <li>Review the <a href="/reference/file-locations">File Locations</a> page to know where trust system configs, logs, and data live on disk.</li>
+            <li>Review the <a href="/reference/file-locations">File Locations</a> page to know where OpenClaw configs, trust system files, logs, and data live on disk.</li>
+            <li>Read the <a href="/architecture">Architecture Overview</a> to understand how the Gateway, Lane Queue, and Agent Runner work together.</li>
             <li>Read the <a href="/agents/trust-levels">Trust Levels</a> page for the conceptual overview of how the trust system works.</li>
             <li>Check the <a href="/troubleshooting">Troubleshooting</a> section if a command returns unexpected output.</li>
           </ul>
         </div>
 
-        <p style="margin-top: 2rem; font-size: 0.8rem; color: #888;">Last updated: February 12, 2026</p>`
+        <p style="margin-top: 2rem; font-size: 0.8rem; color: #888;">Last updated: February 14, 2026</p>`
 
 export default function Page() {
   return <div dangerouslySetInnerHTML={{ __html: content }} />
