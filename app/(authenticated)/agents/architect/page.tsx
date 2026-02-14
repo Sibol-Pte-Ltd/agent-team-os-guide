@@ -19,7 +19,8 @@ const content = `<div class="breadcrumbs">
         <div class="callout note">
           <div class="callout-title">Status</div>
           <p><strong>Trust Level:</strong> L2 — Act with Approval<br>
-          <strong>Model:</strong> openrouter/anthropic/claude-opus-4.6<br>
+          <strong>Model:</strong> MiniMax M2.5 (default)<br>
+          <em>Can be temporarily changed using /model command</em><br>
           <strong>Workspace:</strong> /home/ubuntu/agents/architect</p>
         </div>
 
@@ -41,7 +42,9 @@ const content = `<div class="breadcrumbs">
 
         <h3>Model</h3>
 
-        <p>Architect uses <strong>Claude Opus</strong> (<code>openrouter/anthropic/claude-opus-4.6</code>), the most powerful reasoning model in the team. This is a deliberate choice: Architect is reserved for tasks where depth and quality justify higher cost. Every token Architect processes costs significantly more than Ember's Kimi K2.5 or Scout's auto-routed model, which is why Architect is deployed selectively rather than used for routine work. The model is configured in the OpenClaw configuration file and invoked by the <a href="/architecture/agent-runner">Agent Runner</a>.</p>
+        <p>Architect uses <strong>MiniMax M2.5</strong> (<code>openrouter/minimax/minimax-m2.5</code>) as the default model. This was chosen as the standard model across all agents for consistency and cost-efficiency. The model is configured in the OpenClaw configuration file and invoked by the <a href="/architecture/agent-runner">Agent Runner</a>.</p>
+
+        <p>If a task genuinely requires Opus-level reasoning, you can temporarily switch Architect to <strong>Claude Opus 4.6</strong> using the <code>/model openrouter/anthropic/claude-opus-4.6</code> command in your conversation. This override applies only for the current session and gives you access to the most powerful reasoning model when the stakes justify it.</p>
 
         <h3>Sessions and Isolation</h3>
 

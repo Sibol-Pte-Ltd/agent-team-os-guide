@@ -18,7 +18,7 @@ const content = `<div class="breadcrumbs">
 
         <ul class="checklist">
           <li><strong>Syncthing installed and configured.</strong> Syncthing is the file synchronization layer that keeps your local LogSeq vault in sync with the EC2 instance. Confirm that Syncthing is running on both your local machine and the server, and that the shared folders are connected and up to date.</li>
-          <li><strong>LogSeq installed with Life OS vault.</strong> LogSeq should be installed on your local machine and pointed at the synced vault directory. Verify that you can open LogSeq, see today's journal page, and navigate the Life OS page hierarchy (projects, areas, resources, archive).</li>
+          <li><strong>LogSeq installed with Notes vault.</strong> LogSeq should be installed on your local machine and pointed at the synced vault directory. Verify that you can open LogSeq, see today's journal page, and navigate the Notes page hierarchy (projects, areas, resources, archive).</li>
           <li><strong>Access to the EC2 instance via Tailscale.</strong> Tailscale provides a secure private network to reach the EC2 server without exposing it to the public internet. Confirm that Tailscale is installed, you are logged in, and you can reach the server's Tailscale IP address.</li>
           <li><strong>Notification channels configured (Pushover or email).</strong> The morning report and evening check-in are delivered via notifications. Confirm that at least one notification channel is set up and that you have received a test notification successfully.</li>
           <li><strong>SSH key added to the server.</strong> You will occasionally need to SSH into the EC2 instance for troubleshooting or manual tasks. Verify that your SSH public key has been added to the server and that you can connect without a password prompt.</li>
@@ -38,7 +38,7 @@ const content = `<div class="breadcrumbs">
         <div class="action-section">
           <h2>What You Do Next</h2>
           <ul>
-            <li><a href="/life-os">Explore Life OS</a> to understand how your notes and tasks are organized</li>
+            <li><a href="/life-os">Explore Notes</a> to understand how your notes and tasks are organized</li>
             <li><a href="/agents/trust-levels">Review Trust Levels</a> to customize agent permissions</li>
             <li><a href="/troubleshooting">Check Common Issues</a> if anything on the checklist is not working</li>
           </ul>

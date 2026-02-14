@@ -16,7 +16,7 @@ const content = `<div class="breadcrumbs">
         <p class="page-subtitle">Structured memory system for AI agents — comparison, gaps, and integration recommendations</p>
 
         <div class="callout warning">
-          <div class="callout-title">Analysis Date: Feb 14, 2026 | Updated: Feb 14, 2026 (Phase 0 fully complete)</div>
+          <div class="callout-title">Analysis Date: Feb 14, 2026 | Updated: Feb 15, 2026 (Phase 1 fully complete)</div>
           <p>Repository: <a href="https://github.com/Versatly/clawvault">github.com/Versatly/clawvault</a> | Built for OpenClaw | Works standalone</p>
         </div>
 
@@ -206,7 +206,7 @@ clawvault context "what decisions were made" --budget 2000 --profile planning</c
             </tr>
             <tr>
               <td><strong>Search</strong></td>
-              <td>grep, file reading, MEMORY.md indexing</td>
+              <td>OpenClaw <code>memory_search</code>: vector + FTS over per-agent SQLite indexes (embeddinggemma-300m-qat-Q8_0, CPU-only)</td>
               <td>qmd: BM25 + local semantic embeddings</td>
             </tr>
             <tr>
@@ -272,9 +272,9 @@ clawvault context "what decisions were made" --budget 2000 --profile planning</c
           </thead>
           <tbody>
             <tr>
-              <td><strong>Local Semantic Search</strong></td>
-              <td>High</td>
-              <td>grep and file reading — functional but not semantic</td>
+              <td><s><strong>Local Semantic Search</strong></s></td>
+              <td><s>High</s></td>
+              <td>✅ <strong>Resolved (Phase 1).</strong> OpenClaw <code>memory_search</code> with embeddinggemma-300m-qat-Q8_0. Per-agent vector + FTS indexes, auto-reindex every 6h.</td>
             </tr>
             <tr>
               <td><strong>Structured Categories</strong></td>
@@ -377,9 +377,9 @@ clawvault context "what decisions were made" --budget 2000 --profile planning</c
           </thead>
           <tbody>
             <tr>
-              <td><strong>qmd for Semantic Search</strong></td>
-              <td>High</td>
-              <td>Install qmd, index ~/agents/*/knowledge/ and ~/notes/, add search to AGENTS.md</td>
+              <td><s><strong>Semantic Search</strong></s></td>
+              <td><s>High</s></td>
+              <td>✅ <strong>Done.</strong> Using OpenClaw native <code>memory_search</code> instead of standalone qmd. All 4 agents indexed, auto-reindex cron running.</td>
             </tr>
             <tr>
               <td><strong>Session Handoff Commands</strong></td>
@@ -513,12 +513,12 @@ clawvault context "what decisions were made" --budget 2000 --profile planning</c
           </thead>
           <tbody>
             <tr>
-              <td><strong>qmd over Notes + Agent Memory</strong></td>
-              <td>Unified semantic search across user notes and agent knowledge — agents find relevant context regardless of where it lives</td>
+              <td><strong>memory_search over Agent Memory</strong> ✅</td>
+              <td>Implemented. Per-agent semantic search over MEMORY.md + memory/*.md. Each agent has isolated vector + FTS index.</td>
             </tr>
             <tr>
-              <td><strong>Scout + qmd</strong></td>
-              <td>Research results stored in knowledge/ indexed for semantic retrieval</td>
+              <td><strong>Scout + memory_search</strong></td>
+              <td>Research results stored in memory/ indexed for semantic retrieval. Scout's index grows as research accumulates.</td>
             </tr>
             <tr>
               <td><strong>Forge + runbooks</strong></td>
@@ -543,7 +543,7 @@ clawvault context "what decisions were made" --budget 2000 --profile planning</c
           <div class="callout-title">✅ Verdict: Reference, Not Replace — with Notes Separation</div>
           <p>ClawVault is an excellent <strong>reference implementation</strong> for agent memory systems. We adopt its best patterns (qmd search, session commands, priority markers) to enhance Agent Memory while keeping Notes as a separate, user-facing layer.</p>
           <p>The "Life OS" → "Notes" rename was the right call. It clarifies the architecture: <strong>Notes = Colin's space. Agent Memory = agents' space. ClawVault patterns = how agent memory gets smarter.</strong></p>
-          <p><strong>Next action:</strong> Syncthing fixed (Phase 0 ✅). Install qmd for semantic search (Phase 1). Everything else follows.</p>
+          <p><strong>Status:</strong> Syncthing fixed (Phase 0 ✅). Semantic search live (Phase 1 ✅). <strong>Next:</strong> Session handoff scripts (Phase 2).</p>
         </div>
 
         <hr>
@@ -551,8 +551,8 @@ clawvault context "what decisions were made" --budget 2000 --profile planning</c
         <h2>Implementation Plan</h2>
 
         <div class="callout info">
-          <div class="callout-title">📋 Plan Updated: Feb 14, 2026</div>
-          <p>Rationalized with Notes rename. Phase 0 (Syncthing fix) completed Feb 14. Five remaining phases ordered by priority and dependency. Estimated total: 4–5 days of agent work.</p>
+          <div class="callout-title">📋 Plan Updated: Feb 15, 2026</div>
+          <p>Phase 0 (Syncthing fix) completed Feb 14. Phase 1 (semantic search) completed Feb 15. Four remaining phases ordered by priority and dependency.</p>
         </div>
 
         <h3>Phase 0: Fix Syncthing + Notes Directory (URGENT)</h3>
@@ -602,9 +602,9 @@ clawvault context "what decisions were made" --budget 2000 --profile planning</c
           <p>All tasks done. Syncthing folder ID is <code>notes</code> on all devices. EC2 path: <code>/home/ubuntu/notes</code>. Mac path: <code>~/AgentTeamOS/notes</code>. Both showing "Up to Date". No references to the deprecated <code>life-os</code> ID remain in any Syncthing config.</p>
         </div>
 
-        <h3>Phase 1: qmd Semantic Search (High Priority)</h3>
-        <p><strong>Goal:</strong> Give all agents semantic search over both agent knowledge AND user notes. This is the single highest-value adoption from ClawVault.</p>
-        <p><strong>Estimated effort:</strong> 2–4 hours (Forge)</p>
+        <h3>Phase 1: Local Semantic Search (High Priority)</h3>
+        <p><strong>Goal:</strong> Give all agents semantic search over their memory files. This is the single highest-value adoption from ClawVault.</p>
+        <p><strong>Actual effort:</strong> ~3 hours across Forge + Architect sessions</p>
         <p><strong>Dependencies:</strong> Phase 0 (Notes directory must exist and sync)</p>
 
         <table>
@@ -619,57 +619,63 @@ clawvault context "what decisions were made" --budget 2000 --profile planning</c
           <tbody>
             <tr>
               <td>1.1</td>
-              <td>Verify qmd is installed and operational</td>
+              <td>✅ Configure local memory search provider</td>
               <td>Forge</td>
-              <td>Run <code>qmd status</code>, confirm local embedding model is loaded. If missing, install via <code>openclaw memory setup</code>.</td>
+              <td>Set <code>memorySearch.provider: "local"</code> in OpenClaw config for all agents. Model: <code>embeddinggemma-300m-qat-Q8_0</code> (~314MB GGUF, CPU-only).</td>
             </tr>
             <tr>
               <td>1.2</td>
-              <td>Create qmd collection for agent knowledge</td>
+              <td>✅ Download and validate embedding model</td>
               <td>Forge</td>
-              <td>Create collection <code>agent-knowledge</code> with appropriate chunk size. Index paths: <code>~/agents/*/knowledge/</code>, <code>~/agents/*/SOUL.md</code>, <code>~/agents/*/MEMORY.md</code>.</td>
+              <td>Had to manually download model via <code>curl</code> — parallel batch workers corrupted it on auto-download. Model working after manual fetch.</td>
             </tr>
             <tr>
               <td>1.3</td>
-              <td>Create qmd collection for user notes</td>
+              <td>✅ Index all agents</td>
               <td>Forge</td>
-              <td>Create separate collection <code>user-notes</code> indexing <code>~/notes/</code>. Keep it separate from agent-knowledge so agents can search either or both.</td>
+              <td>Indexed all 4 agents: Architect (5 files, 26 chunks), Ember (50 files, 306 chunks), Scout (1 file, 2 chunks), Forge (1 file, 1 chunk). Per-agent SQLite stores with vector + FTS indexes.</td>
             </tr>
             <tr>
               <td>1.4</td>
-              <td>Index existing files</td>
+              <td>✅ Validate search results</td>
               <td>Forge</td>
-              <td>Run initial indexing pass on both collections. Verify search returns relevant results for test queries.</td>
+              <td>CLI search confirmed working: <code>openclaw memory search --agent architect "syncthing phase 0"</code> returned relevant results.</td>
             </tr>
             <tr>
               <td>1.5</td>
-              <td>Add search instructions to AGENTS.md files</td>
-              <td>Forge</td>
-              <td>Update each agent's AGENTS.md to include qmd search as a lookup step: <code>qmd search agent-knowledge "query"</code> for agent context, <code>qmd search user-notes "query"</code> for user context.</td>
+              <td>✅ Add search instructions to AGENTS.md</td>
+              <td>Architect</td>
+              <td>Added <code>### Semantic Search</code> subsection to all 4 agents' AGENTS.md files. Instructions to use <code>memory_search</code> tool first, then <code>memory_get</code> for exact lines. Each tailored to agent domain.</td>
             </tr>
             <tr>
               <td>1.6</td>
-              <td>Set up auto-reindex</td>
-              <td>Forge</td>
-              <td>Add a cron job or heartbeat step to re-index when files change. Could be a simple <code>qmd sync</code> in Forge's heartbeat.</td>
+              <td>✅ Set up auto-reindex cron</td>
+              <td>Architect</td>
+              <td>Cron job <code>memory-reindex</code> runs every 6 hours (0 */6 * * *). Reindexes all 4 agents. Silent on success, alerts on errors.</td>
             </tr>
             <tr>
               <td>1.7</td>
-              <td>Validate end-to-end</td>
-              <td>Ember</td>
-              <td>Ember performs a real search during a task to confirm semantic search works in production agent runs.</td>
+              <td>✅ End-to-end validation</td>
+              <td>Architect</td>
+              <td>Validated in live sessions: Architect <code>memory_search</code> returned 3 relevant results for "syncthing folder rename" (scores 0.35–0.42). Ember CLI search returned 6 results for "trust violation" (top score 0.72). Cross-agent isolation confirmed.</td>
             </tr>
           </tbody>
         </table>
 
+        <div class="callout success">
+          <div class="callout-title">✅ Phase 1 Complete (Feb 15, 2026)</div>
+          <p>All tasks done. OpenClaw's built-in <code>memory_search</code> provides semantic search using <code>embeddinggemma-300m-qat-Q8_0</code> (local, CPU-only, ~314MB). Each agent has an isolated SQLite index over its <code>MEMORY.md</code> + <code>memory/*.md</code> files. Auto-reindex runs every 6 hours. No external <code>qmd</code> dependency needed — OpenClaw handles it natively.</p>
+        </div>
+
         <div class="callout tip">
-          <div class="callout-title">OpenClaw 2026.2.13 Note</div>
-          <p>The 2026.2.13 release switched the default local embedding model to the QAT <code>embeddinggemma-300m-qat-Q8_0</code> variant for better quality at the same footprint. This makes qmd viable on our EC2 instance without significant memory overhead.</p>
+          <div class="callout-title">Implementation Note: OpenClaw Native vs. Standalone qmd</div>
+          <p>The original plan called for standalone <code>qmd</code> collections. In practice, OpenClaw 2026.2.13 ships with built-in <code>memory_search</code> that uses the same embedding model (<code>embeddinggemma-300m-qat-Q8_0</code>) and provides per-agent isolated indexes out of the box. This was simpler, required no additional dependencies, and integrated directly with the agent tool system. Agents use <code>memory_search</code> and <code>memory_get</code> tools rather than CLI commands.</p>
         </div>
 
         <h3>Phase 2: Session Handoff Scripts (Medium Priority)</h3>
         <p><strong>Goal:</strong> Formalize session continuity so agents can reliably recover context after session resets or context window overflow.</p>
-        <p><strong>Estimated effort:</strong> 3–5 hours (Forge + Ember)</p>
+        <p><strong>Owner:</strong> Architect</p>
+        <p><strong>Estimated effort:</strong> 3–5 hours (Architect)</p>
         <p><strong>Dependencies:</strong> Phase 1 (search is used in <code>recap</code> to find relevant context)</p>
 
         <table>
@@ -685,7 +691,7 @@ clawvault context "what decisions were made" --budget 2000 --profile planning</c
             <tr>
               <td>2.1</td>
               <td>Create <code>scripts/handoff.sh</code></td>
-              <td>Forge</td>
+              <td>Architect</td>
               <td>Implement three functions: <code>handoff_wake</code> (load recent memory + qmd search for active context), <code>handoff_sleep</code> (write session summary to memory/), <code>handoff_recap</code> (generate context summary from last N memory entries).</td>
             </tr>
             <tr>
@@ -697,19 +703,19 @@ clawvault context "what decisions were made" --budget 2000 --profile planning</c
             <tr>
               <td>2.3</td>
               <td>Integrate with agent session startup</td>
-              <td>Forge</td>
+              <td>Architect</td>
               <td>Add <code>handoff_wake</code> call to agent AGENTS.md "Every Session" instructions. Agents auto-recover context on spawn.</td>
             </tr>
             <tr>
               <td>2.4</td>
               <td>Integrate with heartbeat</td>
-              <td>Ember</td>
+              <td>Architect</td>
               <td>At end of meaningful heartbeat runs, write a mini handoff note. This ensures context survives even if no explicit <code>sleep</code> is called.</td>
             </tr>
             <tr>
               <td>2.5</td>
               <td>Test cross-session recovery</td>
-              <td>Ember</td>
+              <td>Architect</td>
               <td>Simulate context death: reset a session, verify <code>wake</code> recovers the right context. Test with both Ember and Scout.</td>
             </tr>
           </tbody>
@@ -717,7 +723,8 @@ clawvault context "what decisions were made" --budget 2000 --profile planning</c
 
         <h3>Phase 3: Priority Markers (Medium Priority)</h3>
         <p><strong>Goal:</strong> Add visual priority markers to memory entries so agents can triage importance at a glance during context injection.</p>
-        <p><strong>Estimated effort:</strong> 1–2 hours (Ember)</p>
+        <p><strong>Owner:</strong> Architect</p>
+        <p><strong>Estimated effort:</strong> 1–2 hours (Architect)</p>
         <p><strong>Dependencies:</strong> None (can run in parallel with Phase 2)</p>
 
         <table>
@@ -733,25 +740,25 @@ clawvault context "what decisions were made" --budget 2000 --profile planning</c
             <tr>
               <td>3.1</td>
               <td>Define priority schema</td>
-              <td>Ember</td>
+              <td>Architect</td>
               <td>Adopt ClawVault's 🔴🟡🟢 markers: 🔴 = critical/blocking, 🟡 = important/time-sensitive, 🟢 = informational/low-priority. Document in knowledge/shared/.</td>
             </tr>
             <tr>
               <td>3.2</td>
               <td>Update memory templates</td>
-              <td>Ember</td>
+              <td>Architect</td>
               <td>Add priority field to daily memory file format and knowledge entry templates. Default to 🟢 if unspecified.</td>
             </tr>
             <tr>
               <td>3.3</td>
               <td>Retrofit existing entries</td>
-              <td>Ember</td>
+              <td>Architect</td>
               <td>Add priority markers to existing high-value knowledge entries (decisions, active projects, commitments). Low-effort pass — skip routine daily logs.</td>
             </tr>
             <tr>
               <td>3.4</td>
               <td>Update AGENTS.md with priority convention</td>
-              <td>Forge</td>
+              <td>Architect</td>
               <td>All agents instructed to use priority markers when writing new memory entries.</td>
             </tr>
           </tbody>
@@ -759,7 +766,8 @@ clawvault context "what decisions were made" --budget 2000 --profile planning</c
 
         <h3>Phase 4: Structured Knowledge Categories (Low Priority)</h3>
         <p><strong>Goal:</strong> Expand the <code>knowledge/</code> directory with ClawVault-inspired typed subdirectories, while keeping our agent-scoped structure.</p>
-        <p><strong>Estimated effort:</strong> 2–3 hours (Forge + Ember)</p>
+        <p><strong>Owner:</strong> Architect</p>
+        <p><strong>Estimated effort:</strong> 2–3 hours (Architect)</p>
         <p><strong>Dependencies:</strong> Phase 1 (new directories should be indexed by qmd)</p>
 
         <table>
@@ -775,31 +783,31 @@ clawvault context "what decisions were made" --budget 2000 --profile planning</c
             <tr>
               <td>4.1</td>
               <td>Create shared category directories</td>
-              <td>Forge</td>
+              <td>Architect</td>
               <td>Add to <code>knowledge/</code>: <code>decisions/</code>, <code>lessons/</code>, <code>commitments/</code>. Keep existing <code>companies/</code>, <code>people/</code>, <code>projects/</code>.</td>
             </tr>
             <tr>
               <td>4.2</td>
               <td>Create category templates</td>
-              <td>Ember</td>
+              <td>Architect</td>
               <td>One template per category with standard frontmatter: title, date, priority marker, tags, related links. Keep lightweight.</td>
             </tr>
             <tr>
               <td>4.3</td>
               <td>Migrate existing knowledge</td>
-              <td>Ember</td>
+              <td>Architect</td>
               <td>Move relevant entries from MEMORY.md into typed categories. Keep MEMORY.md as a curated index pointing to the new locations.</td>
             </tr>
             <tr>
               <td>4.4</td>
               <td>Update qmd index</td>
-              <td>Forge</td>
+              <td>Architect</td>
               <td>Re-index to include new category directories. Verify search quality with typed queries.</td>
             </tr>
             <tr>
               <td>4.5</td>
               <td>Document the structure</td>
-              <td>Forge</td>
+              <td>Architect</td>
               <td>Update file-locations page and AGENTS.md files to reflect the new knowledge/ layout.</td>
             </tr>
           </tbody>
@@ -807,7 +815,8 @@ clawvault context "what decisions were made" --budget 2000 --profile planning</c
 
         <h3>Phase 5: Notes Rebuild + Website Updates (Low Priority)</h3>
         <p><strong>Goal:</strong> Rebuild the Notes directory structure and update all website references from "Life OS" to "Notes".</p>
-        <p><strong>Estimated effort:</strong> 3–4 hours (Forge + Ember)</p>
+        <p><strong>Owner:</strong> Architect</p>
+        <p><strong>Estimated effort:</strong> 3–4 hours (Architect)</p>
         <p><strong>Dependencies:</strong> Phase 0 (Syncthing must be working first)</p>
 
         <table>
@@ -823,31 +832,31 @@ clawvault context "what decisions were made" --budget 2000 --profile planning</c
             <tr>
               <td>5.1</td>
               <td>Rebuild ~/notes/ structure</td>
-              <td>Forge</td>
+              <td>Architect</td>
               <td>Create <code>journals/</code>, <code>pages/</code>, <code>templates/</code> subdirectories. Populate with templates from the existing template definitions (all 10 templates documented on this site).</td>
             </tr>
             <tr>
               <td>5.2</td>
               <td>Set up Logseq config</td>
-              <td>Forge</td>
+              <td>Architect</td>
               <td>Create <code>~/notes/logseq/config.edn</code> with default-templates for journals. This is optional but recommended if Colin continues using Logseq.</td>
             </tr>
             <tr>
               <td>5.3</td>
               <td>Update website: Life OS → Notes</td>
-              <td>Forge</td>
+              <td>Architect</td>
               <td>Rename the "Life OS" nav section to "Notes". Update all four pages: /life-os → /notes (or keep URLs, update content). Update references on home page, getting-started, file-locations, and anywhere else "Life OS" or <code>~/life-os/</code> appears.</td>
             </tr>
             <tr>
               <td>5.4</td>
               <td>Update file-locations page</td>
-              <td>Forge</td>
+              <td>Architect</td>
               <td>Change all <code>~/life-os/</code> paths to <code>~/notes/</code>. Update descriptions to reflect the simplified naming.</td>
             </tr>
             <tr>
               <td>5.5</td>
               <td>Build and deploy website</td>
-              <td>Forge</td>
+              <td>Architect</td>
               <td>Run <code>npm run build</code> in the guide-nextjs repo and restart the site service.</td>
             </tr>
           </tbody>
@@ -869,9 +878,9 @@ clawvault context "what decisions were made" --budget 2000 --profile planning</c
               <td>✅ Complete — config updated, folder idle, sync restored</td>
             </tr>
             <tr>
-              <td><strong>Phase 1: qmd Search</strong></td>
-              <td>Week of Feb 17, 2026</td>
-              <td>🔲 Not started</td>
+              <td><strong>Phase 1: Local Semantic Search</strong></td>
+              <td>Feb 14–15, 2026</td>
+              <td>✅ Complete — OpenClaw native memory_search, all 4 agents indexed, auto-reindex cron</td>
             </tr>
             <tr>
               <td><strong>Phase 2: Session Handoffs</strong></td>
@@ -899,7 +908,7 @@ clawvault context "what decisions were made" --budget 2000 --profile planning</c
         <h3>Success Criteria</h3>
         <ul>
           <li><strong>Phase 0:</strong> Syncthing shows "Up to Date" for the Notes folder; files sync between EC2 and MacBook within 30 seconds</li>
-          <li><strong>Phase 1:</strong> Any agent can run <code>qmd vsearch agent-knowledge "topic"</code> and get relevant results within 2 seconds</li>
+          <li><strong>Phase 1:</strong> ✅ Any agent can use <code>memory_search</code> and get relevant results. Validated: Architect scores 0.35–0.42, Ember top score 0.72. Cross-agent isolation confirmed.</li>
           <li><strong>Phase 2:</strong> After a session reset, an agent can recover context from the last session within its first turn</li>
           <li><strong>Phase 3:</strong> New memory entries consistently use priority markers; agents can filter by priority during context injection</li>
           <li><strong>Phase 4:</strong> Knowledge is organized by type; search quality improves measurably for typed queries</li>
@@ -922,9 +931,9 @@ clawvault context "what decisions were made" --budget 2000 --profile planning</c
               <td>✅ Resolved — folder ID cleanly renamed to <code>notes</code> on all devices. No data loss. Both devices syncing normally.</td>
             </tr>
             <tr>
-              <td>qmd embedding model uses too much memory on EC2</td>
-              <td>Medium</td>
-              <td>The QAT Q8_0 variant is designed for small footprint. Monitor with <code>htop</code> during Phase 1. Fallback: use BM25-only (no semantic) search.</td>
+              <td><s>Embedding model uses too much memory on EC2</s></td>
+              <td><s>Medium</s></td>
+              <td>✅ Resolved — embeddinggemma-300m-qat-Q8_0 runs fine on EC2 CPU-only. ~314MB model, no GPU needed. Batch workers did corrupt the auto-download initially but manual curl resolved it.</td>
             </tr>
             <tr>
               <td><s>MacBook still uses ~/life-os/ path</s></td>
@@ -954,7 +963,7 @@ clawvault context "what decisions were made" --budget 2000 --profile planning</c
         <div class="action-section">
           <h2>Related</h2>
           <ul>
-            <li><a href="/implementation/agent-guide-files">Agent Guide Files Assessment</a> — Day 1 Reset status</li>
+            <li><a href="/implementation/activity-log">Activity Log</a> — Day 1 Reset status</li>
             <li><a href="/implementation/day-1-reset">Day 1 Reset</a> — Clean architecture overview</li>
             <li><a href="/agents">Agent Documentation</a> — Ember, Scout, Forge roles</li>
             <li><a href="/architecture">System Architecture</a> — How it all fits together</li>
@@ -963,7 +972,7 @@ clawvault context "what decisions were made" --budget 2000 --profile planning</c
           </ul>
         </div>
 
-        <p style={{marginTop: '2rem', fontSize: '0.8rem', color: '#888'}}>Last updated: February 14, 2026 — Phase 0 fully complete. Syncthing folder ID renamed to "notes", Mac path set to ~/AgentTeamOS/notes, both devices syncing. Applied by Architect + Colin.</p>
+        <p style={{marginTop: '2rem', fontSize: '0.8rem', color: '#888'}}>Last updated: February 15, 2026 — Phase 1 fully complete. OpenClaw native memory_search live for all 4 agents with embeddinggemma-300m-qat-Q8_0. Auto-reindex every 6h. Applied by Architect.</p>
     </div>
   )
 }

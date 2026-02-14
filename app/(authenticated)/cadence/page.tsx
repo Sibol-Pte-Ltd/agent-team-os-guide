@@ -81,7 +81,7 @@ const content = `<div class="breadcrumbs">
             <li>Read about the <a href="/cadence/morning-report">Morning Report</a> to understand your daily starting point.</li>
             <li>Learn how the <a href="/cadence/evening-checkin">Evening Check-in</a> closes out each day.</li>
             <li>Explore the <a href="/cadence/weekly-review">Weekly Review</a> and <a href="/cadence/monthly-review">Monthly Review</a> for your longer-term rhythms.</li>
-            <li>See how cadence connects to your <a href="/life-os/daily-workflow">Daily Workflow</a> in Life OS.</li>
+            <li>See how cadence connects to your <a href="/life-os/daily-workflow">Daily Workflow</a> in Notes.</li>
             <li>Dive into the <a href="/architecture">Architecture Overview</a> to understand the components that power every cadence run.</li>
           </ul>
         </div>`

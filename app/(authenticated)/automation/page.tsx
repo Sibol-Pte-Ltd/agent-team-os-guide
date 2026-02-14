@@ -25,7 +25,7 @@ const content = `<div class="breadcrumbs">
         <p>It is important to distinguish between the two kinds of automation running in Agent Team OS:</p>
 
         <ul>
-          <li><strong>OpenClaw-scheduled tasks (cadence)</strong> — Morning reports, evening check-ins, weekly reviews, monthly reviews, and Life OS git backups. These are all managed by the <a href="/architecture/gateway">Gateway's cron scheduler</a>, run as intelligent agent sessions, and deliver output through <a href="/architecture/channel-adapters">Channel Adapters</a> (Discord, Pushover). You configure and monitor them entirely through OpenClaw.</li>
+          <li><strong>OpenClaw-scheduled tasks (cadence)</strong> — Morning reports, evening check-ins, weekly reviews, monthly reviews, and Notes git backups. These are all managed by the <a href="/architecture/gateway">Gateway's cron scheduler</a>, run as intelligent agent sessions, and deliver output through <a href="/architecture/channel-adapters">Channel Adapters</a> (Discord, Pushover). You configure and monitor them entirely through OpenClaw.</li>
           <li><strong>System-level automation</strong> — Services like <strong>Syncthing</strong> (continuous file sync between devices) and <strong>systemd units</strong> (the Gateway service itself, log rotation via logrotate, auto-journal creation). These run as standard Linux processes managed by systemd, independent of OpenClaw's scheduler. They would keep running even if the Gateway were stopped.</li>
         </ul>
 
@@ -44,9 +44,9 @@ const content = `<div class="breadcrumbs">
         <h3>System-Level (systemd / Linux Services)</h3>
         <ul>
           <li><strong>Syncthing sync</strong> — File synchronization between your devices runs continuously in the background as a systemd service. Health checks confirm it stays connected.</li>
-          <li><strong>Daily backups</strong> — Your Life OS data, agent configurations, and logs are backed up every night at midnight.</li>
+          <li><strong>Daily backups</strong> — Your Notes data, agent configurations, and logs are backed up every night at midnight.</li>
           <li><strong>Log rotation</strong> — Old log files are compressed and archived automatically via logrotate so they do not consume disk space.</li>
-          <li><strong>Auto-journal creation</strong> — A system cron job creates the next day's Life OS journal entry at 00:01 UTC daily.</li>
+          <li><strong>Auto-journal creation</strong> — A system cron job creates the next day's Notes journal entry at 00:01 UTC daily.</li>
         </ul>
 
         <h2>Human-in-the-Loop</h2>

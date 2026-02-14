@@ -90,7 +90,7 @@ const content = `<div class="breadcrumbs">
           <li><strong>OpenClaw tools</strong> — session management, subagent spawning, agent coordination, Gateway control</li>
           <li><strong>Node tools</strong> — interact with paired mobile devices: camera, location, notifications, screen recording</li>
           <li><strong>Canvas tools</strong> — present visual content to users via rendered HTML/React canvases</li>
-          <li><strong>Memory tools</strong> — search and retrieve from the agent's long-term memory files</li>
+          <li><strong>Memory tools</strong> — <code>memory_search</code> and <code>memory_get</code> for semantic search and retrieval from the agent's long-term memory files. Powered by <code>embeddinggemma-300m-qat-Q8_0</code> with per-agent SQLite indexes, auto-reindexed every 6 hours via cron.</li>
           <li><strong>Image analysis</strong> — analyze images using a vision model</li>
         </ul>
 

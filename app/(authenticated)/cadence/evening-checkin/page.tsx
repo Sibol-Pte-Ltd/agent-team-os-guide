@@ -17,7 +17,7 @@ const content = `<div class="breadcrumbs">
         <p>The evening check-in is organized into three sections:</p>
 
         <h3>Completed Today</h3>
-        <p>Everything you checked off, finished, or resolved during the day. Ember pulls this from your Life OS daily page, task completions, and any agent activity that wrapped up. Seeing what you accomplished is more than satisfying — it helps Ember calibrate how much to load onto tomorrow's priorities.</p>
+        <p>Everything you checked off, finished, or resolved during the day. Ember pulls this from your Notes daily page, task completions, and any agent activity that wrapped up. Seeing what you accomplished is more than satisfying — it helps Ember calibrate how much to load onto tomorrow's priorities.</p>
 
         <h3>Still Pending</h3>
         <p>Tasks and priorities from this morning's report that didn't get completed. This isn't a guilt trip — it's information. Some things naturally carry over, and that's fine. Ember will automatically move these to tomorrow's priorities unless you tell it otherwise.</p>
@@ -85,7 +85,7 @@ ATTENTION TOMORROW
           <ul>
             <li>Revisit the <a href="/cadence/morning-report">Morning Report</a> to see the other half of the daily loop.</li>
             <li>Learn how daily check-ins feed into the <a href="/cadence/weekly-review">Weekly Review</a>.</li>
-            <li>See how the evening check-in integrates with your <a href="/life-os/daily-workflow">Daily Workflow</a> in Life OS.</li>
+            <li>See how the evening check-in integrates with your <a href="/life-os/daily-workflow">Daily Workflow</a> in Notes.</li>
             <li>Explore the <a href="/architecture">Architecture Overview</a> to see how all the components connect.</li>
           </ul>
         </div>`

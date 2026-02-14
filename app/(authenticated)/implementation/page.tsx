@@ -35,9 +35,9 @@ const content = `<div class="breadcrumbs">
             <div class="status-detail">L0–L3 levels, approval queue, audit log</div>
           </div>
           <div class="status-card success">
-            <div class="status-title">Life OS</div>
-            <div class="status-value">Operational</div>
-            <div class="status-detail">Templates Logseq-functional, auto-journal active, 81 internal links</div>
+            <div class="status-title"><a href="/implementation/day-1-reset">Knowledge</a></div>
+            <div class="status-value">Reset</div>
+            <div class="status-detail"><a href="/implementation/day-1-reset">Day 1 clean slate</a> — legacy data deleted</div>
           </div>
           <div class="status-card success">
             <div class="status-title">Forge</div>
@@ -87,34 +87,19 @@ const content = `<div class="breadcrumbs">
               <td>1st of month 9 AM Manila → <a href="/architecture/channel-adapters">Discord</a> + Pushover</td>
             </tr>
             <tr>
-              <td><strong>Life OS Git Backup</strong></td>
-              <td><span class="badge success">Working</span></td>
-              <td>Daily 2 AM UTC → Discord</td>
+              <td><strong><a href="/implementation/day-1-reset">Knowledge System</a></strong></td>
+              <td><span class="badge success">Reset</span></td>
+              <td><a href="/implementation/day-1-reset">Day 1 clean slate</a> — ~/agents/ember/knowledge/ is source of truth</td>
             </tr>
             <tr>
               <td><strong>Syncthing</strong></td>
-              <td><span class="badge success">Connected</span></td>
-              <td>76 files synced, idle, 0 errors</td>
+              <td><span class="badge warning">Needs Cleanup</span></td>
+              <td>Life OS folder deleted; config still references old path</td>
             </tr>
             <tr>
               <td><strong><a href="/automation/notifications">Pushover</a></strong></td>
               <td><span class="badge success">Working</span></td>
               <td>Test confirmed, mobile push active — <a href="/architecture/channel-adapters">channel adapter</a></td>
-            </tr>
-            <tr>
-              <td><strong>Life OS Templates</strong></td>
-              <td><span class="badge success">Functional</span></td>
-              <td>All 10 templates Logseq-compatible with template:: properties, journal auto-template active</td>
-            </tr>
-            <tr>
-              <td><strong>Life OS Journals</strong></td>
-              <td><span class="badge success">Working</span></td>
-              <td>Feb 12–13 backfilled, auto-journal creation via cron (00:01 UTC daily)</td>
-            </tr>
-            <tr>
-              <td><strong>Life OS Content</strong></td>
-              <td><span class="badge success">Populated</span></td>
-              <td>81 internal links, 5 area pages fleshed out, contents.md as nav hub, project pages created</td>
             </tr>
             <tr>
               <td><strong><a href="/agents/trust">Trust System</a></strong></td>
@@ -145,7 +130,17 @@ const content = `<div class="breadcrumbs">
         </table>
 
         <h2>Current Phase</h2>
-        <p><strong>Phase 1: Critical Fixes</strong> is complete. <strong>Phase 2: Core Features</strong> is complete. <strong>Phase 2.5: Audit Remediation</strong> is complete. <strong>Phase 2.75: Documentation Overhaul</strong> is complete — 25 improvements implemented across the entire site with architecture alignment. Now preparing for <strong>Phase 3: Complete Cadence</strong> — enhancing morning reports, evening check-ins, and weekly/monthly reviews. See the <a href="/implementation/roadmap">Roadmap</a> for full details.</p>
+        <p><strong>Phase 1–2.75 complete.</strong> <strong>Day 1 Reset complete</strong> — legacy data deleted, clean architecture established. Now in <strong>Phase 3: Knowledge & Cadence</strong> — building out ~/agents/ember/knowledge/ and enhancing automated reports. See the <a href="/implementation/roadmap">Roadmap</a> for full details.</p>
+
+        <div class="callout success">
+          <div class="callout-title">✅ Feb 14, 2026: Day 1 Reset — Clean Architecture</div>
+          <p><strong>Complete deletion</strong> of legacy Life OS data. <code>~/life-os/</code> and <code>~/life/</code> fully removed. Fresh start with simplified two-directory structure:</p>
+          <ul>
+            <li><strong>~/agents/</strong> — Everything Agent Team OS (ember/knowledge/, scout/, forge/, shared/)</li>
+            <li><strong>~/notes/</strong> — Empty for now, ready for future personal use</li>
+          </ul>
+          <p>Agent knowledge now lives exclusively in <code>~/agents/ember/knowledge/</code> — single source of truth, git-managed, no Syncthing dependency. <a href="/implementation/day-1-reset">Full reset details</a>.</p>
+        </div>
 
         <div class="callout success">
           <div class="callout-title">✅ Feb 14, 2026: Documentation Overhaul Complete — 25 Site Improvements</div>
@@ -182,24 +177,22 @@ const content = `<div class="breadcrumbs">
         <h2>Next Actions</h2>
         <ol>
           <li><strong>🟡 Rotate Supabase token</strong> — deferred per Colin; will address when agent-guide files change</li>
-          <li><strong>Enhance morning report</strong> — pull priorities from Life OS journal, add weather, overnight summary</li>
-          <li><strong>Enhance evening check-in</strong> — add daily summary, reflection prompts, rollover task detection</li>
-          <li><strong>Enhance weekly review</strong> — compile tasks, carry-over detection, project progress</li>
-          <li><strong>Configure Logseq favorites</strong> — add key pages to <code>:favorites</code> for quick access</li>
-          <li><strong>Adopt Logseq properties</strong> — define schema (<code>type::, area::, status::, priority::</code>)</li>
+          <li><strong>Build knowledge base</strong> — populate ~/agents/ember/knowledge/ with core patterns from MEMORY.md, AGENTS.md</li>
+          <li><strong>Enhance morning report</strong> — add weather, overnight summary, priority detection</li>
+          <li><strong>Enhance evening check-in</strong> — add daily summary, reflection prompts</li>
+          <li><strong>Clean Syncthing config</strong> — remove stale life-os folder reference</li>
         </ol>
 
         <h3>Recently Completed</h3>
         <ul>
-          <li><s>Documentation Overhaul (25 improvements)</s> — <span class="badge success">Done Feb 14</span> Architecture alignment, cron/trust fixes, agent pages, glossary, reference pages — <a href="/implementation/site-improvements">full details</a></li>
+          <li><s>Day 1 Reset</s> — <span class="badge success">Done Feb 14</span> Deleted ~/life-os/, ~/life/, clean architecture — <a href="/implementation/day-1-reset">full details</a></li>
+          <li><s>Documentation Overhaul (25 improvements)</s> — <span class="badge success">Done Feb 14</span> Architecture alignment, cron/trust fixes, agent pages, glossary — <a href="/implementation/site-improvements">full details</a></li>
           <li><s>Phase 2.5 Audit Remediation</s> — <span class="badge success">Done Feb 13</span> Templates, journals, git, content, cleanup — all complete</li>
           <li><s>Next.js migration</s> — <span class="badge success">Done Feb 13</span> Server-side auth, Vercel deploy</li>
           <li><s>Comprehensive directory audit</s> — <span class="badge success">Done Feb 13</span> Security findings, structural analysis</li>
-          <li><s>Life OS graph gap audit</s> — <span class="badge success">Done Feb 13</span> 15 gaps identified, prioritized</li>
           <li><s>Google Calendar OAuth</s> — <span class="badge success">Done Feb 12</span> OAuth completed, integrated via gog CLI</li>
           <li><s>Implement trust system enforcement</s> — <span class="badge success">Done Feb 12</span> config + enforcement + approval workflows + docs</li>
           <li><s>Activate Forge agent</s> — <span class="badge success">Done Feb 11</span> health checks, log rotation, backup verification</li>
-          <li><s>Build out Life OS</s> — <span class="badge success">Done Feb 11</span> 10 templates, 5 areas, git repo</li>
         </ul>
 
         <div class="callout">
@@ -210,6 +203,9 @@ const content = `<div class="breadcrumbs">
         <div class="action-section">
           <h2>Explore</h2>
           <ul>
+            <li><a href="/implementation/day-1-reset">Day 1 Reset</a> — clean architecture, deleted legacy data, fresh start</li>
+            <li><a href="/implementation/agent-guide-files">Agent Guide Files</a> — complete cleanup history, deletion logs, Day 1 Reset details</li>
+            <li><a href="/implementation/clawvault-analysis">ClawVault Analysis</a> — structured memory system comparison, qmd recommendations</li>
             <li><a href="/architecture">Review system Architecture</a> — understand how the components fit together</li>
             <li><a href="/implementation/site-improvements">Site Improvements Review</a> — 25 improvements identified and implemented across the guide</li>
             <li><a href="/implementation/gap-analysis">View detailed Gap Analysis</a> — comprehensive audit results including security findings</li>

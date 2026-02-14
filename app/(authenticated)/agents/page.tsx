@@ -23,7 +23,7 @@ const content = `<div class="breadcrumbs">
           <div class="agent-meta">
             <span><strong>Role:</strong> Daily Operations</span>
             <span><strong>Trust Level:</strong> 3</span>
-            <span><strong>Model:</strong> Kimi K2.5</span>
+            <span><strong>Model:</strong> MiniMax M2.5</span>
             <span><strong>Focus:</strong> Coordination &amp; Prioritization</span>
           </div>
           <p>Ember is your day-to-day coordinator. She manages the daily cadence, creates your morning reports and evening check-ins, tracks task priorities, and serves as the central point of communication between you and the other agents. If you need something adjusted, Ember is your first point of contact.</p>
@@ -34,10 +34,10 @@ const content = `<div class="breadcrumbs">
           <div class="agent-meta">
             <span><strong>Role:</strong> Information Gathering</span>
             <span><strong>Trust Level:</strong> 2</span>
-            <span><strong>Model:</strong> Auto (routed by OpenRouter)</span>
+            <span><strong>Model:</strong> MiniMax M2.5</span>
             <span><strong>Focus:</strong> Research &amp; Summarization</span>
           </div>
-          <p>Scout handles deep research and information gathering. When you need to investigate a topic, evaluate options, or monitor sources for updates, Scout does the legwork. Findings are summarized and placed in Life OS so you can review them at your convenience.</p>
+          <p>Scout handles deep research and information gathering. When you need to investigate a topic, evaluate options, or monitor sources for updates, Scout does the legwork. Findings are summarized and placed in Notes so you can review them at your convenience.</p>
         </div>
 
         <div class="agent-card">
@@ -45,7 +45,7 @@ const content = `<div class="breadcrumbs">
           <div class="agent-meta">
             <span><strong>Role:</strong> System Maintenance</span>
             <span><strong>Trust Level:</strong> 3</span>
-            <span><strong>Model:</strong> Auto (routed by OpenRouter)</span>
+            <span><strong>Model:</strong> MiniMax M2.5</span>
             <span><strong>Focus:</strong> Reliability &amp; Automation</span>
           </div>
           <p>Forge keeps the system running. He manages Syncthing synchronization, monitors scheduled tasks and backups, tracks system health, and handles the EC2 instance that powers your agent team. Forge works mostly in the background — you will rarely interact with him directly unless something needs your attention.</p>
@@ -56,15 +56,15 @@ const content = `<div class="breadcrumbs">
           <div class="agent-meta">
             <span><strong>Role:</strong> Deep Synthesis &amp; Analysis</span>
             <span><strong>Trust Level:</strong> 2</span>
-            <span><strong>Model:</strong> Claude Opus</span>
+            <span><strong>Model:</strong> MiniMax M2.5</span>
             <span><strong>Focus:</strong> Strategic Planning &amp; Complex Problem-Solving</span>
           </div>
-          <p>Architect handles high-stakes work that requires deep reasoning — strategic planning, complex analysis, and synthesis across multiple domains. Deployed selectively for tasks where quality justifies the cost, Architect brings Opus-level thinking to problems that benefit from careful, thorough consideration.</p>
+          <p>Architect handles high-stakes work that requires deep reasoning — strategic planning, complex analysis, and synthesis across multiple domains. Use <code>/model</code> to temporarily switch to Claude Opus for tasks that benefit from maximum reasoning depth.</p>
         </div>
 
         <div class="callout note">
           <div class="callout-title">Model Selection</div>
-          <p>Each agent's model is configured in the OpenClaw configuration file. The model determines the agent's reasoning capabilities and cost profile. Ember uses Kimi K2.5 for its strong balance of capability and cost. Architect uses Claude Opus for maximum reasoning depth. Scout and Forge use OpenRouter's <code>auto</code> routing, which selects the best model for each task. See <a href="/architecture/agent-runner">Agent Runner</a> for how model selection works in the agent loop.</p>
+          <p>All agents use <strong>MiniMax M2.5</strong> (<code>openrouter/minimax/minimax-m2.5</code>) as the default model for consistency and cost-efficiency. You can temporarily change any agent's model using the <code>/model</code> command in your conversation. For example, <code>/model openrouter/anthropic/claude-opus-4.6</code> switches to Claude Opus for the current session. See <a href="/architecture/agent-runner">Agent Runner</a> for how model selection works in the agent loop.</p>
         </div>
 
         <div class="action-section">

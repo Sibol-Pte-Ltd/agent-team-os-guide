@@ -20,15 +20,22 @@ const content = `<div class="breadcrumbs">
 
         <p>Scout specializes in deep research, information gathering, and summarization. Rather than spending your own time reading through articles, comparing products, or synthesizing information from scattered sources, you assign the topic to Scout and receive a structured research brief in return. Scout is designed to go deep on a subject and present findings in a way that is easy to act on.</p>
 
-        <p>Scout works closely with Ember. When you assign a research task — either directly to Scout or through Ember — Scout investigates the topic and creates a summary page in Life OS. Ember then surfaces the completed research in your morning report or evening check-in so you know when it is ready for review.</p>
+        <p>Scout works closely with Ember. When you assign a research task — either directly to Scout or through Ember — Scout investigates the topic and creates a summary page in Notes. Ember then surfaces the completed research in your morning report or evening check-in so you know when it is ready for review.</p>
+
+        <div class="callout note">
+          <div class="callout-title">Status</div>
+          <p><strong>Trust Level:</strong> L2 — Act with Approval<br>
+          <strong>Model:</strong> MiniMax M2.5<br>
+          <strong>Workspace:</strong> /home/ubuntu/agents/scout</p>
+        </div>
 
         <h2>Responsibilities</h2>
 
         <ul>
           <li><strong>Investigates assigned topics</strong> — When you give Scout a research question, he gathers information from available sources, evaluates relevance, and compiles what he finds.</li>
-          <li><strong>Creates research briefs</strong> — Findings are organized into structured briefs in Life OS, typically including a summary, key points, pros and cons (if applicable), and recommended next steps.</li>
+          <li><strong>Creates research briefs</strong> — Findings are organized into structured briefs in Notes, typically including a summary, key points, pros and cons (if applicable), and recommended next steps.</li>
           <li><strong>Monitors information sources</strong> — Scout can be configured to watch specific topics or sources over time, alerting you when something new or relevant appears.</li>
-          <li><strong>Summarizes findings in Life OS</strong> — All research output is placed in your Life OS graph so it is searchable, linkable, and integrated with the rest of your notes and projects.</li>
+          <li><strong>Summarizes findings in Notes</strong> — All research output is placed in your Notes graph so it is searchable, linkable, and integrated with the rest of your notes and projects.</li>
         </ul>
 
         <h2>How Scout Runs</h2>
@@ -45,7 +52,9 @@ const content = `<div class="breadcrumbs">
 
         <h3>Model</h3>
 
-        <p>Scout uses <strong>OpenRouter's auto routing</strong> (<code>openrouter/auto</code>), which dynamically selects the best model for each request based on the task characteristics. This keeps costs low for routine research while allowing OpenRouter to route complex queries to more capable models when needed. The model is configured in the OpenClaw configuration file and invoked by the <a href="/architecture/agent-runner">Agent Runner</a> on each turn.</p>
+        <p>Scout uses <strong>MiniMax M2.5</strong> (<code>openrouter/minimax/minimax-m2.5</code>), configured in the OpenClaw configuration file. This is the standard model across all agents for consistency. The model is invoked by the <a href="/architecture/agent-runner">Agent Runner</a> on each turn.</p>
+
+        <p>You can temporarily change Scout's model using the <code>/model</code> command if a specific research task would benefit from a different model.</p>
 
         <h2>Trust Level</h2>
 
@@ -86,7 +95,7 @@ const content = `<div class="breadcrumbs">
         <ol>
           <li><strong>Assign a topic.</strong> Tell Scout (or Ember) what you want researched. Be as specific as possible about what you are looking for and what format you want the output in.</li>
           <li><strong>Scout investigates.</strong> Scout gathers information, reads sources, and compiles findings. This typically happens overnight or during off-hours, but can also be triggered on demand.</li>
-          <li><strong>A research brief appears in Life OS.</strong> When Scout finishes, the brief is placed in your Life OS graph under the relevant project or area. Ember will flag it in your next report.</li>
+          <li><strong>A research brief appears in Notes.</strong> When Scout finishes, the brief is placed in your Notes graph under the relevant project or area. Ember will flag it in your next report.</li>
           <li><strong>You review and decide.</strong> Read through the brief, ask follow-up questions if needed, and decide on next steps. Scout does not act on findings without your approval.</li>
         </ol>
 
@@ -101,7 +110,7 @@ const content = `<div class="breadcrumbs">
             <li><a href="/agents/ember">Learn about Ember</a> and how she coordinates with Scout</li>
             <li><a href="/agents/forge">Meet Forge</a>, the Infrastructure Specialist</li>
             <li><a href="/agents/trust-levels">Understand Trust Levels</a> and what Level 2 means in practice</li>
-            <li><a href="/life-os">Learn about Life OS</a> where Scout's research briefs are stored</li>
+            <li><a href="/life-os">Learn about Notes</a> where Scout's research briefs are stored</li>
             <li><a href="/architecture/gateway">Gateway</a> — session routing and management</li>
             <li><a href="/architecture/lane-queue">Lane Queue</a> — how subagent lanes work</li>
             <li><a href="/architecture/agent-runner">Agent Runner</a> — the reasoning loop and model selection</li>

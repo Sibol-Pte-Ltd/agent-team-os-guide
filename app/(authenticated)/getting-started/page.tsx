@@ -16,7 +16,7 @@ const content = `<div class="breadcrumbs">
 
         <p>Agent Team OS runs on <strong><a href="/architecture">OpenClaw</a></strong>, a daemon process that manages all agent communication, scheduling, and tool execution. OpenClaw is the runtime engine that makes everything work — it receives messages from Discord and other channels, routes them to the right agent, manages session state, and provides agents with the tools they need to take action on your behalf. You do not need to interact with OpenClaw directly, but understanding that it exists helps make sense of how messages flow through the system. See the <a href="/architecture">Architecture</a> section for a deeper look at how the pieces connect.</p>
 
-        <p>If you are new here, the best way to get oriented is to understand the daily rhythm. Each morning, a report is delivered to you summarizing what happened overnight, what your priorities are for the day, and anything the agents have flagged for your attention. Throughout the day, you work in LogSeq using the Life OS structure of journals, projects, and areas. In the evening, a check-in wraps up the day and queues work for the agents to handle while you sleep.</p>
+        <p>If you are new here, the best way to get oriented is to understand the daily rhythm. Each morning, a report is delivered to you summarizing what happened overnight, what your priorities are for the day, and anything the agents have flagged for your attention. Throughout the day, you work in LogSeq using the Notes structure of journals, projects, and areas. In the evening, a check-in wraps up the day and queues work for the agents to handle while you sleep.</p>
 
         <p>You do not need to understand every piece of the system on day one. Start by reading through this Getting Started section, then explore the areas that are most relevant to you. The agents are already running and will continue to operate whether you are actively engaged or not — the goal is to meet the system where you are and let it support your workflow at whatever pace feels right.</p>
 
@@ -35,7 +35,7 @@ const content = `<div class="breadcrumbs">
           <ul>
             <li><a href="/getting-started/first-day">Walk through Your First Day</a> to see the system in action</li>
             <li><a href="/getting-started/setup-checklist">Review the Setup Checklist</a> to make sure everything is configured</li>
-            <li><a href="/life-os">Learn about Life OS</a> to understand the note-taking structure</li>
+            <li><a href="/life-os">Learn about Notes</a> to understand the note-taking structure</li>
           </ul>
         </div>`
 

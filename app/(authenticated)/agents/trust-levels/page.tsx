@@ -101,6 +101,7 @@ const content = `<div class="breadcrumbs">
           <li><strong><a href="/agents/ember">Ember</a></strong> — <span class="badge success">Level 3</span> Autonomous. Can manage daily operations, create reports, and adjust priorities independently.</li>
           <li><strong><a href="/agents/scout">Scout</a></strong> — <span class="badge warning">Level 2</span> Act with Approval. Can research independently but needs approval before acting on findings.</li>
           <li><strong><a href="/agents/forge">Forge</a></strong> — <span class="badge success">Level 3</span> Autonomous. Can perform routine maintenance and monitoring independently.</li>
+          <li><strong><a href="/agents/architect">Architect</a></strong> — <span class="badge warning">Level 2</span> Act with Approval. Can analyze and plan independently but needs approval before external actions.</li>
         </ul>
 
         <!-- ============================================================= -->

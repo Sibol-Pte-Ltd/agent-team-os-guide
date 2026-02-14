@@ -17,7 +17,7 @@ const content = `<div class="breadcrumbs">
         <h2>What the Weekly Review Covers</h2>
 
         <h3>Tasks Completed</h3>
-        <p>A full list of everything you checked off during the week, drawn from your daily check-ins and Life OS records. This gives you a clear picture of your output and helps you recognize patterns — are you consistently completing certain types of tasks while others linger?</p>
+        <p>A full list of everything you checked off during the week, drawn from your daily check-ins and Notes records. This gives you a clear picture of your output and helps you recognize patterns — are you consistently completing certain types of tasks while others linger?</p>
 
         <h3>Tasks Carried Over</h3>
         <p>Items that appeared in daily priorities but were never completed. Ember tracks how many times a task has been carried over. If something has been deferred three or more times, it gets a special flag — it might need to be broken down, delegated, or dropped entirely.</p>
@@ -43,7 +43,7 @@ const content = `<div class="breadcrumbs">
         </ol>
 
         <div class="callout note">
-          <strong>Note:</strong> The weekly review uses a dedicated template in Life OS. You can find it in your templates collection — see <a href="/life-os/templates">Templates</a> for details. The template provides a structured format for your reflections and intentions, making it easy to stay consistent week over week.
+          <strong>Note:</strong> The weekly review uses a dedicated template in Notes. You can find it in your templates collection — see <a href="/life-os/templates">Templates</a> for details. The template provides a structured format for your reflections and intentions, making it easy to stay consistent week over week.
         </div>
 
         <h2>Making the Weekly Review Work for You</h2>
@@ -65,7 +65,7 @@ const content = `<div class="breadcrumbs">
           <h2>What You Do Next</h2>
           <ul>
             <li>Explore the <a href="/cadence/monthly-review">Monthly Review</a> to see how weekly reviews feed into the bigger picture.</li>
-            <li>Check out the <a href="/life-os/templates">Templates</a> page to find the weekly review template in Life OS.</li>
+            <li>Check out the <a href="/life-os/templates">Templates</a> page to find the weekly review template in Notes.</li>
             <li>Revisit the <a href="/cadence">Cadence Overview</a> to see how weekly fits into the full rhythm.</li>
             <li>Learn how the <a href="/architecture/agent-runner">Agent Runner</a> manages conversation history and context windows.</li>
           </ul>

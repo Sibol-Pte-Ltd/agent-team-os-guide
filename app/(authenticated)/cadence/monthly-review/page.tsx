@@ -20,13 +20,13 @@ const content = `<div class="breadcrumbs">
         <p>At the start of each month, you set goals — either during the previous month's review or as they emerge organically. The monthly review tracks progress against those goals. For each goal, Ember reports its status: completed, in progress (with percentage estimate), stalled, or not started. This is your honest scoreboard. Don't flinch from it — understanding where you actually are is the first step to getting where you want to be.</p>
 
         <h3>Habit Tracking Review</h3>
-        <p>If you track habits in Life OS (exercise, reading, journaling, or anything else), the monthly review rolls up your consistency data. You'll see how many days you hit each habit, your longest streaks, and any patterns — like habits that slip on weekends or pick up mid-week. This isn't about perfection; it's about awareness. Trends matter more than individual days.</p>
+        <p>If you track habits in Notes (exercise, reading, journaling, or anything else), the monthly review rolls up your consistency data. You'll see how many days you hit each habit, your longest streaks, and any patterns — like habits that slip on weekends or pick up mid-week. This isn't about perfection; it's about awareness. Trends matter more than individual days.</p>
 
         <h3>Project Status Across All Areas</h3>
         <p>Every active project gets a status update, organized by life area (work, personal, health, learning, etc.). For each project, Ember summarizes: what was accomplished this month, what's next, and whether the project is on track, behind, or ahead of where you expected it to be. This cross-area view is one of the most valuable parts of the monthly review — it reveals where your energy is actually going versus where you think it's going.</p>
 
         <h3>Financial Check-in</h3>
-        <p>If you track financial data in Life OS, the monthly review includes a snapshot: budget adherence, notable expenses, subscriptions due for renewal, and any financial tasks that came up during the month. This is a light touch, not a full accounting — just enough to keep finances from becoming a blind spot.</p>
+        <p>If you track financial data in Notes, the monthly review includes a snapshot: budget adherence, notable expenses, subscriptions due for renewal, and any financial tasks that came up during the month. This is a light touch, not a full accounting — just enough to keep finances from becoming a blind spot.</p>
 
         <h3>Health Check-in</h3>
         <p>A summary of health-related data you track: exercise frequency, sleep patterns, medical appointments attended or upcoming, and any health goals you set. Like the financial check-in, this is about maintaining awareness rather than deep analysis.</p>
@@ -104,7 +104,7 @@ const content = `<div class="breadcrumbs">
           <h2>What You Do Next</h2>
           <ul>
             <li>Revisit the <a href="/cadence">Cadence Overview</a> to see how all four rhythms work together.</li>
-            <li>Check out the <a href="/life-os/templates">Templates</a> page for the monthly review template in Life OS.</li>
+            <li>Check out the <a href="/life-os/templates">Templates</a> page for the monthly review template in Notes.</li>
             <li>Learn about <a href="/agents/ember">Ember</a> and how it compiles your review data.</li>
             <li>Explore your <a href="/life-os/daily-workflow">Daily Workflow</a> to see how monthly goals trickle down into daily priorities.</li>
             <li>Understand how the <a href="/architecture/agent-runner">Agent Runner</a> manages conversation history and context windows for large compilations.</li>

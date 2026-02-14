@@ -22,12 +22,19 @@ const content = `<div class="breadcrumbs">
 
         <p>Think of Ember as a chief of staff who reads the room, keeps the trains running on time, and only escalates to you when something genuinely needs your attention.</p>
 
+        <div class="callout note">
+          <div class="callout-title">Status</div>
+          <p><strong>Trust Level:</strong> L3 — Autonomous<br>
+          <strong>Model:</strong> MiniMax M2.5<br>
+          <strong>Workspace:</strong> /home/ubuntu/agents/ember</p>
+        </div>
+
         <h2>Responsibilities</h2>
 
         <ul>
           <li><strong>Creates morning reports</strong> — Each morning, Ember compiles overnight activity, your calendar, top priorities, and anything flagged by the other agents into a single report delivered to you at 6:00 AM.</li>
           <li><strong>Manages evening check-ins</strong> — In the late afternoon, Ember prepares a recap of the day's progress, prompts you for reflections, and queues up overnight work for the agent team.</li>
-          <li><strong>Tracks task priorities</strong> — Ember monitors your task list in Life OS and adjusts priorities based on deadlines, dependencies, and your stated preferences.</li>
+          <li><strong>Tracks task priorities</strong> — Ember monitors your task list in Notes and adjusts priorities based on deadlines, dependencies, and your stated preferences.</li>
           <li><strong>Coordinates with Scout and Forge</strong> — When you assign research to Scout or when Forge flags a maintenance issue, Ember routes the information and ensures follow-through.</li>
           <li><strong>Handles calendar awareness</strong> — Ember checks your calendar and factors upcoming meetings, deadlines, and events into daily planning so nothing catches you off guard.</li>
         </ul>
@@ -44,7 +51,9 @@ const content = `<div class="breadcrumbs">
 
         <h3>Model</h3>
 
-        <p>Ember uses <strong>Kimi K2.5</strong> as her language model, configured in the OpenClaw configuration file. This model was chosen for its strong balance of reasoning capability, tool use, and cost-efficiency — Ember handles a high volume of interactions daily (conversations, heartbeats, cron tasks), so the model needs to be capable without being expensive. The <a href="/architecture/agent-runner">Agent Runner</a> sends Ember's assembled context to this model on every turn of the agent loop.</p>
+        <p>Ember uses <strong>MiniMax M2.5</strong> (<code>openrouter/minimax/minimax-m2.5</code>) as her language model, configured in the OpenClaw configuration file. This is the standard model across all agents for consistency. The <a href="/architecture/agent-runner">Agent Runner</a> sends Ember's assembled context to this model on every turn of the agent loop.</p>
+
+        <p>You can temporarily change Ember's model using the <code>/model</code> command if needed for a specific task.</p>
 
         <h3>Spawning Subagents</h3>
 
@@ -105,7 +114,7 @@ Priorities:
   3. Reply to Alex's email about the March timeline
 
 Overnight Activity:
-  - Scout completed research on cloud migration (brief in Life OS)
+  - Scout completed research on cloud migration (brief in Notes)
   - Forge ran scheduled backup at 3:00 AM (success)
   - Syncthing sync completed across all devices
 

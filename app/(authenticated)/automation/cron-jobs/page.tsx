@@ -71,7 +71,7 @@ const content = `<div class="breadcrumbs">
               </tr>
               <tr>
                 <td><code>0 0 * * *</code></td>
-                <td>Daily backup of Life OS data</td>
+                <td>Daily backup of Notes data</td>
                 <td>Forge</td>
                 <td><code>daily-backup</code></td>
               </tr>

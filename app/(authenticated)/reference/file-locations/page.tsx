@@ -16,7 +16,7 @@ const content = `<div class="breadcrumbs">
           <p>All paths on this page refer to the EC2 instance unless otherwise noted. Paths beginning with <code>~/</code> are relative to the deploy user's home directory (<code>/home/ubuntu</code>).</p>
         </div>
 
-        <h3>Life OS Data</h3>
+        <h3>Notes Data</h3>
         <table>
           <thead>
             <tr>
@@ -26,19 +26,19 @@ const content = `<div class="breadcrumbs">
           </thead>
           <tbody>
             <tr>
-              <td><code>~/life-os/</code></td>
-              <td>Root of the LogSeq vault. This is the top-level directory that Syncthing keeps in sync across your devices.</td>
+              <td><code>~/notes/</code></td>
+              <td>Root of the LogSeq vault (EC2). Syncthing keeps this in sync with <code>~/AgentTeamOS/notes/</code> on Mac. Folder ID: <code>notes</code>.</td>
             </tr>
             <tr>
-              <td><code>~/life-os/journals/</code></td>
+              <td><code>~/notes/journals/</code></td>
               <td>Daily journal pages. Each file is named by date (e.g., <code>2026_02_10.md</code>) and contains that day's notes, tasks, and log entries.</td>
             </tr>
             <tr>
-              <td><code>~/life-os/pages/</code></td>
+              <td><code>~/notes/pages/</code></td>
               <td>Named pages for projects, areas, people, and any other non-journal content within LogSeq.</td>
             </tr>
             <tr>
-              <td><code>~/life-os/templates/</code></td>
+              <td><code>~/notes/templates/</code></td>
               <td>Reusable templates for journal entries, project kickoffs, weekly reviews, and other recurring documents.</td>
             </tr>
           </tbody>
@@ -191,8 +191,8 @@ const content = `<div class="breadcrumbs">
               <td>Syncthing configuration directory. Contains <code>config.xml</code> with device IDs, folder settings, and connection preferences.</td>
             </tr>
             <tr>
-              <td><code>~/life-os/</code></td>
-              <td>Sync folder. This is the same Life OS directory listed above -- Syncthing watches this folder and replicates changes to connected devices.</td>
+              <td><code>~/notes/</code></td>
+              <td>Sync folder. This is the same Notes directory listed above — Syncthing watches this folder and replicates changes to connected devices. Folder ID: <code>notes</code>.</td>
             </tr>
             <tr>
               <td><code>.sync-conflict-*</code></td>
@@ -216,7 +216,7 @@ const content = `<div class="breadcrumbs">
             </tr>
             <tr>
               <td><code>/var/backups/agent-team/</code></td>
-              <td>Automated backups. Contains timestamped snapshots of the Life OS vault and agent configuration, created by Forge's nightly backup job.</td>
+              <td>Automated backups. Contains timestamped snapshots of the Notes vault and agent configuration, created by Forge's nightly backup job.</td>
             </tr>
             <tr>
               <td><code>/etc/tailscale/</code></td>

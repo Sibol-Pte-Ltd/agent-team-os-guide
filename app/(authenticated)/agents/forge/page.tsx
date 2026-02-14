@@ -27,12 +27,19 @@ const content = `<div class="breadcrumbs">
 
         <p>Forge is the most invisible member of the team by design. His work happens in the background, and you only hear from him when something needs your attention — like a disk running low on space, a sync conflict that needs resolution, or an anomaly that does not fit normal patterns.</p>
 
+        <div class="callout note">
+          <div class="callout-title">Status</div>
+          <p><strong>Trust Level:</strong> L3 — Autonomous<br>
+          <strong>Model:</strong> MiniMax M2.5<br>
+          <strong>Workspace:</strong> /home/ubuntu/agents/forge</p>
+        </div>
+
         <h2>Responsibilities</h2>
 
         <ul>
           <li><strong>Manages Syncthing synchronization</strong> — Forge monitors Syncthing to ensure files stay in sync across your devices. He detects conflicts, resolves them when possible, and flags you when manual intervention is needed.</li>
           <li><strong>Monitors scheduled tasks</strong> — The cron jobs that power the daily cadence — morning reports, evening check-ins, backups, and health checks — are scheduled by the <a href="/architecture/gateway">OpenClaw Gateway</a>. Forge monitors their execution, verifies they complete successfully, alerts you when they fail, and investigates root causes.</li>
-          <li><strong>Handles backups</strong> — Forge runs scheduled backups of your Life OS data and system configuration. He verifies backup integrity and rotates old backups to manage storage.</li>
+          <li><strong>Handles backups</strong> — Forge runs scheduled backups of your Notes data and system configuration. He verifies backup integrity and rotates old backups to manage storage.</li>
           <li><strong>Monitors system health</strong> — Forge tracks CPU usage, memory, disk space, and network connectivity on the EC2 instance. He identifies trends (like gradually increasing disk usage) before they become problems.</li>
           <li><strong>Manages the EC2 instance</strong> — The cloud server that runs Agent Team OS is Forge's domain. He handles updates, restarts when necessary, and ensures the instance is configured correctly.</li>
         </ul>
@@ -51,7 +58,9 @@ const content = `<div class="breadcrumbs">
 
         <h3>Model</h3>
 
-        <p>Forge uses <strong>OpenRouter's auto routing</strong> (<code>openrouter/auto</code>), which dynamically selects an appropriate model for each task. Since Forge's work is largely routine — checking system status, verifying backups, monitoring sync — auto routing keeps costs minimal while ensuring capable handling of diagnostic and troubleshooting tasks when anomalies arise. The model is configured in the OpenClaw configuration file and invoked by the <a href="/architecture/agent-runner">Agent Runner</a>.</p>
+        <p>Forge uses <strong>MiniMax M2.5</strong> (<code>openrouter/minimax/minimax-m2.5</code>), configured in the OpenClaw configuration file. This is the standard model across all agents for consistency. Since Forge's work is largely routine — checking system status, verifying backups, monitoring sync — MiniMax M2.5 provides capable handling while maintaining cost efficiency. The model is invoked by the <a href="/architecture/agent-runner">Agent Runner</a>.</p>
+
+        <p>You can temporarily change Forge's model using the <code>/model</code> command if a specific diagnostic task would benefit from a different model.</p>
 
         <h2>Trust Level</h2>
 
@@ -64,7 +73,7 @@ const content = `<div class="breadcrumbs">
         <p>You will rarely interact with Forge directly. Most of his work is automated and runs on a schedule. Here is what a typical day looks like from Forge's perspective:</p>
 
         <ul>
-          <li><strong>3:00 AM</strong> — Run scheduled backup of Life OS data and verify integrity.</li>
+          <li><strong>3:00 AM</strong> — Run scheduled backup of Notes data and verify integrity.</li>
           <li><strong>5:30 AM</strong> — Perform system health check (CPU, memory, disk, network). Log results.</li>
           <li><strong>5:45 AM</strong> — Verify Syncthing status across all connected devices. Resolve any pending conflicts.</li>
           <li><strong>6:00 AM</strong> — Provide health summary to Ember for inclusion in the morning report.</li>

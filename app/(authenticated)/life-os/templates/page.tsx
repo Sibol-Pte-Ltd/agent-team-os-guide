@@ -7,21 +7,21 @@ export const metadata: Metadata = {
 const content = `<div class="breadcrumbs">
           <a href="/">Home</a>
           <span class="separator">/</span>
-          <a href="/life-os">Life OS</a>
+          <a href="/life-os">Notes &amp; Sync</a>
           <span class="separator">/</span>
           Templates
         </div>
 
         <h1>Templates</h1>
 
-        <p>Templates are pre-built Logseq page structures that provide a consistent format for common types of entries in Life OS. Instead of starting from a blank page every time you begin a new project, conduct a weekly review, or capture a research brief, you insert a template that gives you the right sections, prompts, and structure from the start. Templates save time and ensure that important information is captured in a predictable format that the agents can reliably parse.</p>
+        <p>Templates are pre-built Logseq page structures that provide a consistent format for common types of entries in Notes. Instead of starting from a blank page every time you begin a new project, conduct a weekly review, or capture a research brief, you insert a template that gives you the right sections, prompts, and structure from the start. Templates save time and ensure that important information is captured in a predictable format that the agents can reliably parse.</p>
 
         <div class="callout success">
           <div class="callout-title">✅ All Templates Logseq-Functional</div>
           <p>As of Feb 13, 2026, all 10 templates are fully Logseq-compatible. Each template has the required <code>template:: &lt;name&gt;</code> and <code>template-including-parent:: false</code> properties, and is formatted using Logseq's indented block structure (<code>-</code> prefix). Templates are insertable via the <code>/template</code> command. The Daily Journal template is automatically applied to new journal pages via <code>:default-templates {:journals "Daily Journal"}</code> in <code>config.edn</code>.</p>
         </div>
 
-        <p>Life OS ships with 10 templates that cover the most common workflows. Each template is stored in the Logseq vault at <code>~/life-os/templates/</code> and can be inserted on any page using the <code>/template</code> command. When you type <code>/template</code> in a Logseq block, a dropdown menu appears listing all available templates. Select the one you want, and its structure is inserted at your cursor position. You can then fill in the sections and customize the content to your needs.</p>
+        <p>Notes ships with 10 templates that cover the most common workflows. Each template is stored in the Logseq vault at <code>~/notes/templates/</code> and can be inserted on any page using the <code>/template</code> command. When you type <code>/template</code> in a Logseq block, a dropdown menu appears listing all available templates. Select the one you want, and its structure is inserted at your cursor position. You can then fill in the sections and customize the content to your needs.</p>
 
         <h3>Available Templates</h3>
 
@@ -42,7 +42,7 @@ const content = `<div class="breadcrumbs">
             <tr>
               <td>Morning Report</td>
               <td>Template for the morning report format — calendar, priorities, flags, overnight activity.</td>
-              <td>Used by Ember to generate the 6:00 AM morning report. Can be inserted manually for custom morning briefings.</td>
+              <td>Used by Ember to generate the morning report. Can be inserted manually for custom morning briefings.</td>
             </tr>
             <tr>
               <td>Evening Check-in</td>
@@ -67,12 +67,12 @@ const content = `<div class="breadcrumbs">
             <tr>
               <td>Research Brief</td>
               <td>A structured format for capturing research findings, including the research question, sources consulted, key findings, and recommended next steps.</td>
-              <td>When Scout completes a research task, it writes the results into a Research Brief. You can also use it manually when conducting your own research.</td>
+              <td>When Scout completes a research task, it writes the results into a Research Brief in Notes. You can also use it manually when conducting your own research.</td>
             </tr>
             <tr>
               <td>Research Request</td>
               <td>Format for submitting a research request to Scout — topic, context, specific questions, deadline, and desired output format.</td>
-              <td>When you want Scout to research a topic. Create the request in Life OS and Scout will pick it up.</td>
+              <td>When you want Scout to research a topic. Create the request in Notes and Scout will pick it up.</td>
             </tr>
             <tr>
               <td>Decision Log</td>
@@ -97,7 +97,7 @@ const content = `<div class="breadcrumbs">
           <li><code>template-including-parent:: false</code> — inserts only the child blocks, not the parent heading</li>
         </ul>
 
-        <p>Templates are stored as regular Logseq pages in <code>~/life-os/templates/</code>. If you want to customize an existing template or create your own, navigate to the template page in Logseq, edit its block structure, and save. Your changes will be reflected the next time you insert that template. The agents are aware of the template formats and will continue to work with them as long as the core section headings remain intact.</p>
+        <p>Templates are stored as regular Logseq pages in <code>~/notes/templates/</code>. If you want to customize an existing template or create your own, navigate to the template page in Logseq, edit its block structure, and save. Your changes will be reflected the next time you insert that template. The agents are aware of the template formats and will continue to work with them as long as the core section headings remain intact.</p>
 
         <h3>Auto-Applied Templates</h3>
         <p>The <strong>Daily Journal</strong> template is automatically applied to every new journal page. This is configured in <code>logseq/config.edn</code> via <code>:default-templates {:journals "Daily Journal"}</code>. When you navigate to a new day's journal page, the template structure (priorities, notes, accomplishments, reflections) is already in place — no manual insertion needed.</p>

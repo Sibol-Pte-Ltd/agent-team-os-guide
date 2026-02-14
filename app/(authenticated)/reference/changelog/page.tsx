@@ -32,8 +32,8 @@ const content = `<div class="breadcrumbs">
               <td>Agent config, scripts, memory files</td>
             </tr>
             <tr>
-              <td><strong>Life OS</strong></td>
-              <td><code>~/life-os/</code></td>
+              <td><strong>Notes</strong></td>
+              <td><code>~/notes/</code></td>
               <td>Vault data, templates, journals</td>
             </tr>
             <tr>
@@ -50,6 +50,17 @@ const content = `<div class="breadcrumbs">
         </div>
 
         <h2>Changelog</h2>
+
+        <h3>February 15, 2026 — v0.5.0: Life OS → Notes Rename &amp; Semantic Search</h3>
+        <p>Major content update reflecting system evolution. "Life OS" renamed to "Notes" across all user-facing pages.</p>
+        <ul>
+          <li><strong>Life OS → Notes rename:</strong> All user-facing documentation updated. <code>~/life-os/</code> → <code>~/notes/</code>. Syncthing folder ID: <code>notes</code>. Mac path: <code>~/AgentTeamOS/notes/</code>. Sidebar section renamed to "Notes &amp; Sync".</li>
+          <li><strong>Semantic search documented:</strong> OpenClaw native <code>memory_search</code> using <code>embeddinggemma-300m-qat-Q8_0</code> documented in Notes overview, Execution Layer, and Glossary. Per-agent SQLite indexes. Auto-reindex every 6h via cron.</li>
+          <li><strong>Trust levels fix:</strong> Architect added to "Current Agent Trust Levels" list on Trust Levels page (was missing).</li>
+          <li><strong>Glossary additions:</strong> Added "Semantic Search" and updated "Notes" (was "Life OS") and "Syncthing" definitions with current paths.</li>
+          <li><strong>File Locations updated:</strong> All paths updated from <code>~/life-os/</code> to <code>~/notes/</code> with Syncthing folder ID and Mac path.</li>
+          <li><strong>Syncthing page updated:</strong> Added correct paths (EC2: <code>/home/ubuntu/notes</code>, Mac: <code>~/AgentTeamOS/notes/</code>), folder ID <code>notes</code>.</li>
+        </ul>
 
         <h3>February 13, 2026 — v0.4.0: Architect Agent &amp; Sidebar Refactor</h3>
         <p>Fourth agent joins the team, and the website gets a major maintainability upgrade.</p>

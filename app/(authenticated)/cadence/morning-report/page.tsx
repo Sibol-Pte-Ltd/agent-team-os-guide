@@ -12,14 +12,14 @@ const content = `<div class="breadcrumbs">
 
         <p>Every morning at 6:00 AM, Ember generates and delivers your morning report via Discord and a Pushover notification to your phone. This is your daily briefing — a concise snapshot of what matters today, delivered before you even start your first cup of coffee.</p>
 
-        <p>The morning report is designed to answer one question: <strong>"What do I need to know right now?"</strong> It pulls together information from your Life OS journal, calendar, task lists, and any overnight agent activity into a single, scannable summary.</p>
+        <p>The morning report is designed to answer one question: <strong>"What do I need to know right now?"</strong> It pulls together information from your Notes journal, calendar, task lists, and any overnight agent activity into a single, scannable summary.</p>
 
         <h2>What the Morning Report Includes</h2>
 
         <p>Each morning report is organized into four sections:</p>
 
         <h3>Today's Priorities</h3>
-        <p>The top tasks and commitments for the day, pulled from your Life OS daily page. These are the items Ember has identified as most important based on deadlines, carry-over status, and any flags you've set. Priorities are listed in order of importance, not chronologically.</p>
+        <p>The top tasks and commitments for the day, pulled from your Notes daily page. These are the items Ember has identified as most important based on deadlines, carry-over status, and any flags you've set. Priorities are listed in order of importance, not chronologically.</p>
 
         <h3>Calendar Overview</h3>
         <p>A quick view of your scheduled events — meetings, appointments, time blocks. Calendar data is pulled from Google Calendar via the <code>gog</code> CLI. This helps you see the shape of your day at a glance and understand how much open time you have for deep work or ad-hoc tasks.</p>
@@ -46,7 +46,7 @@ CALENDAR
 
 OVERNIGHT ACTIVITY
 - Scout completed research on off-site backup solutions.
-  Summary saved to Life OS under Projects/Infrastructure.
+  Summary saved to Notes under Projects/Infrastructure.
 - Forge finished the notification script refactor.
   Ready for your review.
 
@@ -61,7 +61,7 @@ FLAGS
         <p>The morning report is intentionally brief. Ember distills what could be pages of information into a quick read that takes under two minutes. Here are some things to keep in mind:</p>
 
         <ul>
-          <li><strong>Priorities are curated, not exhaustive.</strong> Ember picks the top 3-5 items. Your full task list is always available in Life OS.</li>
+          <li><strong>Priorities are curated, not exhaustive.</strong> Ember picks the top 3-5 items. Your full task list is always available in Notes.</li>
           <li><strong>Flags deserve immediate attention.</strong> If Ember flagged something, it means the system couldn't handle it automatically and needs your input.</li>
           <li><strong>Overnight activity is informational.</strong> You don't need to act on it immediately — it's there so you know what changed while you slept.</li>
           <li><strong>The report adapts.</strong> Over time, Ember learns what level of detail you prefer and adjusts the report accordingly.</li>
@@ -95,7 +95,7 @@ FLAGS
         <p>This separation means you can add or swap delivery channels without changing anything about how the report is generated. Want to add Telegram? Add the adapter — the report itself stays the same. See <a href="/architecture/channel-adapters">Channel Adapters</a> for the full picture of how multi-channel delivery works.</p>
 
         <div class="callout note">
-          <strong>Under the Hood:</strong> The Gateway's <a href="/architecture/gateway">cron scheduler</a> triggers this run in the cron lane. The <a href="/architecture/agent-runner">Agent Runner</a> assembles context from workspace files, and the <a href="/architecture/execution-layer">Execution Layer</a> runs any necessary tool calls to pull calendar data, read your Life OS pages, and format the final report.
+          <strong>Under the Hood:</strong> The Gateway's <a href="/architecture/gateway">cron scheduler</a> triggers this run in the cron lane. The <a href="/architecture/agent-runner">Agent Runner</a> assembles context from workspace files, and the <a href="/architecture/execution-layer">Execution Layer</a> runs any necessary tool calls to pull calendar data, read your Notes pages, and format the final report.
         </div>
 
         <div class="action-section">

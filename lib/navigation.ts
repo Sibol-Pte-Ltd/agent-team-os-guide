@@ -22,9 +22,9 @@ export const sections: NavSection[] = [
     ],
   },
   {
-    title: 'Life OS',
+    title: 'Notes & Sync',
     links: [
-      { href: '/life-os', label: 'What is Life OS' },
+      { href: '/life-os', label: 'What is Notes' },
       { href: '/life-os/daily-workflow', label: 'Daily Workflow' },
       { href: '/life-os/templates', label: 'Templates' },
       { href: '/life-os/logseq-tips', label: 'LogSeq Tips' },
@@ -95,6 +95,7 @@ export const sections: NavSection[] = [
       { href: '/implementation/roadmap', label: 'Roadmap' },
       { href: '/implementation/activity-log', label: 'Activity Log' },
       { href: '/implementation/site-improvements', label: 'Site Improvements' },
+      { href: '/implementation/clawvault-analysis', label: 'ClawVault Analysis' },
     ],
   },
 ]

@@ -16,7 +16,7 @@ const content = `<h1 class="page-title">Agent Team OS</h1>
           <li><strong>Ember</strong> — Chief of Staff (L3 Autonomous). Manages your daily flow, creates reports, handles priorities.</li>
           <li><strong>Scout</strong> — Research Specialist (L2 Act with Approval). Digs into topics, gathers info, summarizes findings. Requires your approval before external actions.</li>
           <li><strong>Forge</strong> — Infrastructure Specialist (L3 Autonomous). Keeps the system running: backups, syncing, automation.</li>
-          <li><strong>Architect</strong> — Strategic Planner (L2 Act with Approval). Handles deep synthesis, complex analysis, and high-stakes planning tasks.</li>
+          <li><strong>Architect</strong> — Systems Design (L2 Act with Approval). Handles deep synthesis, complex analysis, and systems design tasks.</li>
         </ul>
 
         <h2>Explore the Guide</h2>
@@ -27,8 +27,8 @@ const content = `<h1 class="page-title">Agent Team OS</h1>
             <p>Quick start guide, your first day, and setup checklist.</p>
           </a>
           <a href="/life-os" class="card">
-            <h3>Life OS</h3>
-            <p>Your personal operating system — workflows, templates, and LogSeq.</p>
+            <h3>Notes & Sync</h3>
+            <p>Your synced notes system — workflows, templates, and LogSeq.</p>
           </a>
           <a href="/agents" class="card">
             <h3>Your Agents</h3>
