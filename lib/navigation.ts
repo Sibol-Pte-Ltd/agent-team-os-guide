@@ -52,6 +52,17 @@ export const sections: NavSection[] = [
     ],
   },
   {
+    title: 'OpenClaw Architecture',
+    links: [
+      { href: '/architecture', label: 'Overview' },
+      { href: '/architecture/channel-adapters', label: 'Channel Adapters' },
+      { href: '/architecture/gateway', label: 'Gateway' },
+      { href: '/architecture/lane-queue', label: 'Lane Queue' },
+      { href: '/architecture/agent-runner', label: 'Agent Runner' },
+      { href: '/architecture/execution-layer', label: 'Execution Layer' },
+    ],
+  },
+  {
     title: 'Automation',
     links: [
       { href: '/automation', label: 'Overview' },

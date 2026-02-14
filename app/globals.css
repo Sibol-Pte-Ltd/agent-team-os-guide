@@ -762,3 +762,61 @@ body.login-page {
   width: 100%;
   font-family: inherit;
 }
+
+/* --- Architecture Pipeline --- */
+.arch-pipeline {
+  margin: 2rem 0;
+}
+
+.arch-stage {
+  display: flex;
+  gap: 1rem;
+  padding: 1.25rem;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  border-left: 4px solid #4361ee;
+}
+
+.arch-stage-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  background: #4361ee;
+  color: #fff;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.arch-stage-content h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1.05rem;
+}
+
+.arch-stage-content h3 a {
+  color: #4361ee;
+  text-decoration: none;
+}
+
+.arch-stage-content h3 a:hover {
+  text-decoration: underline;
+}
+
+.arch-stage-content p {
+  margin: 0;
+  font-size: 0.92rem;
+  color: #555;
+}
+
+.arch-connector {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #4361ee;
+  padding: 0.25rem 0;
+  font-weight: 700;
+}
