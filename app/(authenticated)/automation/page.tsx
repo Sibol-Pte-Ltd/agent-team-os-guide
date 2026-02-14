@@ -14,15 +14,21 @@ const content = `<div class="breadcrumbs">
 
         <p>Understanding what is fully automated versus what requires your input helps you trust the system and know where your attention is actually needed.</p>
 
+        <h2>How Scheduling Works</h2>
+
+        <p>All scheduled tasks in Agent Team OS are managed by the <a href="/architecture/gateway">Gateway's</a> built-in cron scheduler — not by your server's system crontab. When a scheduled task fires, the Gateway starts an agent session in the dedicated <a href="/architecture/lane-queue">cron lane</a>, where the agent reasons about what to do using its full tool set. This means scheduled tasks are intelligent: they adapt based on context rather than running static scripts.</p>
+
+        <p>See <a href="/automation/cron-jobs">Cron Jobs</a> for the full schedule, management commands, and details on how OpenClaw cron differs from system cron.</p>
+
         <h2>Fully Automated</h2>
 
-        <p>These tasks run without any intervention from you. They are triggered by cron jobs or system events, execute on schedule, and only surface a notification if something goes wrong.</p>
+        <p>These tasks run without any intervention from you. They are triggered by the OpenClaw cron scheduler or system events, execute on schedule, and only surface a notification if something goes wrong.</p>
 
         <ul>
-          <li><strong>Cron jobs</strong> — Scheduled scripts that run at specific times every day, week, or month. See <a href="/automation/cron-jobs">Cron Jobs</a> for the full schedule.</li>
+          <li><strong>Cron jobs</strong> — Scheduled agent sessions that run at specific times every day, week, or month. Managed by the <a href="/architecture/gateway">Gateway</a> and isolated in the <a href="/architecture/lane-queue">cron lane</a>. See <a href="/automation/cron-jobs">Cron Jobs</a> for the full schedule.</li>
           <li><strong>Syncthing sync</strong> — File synchronization between your devices runs continuously in the background. Health checks confirm it stays connected.</li>
           <li><strong>Daily backups</strong> — Your Life OS data, agent configurations, and logs are backed up every night at midnight.</li>
-          <li><strong>Health checks</strong> — Every five minutes, Forge verifies that Syncthing is running, disk space is adequate, and agent processes are healthy.</li>
+          <li><strong>Heartbeat checks</strong> — Periodic agent sessions that check email, calendar, system health, and other data sources, batching multiple checks into a single run.</li>
           <li><strong>Log rotation</strong> — Old log files are compressed and archived automatically so they do not consume disk space.</li>
         </ul>
 
@@ -60,7 +66,7 @@ const content = `<div class="breadcrumbs">
               <tr>
                 <td>Evening check-in</td>
                 <td>Human-in-the-loop</td>
-                <td>Daily, 9:30 PM</td>
+                <td>Daily, 4:30 PM</td>
                 <td>Ember</td>
               </tr>
               <tr>
@@ -82,16 +88,16 @@ const content = `<div class="breadcrumbs">
                 <td>Forge</td>
               </tr>
               <tr>
+                <td>Heartbeat checks</td>
+                <td>Automated</td>
+                <td>Every 30 minutes</td>
+                <td>Ember</td>
+              </tr>
+              <tr>
                 <td>Weekly review compilation</td>
                 <td>Human-in-the-loop</td>
                 <td>Sundays, 8:00 AM</td>
                 <td>Ember</td>
-              </tr>
-              <tr>
-                <td>System health checks</td>
-                <td>Automated</td>
-                <td>Every 5 minutes</td>
-                <td>Forge</td>
               </tr>
             </tbody>
           </table>
@@ -100,9 +106,10 @@ const content = `<div class="breadcrumbs">
         <div class="action-section">
           <h2>What You Do Next</h2>
           <ul>
-            <li>Review the full <a href="/automation/cron-jobs">Cron Jobs</a> schedule to see exactly when each task runs and which script handles it.</li>
+            <li>Review the full <a href="/automation/cron-jobs">Cron Jobs</a> schedule to see exactly when each task runs and how to manage them with <code>openclaw cron list</code>.</li>
             <li>Set up your <a href="/automation/notifications">Notifications</a> so you receive alerts in the right place at the right time.</li>
-            <li>Read about <a href="/agents/forge">Forge</a> to understand the agent responsible for most automation infrastructure.</li>
+            <li>Read about the <a href="/architecture/gateway">Gateway</a> to understand the daemon that runs the cron scheduler.</li>
+            <li>See <a href="/architecture/lane-queue">Lane Queue</a> to understand how scheduled tasks are isolated from your conversations.</li>
           </ul>
         </div>`
 
