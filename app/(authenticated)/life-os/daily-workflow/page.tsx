@@ -20,13 +20,13 @@ const content = `<div class="breadcrumbs">
 
         <p>Your day begins with the <a href="/cadence/morning-report">morning report</a>, which Ember pushes to your notification channel at 6:00 AM. The report includes your calendar for the day, your top priorities, any overnight agent activity, and anything that has been flagged for your attention. You do not need to act on the report immediately — just read through it to get oriented.</p>
 
-        <p>After reviewing the morning report, open LogSeq and navigate to today's journal page. The daily journal template will already be in place, with sections for your priorities, notes, and reflections. Spend a few minutes reviewing the priorities that have been surfaced and adjust them if needed. If you want to add tasks, capture quick thoughts, or queue up a research request for Scout, this is the time to do it. The agents will pick up anything you add to Life OS and begin working on it.</p>
+        <p>After reviewing the morning report, open Logseq and navigate to today's journal page. The page is automatically pre-created each day at 00:01 UTC by an auto-journal cron job (<code>~/agents/ember/scripts/create-daily-journal.sh</code>), and the Daily Journal template is automatically applied via <code>config.edn</code>, so the page is always ready with sections for your priorities, notes, and reflections. Spend a few minutes reviewing the priorities that have been surfaced and adjust them if needed. If you want to add tasks, capture quick thoughts, or queue up a research request for Scout, this is the time to do it. The agents will pick up anything you add to Life OS and begin working on it.</p>
 
         <h3>Midday</h3>
 
         <p>The middle of the day is yours. Work on your tasks, attend your meetings, and go about your business. The agents continue working in the background — Scout may be researching a topic you queued, Ember may be organizing incoming information, and Forge may be running maintenance tasks on the infrastructure. You do not need to check in with them during this time unless you want to.</p>
 
-        <p>If something comes up during the day that you want to capture, drop it into your LogSeq journal page. A quick bullet point is enough. The agents monitor Life OS for new entries and will incorporate anything you add into their ongoing work. You can also message Ember directly if you need something handled urgently or want to reprioritize.</p>
+        <p>If something comes up during the day that you want to capture, drop it into your Logseq journal page. A quick bullet point is enough. The agents monitor Life OS for new entries and will incorporate anything you add into their ongoing work. You can also message Ember directly if you need something handled urgently or want to reprioritize.</p>
 
         <h3>Evening</h3>
 

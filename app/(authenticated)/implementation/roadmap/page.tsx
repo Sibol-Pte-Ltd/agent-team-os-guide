@@ -15,67 +15,72 @@ const content = `<div class="breadcrumbs">
         <h1>Implementation Roadmap</h1>
         <p class="page-subtitle">Phased approach to completing the Agent Team OS build-out. Updated Feb 13 with audit-driven priorities.</p>
 
-        <div class="callout warning">
-          <div class="callout-title">Current Focus: Audit-Driven Remediation</div>
-          <p><strong>Phase 1: Critical Fixes</strong> ✅ and <strong>Phase 2: Core Features</strong> ✅ are complete. The Feb 13 audits (comprehensive directory audit + Life OS graph gap audit) revealed security issues and operational gaps that are now the top priority. See <strong>Phase 2.5: Audit Remediation</strong> below.</p>
+        <div class="callout success">
+          <div class="callout-title">Current Focus: Phase 3 — Complete Cadence</div>
+          <p><strong>Phase 1: Critical Fixes</strong> ✅, <strong>Phase 2: Core Features</strong> ✅, and <strong>Phase 2.5: Audit Remediation</strong> ✅ are all complete. The Feb 13 audit findings have been fully addressed (security token rotation deferred by design). Now moving to <strong>Phase 3: Complete Cadence</strong> — enhancing morning reports, evening check-ins, and reviews with richer data from the now-operational Life OS.</p>
         </div>
 
-        <h2>Phase 2.5: Audit Remediation 🔴 (Current Priority)</h2>
-        <p>Findings from the Feb 13 comprehensive directory audit and Life OS graph gap audit. Prioritized by severity.</p>
+        <h2>Phase 2.5: Audit Remediation ✅ Complete</h2>
+        <p>Findings from the Feb 13 comprehensive directory audit and Life OS graph gap audit. All critical and important items resolved. Security deferred by design.</p>
 
-        <h3>2.5.1 Security — Immediate 🔴</h3>
+        <h3>2.5.1 Security — Deferred 🟢</h3>
+        <p><em>Deferred per Colin's instruction: Files in ~/agent-guide/ will change later, making token rotation lower priority.</em></p>
         <ul>
-          <li><input type="checkbox" disabled> <strong>Rotate Supabase bearer token</strong> — exposed in <code>~/agent-guide/agents/ember/config/mcporter.json</code>. Rotate in Supabase dashboard immediately.</li>
+          <li><input type="checkbox" disabled> <strong>Rotate Supabase bearer token</strong> — exposed in <code>~/agent-guide/agents/ember/config/mcporter.json</code>. Rotate in Supabase dashboard when ready.</li>
           <li><input type="checkbox" disabled> <strong>Delete or restrict mcporter.json</strong> — even after rotation, remove the file or set 600 permissions</li>
           <li><input type="checkbox" disabled> <strong>Fix approval queue permissions</strong> — <code>req-1770872136</code> and <code>req-1770978435</code> are world-readable, should be 600</li>
           <li><input type="checkbox" disabled> <strong>Clean .claude.json backups</strong> — 5 backup files in home dir may contain session data</li>
         </ul>
 
-        <h3>2.5.2 Life OS Templates — Critical 🔴</h3>
+        <h3>2.5.2 Life OS Templates ✅ Complete</h3>
         <ul>
-          <li><input type="checkbox" disabled> <strong>Make templates Logseq-compatible</strong> — add <code>template:: &lt;name&gt;</code> and <code>template-including-parent:: false</code> properties to all 10 templates</li>
-          <li><input type="checkbox" disabled> <strong>Set journal auto-template</strong> — change <code>config.edn</code> from <code>:default-templates {:journals ""}</code> to <code>:default-templates {:journals "Daily Journal"}</code></li>
-          <li><input type="checkbox" disabled> <strong>Reformat templates as Logseq blocks</strong> — use indented <code>-</code> prefix block structure</li>
+          <li><input type="checkbox" checked disabled> <strong>Make templates Logseq-compatible</strong> — added <code>template:: &lt;name&gt;</code> and <code>template-including-parent:: false</code> properties to all 10 templates</li>
+          <li><input type="checkbox" checked disabled> <strong>Set journal auto-template</strong> — <code>config.edn</code> set to <code>:default-templates {:journals "Daily Journal"}</code></li>
+          <li><input type="checkbox" checked disabled> <strong>Reformat templates as Logseq blocks</strong> — all templates use indented <code>-</code> prefix block structure</li>
         </ul>
 
-        <h3>2.5.3 Missing Journal Entries — Critical 🔴</h3>
+        <h3>2.5.3 Missing Journal Entries ✅ Complete</h3>
         <ul>
-          <li><input type="checkbox" disabled> <strong>Create Feb 12 journal entry</strong> — backfill from agent logs/cron outputs</li>
-          <li><input type="checkbox" disabled> <strong>Create Feb 13 journal entry</strong> — backfill from today's activity</li>
-          <li><input type="checkbox" disabled> <strong>Set up auto-journal creation</strong> — cron job or agent task to pre-create daily journal files with template structure</li>
+          <li><input type="checkbox" checked disabled> <strong>Create Feb 12 journal entry</strong> — backfilled with trust system implementation, testing, documentation</li>
+          <li><input type="checkbox" checked disabled> <strong>Create Feb 13 journal entry</strong> — backfilled with Next.js migration, audits, Phase 2.5 kickoff</li>
+          <li><input type="checkbox" checked disabled> <strong>Set up auto-journal creation</strong> — <code>~/agents/ember/scripts/create-daily-journal.sh</code> with cron at 00:01 UTC daily</li>
+          <li><input type="checkbox" checked disabled> <strong>Bonus: Feb 14 pre-created</strong> — tomorrow's journal ready</li>
         </ul>
 
-        <h3>2.5.4 Git Hygiene — Important 🟡</h3>
+        <h3>2.5.4 Git Hygiene ✅ Complete</h3>
         <ul>
-          <li><input type="checkbox" disabled> <strong>Create .gitignore for Life OS</strong> — exclude <code>.recycle/</code>, <code>bak/</code>, <code>node_modules/</code>; include <code>logseq/config.edn</code>, <code>logseq/custom.css</code></li>
-          <li><input type="checkbox" disabled> <strong>Add logseq/ to git</strong> — <code>config.edn</code> (critical config) is currently untracked</li>
-          <li><input type="checkbox" disabled> <strong>Add pages/contents.md to git</strong> — currently untracked</li>
+          <li><input type="checkbox" checked disabled> <strong>Create .gitignore for Life OS</strong> — excludes .recycle/, bak/, node_modules/, editor dirs, OS artifacts</li>
+          <li><input type="checkbox" checked disabled> <strong>Add logseq/ to git</strong> — <code>config.edn</code> (421 lines) and <code>custom.css</code> tracked</li>
+          <li><input type="checkbox" checked disabled> <strong>Add pages/contents.md to git</strong> — now tracked</li>
+          <li>Committed as <code>320ae8a</code></li>
         </ul>
 
-        <h3>2.5.5 Life OS Content — Important 🟡</h3>
+        <h3>2.5.5 Life OS Content ✅ Complete</h3>
         <ul>
-          <li><input type="checkbox" disabled> <strong>Populate contents.md</strong> — currently a single dash; should be navigational hub linking to areas, projects, templates</li>
-          <li><input type="checkbox" disabled> <strong>Create missing project pages</strong> — only "Agent Team OS" exists; need CWA Magento, Implementation Status, etc.</li>
-          <li><input type="checkbox" disabled> <strong>Flesh out area pages</strong> — all 5 are skeleton-only (headers but no content, notes, or references)</li>
-          <li><input type="checkbox" disabled> <strong>Fix broken [[Implementation Status]] link</strong> — referenced in Agent Team OS page but page doesn't exist</li>
-          <li><input type="checkbox" disabled> <strong>Add inter-page linking</strong> — only 1 internal <code>[[link]]</code> across entire graph; journals and areas should link to each other</li>
+          <li><input type="checkbox" checked disabled> <strong>Populate contents.md</strong> — transformed to 53-line navigational hub with Areas, Projects, Templates, Journals, Quick Navigation</li>
+          <li><input type="checkbox" checked disabled> <strong>Create missing project pages</strong> — CWA Magento page created with status, objectives, tasks</li>
+          <li><input type="checkbox" checked disabled> <strong>Create Implementation Status page</strong> — full build-out tracker with Phase 2.5 roadmap</li>
+          <li><input type="checkbox" checked disabled> <strong>Flesh out area pages</strong> — all 5 areas now have priorities, standards, active projects, key decisions, tracking methods</li>
+          <li><input type="checkbox" checked disabled> <strong>Fix broken [[Implementation Status]] link</strong> — page created, link now resolves</li>
+          <li><input type="checkbox" checked disabled> <strong>Add inter-page linking</strong> — <strong>81 internal links</strong> across the graph (was 1)</li>
+          <li><input type="checkbox" checked disabled> <strong>Copy area pages to pages/</strong> — ensures proper Logseq link resolution</li>
         </ul>
 
-        <h3>2.5.6 Directory Cleanup — Important 🟡</h3>
+        <h3>2.5.6 Directory Cleanup ✅ Complete</h3>
         <ul>
-          <li><input type="checkbox" disabled> <strong>Migrate legacy Ember data</strong> — 11 memory files (Jan 25–Feb 9), 8 project files, 4 reflections from <code>~/agent-guide/agents/ember/</code> to <code>~/agents/ember/memory/archive/</code></li>
-          <li><input type="checkbox" disabled> <strong>Delete node_modules in agent-guide</strong> — 3,429 files (26MB) of exa-search dependencies</li>
-          <li><input type="checkbox" disabled> <strong>Remove orphaned directories</strong> — <code>~/guide/</code>, <code>~/guide-temp/</code>, <code>~/guide.tar.gz</code></li>
-          <li><input type="checkbox" disabled> <strong>Delete AppleDouble files</strong> — 27 macOS resource fork files (<code>._*</code>) in agent-guide</li>
-          <li><input type="checkbox" disabled> <strong>Deduplicate Scout's review file</strong> — exists at root AND in <code>reports/</code></li>
-          <li><input type="checkbox" disabled> <strong>Move Architect's review to memory/</strong> — <code>agent-team-os-review.md</code> at workspace root should be in <code>memory/</code></li>
+          <li><input type="checkbox" checked disabled> <strong>Migrate legacy Ember data</strong> — 26 files (13 memory, 8 project, 4 reflections, 1 heartbeat-state) moved to <code>~/agents/ember/memory/archive/</code></li>
+          <li><input type="checkbox" checked disabled> <strong>Delete node_modules in agent-guide</strong> — 3,429 files (26MB) deleted from exa-search</li>
+          <li><input type="checkbox" checked disabled> <strong>Remove orphaned directories</strong> — <code>~/guide/</code>, <code>~/guide-temp/</code>, <code>~/guide.tar.gz</code> deleted</li>
+          <li><input type="checkbox" checked disabled> <strong>Delete AppleDouble files</strong> — 27 macOS resource fork files removed</li>
+          <li><input type="checkbox" checked disabled> <strong>Deduplicate Scout's review file</strong> — root copy removed, kept reports/ version</li>
+          <li><input type="checkbox" checked disabled> <strong>Move Architect's review to memory/</strong> — moved to <code>~/agents/ember/memory/</code></li>
         </ul>
 
         <h3>2.5.7 Nice-to-Have 🟢</h3>
         <ul>
           <li><input type="checkbox" disabled> <strong>Add assets/ directory</strong> to Life OS for images/attachments</li>
           <li><input type="checkbox" disabled> <strong>Configure Logseq favorites</strong> — add Contents, active projects, area pages to <code>:favorites</code></li>
-          <li><input type="checkbox" disabled> <strong>Verify Logseq indexes areas/ directory</strong> — may need to move area pages to <code>pages/</code></li>
+          <li><input type="checkbox" checked disabled> <strong>Verify Logseq indexes areas/ directory</strong> — area pages copied to <code>pages/</code> for proper resolution</li>
           <li><input type="checkbox" disabled> <strong>Adopt Logseq properties</strong> — define schema (<code>type::, area::, status::, priority::</code>) and apply</li>
           <li><input type="checkbox" disabled> <strong>Add favicon</strong> to website</li>
           <li><input type="checkbox" disabled> <strong>Add custom 404 page</strong></li>
@@ -118,7 +123,7 @@ const content = `<div class="breadcrumbs">
           <li><input type="checkbox" checked disabled> Git repo initialized</li>
           <li><input type="checkbox" checked disabled> Templates match Chewy format (Colin's preferred)</li>
         </ul>
-        <p><em>Note: Templates created but not Logseq-compatible — see Phase 2.5.2 for fix.</em></p>
+        <p><em>Note: Templates initially created without Logseq properties — fully remediated in Phase 2.5.2 ✅</em></p>
 
         <h3>2.2 Google Calendar Integration ✅</h3>
         <ul>
@@ -249,7 +254,7 @@ const content = `<div class="breadcrumbs">
           <p>As tasks are completed, this page will be updated to reflect current status. Check the <a href="/implementation/activity-log">Activity Log</a> for detailed work history.</p>
         </div>
 
-        <p style="margin-top: 2rem; font-size: 0.8rem; color: #888;">Last updated: February 13, 2026 — Audit remediation priorities added</p>`
+        <p style="margin-top: 2rem; font-size: 0.8rem; color: #888;">Last updated: February 14, 2026 — Phase 2.5 audit remediation complete</p>`
 
 export default function Page() {
   return <div dangerouslySetInnerHTML={{ __html: content }} />

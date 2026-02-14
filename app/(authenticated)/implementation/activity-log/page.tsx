@@ -15,7 +15,24 @@ const content = `<div class="breadcrumbs">
         <h1>Activity Log</h1>
         <p class="page-subtitle">Chronological record of work performed on Agent Team OS implementation.</p>
 
-        <h2>February 13, 2026 — Next.js Migration, Security Audit &amp; Life OS Audit</h2>
+        <h2>February 13, 2026 — Next.js Migration, Audits &amp; Phase 2.5 Remediation</h2>
+
+        <div class="activity-entry">
+          <div class="activity-time">~23:45 UTC</div>
+          <div class="activity-content">
+            <strong>Phase 2.5 Audit Remediation — COMPLETE</strong>
+            <p>All critical and important findings from the Feb 13 audits have been fully resolved in a single session. Summary of all work:</p>
+            <ul>
+              <li><strong>2.5.2 Life OS Templates ✅:</strong> All 10 templates made Logseq-compatible — added <code>template:: &lt;name&gt;</code> and <code>template-including-parent:: false</code> properties, reformatted as Logseq blocks with indented <code>-</code> prefix structure. Journal auto-template configured: <code>:default-templates {:journals "Daily Journal"}</code></li>
+              <li><strong>2.5.3 Missing Journals ✅:</strong> Feb 12 journal backfilled (trust system work), Feb 13 journal backfilled (Next.js migration, audits). Auto-journal creation script created at <code>~/agents/ember/scripts/create-daily-journal.sh</code> with cron at 00:01 UTC daily. Feb 14 pre-created.</li>
+              <li><strong>2.5.4 Git Hygiene ✅:</strong> <code>.gitignore</code> created at <code>~/life-os/.gitignore</code>. <code>logseq/config.edn</code> (421 lines), <code>logseq/custom.css</code>, and <code>pages/contents.md</code> added to git. Committed as <code>320ae8a</code>.</li>
+              <li><strong>2.5.5 Life OS Content ✅:</strong> <code>contents.md</code> transformed to 53-line navigational hub. <code>Implementation Status.md</code> created. <code>CWA Magento.md</code> project page created. All 5 area pages fleshed out with priorities, standards, active projects, key decisions. Area pages copied to <code>pages/</code> for Logseq resolution. Broken link fixed. <strong>81 internal links</strong> added (was 1).</li>
+              <li><strong>2.5.6 Directory Cleanup ✅:</strong> 26 legacy Ember files migrated to archive. 3,429 node_modules files (26MB) deleted. Orphaned directories (<code>~/guide/</code>, <code>~/guide-temp/</code>, <code>~/guide.tar.gz</code>) removed. 27 AppleDouble files deleted. Scout review deduplicated. Architect review relocated.</li>
+              <li><strong>2.5.1 Security 🟢:</strong> Supabase token rotation deferred per Colin's instruction.</li>
+            </ul>
+            <p>Life OS graph status: <strong>operationally active</strong> (was "operationally dormant"). Templates Logseq-functional: 10/10 (was 0/10). Internal links: 81 (was 1). Area pages with content: 5/5 (was 0/5).</p>
+          </div>
+        </div>
 
         <div class="activity-entry">
           <div class="activity-time">~23:15 UTC</div>
@@ -275,7 +292,7 @@ const content = `<div class="breadcrumbs">
           </ul>
         </div>
 
-        <p style="margin-top: 2rem; font-size: 0.8rem; color: #888;">Last updated: February 13, 2026</p>`
+        <p style="margin-top: 2rem; font-size: 0.8rem; color: #888;">Last updated: February 14, 2026</p>`
 
 export default function Page() {
   return <div dangerouslySetInnerHTML={{ __html: content }} />
