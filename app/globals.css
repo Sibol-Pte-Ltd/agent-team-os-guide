@@ -525,6 +525,126 @@ tr:hover td {
   }
 }
 
+/* --- Page Summary (TL;DR) --- */
+.page-summary {
+  background: #f0f2ff;
+  border: 1px solid #d0d4f0;
+  border-left: 4px solid #4361ee;
+  border-radius: 6px;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.page-summary-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #4361ee;
+  margin-bottom: 0.25rem;
+}
+
+.page-summary-text {
+  font-size: 0.92rem;
+  color: #444;
+  margin-bottom: 0;
+  line-height: 1.5;
+}
+
+/* --- Summary Overview Page --- */
+.summary-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.summary-section-card {
+  background: #fff;
+  border: 1px solid #e0e0e8;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.summary-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.summary-section-header:hover {
+  background: #fafbff;
+}
+
+.summary-section-title {
+  margin: 0;
+  padding: 0;
+  border: none;
+  font-size: 1.1rem;
+}
+
+.summary-section-title a {
+  color: #4361ee;
+  text-decoration: none;
+}
+
+.summary-section-title a:hover {
+  text-decoration: underline;
+}
+
+.summary-section-desc {
+  margin: 0.25rem 0 0;
+  font-size: 0.88rem;
+  color: #666;
+}
+
+.summary-chevron {
+  color: #aaa;
+  font-size: 0.75rem;
+  transition: transform 0.2s;
+  margin-top: 0.35rem;
+  flex-shrink: 0;
+  margin-left: 1rem;
+}
+
+.summary-chevron.expanded {
+  transform: rotate(180deg);
+}
+
+.summary-section-pages {
+  border-top: 1px solid #e8e8f0;
+  padding: 0.5rem 1.25rem 1rem;
+}
+
+.summary-page-item {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #f0f0f5;
+}
+
+.summary-page-item:last-child {
+  border-bottom: none;
+}
+
+.summary-page-link {
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+.summary-page-link:hover {
+  text-decoration: underline;
+}
+
+.summary-page-desc {
+  margin: 0.2rem 0 0;
+  font-size: 0.85rem;
+  color: #666;
+  line-height: 1.45;
+}
+
 /* --- Utility --- */
 .mt-0 { margin-top: 0; }
 .mb-0 { margin-bottom: 0; }

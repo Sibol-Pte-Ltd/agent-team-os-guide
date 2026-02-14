@@ -1,4 +1,5 @@
 import Sidebar from '../components/Sidebar'
+import PageSummary from '../components/PageSummary'
 
 export default function AuthenticatedLayout({
   children,
@@ -17,6 +18,7 @@ export default function AuthenticatedLayout({
         <Sidebar />
         <main className="main-content">
           <div className="content-wrapper">
+            <PageSummary />
             {children}
           </div>
         </main>
