@@ -16,20 +16,37 @@ const content = `<div class="breadcrumbs">
 
         <h2>How Scheduling Works</h2>
 
-        <p>All scheduled tasks in Agent Team OS are managed by the <a href="/architecture/gateway">Gateway's</a> built-in cron scheduler — not by your server's system crontab. When a scheduled task fires, the Gateway starts an agent session in the dedicated <a href="/architecture/lane-queue">cron lane</a>, where the agent reasons about what to do using its full tool set. This means scheduled tasks are intelligent: they adapt based on context rather than running static scripts.</p>
+        <p>All scheduled tasks in Agent Team OS are managed by the <a href="/architecture/gateway">OpenClaw Gateway's</a> built-in cron scheduler — not by your server's system crontab. The Gateway is the scheduling engine for the entire system: it owns the cron schedule, fires jobs on time, and starts agent sessions in the dedicated <a href="/architecture/lane-queue">cron lane</a> where agents reason about what to do using their full tool set. This means scheduled tasks are intelligent — they adapt based on context rather than running static scripts.</p>
 
-        <p>See <a href="/automation/cron-jobs">Cron Jobs</a> for the full schedule, management commands, and details on how OpenClaw cron differs from system cron.</p>
+        <p>You manage the schedule with <code>openclaw cron list</code>, <code>openclaw cron create</code>, and related commands. See <a href="/automation/cron-jobs">Cron Jobs</a> for the full schedule, management commands, and details on how OpenClaw cron differs from system cron.</p>
+
+        <h3>OpenClaw-Scheduled vs System-Level Automation</h3>
+
+        <p>It is important to distinguish between the two kinds of automation running in Agent Team OS:</p>
+
+        <ul>
+          <li><strong>OpenClaw-scheduled tasks (cadence)</strong> — Morning reports, evening check-ins, weekly reviews, monthly reviews, and Life OS git backups. These are all managed by the <a href="/architecture/gateway">Gateway's cron scheduler</a>, run as intelligent agent sessions, and deliver output through <a href="/architecture/channel-adapters">Channel Adapters</a> (Discord, Pushover). You configure and monitor them entirely through OpenClaw.</li>
+          <li><strong>System-level automation</strong> — Services like <strong>Syncthing</strong> (continuous file sync between devices) and <strong>systemd units</strong> (the Gateway service itself, log rotation via logrotate, auto-journal creation). These run as standard Linux processes managed by systemd, independent of OpenClaw's scheduler. They would keep running even if the Gateway were stopped.</li>
+        </ul>
+
+        <p>The key difference: OpenClaw cron jobs are <em>agent sessions</em> — they think, reason, and use tools. System-level automation is static infrastructure that runs the same way every time.</p>
 
         <h2>Fully Automated</h2>
 
-        <p>These tasks run without any intervention from you. They are triggered by the OpenClaw cron scheduler or system events, execute on schedule, and only surface a notification if something goes wrong.</p>
+        <p>These tasks run without any intervention from you. They are triggered by the OpenClaw cron scheduler or system-level services, execute on schedule, and only surface a notification if something goes wrong.</p>
 
+        <h3>Gateway-Scheduled (OpenClaw Cron)</h3>
         <ul>
           <li><strong>Cron jobs</strong> — Scheduled agent sessions that run at specific times every day, week, or month. Managed by the <a href="/architecture/gateway">Gateway</a> and isolated in the <a href="/architecture/lane-queue">cron lane</a>. See <a href="/automation/cron-jobs">Cron Jobs</a> for the full schedule.</li>
-          <li><strong>Syncthing sync</strong> — File synchronization between your devices runs continuously in the background. Health checks confirm it stays connected.</li>
-          <li><strong>Daily backups</strong> — Your Life OS data, agent configurations, and logs are backed up every night at midnight.</li>
           <li><strong>Heartbeat checks</strong> — Periodic agent sessions that check email, calendar, system health, and other data sources, batching multiple checks into a single run.</li>
-          <li><strong>Log rotation</strong> — Old log files are compressed and archived automatically so they do not consume disk space.</li>
+        </ul>
+
+        <h3>System-Level (systemd / Linux Services)</h3>
+        <ul>
+          <li><strong>Syncthing sync</strong> — File synchronization between your devices runs continuously in the background as a systemd service. Health checks confirm it stays connected.</li>
+          <li><strong>Daily backups</strong> — Your Life OS data, agent configurations, and logs are backed up every night at midnight.</li>
+          <li><strong>Log rotation</strong> — Old log files are compressed and archived automatically via logrotate so they do not consume disk space.</li>
+          <li><strong>Auto-journal creation</strong> — A system cron job creates the next day's Life OS journal entry at 00:01 UTC daily.</li>
         </ul>
 
         <h2>Human-in-the-Loop</h2>

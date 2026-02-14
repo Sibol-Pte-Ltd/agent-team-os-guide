@@ -20,17 +20,17 @@ const content = `<div class="breadcrumbs">
             <div class="status-detail">Next.js migration complete, server-side auth</div>
           </div>
           <div class="status-card success">
-            <div class="status-title">Gateway</div>
+            <div class="status-title"><a href="/architecture/gateway">Gateway</a></div>
             <div class="status-value">Running</div>
-            <div class="status-detail">Port 18789, systemd enabled</div>
+            <div class="status-detail">Port 18789, systemd enabled — <a href="/architecture">see architecture</a></div>
           </div>
           <div class="status-card success">
-            <div class="status-title">Cron Jobs</div>
+            <div class="status-title"><a href="/automation/cron-jobs">Cron Jobs</a></div>
             <div class="status-value">5/5 OK</div>
-            <div class="status-detail">All jobs rebuilt &amp; working</div>
+            <div class="status-detail">All jobs rebuilt &amp; working — managed by <a href="/architecture/gateway">Gateway cron</a></div>
           </div>
           <div class="status-card success">
-            <div class="status-title">Trust System</div>
+            <div class="status-title"><a href="/agents/trust">Trust System</a></div>
             <div class="status-value">Enforcing</div>
             <div class="status-detail">L0–L3 levels, approval queue, audit log</div>
           </div>
@@ -62,29 +62,29 @@ const content = `<div class="breadcrumbs">
               <td>Migrated from static HTML to Next.js with server-side auth (Feb 13)</td>
             </tr>
             <tr>
-              <td><strong>OpenClaw Gateway</strong></td>
+              <td><strong><a href="/architecture/gateway">OpenClaw Gateway</a></strong></td>
               <td><span class="badge success">Running</span></td>
-              <td>Dashboard accessible, all services up</td>
+              <td>Dashboard accessible, all services up — <a href="/architecture">architecture overview</a></td>
             </tr>
             <tr>
-              <td><strong>Morning Report</strong></td>
+              <td><strong><a href="/automation/cron-jobs">Morning Report</a></strong></td>
               <td><span class="badge success">Working</span></td>
-              <td>6:00 AM Manila daily → Discord + Pushover</td>
+              <td>6:00 AM Manila daily → <a href="/architecture/channel-adapters">Discord</a> + Pushover</td>
             </tr>
             <tr>
-              <td><strong>Evening Check-in</strong></td>
+              <td><strong><a href="/automation/cron-jobs">Evening Check-in</a></strong></td>
               <td><span class="badge success">Working</span></td>
-              <td>9:30 PM Manila daily → Discord + Pushover</td>
+              <td>9:30 PM Manila daily → <a href="/architecture/channel-adapters">Discord</a> + Pushover</td>
             </tr>
             <tr>
-              <td><strong>Weekly Review</strong></td>
+              <td><strong><a href="/automation/cron-jobs">Weekly Review</a></strong></td>
               <td><span class="badge success">Working</span></td>
-              <td>Sundays 9 AM Manila → Discord + Pushover</td>
+              <td>Sundays 9 AM Manila → <a href="/architecture/channel-adapters">Discord</a> + Pushover</td>
             </tr>
             <tr>
-              <td><strong>Monthly Review</strong></td>
+              <td><strong><a href="/automation/cron-jobs">Monthly Review</a></strong></td>
               <td><span class="badge success">Working</span></td>
-              <td>1st of month 9 AM Manila → Discord + Pushover</td>
+              <td>1st of month 9 AM Manila → <a href="/architecture/channel-adapters">Discord</a> + Pushover</td>
             </tr>
             <tr>
               <td><strong>Life OS Git Backup</strong></td>
@@ -97,9 +97,9 @@ const content = `<div class="breadcrumbs">
               <td>76 files synced, idle, 0 errors</td>
             </tr>
             <tr>
-              <td><strong>Pushover</strong></td>
+              <td><strong><a href="/automation/notifications">Pushover</a></strong></td>
               <td><span class="badge success">Working</span></td>
-              <td>Test confirmed, mobile push active</td>
+              <td>Test confirmed, mobile push active — <a href="/architecture/channel-adapters">channel adapter</a></td>
             </tr>
             <tr>
               <td><strong>Life OS Templates</strong></td>
@@ -117,7 +117,7 @@ const content = `<div class="breadcrumbs">
               <td>81 internal links, 5 area pages fleshed out, contents.md as nav hub, project pages created</td>
             </tr>
             <tr>
-              <td><strong>Trust System</strong></td>
+              <td><strong><a href="/agents/trust">Trust System</a></strong></td>
               <td><span class="badge success">Implemented</span></td>
               <td>Fully enforced with approval workflows</td>
             </tr>
@@ -127,12 +127,12 @@ const content = `<div class="breadcrumbs">
               <td>OAuth completed Feb 12, integrated via gog CLI</td>
             </tr>
             <tr>
-              <td><strong>Forge Health Checks</strong></td>
+              <td><strong><a href="/agents/forge">Forge</a> Health Checks</strong></td>
               <td><span class="badge success">Active</span></td>
-              <td>Every 5 min — disk, memory, CPU, Syncthing, gateway</td>
+              <td>Every 5 min — disk, memory, CPU, Syncthing, <a href="/architecture/gateway">gateway</a></td>
             </tr>
             <tr>
-              <td><strong>Forge Agent</strong></td>
+              <td><strong><a href="/agents/forge">Forge Agent</a></strong></td>
               <td><span class="badge success">Active</span></td>
               <td>Health checks, log rotation, backup verification</td>
             </tr>
@@ -192,9 +192,15 @@ const content = `<div class="breadcrumbs">
           <li><s>Build out Life OS</s> — <span class="badge success">Done Feb 11</span> 10 templates, 5 areas, git repo</li>
         </ul>
 
+        <div class="callout">
+          <div class="callout-title">🏗️ Architecture Reference</div>
+          <p>Understanding the implementation status is easier with context on <em>how</em> the system is built. The <a href="/architecture">Architecture section</a> explains the Gateway, Channel Adapters, Lane Queue, and other components referenced on this page. Start with the <a href="/architecture">Architecture Overview</a> for the big picture, or jump directly to the <a href="/architecture/gateway">Gateway</a> to understand the daemon that powers scheduling, agent sessions, and tool execution.</p>
+        </div>
+
         <div class="action-section">
           <h2>Explore</h2>
           <ul>
+            <li><a href="/architecture">Review system Architecture</a> — understand how the components fit together</li>
             <li><a href="/implementation/gap-analysis">View detailed Gap Analysis</a> — comprehensive audit results including security findings</li>
             <li><a href="/implementation/roadmap">See the Roadmap</a> — updated priorities from audit</li>
             <li><a href="/implementation/activity-log">Check Activity Log</a> — recent work history</li>

@@ -209,9 +209,10 @@ const content = `<div class="breadcrumbs">
         <h2>Phase 4: Polish &amp; Enhance (Month 2)</h2>
 
         <h3>4.1 Additional Channels</h3>
+        <p>Adding new notification channels means configuring <a href="/architecture/channel-adapters">Channel Adapters</a> in OpenClaw. Each adapter (Discord, Telegram, WhatsApp, email) is a plugin that connects the Gateway to an external messaging platform. The Gateway routes messages to the correct adapter based on your configuration. See the <a href="/architecture/channel-adapters">Channel Adapters architecture page</a> for how adapters work and how to add new ones.</p>
         <ul>
-          <li><input type="checkbox" disabled> Enable Telegram notifications</li>
-          <li><input type="checkbox" disabled> Enable WhatsApp notifications</li>
+          <li><input type="checkbox" disabled> Enable Telegram notifications — configure <a href="/architecture/channel-adapters">Telegram adapter</a></li>
+          <li><input type="checkbox" disabled> Enable WhatsApp notifications — configure <a href="/architecture/channel-adapters">WhatsApp adapter</a></li>
           <li><input type="checkbox" disabled> Set up email as secondary channel</li>
           <li><input type="checkbox" disabled> Implement Normal/High/Critical priority routing</li>
         </ul>
