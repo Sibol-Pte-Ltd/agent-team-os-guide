@@ -92,9 +92,14 @@ const content = `<div class="breadcrumbs">
               <td><a href="/implementation/day-1-reset">Day 1 clean slate</a> — ~/agents/ember/knowledge/ is source of truth</td>
             </tr>
             <tr>
-              <td><strong>Syncthing</strong></td>
-              <td><span class="badge warning">Needs Cleanup</span></td>
-              <td>Life OS folder deleted; config still references old path</td>
+              <td><strong>Syncthing (Notes)</strong></td>
+              <td><span class="badge success">Syncing</span></td>
+              <td>Notes folder syncing via Syncthing (folder ID: <code>notes</code>) — EC2 ↔ MacBook</td>
+            </tr>
+            <tr>
+              <td><strong>Semantic Search</strong></td>
+              <td><span class="badge success">Active</span></td>
+              <td>OpenClaw <code>memory_search</code> with embeddinggemma — all 4 agents indexed</td>
             </tr>
             <tr>
               <td><strong><a href="/automation/notifications">Pushover</a></strong></td>
@@ -102,7 +107,7 @@ const content = `<div class="breadcrumbs">
               <td>Test confirmed, mobile push active — <a href="/architecture/channel-adapters">channel adapter</a></td>
             </tr>
             <tr>
-              <td><strong><a href="/agents/trust">Trust System</a></strong></td>
+              <td><strong><a href="/agents/trust-levels">Trust System</a></strong></td>
               <td><span class="badge success">Implemented</span></td>
               <td>Fully enforced with approval workflows</td>
             </tr>
@@ -130,7 +135,7 @@ const content = `<div class="breadcrumbs">
         </table>
 
         <h2>Current Phase</h2>
-        <p><strong>Phase 1–2.75 complete.</strong> <strong>Day 1 Reset complete</strong> — legacy data deleted, clean architecture established. Now in <strong>Phase 3: Knowledge & Cadence</strong> — building out ~/agents/ember/knowledge/ and enhancing automated reports. See the <a href="/implementation/roadmap">Roadmap</a> for full details.</p>
+        <p><strong>Phase 0–1 complete.</strong> Syncthing fixed (Notes folder syncing), semantic search live. Now in <strong>Phase 2: Session Handoffs</strong> — Architect designing handoff block format for session continuity. See the <a href="/implementation/clawvault-analysis">ClawVault Analysis</a> for full phase details.</p>
 
         <div class="callout success">
           <div class="callout-title">✅ Feb 14, 2026: Day 1 Reset — Clean Architecture</div>
@@ -176,23 +181,23 @@ const content = `<div class="breadcrumbs">
 
         <h2>Next Actions</h2>
         <ol>
-          <li><strong>🟡 Rotate Supabase token</strong> — deferred per Colin; will address when agent-guide files change</li>
-          <li><strong>Build knowledge base</strong> — populate ~/agents/ember/knowledge/ with core patterns from MEMORY.md, AGENTS.md</li>
-          <li><strong>Enhance morning report</strong> — add weather, overnight summary, priority detection</li>
-          <li><strong>Enhance evening check-in</strong> — add daily summary, reflection prompts</li>
-          <li><strong>Clean Syncthing config</strong> — remove stale life-os folder reference</li>
+          <li><strong>🔴 Rotate Supabase token</strong> — deferred per Colin; will address when agent-guide files change</li>
+          <li><strong>Phase 2: Session Handoffs</strong> — Architect designing handoff block format for context continuity</li>
+          <li><strong>Phase 3: Priority Markers</strong> — Add 🔴🟡🟢 markers to memory entries</li>
+          <li><strong>Phase 4: Structured Categories</strong> — Expand knowledge/ with decisions/, lessons/, commitments/</li>
+          <li><strong>Phase 5: Notes Rebuild</strong> — Populate ~/notes/ with Logseq templates</li>
         </ol>
 
-        <h3>Recently Completed</h3>
+      <h3>Recently Completed</h3>3>
         <ul>
-          <li><s>Day 1 Reset</s> — <span class="badge success">Done Feb 14</span> Deleted ~/life-os/, ~/life/, clean architecture — <a href="/implementation/day-1-reset">full details</a></li>
-          <li><s>Documentation Overhaul (25 improvements)</s> — <span class="badge success">Done Feb 14</span> Architecture alignment, cron/trust fixes, agent pages, glossary — <a href="/implementation/site-improvements">full details</a></li>
-          <li><s>Phase 2.5 Audit Remediation</s> — <span class="badge success">Done Feb 13</span> Templates, journals, git, content, cleanup — all complete</li>
+          <li><s>Phase 0: Syncthing Fix</s> — <span class="badge success">Done Feb 14</span> Notes folder syncing (folder ID: notes) — <a href="/implementation/clawvault-analysis">details</a></li>
+          <li><s>Phase 1: Semantic Search</s> — <span class="badge success">Done Feb 15</span> OpenClaw memory_search with embeddinggemma — all 4 agents indexed</li>
+          <li><s>Day 1 Reset</s> — <span class="badge success">Done Feb 14</span> Clean architecture, ~/notes/ ready — <a href="/implementation/day-1-reset">full details</a></li>
+          <li><s>Documentation Overhaul (25 improvements)</s> — <span class="badge success">Done Feb 14</span> Architecture alignment — <a href="/implementation/site-improvements">full details</a></li>
+          <li><s>Phase 2.5 Audit Remediation</s> — <span class="badge success">Done Feb 13</span> Templates, journals, git, content</li>
           <li><s>Next.js migration</s> — <span class="badge success">Done Feb 13</span> Server-side auth, Vercel deploy</li>
-          <li><s>Comprehensive directory audit</s> — <span class="badge success">Done Feb 13</span> Security findings, structural analysis</li>
-          <li><s>Google Calendar OAuth</s> — <span class="badge success">Done Feb 12</span> OAuth completed, integrated via gog CLI</li>
-          <li><s>Implement trust system enforcement</s> — <span class="badge success">Done Feb 12</span> config + enforcement + approval workflows + docs</li>
-          <li><s>Activate Forge agent</s> — <span class="badge success">Done Feb 11</span> health checks, log rotation, backup verification</li>
+          <li><s>Trust system enforcement</s> — <span class="badge success">Done Feb 12</span> L0-L3 levels, approval workflows</li>
+          <li><s>Forge activation</s> — <span class="badge success">Done Feb 11</span> Health checks, log rotation</li>
         </ul>
 
         <div class="callout">
@@ -204,7 +209,6 @@ const content = `<div class="breadcrumbs">
           <h2>Explore</h2>
           <ul>
             <li><a href="/implementation/day-1-reset">Day 1 Reset</a> — clean architecture, deleted legacy data, fresh start</li>
-            <li><a href="/implementation/agent-guide-files">Agent Guide Files</a> — complete cleanup history, deletion logs, Day 1 Reset details</li>
             <li><a href="/implementation/clawvault-analysis">ClawVault Analysis</a> — structured memory system comparison, qmd recommendations</li>
             <li><a href="/architecture">Review system Architecture</a> — understand how the components fit together</li>
             <li><a href="/implementation/site-improvements">Site Improvements Review</a> — 25 improvements identified and implemented across the guide</li>

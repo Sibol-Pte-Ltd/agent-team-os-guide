@@ -139,9 +139,9 @@ const content = `<div class="breadcrumbs">
         <p><strong>Page:</strong> <a href="/agents">Meet Your Agents</a></p>
         <p><strong>What was done:</strong> Agent cards now show Model information alongside Role, Trust Level, and Focus. References <a href="/architecture/agent-runner">Agent Runner → Model Selection</a>.</p>
 
-        <h3>16. Life OS Should Explain Agent File Access <span style="background: #22c55e; color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; margin-left: 8px;">✅ COMPLETED</span></h3>
-        <p><strong>Page:</strong> <a href="/life-os">What is Life OS</a></p>
-        <p><strong>What was done:</strong> Added explanation that agents access Life OS files through the Execution Layer's file operation tools (read, write, edit), sandboxed to the agent's workspace directory.</p>
+        <h3>16. Notes Should Explain Agent File Access <span style="background: #22c55e; color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; margin-left: 8px;">✅ COMPLETED</span></h3>
+        <p><strong>Page:</strong> <a href="/life-os">What is Notes</a></p>
+        <p><strong>What was done:</strong> Added explanation that agents access Notes files through the Execution Layer's file operation tools (read, write, edit), sandboxed to the agent's workspace directory.</p>
 
         <h3>17. Setup Checklist Could Be More Technical <span style="background: #22c55e; color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; margin-left: 8px;">✅ COMPLETED</span></h3>
         <p><strong>Page:</strong> <a href="/getting-started/setup-checklist">Setup Checklist</a></p>
@@ -169,7 +169,7 @@ const content = `<div class="breadcrumbs">
 
         <h3>23. Syncthing Page Could Mention Workspace Sync <span style="background: #22c55e; color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; margin-left: 8px;">✅ COMPLETED</span></h3>
         <p><strong>Page:</strong> <a href="/troubleshooting/syncthing">Syncthing Troubleshooting</a></p>
-        <p><strong>What was done:</strong> Added note about Syncthing syncing the Life OS vault, which is mounted as the agent's workspace via OpenClaw configuration. Explains impact of sync failures on agent file access.</p>
+        <p><strong>What was done:</strong> Added note about Syncthing syncing the Notes vault, which is mounted as the agent's workspace via OpenClaw configuration. Explains impact of sync failures on agent file access.</p>
 
         <h3>24. Monthly/Weekly Review Could Mention Context Windows <span style="background: #22c55e; color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; margin-left: 8px;">✅ COMPLETED</span></h3>
         <p><strong>Pages:</strong> <a href="/cadence/weekly-review">Weekly Review</a>, <a href="/cadence/monthly-review">Monthly Review</a></p>
@@ -286,7 +286,7 @@ const content = `<div class="breadcrumbs">
               <td>✅ Complete</td>
             </tr>
             <tr>
-              <td><a href="/life-os">What is Life OS</a></td>
+              <td><a href="/life-os">What is Notes</a></td>
               <td><span class="badge success">Nice</span></td>
               <td>Explain file access mechanism via Execution Layer (#16)</td>
               <td>✅ Complete</td>

@@ -59,9 +59,9 @@ const content = `<div class="breadcrumbs">
           </thead>
           <tbody>
             <tr>
-              <td><code>~/life-os/</code></td>
+              <td><code>~/notes/</code> (was <code>~/life-os/</code>)</td>
               <td><span class="badge success">Deleted</span></td>
-              <td>Legacy Logseq vault — no longer needed</td>
+              <td>Legacy Logseq vault — replaced by ~/notes/</td>
             </tr>
             <tr>
               <td><code>~/life/</code></td>
@@ -75,8 +75,8 @@ const content = `<div class="breadcrumbs">
             </tr>
             <tr>
               <td>Syncthing life-os sync</td>
-              <td><span class="badge warning">Needs Update</span></td>
-              <td>Config still references old path — remove when ready</td>
+              <td><span class="badge success">Fixed</span></td>
+              <td>Renamed to <code>notes</code> folder ID — syncing EC2 ↔ Mac</td>
             </tr>
           </tbody>
         </table>
@@ -123,19 +123,7 @@ const content = `<div class="breadcrumbs">
           <li><strong>Create knowledge base structure</strong> — populate ~/agents/ember/knowledge/ with core docs</li>
           <li><strong>Migrate essential patterns</strong> — from MEMORY.md, AGENTS.md into structured knowledge</li>
           <li><strong>Update agent SOUL.md files</strong> — reference new knowledge paths</li>
-          <li><strong>Clean Syncthing config</strong> — remove life-os folder reference (when ready)</li>
         </ol>
-
-        <h2>Syncthing Cleanup (Deferred)</h2>
-        <p>The Syncthing config at <code>~/.local/state/syncthing/config.xml</code> still contains the old <code>~/life-os/</code> folder definition. This will not cause errors (folder doesn't exist), but should be cleaned up when convenient:</p>
-
-        <div class="code-block">
-          <pre><code># To clean Syncthing config when ready:
-# 1. Stop Syncthing: systemctl --user stop syncthing
-# 2. Edit ~/.local/state/syncthing/config.xml
-# 3. Remove the <folder id="life-os">...</folder> block
-# 4. Start Syncthing: systemctl --user start syncthing</code></pre>
-        </div>
 
         <div class="callout">
           <div class="callout-title">Why This Reset?</div>

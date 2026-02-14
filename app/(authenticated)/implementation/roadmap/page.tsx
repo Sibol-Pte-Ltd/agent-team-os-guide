@@ -16,12 +16,12 @@ const content = `<div class="breadcrumbs">
         <p class="page-subtitle">Phased approach to completing the Agent Team OS build-out. Updated Feb 14 with documentation overhaul completion.</p>
 
         <div class="callout success">
-          <div class="callout-title">Current Focus: Phase 3 — Complete Cadence</div>
-          <p><strong>Phase 1: Critical Fixes</strong> ✅, <strong>Phase 2: Core Features</strong> ✅, <strong>Phase 2.5: Audit Remediation</strong> ✅, and <strong>Phase 2.75: Documentation Overhaul</strong> ✅ are all complete. The documentation is now comprehensive, architecture-aligned, and cross-linked. Now moving to <strong>Phase 3: Complete Cadence</strong> — enhancing morning reports, evening check-ins, and reviews with richer data from the now-operational Life OS.</p>
+          <div class="callout-title">Current Focus: Phase 2 — Session Handoffs</div>
+          <p><strong>Phase 0: Syncthing Fix</strong> ✅, <strong>Phase 1: Semantic Search</strong> ✅, and <strong>Phase 2.75: Documentation Overhaul</strong> ✅ are all complete. Now in <strong>Phase 2: Session Handoffs</strong> — Architect designing handoff block format for session continuity. Phases 3-5 also assigned to Architect. See the <a href="/implementation/clawvault-analysis">ClawVault Analysis</a> for detailed phase breakdown.</p>
         </div>
 
         <h2>Phase 2.5: Audit Remediation ✅ Complete</h2>
-        <p>Findings from the Feb 13 comprehensive directory audit and Life OS graph gap audit. All critical and important items resolved. Security deferred by design.</p>
+        <p>Findings from the Feb 13 comprehensive directory audit and Notes graph gap audit. All critical and important items resolved. Security deferred by design.</p>
 
         <h3>2.5.1 Security — Deferred 🟢</h3>
         <p><em>Deferred per Colin's instruction: Files in ~/agent-guide/ will change later, making token rotation lower priority.</em></p>
@@ -32,7 +32,7 @@ const content = `<div class="breadcrumbs">
           <li><input type="checkbox" disabled> <strong>Clean .claude.json backups</strong> — 5 backup files in home dir may contain session data</li>
         </ul>
 
-        <h3>2.5.2 Life OS Templates ✅ Complete</h3>
+        <h3>2.5.2 Notes Templates ✅ Complete</h3>
         <ul>
           <li><input type="checkbox" checked disabled> <strong>Make templates Logseq-compatible</strong> — added <code>template:: &lt;name&gt;</code> and <code>template-including-parent:: false</code> properties to all 10 templates</li>
           <li><input type="checkbox" checked disabled> <strong>Set journal auto-template</strong> — <code>config.edn</code> set to <code>:default-templates {:journals "Daily Journal"}</code></li>
@@ -49,13 +49,13 @@ const content = `<div class="breadcrumbs">
 
         <h3>2.5.4 Git Hygiene ✅ Complete</h3>
         <ul>
-          <li><input type="checkbox" checked disabled> <strong>Create .gitignore for Life OS</strong> — excludes .recycle/, bak/, node_modules/, editor dirs, OS artifacts</li>
+          <li><input type="checkbox" checked disabled> <strong>Create .gitignore for Notes</strong> — excludes .recycle/, bak/, node_modules/, editor dirs, OS artifacts</li>
           <li><input type="checkbox" checked disabled> <strong>Add logseq/ to git</strong> — <code>config.edn</code> (421 lines) and <code>custom.css</code> tracked</li>
           <li><input type="checkbox" checked disabled> <strong>Add pages/contents.md to git</strong> — now tracked</li>
           <li>Committed as <code>320ae8a</code></li>
         </ul>
 
-        <h3>2.5.5 Life OS Content ✅ Complete</h3>
+        <h3>2.5.5 Notes Content ✅ Complete</h3>
         <ul>
           <li><input type="checkbox" checked disabled> <strong>Populate contents.md</strong> — transformed to 53-line navigational hub with Areas, Projects, Templates, Journals, Quick Navigation</li>
           <li><input type="checkbox" checked disabled> <strong>Create missing project pages</strong> — CWA Magento page created with status, objectives, tasks</li>
@@ -78,7 +78,7 @@ const content = `<div class="breadcrumbs">
 
         <h3>2.5.7 Nice-to-Have 🟢</h3>
         <ul>
-          <li><input type="checkbox" disabled> <strong>Add assets/ directory</strong> to Life OS for images/attachments</li>
+          <li><input type="checkbox" disabled> <strong>Add assets/ directory</strong> to Notes for images/attachments</li>
           <li><input type="checkbox" disabled> <strong>Configure Logseq favorites</strong> — add Contents, active projects, area pages to <code>:favorites</code></li>
           <li><input type="checkbox" checked disabled> <strong>Verify Logseq indexes areas/ directory</strong> — area pages copied to <code>pages/</code> for proper resolution</li>
           <li><input type="checkbox" disabled> <strong>Adopt Logseq properties</strong> — define schema (<code>type::, area::, status::, priority::</code>) and apply</li>
@@ -119,7 +119,7 @@ const content = `<div class="breadcrumbs">
         <h3>2.75.4 Cross-Linking &amp; Polish ✅</h3>
         <ul>
           <li><input type="checkbox" checked disabled> <strong>Architecture links added</strong> throughout the site (was only in Architecture section itself)</li>
-          <li><input type="checkbox" checked disabled> <strong>Life OS pages updated</strong> — agent file access mechanism explained via Execution Layer</li>
+          <li><input type="checkbox" checked disabled> <strong>Notes pages updated</strong> — agent file access mechanism explained via Execution Layer</li>
           <li><input type="checkbox" checked disabled> <strong>Daily workflow clarified</strong> — cron = OpenClaw not system cron</li>
           <li><input type="checkbox" checked disabled> <strong>Context window notes added</strong> — weekly/monthly review pages explain summarization</li>
           <li><input type="checkbox" checked disabled> <strong>Syncthing page updated</strong> — workspace mounting relationship explained</li>
@@ -155,7 +155,7 @@ const content = `<div class="breadcrumbs">
 
         <h2>Phase 2: Core Features ✅ Complete</h2>
 
-        <h3>2.1 Life OS Templates ✅</h3>
+        <h3>2.1 Notes Templates ✅</h3>
         <ul>
           <li><input type="checkbox" checked disabled> 10 templates created (daily-journal, morning-report, evening-checkin, weekly-review, monthly-review, goal, research-brief, decision-log, project-kickoff, research-request)</li>
           <li><input type="checkbox" checked disabled> 5 area pages (health, work, personal, learning, finance)</li>
@@ -195,7 +195,7 @@ const content = `<div class="breadcrumbs">
           <li><input type="checkbox" checked disabled> Activate Scout agent with Discord bot</li>
           <li><input type="checkbox" checked disabled> Implement trust protocol compliance</li>
           <li><input type="checkbox" checked disabled> Create research workflow (WORKFLOW.md)</li>
-          <li><input type="checkbox" checked disabled> Set up research output directory (<code>~/life-os/research/</code>)</li>
+          <li><input type="checkbox" checked disabled> Set up research output directory (<code>~/notes/research/</code>)</li>
         </ul>
 
         <h3>2.6 Website Migration ✅ (Feb 13)</h3>
@@ -210,7 +210,7 @@ const content = `<div class="breadcrumbs">
 
         <h3>3.1 Morning Report Enhancement</h3>
         <ul>
-          <li><input type="checkbox" disabled> Pull priorities from Life OS journal</li>
+          <li><input type="checkbox" disabled> Pull priorities from Notes journal</li>
           <li><input type="checkbox" disabled> Integrate Google Calendar events</li>
           <li><input type="checkbox" disabled> Add weather to report</li>
           <li><input type="checkbox" disabled> Include overnight activity summary</li>

@@ -13,13 +13,13 @@ const content = `<div class="breadcrumbs">
         </div>
 
         <h1>Gap Analysis</h1>
-        <p class="page-subtitle">Comprehensive audit comparing documented Agent Team OS features against actual implementation. Includes security audit findings and Life OS graph analysis from Feb 13.</p>
+        <p class="page-subtitle">Comprehensive audit comparing documented Agent Team OS features against actual implementation. Includes security audit findings and Notes graph analysis from Feb 13.</p>
 
         <div class="callout info">
           <div class="callout-title">Audit Summary</div>
           <p><strong>Initial Audit:</strong> February 11, 2026 (~04:30 UTC)<br>
           <strong>Updated:</strong> February 12, 2026 (~03:08 UTC) — Trust system completion<br>
-          <strong>Updated:</strong> February 13, 2026 (~16:25 UTC) — Comprehensive directory audit + Life OS graph gap audit<br>
+          <strong>Updated:</strong> February 13, 2026 (~16:25 UTC) — Comprehensive directory audit + Notes graph gap audit<br>
           <strong>Updated:</strong> February 14, 2026 (~03:00 UTC) — Phase 2.5 remediation complete, gaps resolved<br>
           <strong>Updated:</strong> February 14, 2026 (~05:30 UTC) — Documentation overhaul complete; documentation gaps addressed<br>
           <strong>Auditors:</strong> Ember + Architect + subagents<br>
@@ -119,7 +119,7 @@ const content = `<div class="breadcrumbs">
         </ul>
         <p><strong>Status:</strong> All orphaned directories removed during Phase 2.5.6 cleanup (Feb 13).</p>
 
-        <h2>✅ Life OS Graph Gaps (Feb 13 Audit — RESOLVED)</h2>
+        <h2>✅ Notes Graph Gaps (Feb 13 Audit — RESOLVED)</h2>
         <p>All critical and important gaps from the Feb 13 audit were resolved during Phase 2.5 Audit Remediation (completed Feb 13).</p>
 
         <h3>Critical Gaps — All Resolved ✅</h3>
@@ -172,7 +172,7 @@ const content = `<div class="breadcrumbs">
             </tr>
             <tr>
               <td><strong>GAP-08: No .gitignore</strong></td>
-              <td><code>.gitignore</code> created at <code>~/life-os/.gitignore</code> — excludes .recycle/, bak/, node_modules/, editor dirs, OS artifacts</td>
+              <td><code>.gitignore</code> created at <code>~/notes/.gitignore</code> — excludes .recycle/, bak/, node_modules/, editor dirs, OS artifacts</td>
               <td>✅ Fixed</td>
             </tr>
             <tr>
@@ -197,7 +197,7 @@ const content = `<div class="breadcrumbs">
           <li><strong>GAP-15:</strong> No tags or properties (<code>key:: value</code>) used anywhere — Logseq's query system unused</li>
         </ul>
 
-        <h2>Life OS Graph Summary Metrics</h2>
+        <h2>Notes Graph Summary Metrics</h2>
         <table>
           <thead>
             <tr>
@@ -224,7 +224,7 @@ const content = `<div class="breadcrumbs">
 
         <div class="callout success">
           <div class="callout-title">Overall Assessment — Updated Feb 14</div>
-          <p>The Life OS graph is now <strong>fully operational</strong>. All 10 templates are Logseq-functional via the <code>/template</code> command. Journal auto-template ensures new days start with structure. Auto-journal creation via cron prevents future gaps. Area pages contain real content with priorities, standards, and active projects. The graph has 81 internal bidirectional links creating a connected knowledge network. Git hygiene is solid with proper .gitignore and critical config files tracked. The system has transitioned from architecturally sound but operationally dormant to <strong>architecturally sound and operationally active</strong>.</p>
+          <p>The Notes graph is now <strong>fully operational</strong>. All 10 templates are Logseq-functional via the <code>/template</code> command. Journal auto-template ensures new days start with structure. Auto-journal creation via cron prevents future gaps. Area pages contain real content with priorities, standards, and active projects. The graph has 81 internal bidirectional links creating a connected knowledge network. Git hygiene is solid with proper .gitignore and critical config files tracked. The system has transitioned from architecturally sound but operationally dormant to <strong>architecturally sound and operationally active</strong>.</p>
         </div>
 
         <h2>Previously Resolved Issues</h2>
@@ -242,7 +242,7 @@ const content = `<div class="breadcrumbs">
         <h3>✅ Syncthing — Fixed &amp; Connected (Feb 11)</h3>
         <p>Root cause: EC2 had wrong device ID for MacBook. Now connected: 76 files synced, idle, 0 errors.</p>
 
-        <h3>✅ Life OS Structure — Built Out (Feb 11) &amp; Remediated (Feb 13)</h3>
+        <h3>✅ Notes Structure — Built Out (Feb 11) &amp; Remediated (Feb 13)</h3>
         <ul>
           <li>10 templates created and made Logseq-functional with <code>template::</code> properties</li>
           <li>5 area pages created and fleshed out with real content</li>
