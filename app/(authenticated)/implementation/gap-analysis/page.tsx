@@ -136,7 +136,7 @@ const content = `<div class="breadcrumbs">
 
         <div class="callout success">
           <div class="callout-title">✅ GAP-03: 2-Day Journal Gap — FIXED</div>
-          <p>Feb 12 and Feb 13 journal entries created with full backfill from agent logs. Auto-journal creation script (<code>~/agents/ember/scripts/create-daily-journal.sh</code>) set up with cron at 00:01 UTC daily to prevent future gaps. Feb 14 pre-created as bonus.</p>
+          <p>Feb 12 and Feb 13 journal entries created with full backfill from agent logs. Auto-journal creation script (<code>~/agents/shared/scripts/create-daily-journal.sh</code>) set up with cron at 00:01 UTC daily to prevent future gaps. Feb 14 pre-created as bonus.</p>
         </div>
 
         <h3>Important Gaps — All Resolved ✅</h3>

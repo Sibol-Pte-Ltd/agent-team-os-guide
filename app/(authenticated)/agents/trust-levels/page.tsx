@@ -307,7 +307,7 @@ const content = `<div class="breadcrumbs">
           <li><strong>Add the agent to the config.</strong> Edit <code>~/agents/ember/config/trust-levels.json</code> and add an entry to the <code>agents</code> object with the agent name, role, trust level, and workspace path.</li>
           <li><strong>Source the integration script.</strong> In the agent's session initialization (or spawn context), add:
             <pre><code>export TRUST_AGENT_NAME="your-agent-name"
-source ~/agents/ember/scripts/trust-check.sh</code></pre>
+source ~/agents/shared/scripts/trust-check.sh</code></pre>
             Or simply source <code>.bashrc.agent</code> which handles this automatically.
           </li>
           <li><strong>Call trust_check before restricted actions.</strong> Before any action that could be restricted, call:

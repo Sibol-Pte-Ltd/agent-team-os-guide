@@ -66,7 +66,7 @@ const content = `<div class="breadcrumbs">
               <td>Structured knowledge base. Contains <code>decisions/</code>, <code>lessons/</code>, <code>commitments/</code>, <code>companies/</code>, <code>people/</code>, <code>projects/</code>. Used for semantic search.</td>
             </tr>
             <tr>
-              <td><code>~/agents/ember/scripts/</code></td>
+              <td><code>~/agents/shared/scripts/</code></td>
               <td>Agent scripts and executables. Contains the trust system scripts, automation helpers, and agent tools.</td>
             </tr>
             <tr>
@@ -159,11 +159,11 @@ const content = `<div class="breadcrumbs">
               <td>Trust system configuration. Defines all four trust levels (0–3) with their permissions, tool restrictions, and escalation triggers. Also contains each agent's current trust level assignment and approval settings. This is the single source of truth for the trust hierarchy.</td>
             </tr>
             <tr>
-              <td><code>~/agents/ember/scripts/trust-system.sh</code></td>
+              <td><code>~/agents/shared/scripts/trust-system.sh</code></td>
               <td>Trust system engine. The main executable with 10 subcommands for checking permissions, managing approvals, escalating/demoting agents, and viewing status. See <a href="/reference/commands#trust-system">Trust System Commands</a> for the full CLI reference.</td>
             </tr>
             <tr>
-              <td><code>~/agents/ember/scripts/trust-check.sh</code></td>
+              <td><code>~/agents/shared/scripts/trust-check.sh</code></td>
               <td>Source-able trust check wrapper. Provides the <code>trust_check</code>, <code>trust_check_tool</code>, and other convenience functions that agents use in their sessions. Automatically loaded via <code>.bashrc.agent</code>.</td>
             </tr>
             <tr>
@@ -179,7 +179,7 @@ const content = `<div class="breadcrumbs">
               <td>Trust decision audit log. Every trust check — allowed, denied, or queued — is logged here with a timestamp, agent name, action, and result. Use <code>trust-system.sh log</code> to view recent entries.</td>
             </tr>
             <tr>
-              <td><code>~/agents/ember/scripts/handoff.sh</code></td>
+              <td><code>~/agents/shared/scripts/handoff.sh</code></td>
               <td>Session continuity functions. Provides <code>handoff_wake</code>, <code>handoff_sleep</code>, <code>handoff_recap</code>, and <code>handoff_heartbeat</code> for session context recovery. Source it: <code>source handoff.sh && handoff_wake</code>.</td>
             </tr>
           </tbody>

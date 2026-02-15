@@ -43,7 +43,7 @@ const content = `<div class="breadcrumbs">
         <ul>
           <li><input type="checkbox" checked disabled> <strong>Create Feb 12 journal entry</strong> — backfilled with trust system implementation, testing, documentation</li>
           <li><input type="checkbox" checked disabled> <strong>Create Feb 13 journal entry</strong> — backfilled with Next.js migration, audits, Phase 2.5 kickoff</li>
-          <li><input type="checkbox" checked disabled> <strong>Set up auto-journal creation</strong> — <code>~/agents/ember/scripts/create-daily-journal.sh</code> with cron at 00:01 UTC daily</li>
+          <li><input type="checkbox" checked disabled> <strong>Set up auto-journal creation</strong> — <code>~/agents/shared/scripts/create-daily-journal.sh</code> with cron at 00:01 UTC daily</li>
           <li><input type="checkbox" checked disabled> <strong>Bonus: Feb 14 pre-created</strong> — tomorrow's journal ready</li>
         </ul>
 

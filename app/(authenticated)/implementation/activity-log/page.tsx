@@ -92,7 +92,7 @@ const content = `<div class="breadcrumbs">
             <p>All critical and important findings from the Feb 13 audits have been fully resolved in a single session. Summary of all work:</p>
             <ul>
               <li><strong>2.5.2 Notes Templates ✅:</strong> All 10 templates made Logseq-compatible — added <code>template:: &lt;name&gt;</code> and <code>template-including-parent:: false</code> properties, reformatted as Logseq blocks with indented <code>-</code> prefix structure. Journal auto-template configured: <code>:default-templates {:journals "Daily Journal"}</code></li>
-              <li><strong>2.5.3 Missing Journals ✅:</strong> Feb 12 journal backfilled (trust system work), Feb 13 journal backfilled (Next.js migration, audits). Auto-journal creation script created at <code>~/agents/ember/scripts/create-daily-journal.sh</code> with cron at 00:01 UTC daily. Feb 14 pre-created.</li>
+              <li><strong>2.5.3 Missing Journals ✅:</strong> Feb 12 journal backfilled (trust system work), Feb 13 journal backfilled (Next.js migration, audits). Auto-journal creation script created at <code>~/agents/shared/scripts/create-daily-journal.sh</code> with cron at 00:01 UTC daily. Feb 14 pre-created.</li>
               <li><strong>2.5.4 Git Hygiene ✅:</strong> <code>.gitignore</code> created at <code>~/notes/.gitignore</code>. <code>logseq/config.edn</code> (421 lines), <code>logseq/custom.css</code>, and <code>pages/contents.md</code> added to git. Committed as <code>320ae8a</code>.</li>
               <li><strong>2.5.5 Notes Content ✅:</strong> <code>contents.md</code> transformed to 53-line navigational hub. <code>Implementation Status.md</code> created. <code>CWA Magento.md</code> project page created. All 5 area pages fleshed out with priorities, standards, active projects, key decisions. Area pages copied to <code>pages/</code> for Logseq resolution. Broken link fixed. <strong>81 internal links</strong> added (was 1).</li>
               <li><strong>2.5.6 Directory Cleanup ✅:</strong> 26 legacy Ember files migrated to archive. 3,429 node_modules files (26MB) deleted. Orphaned directories (<code>~/guide/</code>, <code>~/guide-temp/</code>, <code>~/guide.tar.gz</code>) removed. 27 AppleDouble files deleted. Scout review deduplicated. Architect review relocated.</li>
@@ -214,9 +214,9 @@ const content = `<div class="breadcrumbs">
             <p>Completed full trust system build-out, moving from "documented" to "enforced." The system controls what agents can do based on trust levels (0=Observer, 1=Suggest, 2=Act with Approval, 3=Autonomous).</p>
             <ul>
               <li><strong>Config created:</strong> <code>~/agents/ember/config/trust-levels.json</code> — defines all 4 levels with permissions, tool restrictions, escalation triggers, and agent mappings (Ember=L3, Scout=L2, Forge=L3)</li>
-              <li><strong>Enforcement module built:</strong> <code>~/agents/ember/scripts/trust-system.sh</code> — full CLI with check, approve, deny, escalate, demote, list-pending, status, and log commands</li>
+              <li><strong>Enforcement module built:</strong> <code>~/agents/shared/scripts/trust-system.sh</code> — full CLI with check, approve, deny, escalate, demote, list-pending, status, and log commands</li>
               <li><strong>Approval workflow:</strong> Requests queued in <code>data/approval-queue/</code>, with automatic Discord + Pushover notifications. Colin approves/denies via CLI</li>
-              <li><strong>Integration completed:</strong> <code>~/agents/ember/scripts/trust-check.sh</code> provides source-able functions for agent sessions; <code>.bashrc.agent</code> auto-sources it with aliases</li>
+              <li><strong>Integration completed:</strong> <code>~/agents/shared/scripts/trust-check.sh</code> provides source-able functions for agent sessions; <code>.bashrc.agent</code> auto-sources it with aliases</li>
               <li><strong>Logging:</strong> All trust decisions logged to <code>~/agents/ember/logs/trust-decisions.log</code></li>
             </ul>
             <p>Updated AGENTS.md with full trust system documentation including restricted actions list, subagent protocol, approval workflow, and CLI reference.</p>
@@ -233,7 +233,7 @@ const content = `<div class="breadcrumbs">
             <ul>
               <li>Log rotation: daily at 3 AM UTC (compress &gt;7 days, delete &gt;30 days, trim health log &gt;10k lines)</li>
               <li>Backup verification: daily at 2:15 AM UTC (checks git repo health, warns if backup &gt;48h stale)</li>
-              <li>All scripts at <code>~/agents/ember/scripts/forge/</code></li>
+              <li>All scripts at <code>~/agents/shared/scripts/forge/</code></li>
             </ul>
           </div>
         </div>

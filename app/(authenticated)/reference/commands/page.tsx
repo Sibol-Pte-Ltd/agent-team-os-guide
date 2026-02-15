@@ -210,7 +210,7 @@ const content = `<div class="breadcrumbs">
         <!-- ============================================================= -->
         <h2 id="trust-system">Trust System Commands</h2>
 
-        <p>The trust system is enforced through two scripts: <code>trust-system.sh</code> (the main engine with 10 subcommands) and <code>trust-check.sh</code> (a source-able wrapper that agents use in their sessions). Both live in <code>~/agents/ember/scripts/</code>. See <a href="/agents/trust-levels">Trust Levels</a> for the full conceptual overview.</p>
+        <p>The trust system is enforced through two scripts: <code>trust-system.sh</code> (the main engine with 10 subcommands) and <code>trust-check.sh</code> (a source-able wrapper that agents use in their sessions). Both live in <code>~/agents/shared/scripts/</code>. See <a href="/agents/trust-levels">Trust Levels</a> for the full conceptual overview.</p>
 
         <h3><code>trust-system.sh</code> — CLI Reference</h3>
 
@@ -397,7 +397,7 @@ $ trust-system.sh log 50</code></pre>
 
         <h4>Using trust-check.sh in an agent session</h4>
         <pre><code># Source the integration functions
-$ source ~/agents/ember/scripts/trust-check.sh
+$ source ~/agents/shared/scripts/trust-check.sh
 
 # Check a raw tool call
 $ trust_check_tool message "sending summary"

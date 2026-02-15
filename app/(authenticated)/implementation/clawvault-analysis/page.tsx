@@ -697,7 +697,7 @@ clawvault context "what decisions were made" --budget 2000 --profile planning</c
               <td>2.1</td>
               <td>✅ Create <code>scripts/handoff.sh</code></td>
               <td>Architect</td>
-              <td>Implemented three functions: <code>handoff_wake</code> (load recent memory + extract handoff), <code>handoff_sleep</code> (write session summary), <code>handoff_recap</code> (show recent entries). Located at <code>~/agents/ember/scripts/handoff.sh</code>.</td>
+              <td>Implemented three functions: <code>handoff_wake</code> (load recent memory + extract handoff), <code>handoff_sleep</code> (write session summary), <code>handoff_recap</code> (show recent entries). Located at <code>~/agents/shared/scripts/handoff.sh</code>.</td>
             </tr>
             <tr>
               <td>2.2</td>

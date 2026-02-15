@@ -103,7 +103,7 @@ const content = `<div class="breadcrumbs">
         <p>The <strong>Daily Journal</strong> template is automatically applied to every new journal page. This is configured in <code>logseq/config.edn</code> via <code>:default-templates {:journals "Daily Journal"}</code>. When you navigate to a new day's journal page, the template structure (priorities, notes, accomplishments, reflections) is already in place — no manual insertion needed.</p>
 
         <h3>Auto-Journal Creation</h3>
-        <p>A cron job runs daily at 00:01 UTC to pre-create the next day's journal file using <code>~/agents/ember/scripts/create-daily-journal.sh</code>. This ensures that journal pages always exist for the current day, preventing gaps in the daily cadence.</p>
+        <p>A cron job runs daily at 00:01 UTC to pre-create the next day's journal file using <code>~/agents/shared/scripts/create-daily-journal.sh</code>. This ensures that journal pages always exist for the current day, preventing gaps in the daily cadence.</p>
 
         <div class="callout tip">
           <div class="callout-title">Tip</div>
